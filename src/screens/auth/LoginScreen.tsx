@@ -42,7 +42,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
             </View>
 
             <View style={styles.form}>
-                <Text variant="h6" color={Colors.white}>EMAIL</Text>
+                <Text variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>EMAIL</Text>
                 <FormTextInput
                     placeholder="Please enter your email address"
                     value={email}
@@ -54,7 +54,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
 
                 <View style={{ height: 16 }} />
 
-                <Text variant="h6" color={Colors.white}>PASSWORD</Text>
+                <Text variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>PASSWORD</Text>
                 <FormTextInput
                     placeholder="Please enter your password"
                     value={password}
@@ -65,26 +65,26 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
                 />
 
                 <TouchableOpacity onPress={onForgot} style={styles.forgotBtn}>
-                    <Text variant="body" color="#D7E7EE">Forgot Password?</Text>
+                    <Text variant="p" color="#D7E7EE">Forgot Password?</Text>
                 </TouchableOpacity>
 
                 <View style={{ height: 16 }} />
 
                 <View style={styles.ctaOuter}>
                     <TouchableOpacity style={styles.ctaInner} onPress={handleLogin} activeOpacity={0.9}>
-                        <Text variant="body" color="#111111" align="center">Login</Text>
+                        <Text variant="body" color={Colors.black} align="center">Login</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.orRow}>
                     <View style={styles.divider} />
-                    <Text variant="body" color="#CFE2EA">or continue with</Text>
+                    <Text variant="bodyXs" color="#CFE2EA">or continue with</Text>
                     <View style={styles.divider} />
                 </View>
 
                 <View style={styles.socialRow}>
                     <View style={styles.socialCircle}>
-                        <Text color="#0F5270">G</Text>
+                        <Text color="#0F5270">G</Text> 
                     </View>
                     <View style={styles.socialCircle}>
                         <Text color="#0F5270">f</Text>
@@ -95,7 +95,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
                 <View style={styles.footerRow}>
                     <Text variant="body" color="#CFE2EA">Don't have account?</Text>
                     <TouchableOpacity onPress={onRegister}>
-                        <Text variant="body" color={Colors.white}>
+                        <Text variant="p" color={Colors.white}>
                             {' '}Register Here
                         </Text>
                     </TouchableOpacity>
@@ -140,7 +140,9 @@ const styles = StyleSheet.create({
         borderColor: Colors.white,
         borderTopRightRadius: 16,
         borderBottomLeftRadius: 16,
-        padding: 4,
+        paddingHorizontal: 4,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     ctaInner: {
         height: 40,
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
         width: 44,
         height: 44,
         borderRadius: 22,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         alignItems: 'center',
         justifyContent: 'center',
     },
