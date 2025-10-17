@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, Dimensions, StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from '../../components/common/Typography';
 import Colors from '../../theme/color';
@@ -28,6 +28,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
             end={{ x: 0.5, y: 1.0 }}
             style={styles.container}
         >
+              <StatusBar translucent backgroundColor="transparent" />
             <View style={styles.header}>
                 <Image
                     source={require('../../assets/images/top_header_logo.png')}
@@ -39,6 +40,8 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
                 <Text variant="p" color="#D7E7EE" align="center">
                     Enter your email below to login to your account.
                 </Text>
+
+                
             </View>
 
             <View style={styles.form}>

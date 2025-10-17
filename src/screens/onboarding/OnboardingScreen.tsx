@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Video from 'react-native-video';
 
 
 import Slide from '../../components/onboarding/Slide';
 import Dots from '../../components/onboarding/Dots';
 import NextButton from '../../components/onboarding/NextButton';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 type SlideData = {
     id: string;
@@ -70,7 +71,19 @@ const OnboardingScreen: React.FC<Props> = ({ onDone }) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="light-content" />
+            <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+
+            <Video
+                source={require('../../assets/videos/onboarding_bg.mp4')}
+                style={styles.videoBackground}
+                resizeMode="cover"
+                repeat
+                muted
+                paused={false}
+                playInBackground={false}
+                playWhenInactive={false}
+                ignoreSilentSwitch="obey"
+            />
 
             <Image
                 source={require('../../assets/images/top_header_logo.png')}
@@ -155,9 +168,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#000',
     },
+    videoBackground: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100%',
+        height: '100%',
+    },
     topLogo: {
         position: 'absolute',
-        top: 32,
+        top: 50,
         alignSelf: 'center',
         width: 52,
         height: 40,
@@ -170,7 +192,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 0,
         right: 0,
-        bottom: 120,
+        bottom: 100,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -179,7 +201,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 20,
         right: 20,
-        bottom: 28,
+        bottom: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
