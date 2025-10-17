@@ -11,6 +11,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */; };
+		0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */; };
+		C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Ultraverse/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Ultraverse/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */ = {isa = PBXFileReference; name = "Ronix-Classic.otf"; path = "../src/assets/fonts/Ronix-Classic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */ = {isa = PBXFileReference; name = "FormaDJR-Bold.ttf"; path = "../src/assets/fonts/FormaDJR-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */ = {isa = PBXFileReference; name = "FormaDJR-Regular.ttf"; path = "../src/assets/fonts/FormaDJR-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				64AF0E51F5F9433B939CB95E /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -96,6 +103,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		64AF0E51F5F9433B939CB95E /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */,
+				6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */,
+				751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -159,6 +177,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */,
+				0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */,
+				C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

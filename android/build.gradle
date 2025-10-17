@@ -10,9 +10,10 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs "${project(':unityLibrary').projectDir}/libs"
-        }
+        // Temporarily commented out Unity libs directory
+        // flatDir {
+        //     dirs "${project(':unityLibrary').projectDir}/libs"
+        // }
     }
     dependencies {
         classpath("com.android.tools.build:gradle")
@@ -22,3 +23,26 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+// Temporarily commented out Unity task dependency fixes
+// subprojects { subproject ->
+//   if (subproject.name == 'react-native-unity') {
+//     subproject.afterEvaluate {
+//       // Fix codegen task dependencies
+//       def generateCodegenArtifactsTask = subproject.tasks.findByName('generateCodegenArtifactsFromSchema')
+//       def generateCodegenSchemaTask = subproject.tasks.findByName('generateCodegenSchemaFromJavaScript')
+//       
+//       if (generateCodegenArtifactsTask && generateCodegenSchemaTask) {
+//         generateCodegenArtifactsTask.dependsOn(generateCodegenSchemaTask)
+//       }
+//       
+//       // Fix resource task dependencies
+//       def packageResourcesTask = subproject.tasks.findByName('packageDebugResources')
+//       def generateResValuesTask = subproject.tasks.findByName('generateDebugResValues')
+//       
+//       if (packageResourcesTask && generateResValuesTask) {
+//         packageResourcesTask.dependsOn(generateResValuesTask)
+//       }
+//     }
+//   }
+// }

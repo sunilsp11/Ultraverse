@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, Platform } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { Animated, Image, StatusBar, StyleSheet, View, Platform } from 'react-native';
 import Video from 'react-native-video';
 import Sound from 'react-native-sound';
 import Colors from './theme/color';
@@ -13,7 +12,6 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onGetStarted }) => {
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bgFadeAnim = useRef(new Animated.Value(1)).current;
-  const buttonFadeAnim = useRef(new Animated.Value(0)).current;
   const soundRef = useRef<Sound | null>(null);
 
   useEffect(() => {
@@ -44,9 +42,6 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onGetStarted }) => {
       setTimeout(() => {
         Animated.timing(bgFadeAnim, { toValue: 0.5, duration: 1000, useNativeDriver: false }).start();
       }, 2000);
-      setTimeout(() => {
-        Animated.timing(buttonFadeAnim, { toValue: 1, duration: 800, useNativeDriver: true }).start();
-      }, 5000);
     });
 
     return () => {
@@ -82,12 +77,12 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onGetStarted }) => {
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
 
-      {/* ✅ Important Video Fixes */}
+      {/* ✅ Video plays once; when it ends we continue to onboarding */}
       <Video
         source={require('../src/assets/videos/portal_animation.mp4')}
         style={styles.videoBackground}
         resizeMode="cover"
-        repeat
+        repeat={false}
         muted={false}
         paused={false}
         playInBackground={true}
@@ -96,23 +91,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onGetStarted }) => {
         disableFocus={true}  // ✅ prevents Android from stopping video when sound starts
         onError={(e) => console.log('🎥 Video error:', e)}
         onBuffer={(e) => console.log('⏳ Buffering video...', e.isBuffering)}
+        onEnd={onGetStarted}
       />
 
       <Animated.View style={[styles.overlay, { backgroundColor }]} />
       {renderLogo()}
-
-      <Animated.View style={[styles.buttonShadow, { opacity: buttonFadeAnim }]}>
-        <TouchableOpacity onPress={onGetStarted} style={styles.button}>
-          <LinearGradient
-            colors={['#4A9EFF', '#0066CC']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.buttonGradient}
-          >
-            <Text style={styles.buttonText}>Get Started</Text>
-          </LinearGradient>
-        </TouchableOpacity>
-      </Animated.View>
     </View>
   );
 };
@@ -152,38 +135,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 1,
   },
-  buttonShadow: {
-    borderWidth: 1,
-    borderColor: Colors.primary[500],
-    borderTopLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    padding: 4,
-    borderTopRightRadius: 12,
-    borderBottomLeftRadius: 12,
+  invisible: {
+    width: 1,
+    height: 1,
     position: 'absolute',
-    bottom: 100,
-    alignItems: 'center',
-    zIndex: 3,
-  },
-  button: {
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#333333',
-    borderTopLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    borderTopRightRadius: 12,
-    borderBottomLeftRadius: 12,
-  },
-  buttonGradient: {
-    paddingHorizontal: 35,
-    paddingVertical: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    color: Colors.black,
-    fontSize: 14,
-    fontWeight: '600',
-    letterSpacing: 0.5,
+    opacity: 0,
   },
 });

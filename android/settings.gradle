@@ -4,6 +4,11 @@ extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autoli
 rootProject.name = 'Ultraverse'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
-include ':unityLibrary'
-project(':unityLibrary').projectDir = new File(rootProject.projectDir, '../unity/builds/android/unityLibrary')
+// Temporarily commented out Unity projects
+// include ':unityLibrary'
+// project(':unityLibrary').projectDir = new File(rootProject.projectDir, '../unity/builds/android/unityLibrary')
+
+// Manually include @azesmway/react-native-unity (ensure RNUnityView is registered) - temporarily commented out
+// include ':react-native-unity'
+// project(':react-native-unity').projectDir = new File(rootProject.projectDir, '../node_modules/@azesmway/react-native-unity/android')
 

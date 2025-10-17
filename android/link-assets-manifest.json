@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/FormaDJR-Bold.ttf",
+      "sha1": "e9f0d111879186b7fb8dc185a9a87a300e4a11ec"
+    },
+    {
+      "path": "src/assets/fonts/FormaDJR-Regular.ttf",
+      "sha1": "9f2fd3fe658b6574ae87b5c59470f98f447b7f2d"
+    },
+    {
+      "path": "src/assets/fonts/Ronix-Classic.otf",
+      "sha1": "4e0a40cc2d9f2000d370fc297e4c22e78e4c9239"
+    }
+  ]
+}

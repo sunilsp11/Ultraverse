@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View, Button, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import UnityView from '@azesmway/react-native-unity';
+// import UnityView from '@azesmway/react-native-unity'; // Temporarily commented out
 import SplashScreen from './src/SplashScreen';
+import OnboardingScreen from './src/screens/onboarding/OnboardingScreen';
+import LoginScreen from './src/screens/auth/LoginScreen';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -15,46 +17,68 @@ function App() {
 }
 
 function AppContent() {
-  const unityRef = useRef<{
-    postMessage: (gameObject: string, methodName: string, message: string) => void;
-  } | null>(null);
-  const [showUnity, setShowUnity] = useState(false);
+  // Temporarily commented out Unity-related code
+  // const unityRef = useRef<{
+  //   postMessage: (gameObject: string, methodName: string, message: string) => void;
+  // } | null>(null);
+  // const [showUnity, setShowUnity] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
-  // Data to send to Unity
-  const unityData = {
-    name: "I'm Stepa",
-    age: 25,
-  };
+  // Data to send to Unity - commented out
+  // const unityData = {
+  //   name: "I'm Stepa",
+  //   age: 25,
+  // };
 
-  const jsonedData = JSON.stringify(unityData);
+  // const jsonedData = JSON.stringify(unityData);
 
-  // Function to send data to Unity
-  async function sendData(data: any) {
-    if (unityRef.current) {
-      try {
-        unityRef.current.postMessage('ReactToUnity', 'GetDatas', data);
-      } catch (error) {
-        console.error('Error sending message to Unity:', error);
-      }
-    }
-  }
+  // Function to send data to Unity - commented out
+  // async function sendData(data: any) {
+  //   if (unityRef.current) {
+  //     try {
+  //       unityRef.current.postMessage('ReactToUnity', 'GetDatas', data);
+  //     } catch (error) {
+  //       console.error('Error sending message to Unity:', error);
+  //     }
+  //   }
+  // }
 
-  useEffect(() => {
-    if (showUnity) {
-      sendData(jsonedData);
-    }
-  }, [showUnity]);
+  // useEffect(() => {
+  //   if (showUnity) {
+  //     sendData(jsonedData);
+  //   }
+  // }, [showUnity]);
 
   const handleGetStarted = () => {
     setShowSplash(false);
-    setShowUnity(true);
+    setShowOnboarding(true);
   };
 
   return (
     <>
       {showSplash ? (
         <SplashScreen onGetStarted={handleGetStarted} />
+      ) : showOnboarding ? (
+        <OnboardingScreen onDone={() => { setShowOnboarding(false); setShowLogin(true); }} />
+      ) : showLogin ? (
+        <LoginScreen onLogin={() => {}} />
+      ) : (
+        <View style={styles.buttonContainer}>
+          <Text style={styles.welcomeText}>Welcome to Ultraverse! 🚀</Text>
+          <Text style={styles.subText}>Unity integration temporarily disabled</Text>
+          <Button
+            title="Rewatch Splash"
+            onPress={() => {
+              setShowOnboarding(false);
+              setShowLogin(false);
+              setShowSplash(true);
+            }}
+          />
+        </View>
+      )}
+      {/* Temporarily commented out Unity view
       ) : showUnity ? (
         <UnityView
           ref={unityRef}
@@ -78,6 +102,7 @@ function AppContent() {
           />
         </View>
       )}
+      */}
     </>
   );
 }
@@ -90,11 +115,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#000',
+    padding: 20,
   },
   welcomeText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
+    color: '#fff',
+    textAlign: 'center',
+  },
+  subText: {
+    fontSize: 16,
+    color: '#888',
+    marginBottom: 30,
+    textAlign: 'center',
   },
 });
 
