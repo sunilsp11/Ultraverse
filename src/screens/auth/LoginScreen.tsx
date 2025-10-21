@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image, Dimensions, StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Text from '../../components/common/Typography';
+import UvTypography from '../../components/common/uvTypography';
 import Colors from '../../theme/color';
-import FormTextInput from '../../components/common/FormTextInput';
+import UvFormTextInput from '../../components/common/uvFormTextInput';
 
 const { width } = Dimensions.get('window');
 
@@ -35,18 +35,18 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
                     style={styles.topLogo}
                     resizeMode="contain"
                 />
-                <Text variant="h3" align="center">LOGIN</Text>
+                <UvTypography variant="h3" align="center">LOGIN</UvTypography>
                 <View style={{ height: 8 }} />
-                <Text variant="p" color="#D7E7EE" align="center">
+                <UvTypography variant="p" color="#D7E7EE" align="center">
                     Enter your email below to login to your account.
-                </Text>
+                </UvTypography>
 
                 
             </View>
 
             <View style={styles.form}>
-                <Text variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>EMAIL</Text>
-                <FormTextInput
+                <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>EMAIL</UvTypography>
+                <UvFormTextInput
                     placeholder="Please enter your email address"
                     value={email}
                     onChangeText={setEmail}
@@ -57,8 +57,8 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
 
                 <View style={{ height: 16 }} />
 
-                <Text variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>PASSWORD</Text>
-                <FormTextInput
+                <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>PASSWORD</UvTypography>
+                <UvFormTextInput
                     placeholder="Please enter your password"
                     value={password}
                     onChangeText={setPassword}
@@ -68,39 +68,39 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
                 />
 
                 <TouchableOpacity onPress={onForgot} style={styles.forgotBtn}>
-                    <Text variant="p" color="#D7E7EE">Forgot Password?</Text>
+                    <UvTypography variant="p" color="#D7E7EE">Forgot Password?</UvTypography>
                 </TouchableOpacity>
 
                 <View style={{ height: 16 }} />
 
                 <View style={styles.ctaOuter}>
                     <TouchableOpacity style={styles.ctaInner} onPress={handleLogin} activeOpacity={0.9}>
-                        <Text variant="body" color={Colors.black} align="center">Login</Text>
+                        <UvTypography variant="body" color={Colors.black} align="center">Login</UvTypography>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.orRow}>
                     <View style={styles.divider} />
-                    <Text variant="bodyXs" color="#CFE2EA">or continue with</Text>
+                    <UvTypography variant="bodyXs" color="#CFE2EA">or continue with</UvTypography>
                     <View style={styles.divider} />
                 </View>
 
                 <View style={styles.socialRow}>
                     <View style={styles.socialCircle}>
-                        <Text color="#0F5270">G</Text> 
+                        <UvTypography color="#0F5270">G</UvTypography> 
                     </View>
                     <View style={styles.socialCircle}>
-                        <Text color="#0F5270">f</Text>
+                        <UvTypography color="#0F5270">f</UvTypography>
                     </View>
                 </View>
 
                 <View style={{ height: 24 }} />
                 <View style={styles.footerRow}>
-                    <Text variant="body" color="#CFE2EA">Don't have account?</Text>
+                    <UvTypography variant="body" color="#CFE2EA">Don't have account?</UvTypography>
                     <TouchableOpacity onPress={onRegister}>
-                        <Text variant="p" color={Colors.white}>
+                        <UvTypography variant="p" color={Colors.white}>
                             {' '}Register Here
-                        </Text>
+                        </UvTypography>
                     </TouchableOpacity>
                 </View>
             </View>

@@ -10,7 +10,7 @@ type Props = TextInputProps & {
   placeholderColor?: string;
 };
 
-const FormTextInput: React.FC<Props> = ({ label, wrapperStyle, style, variant = 'body', placeholderColor, ...rest }) => {
+const UvFormTextInput: React.FC<Props> = ({ label, wrapperStyle, style, variant = 'body', placeholderColor, ...rest }) => {
   const v = Typography[variant];
   return (
     <View style={[styles.wrapper, wrapperStyle]}>
@@ -32,7 +32,7 @@ const FormTextInput: React.FC<Props> = ({ label, wrapperStyle, style, variant = 
   );
 };
 
-export default FormTextInput;
+export default UvFormTextInput;
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -6,7 +6,7 @@ interface Props {
   onPress: () => void;
 }
 
-const NextButton: React.FC<Props> = ({ onPress }) => {
+const UvNextButton: React.FC<Props> = ({ onPress }) => {
   return (
     <View style={styles.wrapper}>
     <TouchableOpacity onPress={onPress} style={styles.container}>
@@ -16,7 +16,7 @@ const NextButton: React.FC<Props> = ({ onPress }) => {
   );
 };
 
-export default NextButton;
+export default UvNextButton;
 
 const styles = StyleSheet.create({
   wrapper: {

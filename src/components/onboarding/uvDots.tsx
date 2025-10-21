@@ -8,7 +8,7 @@ interface Props {
   pageWidth?: number;
 }
 
-const Dots: React.FC<Props> = ({ index, total, scrollX, pageWidth = 1 }) => {
+const UvDots: React.FC<Props> = ({ index, total, scrollX, pageWidth = 1 }) => {
   return (
     <View style={styles.container}>
       {Array.from({ length: total }).map((_, i) => {
@@ -40,7 +40,7 @@ const Dots: React.FC<Props> = ({ index, total, scrollX, pageWidth = 1 }) => {
   );
 };
 
-export default Dots;
+export default UvDots;
 
 const styles = StyleSheet.create({
   container: {

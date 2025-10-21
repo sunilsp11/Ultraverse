@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import Text from '../common/Typography';
+import UvTypography from '../common/uvTypography';
 
 const { width } = Dimensions.get('window');
 
@@ -10,21 +10,21 @@ interface Props {
   afterContent?: ReactNode;
 }
 
-const Slide: React.FC<Props> = ({ title, description, afterContent }) => {
+const UvSlide: React.FC<Props> = ({ title, description, afterContent }) => {
   return (
     <View style={styles.container}>
-      <Text variant="h3" align="center">
+      <UvTypography variant="h3" align="center">
         {title}
-      </Text>
-      <Text variant="p" color="#CFCFCF" align="center" style={styles.desc}>
+      </UvTypography>
+      <UvTypography variant="p" color="#CFCFCF" align="center" style={styles.desc}>
         {description}
-      </Text>
+      </UvTypography>
       {afterContent ? <View style={styles.after}>{afterContent}</View> : null}
     </View>
   );
 };
 
-export default Slide;
+export default UvSlide;
 
 const styles = StyleSheet.create({
   container: {

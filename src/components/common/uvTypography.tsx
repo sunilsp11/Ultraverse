@@ -10,7 +10,7 @@ type Props = RNTextProps & {
   letterSpacing?: number;
 };
 
-const Text: React.FC<Props> = ({
+const UvTypography: React.FC<Props> = ({
   variant = 'body',
   color = Colors.white,
   align,
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Text;
+export default UvTypography;
 
 

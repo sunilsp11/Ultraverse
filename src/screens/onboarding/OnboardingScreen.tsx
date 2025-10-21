@@ -3,9 +3,9 @@ import { Animated, Dimensions, FlatList, Image, StatusBar, StyleSheet, Text, Tou
 import Video from 'react-native-video';
 
 
-import Slide from '../../components/onboarding/Slide';
-import Dots from '../../components/onboarding/Dots';
-import NextButton from '../../components/onboarding/NextButton';
+import UvSlide from '../../components/onboarding/uvSlide';
+import UvDots from '../../components/onboarding/uvDots';
+import UvNextButton from '../../components/onboarding/uvNextButton';
 
 const { width, height } = Dimensions.get('window');
 
@@ -96,7 +96,7 @@ const OnboardingScreen: React.FC<Props> = ({ onDone }) => {
                 data={slides}
                 keyExtractor={(s) => s.id}
                 renderItem={({ item }) => (
-                    <Slide title={item.title} description={item.description} />
+                    <UvSlide title={item.title} description={item.description} />
                 )}
                 horizontal
                 pagingEnabled
@@ -113,7 +113,7 @@ const OnboardingScreen: React.FC<Props> = ({ onDone }) => {
             />
        
             <View style={styles.dotsOverlay}>
-                <Dots total={slides.length} index={index} scrollX={scrollX} pageWidth={width} />
+                <UvDots total={slides.length} index={index} scrollX={scrollX} pageWidth={width} />
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity onPress={onDone} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
@@ -121,7 +121,7 @@ const OnboardingScreen: React.FC<Props> = ({ onDone }) => {
                 </TouchableOpacity>
 
                 {index < slides.length - 1 ? (
-                    <NextButton onPress={handleNext} />
+                    <UvNextButton onPress={handleNext} />
                 ) : (
                     <Animated.View
                         style={[
