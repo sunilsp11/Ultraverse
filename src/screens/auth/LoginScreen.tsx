@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import UvTypography from '../../components/common/uvTypography';
 import Colors from '../../theme/color';
 import UvFormTextInput from '../../components/common/uvFormTextInput';
+import UvButton from '../../components/common/uvButton';
 
 const { width } = Dimensions.get('window');
 
@@ -45,56 +46,56 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
             </View>
 
             <View style={styles.form}>
-                <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>EMAIL</UvTypography>
-                <UvFormTextInput
-                    placeholder="Please enter your email address"
-                    value={email}
-                    onChangeText={setEmail}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    variant="body"
-                />
+                <View style={styles.formContent}>
+                    <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>EMAIL</UvTypography>
+                    <UvFormTextInput
+                        placeholder="Please enter your email address"
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                        variant="body"
+                    />
 
-                <View style={{ height: 16 }} />
+                    <View style={{ height: 16 }} />
 
-                <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>PASSWORD</UvTypography>
-                <UvFormTextInput
-                    placeholder="Please enter your password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                    autoCapitalize="none"
-                    variant="body"
-                />
+                    <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>PASSWORD</UvTypography>
+                    <UvFormTextInput
+                        placeholder="Please enter your password"
+                        value={password}
+                        onChangeText={setPassword}
+                        secureTextEntry
+                        autoCapitalize="none"
+                        variant="body"
+                    />
 
-                <TouchableOpacity onPress={onForgot} style={styles.forgotBtn}>
-                    <UvTypography variant="p" color="#D7E7EE">Forgot Password?</UvTypography>
-                </TouchableOpacity>
-
-                <View style={{ height: 16 }} />
-
-                <View style={styles.ctaOuter}>
-                    <TouchableOpacity style={styles.ctaInner} onPress={handleLogin} activeOpacity={0.9}>
-                        <UvTypography variant="body" color={Colors.black} align="center">Login</UvTypography>
+                    <TouchableOpacity onPress={onForgot} style={styles.forgotBtn}>
+                        <UvTypography variant="p" color="#D7E7EE">Forgot Password?</UvTypography>
                     </TouchableOpacity>
-                </View>
 
-                <View style={styles.orRow}>
-                    <View style={styles.divider} />
-                    <UvTypography variant="bodyXs" color="#CFE2EA">or continue with</UvTypography>
-                    <View style={styles.divider} />
-                </View>
+                    <View style={{ height: 16 }} />
 
-                <View style={styles.socialRow}>
-                    <View style={styles.socialCircle}>
-                        <UvTypography color="#0F5270">G</UvTypography> 
+                    <UvButton 
+                        onPress={handleLogin} 
+                        title="Login" 
+                    />
+
+                    <View style={styles.orRow}>
+                        <View style={styles.divider} />
+                        <UvTypography variant="bodyXs" color="#CFE2EA">or continue with</UvTypography>
+                        <View style={styles.divider} />
                     </View>
-                    <View style={styles.socialCircle}>
-                        <UvTypography color="#0F5270">f</UvTypography>
-                    </View>
+
+                    <View style={styles.socialRow}>
+                        <View style={styles.socialCircle}>
+                            <UvTypography color="#0F5270">G</UvTypography> 
+                        </View>
+                        <View style={styles.socialCircle}>
+                            <UvTypography color="#0F5270">f</UvTypography>
+                        </View>
+                    </View> 
                 </View>
 
-                <View style={{ height: 24 }} />
                 <View style={styles.footerRow}>
                     <UvTypography variant="body" color="#CFE2EA">Don't have account?</UvTypography>
                     <TouchableOpacity onPress={onRegister}>
@@ -128,35 +129,16 @@ const styles = StyleSheet.create({
     },
     form: {
         flex: 1,
+        justifyContent: 'space-between',
+    },
+    formContent: {
+        flex: 1,
     },
     inputWrapper: {},
     input: {},
     forgotBtn: {
         alignSelf: 'flex-end',
         marginTop: 24,
-    },
-    ctaOuter: {
-        alignSelf: 'center',
-        marginTop: 32,
-        height: 48,
-        borderWidth: 1,
-        borderColor: Colors.white,
-        borderTopRightRadius: 16,
-        borderBottomLeftRadius: 16,
-        paddingHorizontal: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    ctaInner: {
-        height: 40,
-        width: width * 0.6,
-        backgroundColor: Colors.white,
-        borderWidth: 1,
-        borderColor: '#DDE6EA',
-        borderTopRightRadius: 16,
-        borderBottomLeftRadius: 16,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     orRow: {
         marginTop: 26,
@@ -189,6 +171,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 24,
+        paddingBottom: 24,
     },
 });
 

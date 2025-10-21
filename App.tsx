@@ -3,8 +3,11 @@ import { StatusBar, StyleSheet, useColorScheme, View, Button, Text } from 'react
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // import UnityView from '@azesmway/react-native-unity'; // Temporarily commented out
 import SplashScreen from './src/SplashScreen';
-import OnboardingScreen from './src/screens/onboarding/OnboardingScreen';
-import LoginScreen from './src/screens/auth/LoginScreen';
+import OnboardingScreen from './src/screens/onboarding/onboardingScreen';
+import LoginScreen from './src/screens/auth/loginScreen';
+import RegisterScreen from './src/screens/auth/registerScreen';
+import ForgotPasswordScreen from './src/screens/auth/forgotPasswordScreen';
+import ResetPasswordScreen from './src/screens/auth/resetPasswordScreen';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,6 +28,9 @@ function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
 
   // Data to send to Unity - commented out
   // const unityData = {
@@ -63,7 +69,26 @@ function AppContent() {
       ) : showOnboarding ? (
         <OnboardingScreen onDone={() => { setShowOnboarding(false); setShowLogin(true); }} />
       ) : showLogin ? (
-        <LoginScreen onLogin={() => {}} />
+        <LoginScreen 
+          onLogin={() => {}} 
+          onRegister={() => { setShowLogin(false); setShowRegister(true); }} 
+          onForgot={() => { setShowLogin(false); setShowForgotPassword(true); }}
+        />
+      ) : showRegister ? (
+        <RegisterScreen 
+          onRegister={() => {}} 
+          onLogin={() => { setShowRegister(false); setShowLogin(true); }} 
+        />
+      ) : showForgotPassword ? (
+        <ForgotPasswordScreen 
+          onSubmit={() => { setShowForgotPassword(false); setShowResetPassword(true); }} 
+          onLogin={() => { setShowForgotPassword(false); setShowLogin(true); }} 
+        />
+      ) : showResetPassword ? (
+        <ResetPasswordScreen 
+          onReset={() => {}} 
+          onLogin={() => { setShowResetPassword(false); setShowLogin(true); }} 
+        />
       ) : (
         <View style={styles.buttonContainer}>
           <Text style={styles.welcomeText}>Welcome to Ultraverse! 🚀</Text>
@@ -73,6 +98,9 @@ function AppContent() {
             onPress={() => {
               setShowOnboarding(false);
               setShowLogin(false);
+              setShowRegister(false);
+              setShowForgotPassword(false);
+              setShowResetPassword(false);
               setShowSplash(true);
             }}
           />

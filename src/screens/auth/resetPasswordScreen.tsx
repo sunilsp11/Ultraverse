@@ -1,0 +1,126 @@
+import React, { useState } from 'react';
+import { StyleSheet, View, TouchableOpacity, Image, StatusBar } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import UvTypography from '../../components/common/uvTypography';
+import Colors from '../../theme/color';
+import UvFormTextInput from '../../components/common/uvFormTextInput';
+import UvButton from '../../components/common/uvButton';
+
+interface Props {
+    onReset?: (passwordData: { newPassword: string; confirmPassword: string }) => void;
+    onLogin?: () => void;
+}
+
+const ResetPasswordScreen: React.FC<Props> = ({ onReset, onLogin }) => {
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [showNewPassword, setShowNewPassword] = useState(false);
+
+    const handleReset = () => {
+        onReset && onReset({ newPassword, confirmPassword });
+    };
+
+    const toggleNewPasswordVisibility = () => {
+        setShowNewPassword(!showNewPassword);
+    };
+
+
+    return (
+        <LinearGradient
+            colors={['#05273A', '#0F5270']}
+            start={{ x: 0.5, y: 0.0 }}
+            end={{ x: 0.5, y: 1.0 }}
+            style={styles.container}
+        >
+            <StatusBar translucent backgroundColor="transparent" />
+            <View style={styles.header}>
+                <Image
+                    source={require('../../assets/images/top_header_logo.png')}
+                    style={styles.topLogo}
+                    resizeMode="contain"
+                />
+                <UvTypography variant="h3" align="center">RESET PASSWORD</UvTypography>
+            </View>
+
+            <View style={styles.form}>
+                <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>NEW PASSWORD</UvTypography>
+                <View style={styles.passwordContainer}>
+                    <UvFormTextInput
+                        placeholder="Please enter your new password"
+                        value={newPassword}
+                        onChangeText={setNewPassword}
+                        secureTextEntry={!showNewPassword}
+                        autoCapitalize="none"
+                        variant="body"
+                        style={styles.passwordInput}
+                    />
+                    <TouchableOpacity onPress={toggleNewPasswordVisibility} style={styles.eyeIcon}>
+                        <UvTypography variant="body" color={Colors.white}>
+                            {showNewPassword ? '👁️' : '👁️‍🗨️'}
+                        </UvTypography>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{ height: 16 }} />
+
+                <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>CONFIRM NEW PASSWORD</UvTypography>
+                <View style={styles.passwordContainer}>
+                    <UvFormTextInput
+                        placeholder="Please confirm your new password"
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword}
+                        autoCapitalize="none"
+                        variant="body"
+                        style={styles.passwordInput}
+                    />
+                </View>
+
+                <View style={{ height: 32 }} />
+
+                <UvButton 
+                    onPress={handleReset} 
+                    title="Reset Password" 
+                />
+            </View>
+        </LinearGradient>
+    );
+};
+
+export default ResetPasswordScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingHorizontal: 24,
+        paddingTop: 48,
+    },
+    topLogo: {
+        alignSelf: 'center',
+        width: 52,
+        height: 40,
+        marginBottom: 32,
+    },
+    header: {
+        alignItems: 'center',
+        marginBottom: 24,
+    },
+    form: {
+        flex: 1,
+    },
+    passwordContainer: {
+        position: 'relative',
+    },
+    passwordInput: {
+        paddingRight: 40,
+    },
+    eyeIcon: {
+        position: 'absolute',
+        right: 12,
+        top: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 24,
+        height: 40,
+    },
+});
