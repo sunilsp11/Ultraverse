@@ -14,14 +14,9 @@ interface Props {
 const ResetPasswordScreen: React.FC<Props> = ({ onReset, onLogin }) => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [showNewPassword, setShowNewPassword] = useState(false);
 
     const handleReset = () => {
         onReset && onReset({ newPassword, confirmPassword });
-    };
-
-    const toggleNewPasswordVisibility = () => {
-        setShowNewPassword(!showNewPassword);
     };
 
 
@@ -44,36 +39,26 @@ const ResetPasswordScreen: React.FC<Props> = ({ onReset, onLogin }) => {
 
             <View style={styles.form}>
                 <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>NEW PASSWORD</UvTypography>
-                <View style={styles.passwordContainer}>
-                    <UvFormTextInput
-                        placeholder="Please enter your new password"
-                        value={newPassword}
-                        onChangeText={setNewPassword}
-                        secureTextEntry={!showNewPassword}
-                        autoCapitalize="none"
-                        variant="body"
-                        style={styles.passwordInput}
-                    />
-                    <TouchableOpacity onPress={toggleNewPasswordVisibility} style={styles.eyeIcon}>
-                        <UvTypography variant="body" color={Colors.white}>
-                            {showNewPassword ? '👁️' : '👁️‍🗨️'}
-                        </UvTypography>
-                    </TouchableOpacity>
-                </View>
+                <UvFormTextInput
+                    placeholder="Please enter your new password"
+                    value={newPassword}
+                    onChangeText={setNewPassword}
+                    showPasswordToggle={true}
+                    autoCapitalize="none"
+                    variant="body"
+                />
 
                 <View style={{ height: 16 }} />
 
                 <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>CONFIRM NEW PASSWORD</UvTypography>
-                <View style={styles.passwordContainer}>
-                    <UvFormTextInput
-                        placeholder="Please confirm your new password"
-                        value={confirmPassword}
-                        onChangeText={setConfirmPassword}
-                        autoCapitalize="none"
-                        variant="body"
-                        style={styles.passwordInput}
-                    />
-                </View>
+                <UvFormTextInput
+                    placeholder="Please confirm your new password"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    showPasswordToggle={true}
+                    autoCapitalize="none"
+                    variant="body"
+                />
 
                 <View style={{ height: 32 }} />
 
@@ -106,21 +91,5 @@ const styles = StyleSheet.create({
     },
     form: {
         flex: 1,
-    },
-    passwordContainer: {
-        position: 'relative',
-    },
-    passwordInput: {
-        paddingRight: 40,
-    },
-    eyeIcon: {
-        position: 'absolute',
-        right: 12,
-        top: 0,
-        bottom: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 24,
-        height: 40,
     },
 });

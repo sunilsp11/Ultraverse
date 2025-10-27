@@ -18,8 +18,6 @@ const RegisterScreen: React.FC<Props> = ({ onRegister, onLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleRegister = () => {
         if (password !== confirmPassword) {
@@ -27,14 +25,6 @@ const RegisterScreen: React.FC<Props> = ({ onRegister, onLogin }) => {
             return;
         }
         onRegister && onRegister({ name, email, password });
-    };
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
-
-    const toggleConfirmPasswordVisibility = () => {
-        setShowConfirmPassword(!showConfirmPassword);
     };
 
     return (
@@ -84,42 +74,26 @@ const RegisterScreen: React.FC<Props> = ({ onRegister, onLogin }) => {
                     <View style={{ height: 16 }} />
 
                     <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>CREATE PASSWORD</UvTypography>
-                    <View style={styles.passwordContainer}>
-                        <UvFormTextInput
-                            placeholder="Please create password"
-                            value={password}
-                            onChangeText={setPassword}
-                            secureTextEntry={!showPassword}
-                            autoCapitalize="none"
-                            variant="body"
-                            style={styles.passwordInput}
-                        />
-                        <TouchableOpacity onPress={togglePasswordVisibility} style={styles.eyeIcon}>
-                            <UvTypography variant="body" color={Colors.white}>
-                                {showPassword ? '👁️' : '👁️‍🗨️'}
-                            </UvTypography>
-                        </TouchableOpacity>
-                    </View>
+                    <UvFormTextInput
+                        placeholder="Please create password"
+                        value={password}
+                        onChangeText={setPassword}
+                        showPasswordToggle={true}
+                        autoCapitalize="none"
+                        variant="body"
+                    />
 
                     <View style={{ height: 16 }} />
 
                     <UvTypography variant="h6" color={Colors.white} style={{ marginBottom: 8 }}>CONFIRM PASSWORD</UvTypography>
-                    <View style={styles.passwordContainer}>
-                        <UvFormTextInput
-                            placeholder="Please confirm password"
-                            value={confirmPassword}
-                            onChangeText={setConfirmPassword}
-                            secureTextEntry={!showConfirmPassword}
-                            autoCapitalize="none"
-                            variant="body"
-                            style={styles.passwordInput}
-                        />
-                        <TouchableOpacity onPress={toggleConfirmPasswordVisibility} style={styles.eyeIcon}>
-                            <UvTypography variant="body" color={Colors.white}>
-                                {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
-                            </UvTypography>
-                        </TouchableOpacity>
-                    </View>
+                    <UvFormTextInput
+                        placeholder="Please confirm password"
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword}
+                        showPasswordToggle={true}
+                        autoCapitalize="none"
+                        variant="body"
+                    />
 
                     <View style={{ height: 16 }} />
 
@@ -181,22 +155,6 @@ const styles = StyleSheet.create({
     },
     formContent: {
         flex: 1,
-    },
-    passwordContainer: {
-        position: 'relative',
-    },
-    passwordInput: {
-        paddingRight: 40,
-    },
-    eyeIcon: {
-        position: 'absolute',
-        right: 12,
-        top: 0,
-        bottom: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 24,
-        height: 40,
     },
     orRow: {
         marginTop: 26,

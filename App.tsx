@@ -3,11 +3,13 @@ import { StatusBar, StyleSheet, useColorScheme, View, Button, Text } from 'react
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // import UnityView from '@azesmway/react-native-unity'; // Temporarily commented out
 import SplashScreen from './src/SplashScreen';
-import OnboardingScreen from './src/screens/onboarding/onboardingScreen';
-import LoginScreen from './src/screens/auth/loginScreen';
 import RegisterScreen from './src/screens/auth/registerScreen';
 import ForgotPasswordScreen from './src/screens/auth/forgotPasswordScreen';
 import ResetPasswordScreen from './src/screens/auth/resetPasswordScreen';
+
+import LoginScreen from './src/screens/auth/LoginScreen';
+import OnboardingScreen from './src/screens/onboarding/OnboardingScreen';
+
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -69,13 +71,13 @@ function AppContent() {
       ) : showOnboarding ? (
         <OnboardingScreen onDone={() => { setShowOnboarding(false); setShowLogin(true); }} />
       ) : showLogin ? (
-        <LoginScreen 
+        <LoginScreen
           onLogin={() => {}} 
           onRegister={() => { setShowLogin(false); setShowRegister(true); }} 
           onForgot={() => { setShowLogin(false); setShowForgotPassword(true); }}
         />
       ) : showRegister ? (
-        <RegisterScreen 
+        <RegisterScreen
           onRegister={() => {}} 
           onLogin={() => { setShowRegister(false); setShowLogin(true); }} 
         />
@@ -85,7 +87,7 @@ function AppContent() {
           onLogin={() => { setShowForgotPassword(false); setShowLogin(true); }} 
         />
       ) : showResetPassword ? (
-        <ResetPasswordScreen 
+        <ResetPasswordScreen
           onReset={() => {}} 
           onLogin={() => { setShowResetPassword(false); setShowLogin(true); }} 
         />

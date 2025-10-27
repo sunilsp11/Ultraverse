@@ -64,7 +64,7 @@ const LoginScreen: React.FC<Props> = ({ onLogin, onRegister, onForgot }) => {
                         placeholder="Please enter your password"
                         value={password}
                         onChangeText={setPassword}
-                        secureTextEntry
+                        showPasswordToggle={true}
                         autoCapitalize="none"
                         variant="body"
                     />
