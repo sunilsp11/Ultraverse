@@ -1,0 +1,81 @@
+import React from 'react';
+import { StyleSheet, TouchableOpacity, View, Dimensions } from 'react-native';
+import Colors from '../../theme/color';
+import UvTypography from './uvTypography';
+
+const { width } = Dimensions.get('window');
+
+interface Props {
+  onPress: () => void;
+  title: string;
+  variant?: 'primary' | 'secondary';
+  disabled?: boolean;
+  style?: object;
+}
+
+const UvButton: React.FC<Props> = ({ 
+  onPress, 
+  title, 
+  variant = 'primary', 
+  disabled = false,
+  style 
+}) => {
+  return (
+    <View style={[styles.ctaOuter, style]}>
+      <TouchableOpacity 
+        style={[
+          styles.ctaInner, 
+          variant === 'secondary' && styles.ctaInnerSecondary,
+          disabled && styles.ctaInnerDisabled
+        ]} 
+        onPress={onPress} 
+        activeOpacity={0.9}
+        disabled={disabled}
+      >
+        <UvTypography 
+          variant="bodyXs" 
+          color={variant === 'primary' ? Colors.black : Colors.white} 
+          align="center"
+        >
+          {title}
+        </UvTypography>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export default UvButton;
+
+const styles = StyleSheet.create({
+  ctaOuter: {
+    alignSelf: 'center',
+    marginTop: 32,
+    height: 40,
+    borderWidth: 1,
+    borderColor: Colors.white,
+    borderTopRightRadius: 12,
+    borderBottomLeftRadius: 12,
+    paddingHorizontal: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ctaInner: {
+    height: 32,
+    width: width * 0.45,
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+    borderColor: '#DDE6EA',
+    borderTopRightRadius: 12,
+    borderBottomLeftRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ctaInnerSecondary: {
+    backgroundColor: 'transparent',
+    borderColor: Colors.white,
+  },
+  ctaInnerDisabled: {
+    backgroundColor: '#CCCCCC',
+    borderColor: '#CCCCCC',
+  },
+});
