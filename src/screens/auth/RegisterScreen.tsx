@@ -11,17 +11,22 @@ import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvTypography from "../../components/common/uvTypography";
 import Colors from "../../theme/color";
-import { RootNavigationProps } from "../../types/navigationTypes";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootNavigationProps } from "../../types/navigationTypes";
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const navigation = useNavigation<NavigationProp<RootNavigationProps>>();
-
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleLogin = () => {
-    // onLogin && onLogin(email);
+  const handleRegister = () => {
+    if (password !== confirmPassword) {
+      // Handle password mismatch
+      return;
+    }
+    // onRegister && onRegister({ name, email, password });
   };
 
   return (
@@ -39,16 +44,33 @@ const LoginScreen = () => {
           resizeMode="contain"
         />
         <UvTypography variant="h3" align="center">
-          LOGIN
+          REGISTER
         </UvTypography>
         <View style={{ height: 8 }} />
         <UvTypography variant="p" color="#D7E7EE" align="center">
-          Enter your email below to login to your account.
+          Enter your information below to create your account.
         </UvTypography>
       </View>
 
       <View style={styles.form}>
         <View style={styles.formContent}>
+          <UvTypography
+            variant="h6"
+            color={Colors.white}
+            style={{ marginBottom: 8 }}
+          >
+            NAME
+          </UvTypography>
+          <UvFormTextInput
+            placeholder="Please enter your full name"
+            value={name}
+            onChangeText={setName}
+            autoCapitalize="words"
+            variant="body"
+          />
+
+          <View style={{ height: 16 }} />
+
           <UvTypography
             variant="h6"
             color={Colors.white}
@@ -72,10 +94,10 @@ const LoginScreen = () => {
             color={Colors.white}
             style={{ marginBottom: 8 }}
           >
-            PASSWORD
+            CREATE PASSWORD
           </UvTypography>
           <UvFormTextInput
-            placeholder="Please enter your password"
+            placeholder="Please create password"
             value={password}
             onChangeText={setPassword}
             showPasswordToggle={true}
@@ -83,18 +105,27 @@ const LoginScreen = () => {
             variant="body"
           />
 
-          <TouchableOpacity
-            onPress={() => navigation.navigate("ForgotPasswordScreen")}
-            style={styles.forgotBtn}
+          <View style={{ height: 16 }} />
+
+          <UvTypography
+            variant="h6"
+            color={Colors.white}
+            style={{ marginBottom: 8 }}
           >
-            <UvTypography variant="p" color="#D7E7EE">
-              Forgot Password?
-            </UvTypography>
-          </TouchableOpacity>
+            CONFIRM PASSWORD
+          </UvTypography>
+          <UvFormTextInput
+            placeholder="Please confirm password"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            showPasswordToggle={true}
+            autoCapitalize="none"
+            variant="body"
+          />
 
           <View style={{ height: 16 }} />
 
-          <UvButton onPress={handleLogin} title="Login" />
+          <UvButton onPress={handleRegister} title="Register" />
 
           <View style={styles.orRow}>
             <View style={styles.divider} />
@@ -116,13 +147,12 @@ const LoginScreen = () => {
 
         <View style={styles.footerRow}>
           <UvTypography variant="body" color="#CFE2EA">
-            Don't have account?
+            Already have an account?
           </UvTypography>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("RegisterScreen")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
             <UvTypography variant="p" color={Colors.white}>
-              Register Here
+              {" "}
+              Login Here
             </UvTypography>
           </TouchableOpacity>
         </View>
@@ -131,7 +161,7 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -155,12 +185,6 @@ const styles = StyleSheet.create({
   },
   formContent: {
     flex: 1,
-  },
-  inputWrapper: {},
-  input: {},
-  forgotBtn: {
-    alignSelf: "flex-end",
-    marginTop: 24,
   },
   orRow: {
     marginTop: 26,
