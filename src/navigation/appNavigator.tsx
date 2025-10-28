@@ -1,13 +1,13 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import LoginScreen from "../screens/auth/LoginScreen";
+import LoginScreen from "../screens/auth/loginScreen";
 import { RootNavigationProps } from "../types/navigationTypes";
-import RegisterScreen from "../screens/auth/RegisterScreen";
-import ResetPasswordScreen from "../screens/auth/ResetPasswordScreen";
-import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen";
-import OnboardingScreen from "../screens/onboarding/OnboardingScreen";
-import SplashScreen from "../screens/onboarding/SplashScreen";
+import RegisterScreen from "../screens/auth/registerScreen";
+import ResetPasswordScreen from "../screens/auth/resetPasswordScreen";
+import ForgotPasswordScreen from "../screens/auth/forgotPasswordScreen";
+import OnboardingScreen from "../screens/onboarding/onboardingScreen";
+import SplashScreen from "../screens/onboarding/splashScreen";
 
 const Stack = createNativeStackNavigator<RootNavigationProps>();
 

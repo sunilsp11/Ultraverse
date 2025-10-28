@@ -199,7 +199,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import AppNavigator from "./src/navigation/AppNavigator";
+import AppNavigator from "./src/navigation/appNavigator";
 
 const App = () => {
   return (
