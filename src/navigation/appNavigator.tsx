@@ -9,11 +9,18 @@ import ForgotPasswordScreen from "../screens/authStack/forgotPasswordScreen";
 import OnboardingScreen from "../screens/onboardingStack/onboardingScreen";
 import SplashScreen from "../screens/onboardingStack/splashScreen";
 import HomeScreen from "../screens/homeStack/homeScreen";
+import SearchScreen from "../screens/mainTabs/searchScreen";
+import GamesScreen from "../screens/mainTabs/gamesScreen";
+import ProfileScreen from "../screens/mainTabs/profileScreen";
+import CustomTabBar from "../components/navigation/customTabBar";
+
 import {
   AuthStackParamList,
   MainTabParamList,
   RootStackParamList,
 } from "../types/navigationTypes";
+import { Icons } from "../components/common/uvIcons";
+import Colors from "../theme/color";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -29,8 +36,76 @@ const AuthStackNavigator = () => (
 );
 
 const MainTabNavigator = () => (
-  <Tab.Navigator screenOptions={{ headerShown: false }}>
-    <Tab.Screen name="HomeScreen" component={HomeScreen} />
+  <Tab.Navigator
+    screenOptions={{
+      headerShown: false,
+      tabBarActiveTintColor: Colors?.base[500],
+      tabBarShowLabel: false,
+      tabBarStyle: {
+        backgroundColor: Colors?.base[950],
+      },
+    }}
+  >
+    <Tab.Screen
+      name="HomeScreen"
+      component={HomeScreen}
+      options={{
+        tabBarLabel: "Home",
+        tabBarIcon: ({ focused, color, size }) => (
+          <Icons
+            type="Ionicons"
+            name="home"
+            color={color}
+            size={size}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="SearchScreen"
+      component={SearchScreen}
+      options={{
+        tabBarLabel: "Search",
+        tabBarIcon: ({ focused, color, size }) => (
+          <Icons
+            type="Ionicons"
+            name="search"
+            color={color}
+            size={size}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="GamesScreen"
+      component={GamesScreen}
+      options={{
+        tabBarLabel: "Games",
+        tabBarIcon: ({ focused, color, size }) => (
+          <Icons
+            type="Ionicons"
+            name="game-controller"
+            color={color}
+            size={size}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="ProfileScreen"
+      component={ProfileScreen}
+      options={{
+        tabBarLabel: "Profile",
+        tabBarIcon: ({ focused, color, size }) => (
+          <Icons
+            type="Ionicons"
+            name="person"
+            color={color}
+            size={size}
+          />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );
 

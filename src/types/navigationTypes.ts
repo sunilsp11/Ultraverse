@@ -9,6 +9,9 @@ export type AuthStackParamList = {
 
 export type MainTabParamList = {
   HomeScreen: undefined;
+  SearchScreen: undefined;
+  GamesScreen: undefined;
+  ProfileScreen: undefined;
 };
 
 export type RootStackParamList = {
