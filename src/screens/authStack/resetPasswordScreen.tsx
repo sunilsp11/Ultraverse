@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Image, StatusBar, StyleSheet, View } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import { Image, StyleSheet, View } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
+import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
 import Colors from "../../theme/color";
 
@@ -15,13 +15,7 @@ const ResetPasswordScreen = () => {
   };
 
   return (
-    <LinearGradient
-      colors={["#05273A", "#0F5270"]}
-      start={{ x: 0.5, y: 0.0 }}
-      end={{ x: 0.5, y: 1.0 }}
-      style={styles.container}
-    >
-      <StatusBar translucent backgroundColor="transparent" />
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
       <View style={styles.header}>
         <Image
           source={require("../../assets/images/top_header_logo.png")}
@@ -72,7 +66,7 @@ const ResetPasswordScreen = () => {
 
         <UvButton onPress={handleReset} title="Reset Password" />
       </View>
-    </LinearGradient>
+    </UvScreenWrapper>
   );
 };
 
