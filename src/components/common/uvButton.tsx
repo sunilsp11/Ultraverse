@@ -11,6 +11,8 @@ interface Props {
   variant?: 'primary' | 'secondary';
   disabled?: boolean;
   style?: object;
+  icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
 }
 
 const UvButton: React.FC<Props> = ({ 
@@ -18,7 +20,9 @@ const UvButton: React.FC<Props> = ({
   title, 
   variant = 'primary', 
   disabled = false,
-  style 
+  style,
+  icon,
+  iconPosition = 'right',
 }) => {
   return (
     <View style={[styles.ctaOuter, style]}>
@@ -32,13 +36,19 @@ const UvButton: React.FC<Props> = ({
         activeOpacity={0.9}
         disabled={disabled}
       >
+        {icon && iconPosition === 'left' && (
+          <View style={styles.iconContainerLeft}>{icon}</View>
+        )}
         <UvTypography 
-          variant="bodyXs" 
+          variant="body" 
           color={variant === 'primary' ? Colors.black : Colors.white} 
           align="center"
         >
           {title}
         </UvTypography>
+        {icon && iconPosition === 'right' && (
+          <View style={styles.iconContainerRight}>{icon}</View>
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -69,6 +79,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
   ctaInnerSecondary: {
     backgroundColor: 'transparent',
@@ -77,5 +88,11 @@ const styles = StyleSheet.create({
   ctaInnerDisabled: {
     backgroundColor: '#CCCCCC',
     borderColor: '#CCCCCC',
+  },
+  iconContainerRight: {
+    marginLeft: 8,
+  },
+  iconContainerLeft: {
+    marginRight: 8,
   },
 });

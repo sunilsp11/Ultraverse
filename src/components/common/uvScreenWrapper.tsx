@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { StatusBar, StyleSheet, ViewStyle } from 'react-native';
+import { StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -26,18 +26,20 @@ const UvScreenWrapper = ({
 
   return (
     <LinearGradient
+    
       colors={gradientColors}
       locations={gradientLocations}
       start={{ x: 0.5, y: 0.0 }}
       end={{ x: 0.5, y: 1.0 }}
       style={[
         styles.container,
-        { paddingTop: insets.top },
         conatinerStyle,
       ]}
     >
       <StatusBar barStyle="light-content" translucent={translucent} />
-      {children}
+      <View style={{ paddingTop: insets.top, flex: 1 }}>
+        {children}
+      </View>
     </LinearGradient>
   )
 }

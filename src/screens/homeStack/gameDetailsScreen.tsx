@@ -1,33 +1,33 @@
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Image,
-  TouchableOpacity,
   Dimensions,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
 } from 'react-native'
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import UvTypography from '../../components/common/uvTypography'
-import UvActionButton from '../../components/common/uvActionButton'
-import Colors from '../../theme/color'
-import { HomeStackParamList } from '../../types/navigationTypes'
 import BackArrowIcon from '../../assets/svg/backArrow.svg'
 import PlayIcon from '../../assets/svg/playIcon.svg'
+import UvButton from '../../components/common/uvButton'
+import UvTypography from '../../components/common/uvTypography'
+import Colors from '../../theme/color'
+import { RootStackParamList } from '../../types/navigationTypes'
 
 const { width: screenWidth } = Dimensions.get('window')
 const GAMEPLAY_CARD_WIDTH = screenWidth * 0.65
 const GAMEPLAY_CARD_HEIGHT = GAMEPLAY_CARD_WIDTH * 0.6
 
-type GameDetailsScreenRouteProp = RouteProp<HomeStackParamList, 'GameDetailsScreen'>
-type GameDetailsScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'GameDetailsScreen'>
+type GameDetailsScreenRouteProp = RouteProp<RootStackParamList, 'GameDetailsScreen'>
+type GameDetailsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
 
 const GameDetailsScreen = () => {
   const navigation = useNavigation<GameDetailsScreenNavigationProp>()
   const route = useRoute<GameDetailsScreenRouteProp>()
 
-  const { gameTitle, gameImage, genre, description } = route.params
+  const { gameTitle, gameImage, genre, description, gameInfo } = route.params
 
   const gameplayVideos = [
     { id: '1', thumbnail: gameImage },
@@ -132,13 +132,62 @@ const GameDetailsScreen = () => {
             ))}
           </ScrollView>
         </View>
-      </ScrollView>
+  
 
+      <View style={styles.gameInfoSection}>
+        <UvTypography
+          variant="h4"
+          color={Colors.white}
+          letterSpacing={2}
+          style={styles.gameInfoTitle}
+        >
+          GAME INFO
+        </UvTypography>
+
+        <UvTypography
+          variant="body"
+          color={Colors.white}
+          style={styles.gameInfoDescription}
+        >
+          {gameInfo}
+        </UvTypography>
+
+        <View style={styles.metaRowGroup}>
+          <View style={styles.metaRow}>
+            <UvTypography variant="bodyXs" color={Colors.base[400]}>
+              Release:
+            </UvTypography>
+            <UvTypography variant="body" color={Colors.white} style={styles.metaValue}>
+              21/7/2017
+            </UvTypography>
+          </View>
+
+          <View style={styles.metaRow}>
+            <UvTypography variant="bodyXs" color={Colors.base[400]}>
+              Genres:
+            </UvTypography>
+            <UvTypography variant="body" color={Colors.white} style={styles.metaValue}>
+              Action, Adventure
+            </UvTypography>
+          </View>
+
+          <View style={styles.metaRow}>
+            <UvTypography variant="bodyXs" color={Colors.base[400]}>
+              Publisher:
+            </UvTypography>
+            <UvTypography variant="body" color={Colors.white} style={styles.metaValue}>
+              Epic Games Inc.
+            </UvTypography>
+          </View>
+        </View>
+      </View>
+
+      </ScrollView>
       <View style={styles.bottomButtonContainer}>
-        <UvActionButton
+        <UvButton
           title="Play Now"
           onPress={() => console.log('Play Now pressed')}
-          icon={<PlayIcon width={20} height={20} color={Colors.base[950]} />}
+          icon={<PlayIcon width={16} height={16} color={Colors.base[950]} />}
         />
       </View>
     </View>
@@ -204,7 +253,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   gameplaySection: {
-    paddingBottom: 120,
+    paddingBottom: 32,
   },
   gameplayTitle: {
     paddingHorizontal: 20,
@@ -247,9 +296,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
+  gameInfoSection: {
+    paddingHorizontal: 20,
+    paddingBottom: 120,
+  },
+  gameInfoTitle: {
+    marginBottom: 14,
+  },
+  gameInfoDescription: {
+    lineHeight: 22,
+    color: Colors.base[100],
+  },
+  metaRowGroup: {
+    marginTop: 20,
+    gap: 10,
+  },
+  metaRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  metaValue: {
+    marginLeft: 8,
+  },
   bottomButtonContainer: {
     paddingHorizontal: 20,
     paddingBottom: 20,
+    alignSelf:'flex-end',
+    position: 'absolute',
+    bottom: 20,
+    right: 0,
+    zIndex: 10,
   },
 })
 

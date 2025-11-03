@@ -25,7 +25,7 @@ import {
 import UvSlide from "../../components/onboarding/uvSlide";
 import UvDots from "../../components/onboarding/uvDots";
 import UvNextButton from "../../components/onboarding/uvNextButton";
-import UvActionButton from "../../components/common/uvActionButton";
+import UvButton from "../../components/common/uvButton";
 import { STORAGE_KEYS } from "../../constants/storageKeys";
 
 const { width, height } = Dimensions.get("window");
@@ -193,12 +193,12 @@ const OnboardingScreen = () => {
               },
             ]}
           >
-            <UvActionButton
+            <UvButton
               title="Get Started"
               onPress={() => {
                 void completeOnboarding();
               }}
-              variant="secondary"
+              variant="primary"
             />
           </Animated.View>
         )}

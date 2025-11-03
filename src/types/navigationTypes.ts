@@ -9,25 +9,27 @@ export type AuthStackParamList = {
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
-  GameDetailsScreen: {
-    gameId: string;
-    gameTitle: string;
-    gameImage: any;
-    genre?: string;
-    description?: string;
-  };
 };
 
 export type MainTabParamList = {
-  HomeStack: NavigatorScreenParams<HomeStackParamList> | undefined;
+  HomeScreen: undefined;
   SearchScreen: undefined;
   GamesScreen: undefined;
   ProfileScreen: undefined;
 };
 
 export type RootStackParamList = {
+  GameDetailsScreen: {
+    gameId: string;
+    gameTitle: string;
+    gameImage: any;
+    genre?: string;
+    description?: string;
+    gameInfo?:string
+  };
   SplashScreen: undefined;
   OnboardingScreen: undefined;
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
   MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
+  EditProfileScreen: undefined;
 };

@@ -11,6 +11,7 @@ import GameDetailsScreen from "../screens/homeStack/gameDetailsScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
+import EditProfileScreen from "../screens/mainTabs/editProfileScreen.tsx";
 import OnboardingScreen from "../screens/onboardingStack/onboardingScreen";
 import SplashScreen from "../screens/onboardingStack/splashScreen";
 
@@ -21,7 +22,6 @@ import SearchIcon from "../assets/svg/search.svg";
 import Colors from "../theme/color";
 import {
   AuthStackParamList,
-  HomeStackParamList,
   MainTabParamList,
   RootStackParamList,
 } from "../types/navigationTypes";
@@ -29,7 +29,6 @@ import CustomTabBar from "../components/navigation/customTabBar";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
-const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const AuthStackNavigator = () => (
@@ -39,13 +38,6 @@ const AuthStackNavigator = () => (
     <AuthStack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
     <AuthStack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
   </AuthStack.Navigator>
-);
-
-const HomeStackNavigator = () => (
-  <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-    <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
-    <HomeStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
-  </HomeStack.Navigator>
 );
 
 const MainTabNavigator = () => (
@@ -62,8 +54,8 @@ const MainTabNavigator = () => (
     }}
   >
     <Tab.Screen
-      name="HomeStack"
-      component={HomeStackNavigator}
+      name="HomeScreen"
+      component={HomeScreen}
       options={{
         tabBarLabel: "Home",
         tabBarIcon: ({ focused, color, size }) => (
@@ -134,6 +126,8 @@ const AppNavigator = () => {
         />
         <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
         <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
+        <RootStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
+        <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

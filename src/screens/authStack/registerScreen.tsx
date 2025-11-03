@@ -15,6 +15,8 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AuthStackParamList } from "../../types/navigationTypes";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
+import GoogleIcon from "../../assets/svg/google.svg";
+import FacebookIcon from "../../assets/svg/facebook.svg";
 
 const RegisterScreen = () => {
   const navigation =
@@ -34,6 +36,7 @@ const RegisterScreen = () => {
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+      <View style={{ paddingHorizontal: 24, flex: 1 }}>
       <View style={styles.header}>
         <Image
           source={require("../../assets/images/top_header_logo.png")}
@@ -134,10 +137,10 @@ const RegisterScreen = () => {
 
           <View style={styles.socialRow}>
             <View style={styles.socialCircle}>
-              <UvTypography color="#0F5270">G</UvTypography>
+              <GoogleIcon width={24} height={24} color="#0F5270" />
             </View>
             <View style={styles.socialCircle}>
-              <UvTypography color="#0F5270">f</UvTypography>
+              <FacebookIcon width={24} height={24} color="#0F5270" />
             </View>
           </View>
         </View>
@@ -154,6 +157,7 @@ const RegisterScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      </View>
     </UvScreenWrapper>
   );
 };
@@ -163,7 +167,6 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
   },
   topLogo: {
     alignSelf: "center",

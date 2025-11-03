@@ -61,7 +61,7 @@ const UvActionButton: React.FC<UvActionButtonProps> = ({
         disabled={disabled}
       >
         <UvTypography 
-          variant="h6" 
+          variant="body" 
           color={getTextColor()}
           letterSpacing={1}
         >

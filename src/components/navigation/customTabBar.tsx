@@ -18,7 +18,7 @@ const CustomTabBar = (props: BottomTabBarProps) => {
     const iconColor = focused ? '#FFFFFF' : '#A8B0B8';
 
     switch (routeName) {
-      case 'HomeStack':
+      case 'HomeScreen':
         return <HomeIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'SearchScreen':
         return <SearchIcon width={iconSize} height={iconSize} color={iconColor} />;
@@ -33,7 +33,7 @@ const CustomTabBar = (props: BottomTabBarProps) => {
 
   const getLabel = (routeName: string) => {
     switch (routeName) {
-      case 'HomeStack':
+      case 'HomeScreen':
         return 'Home';
       case 'SearchScreen':
         return 'Search';
