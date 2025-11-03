@@ -11,25 +11,23 @@ import UvTypography from "../../components/common/uvTypography";
 import Colors from "../../theme/color";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvButton from "../../components/common/uvButton";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootNavigationProps } from "../../types/navigationTypes";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { AuthStackParamList } from "../../types/navigationTypes";
+import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 
 const ForgotPasswordScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootNavigationProps>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
   const [email, setEmail] = useState("");
 
   const handleSubmit = () => {
+    navigation.navigate("ResetPasswordScreen");
     // onSubmit && onSubmit(email);
   };
 
   return (
-    <LinearGradient
-      colors={["#05273A", "#0F5270"]}
-      start={{ x: 0.5, y: 0.0 }}
-      end={{ x: 0.5, y: 1.0 }}
-      style={styles.container}
-    >
-      <StatusBar translucent backgroundColor="transparent" />
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
       <View style={styles.header}>
         <Image
           source={require("../../assets/images/top_header_logo.png")}
@@ -80,7 +78,7 @@ const ForgotPasswordScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </LinearGradient>
+    </UvScreenWrapper>
   );
 };
 

@@ -1,42 +1,39 @@
-import React, { useState } from "react";
 import {
-  Image,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+  CompositeNavigationProp,
+  useNavigation
+} from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import React, { useState } from "react";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
+import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
 import Colors from "../../theme/color";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootNavigationProps } from "../../types/navigationTypes";
+import {
+  AuthStackParamList,
+  RootStackParamList,
+} from "../../types/navigationTypes";
 
-const RegisterScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootNavigationProps>>();
-  const [name, setName] = useState("");
+const LoginScreen = () => {
+  type LoginNavigationProp = CompositeNavigationProp<
+    NativeStackNavigationProp<AuthStackParamList, "LoginScreen">,
+    NativeStackNavigationProp<RootStackParamList>
+  >;
+
+  const navigation = useNavigation<LoginNavigationProp>();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleRegister = () => {
-    if (password !== confirmPassword) {
-      // Handle password mismatch
-      return;
-    }
-    // onRegister && onRegister({ name, email, password });
+  const handleLogin = () => {
+    navigation.navigate("MainTabs", {
+      screen: "HomeScreen",
+    });
   };
 
   return (
-    <LinearGradient
-      colors={["#05273A", "#0F5270"]}
-      start={{ x: 0.5, y: 0.0 }}
-      end={{ x: 0.5, y: 1.0 }}
-      style={styles.container}
-    >
-      <StatusBar translucent backgroundColor="transparent" />
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
       <View style={styles.header}>
         <Image
           source={require("../../assets/images/top_header_logo.png")}
@@ -44,33 +41,16 @@ const RegisterScreen = () => {
           resizeMode="contain"
         />
         <UvTypography variant="h3" align="center">
-          REGISTER
+          LOGIN
         </UvTypography>
         <View style={{ height: 8 }} />
         <UvTypography variant="p" color="#D7E7EE" align="center">
-          Enter your information below to create your account.
+          Enter your email below to login to your account.
         </UvTypography>
       </View>
 
       <View style={styles.form}>
         <View style={styles.formContent}>
-          <UvTypography
-            variant="h6"
-            color={Colors.white}
-            style={{ marginBottom: 8 }}
-          >
-            NAME
-          </UvTypography>
-          <UvFormTextInput
-            placeholder="Please enter your full name"
-            value={name}
-            onChangeText={setName}
-            autoCapitalize="words"
-            variant="body"
-          />
-
-          <View style={{ height: 16 }} />
-
           <UvTypography
             variant="h6"
             color={Colors.white}
@@ -94,10 +74,10 @@ const RegisterScreen = () => {
             color={Colors.white}
             style={{ marginBottom: 8 }}
           >
-            CREATE PASSWORD
+            PASSWORD
           </UvTypography>
           <UvFormTextInput
-            placeholder="Please create password"
+            placeholder="Please enter your password"
             value={password}
             onChangeText={setPassword}
             showPasswordToggle={true}
@@ -105,27 +85,18 @@ const RegisterScreen = () => {
             variant="body"
           />
 
-          <View style={{ height: 16 }} />
-
-          <UvTypography
-            variant="h6"
-            color={Colors.white}
-            style={{ marginBottom: 8 }}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ForgotPasswordScreen")}
+            style={styles.forgotBtn}
           >
-            CONFIRM PASSWORD
-          </UvTypography>
-          <UvFormTextInput
-            placeholder="Please confirm password"
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            showPasswordToggle={true}
-            autoCapitalize="none"
-            variant="body"
-          />
+            <UvTypography variant="p" color="#D7E7EE">
+              Forgot Password?
+            </UvTypography>
+          </TouchableOpacity>
 
           <View style={{ height: 16 }} />
 
-          <UvButton onPress={handleRegister} title="Register" />
+          <UvButton onPress={handleLogin} title="Login" />
 
           <View style={styles.orRow}>
             <View style={styles.divider} />
@@ -147,21 +118,23 @@ const RegisterScreen = () => {
 
         <View style={styles.footerRow}>
           <UvTypography variant="body" color="#CFE2EA">
-            Already have an account?
+            Don't have an account?
           </UvTypography>
-          <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("RegisterScreen")}
+          >
             <UvTypography variant="p" color={Colors.white}>
-              {" "}
-              Login Here
+              Register Here
             </UvTypography>
           </TouchableOpacity>
         </View>
       </View>
-    </LinearGradient>
+    </UvScreenWrapper>
   );
 };
 
-export default RegisterScreen;
+export default LoginScreen;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -185,6 +158,12 @@ const styles = StyleSheet.create({
   },
   formContent: {
     flex: 1,
+  },
+  inputWrapper: {},
+  input: {},
+  forgotBtn: {
+    alignSelf: "flex-end",
+    marginTop: 24,
   },
   orRow: {
     marginTop: 26,

@@ -1,5 +1,10 @@
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import React, { useEffect, useRef } from "react";
+import {
+  NavigationProp,
+  NavigatorScreenParams,
+  useNavigation,
+} from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
   Image,
@@ -10,18 +15,38 @@ import {
 } from "react-native";
 import Sound from "react-native-sound";
 import Video from "react-native-video";
-import { RootNavigationProps } from "../../types/navigationTypes";
+import {
+  AuthStackParamList,
+  RootStackParamList,
+} from "../../types/navigationTypes";
+import { STORAGE_KEYS } from "../../constants/storageKeys";
 
 const SplashScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootNavigationProps>>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bgFadeAnim = useRef(new Animated.Value(1)).current;
   const soundRef = useRef<Sound | null>(null);
+  const [shouldShowOnboarding, setShouldShowOnboarding] =
+    useState<boolean | null>(null);
 
   useEffect(() => {
     // Allow video + sound to play together
     Sound.setCategory(Platform.OS === "ios" ? "Playback" : "Ambient", true);
+
+    const loadOnboardingState = async () => {
+      try {
+        const storedValue = await AsyncStorage.getItem(
+          STORAGE_KEYS.HAS_SEEN_ONBOARDING
+        );
+        setShouldShowOnboarding(storedValue !== "true");
+      } catch (error) {
+        console.log("Failed to read onboarding state", error);
+        setShouldShowOnboarding(true);
+      }
+    };
+
+    void loadOnboardingState();
 
     // Load and play your audio
     const sound = new Sound(
@@ -75,9 +100,30 @@ const SplashScreen = () => {
     };
   }, []);
 
+  const handleVideoEnd = useCallback(() => {
+    const shouldShow = shouldShowOnboarding ?? true;
+
+    if (shouldShow) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "OnboardingScreen" }],
+      });
+      return;
+    }
+
+    const authStackParams: NavigatorScreenParams<AuthStackParamList> = {
+      screen: "LoginScreen",
+    };
+
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "AuthStack", params: authStackParams }],
+    });
+  }, [navigation, shouldShowOnboarding]);
+
   const backgroundColor = bgFadeAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ["rgba(0,0,0,0.3)", "rgba(0,0,0,1)"],
+    outputRange: ["rgba(0,0,0,2)", "rgba(0,0,0,0.1)"],
   });
 
   const renderLogo = () => (
@@ -114,7 +160,7 @@ const SplashScreen = () => {
         disableFocus={true} // ✅ prevents Android from stopping video when sound starts
         onError={(e) => console.log("🎥 Video error:", e)}
         onBuffer={(e) => console.log("⏳ Buffering video...", e.isBuffering)}
-        onEnd={() => navigation.navigate("OnboardingScreen")}
+        onEnd={handleVideoEnd}
       />
       <Animated.View style={[styles.overlay, { backgroundColor }]} />
       {renderLogo()}

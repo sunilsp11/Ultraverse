@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
   Dimensions,
@@ -12,11 +13,19 @@ import {
 } from "react-native";
 import Video from "react-native-video";
 
+import {
+  NavigationProp,
+  NavigatorScreenParams,
+  useNavigation,
+} from "@react-navigation/native";
+import {
+  AuthStackParamList,
+  RootStackParamList,
+} from "../../types/navigationTypes";
 import UvSlide from "../../components/onboarding/uvSlide";
 import UvDots from "../../components/onboarding/uvDots";
 import UvNextButton from "../../components/onboarding/uvNextButton";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootNavigationProps } from "../../types/navigationTypes";
+import { STORAGE_KEYS } from "../../constants/storageKeys";
 
 const { width, height } = Dimensions.get("window");
 
@@ -48,22 +57,36 @@ const slides: SlideData[] = [
 ];
 
 const OnboardingScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootNavigationProps>>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const [index, setIndex] = useState(0);
   const listRef = useRef<FlatList<SlideData>>(null);
   const scrollX = useRef(new Animated.Value(0)).current;
   const getStartedAnim = useRef(new Animated.Value(0)).current;
 
-  const handleNext = () => {
-    console.log("Next pressed");
+  const completeOnboarding = useCallback(async () => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEYS.HAS_SEEN_ONBOARDING, "true");
+    } catch (error) {
+      console.log("Failed to persist onboarding state", error);
+    } finally {
+      const authStackParams: NavigatorScreenParams<AuthStackParamList> = {
+        screen: "LoginScreen",
+      };
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "AuthStack", params: authStackParams }],
+      });
+    }
+  }, [navigation]);
+
+  const handleNext = useCallback(() => {
     if (index < slides.length - 1) {
       listRef.current?.scrollToIndex({ index: index + 1, animated: true });
       return;
     }
-    navigation.navigate("LoginScreen");
-    // onDone && onDone();
-  };
+    void completeOnboarding();
+  }, [completeOnboarding, index]);
 
   useEffect(() => {
     const isLast = index === slides.length - 1;
@@ -136,7 +159,9 @@ const OnboardingScreen = () => {
       </View>
       <View style={styles.footer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("LoginScreen")}
+          onPress={() => {
+            void completeOnboarding();
+          }}
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
           <Text style={styles.skipText}>Skip</Text>
@@ -169,7 +194,9 @@ const OnboardingScreen = () => {
           >
             <View style={styles.getStartedBtnWrapper}>
               <TouchableOpacity
-                onPress={() => navigation.navigate("LoginScreen")}
+                onPress={() => {
+                  void completeOnboarding();
+                }}
                 style={styles.getStartedBtn}
                 activeOpacity={0.9}
               >
