@@ -1,26 +1,29 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import ForgotPasswordScreen from "../screens/authStack/forgotPasswordScreen";
 import LoginScreen from "../screens/authStack/loginScreen";
 import RegisterScreen from "../screens/authStack/registerScreen";
 import ResetPasswordScreen from "../screens/authStack/resetPasswordScreen";
-import ForgotPasswordScreen from "../screens/authStack/forgotPasswordScreen";
-import OnboardingScreen from "../screens/onboardingStack/onboardingScreen";
-import SplashScreen from "../screens/onboardingStack/splashScreen";
 import HomeScreen from "../screens/homeStack/homeScreen";
-import SearchScreen from "../screens/mainTabs/searchScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
-import CustomTabBar from "../components/navigation/customTabBar";
+import SearchScreen from "../screens/mainTabs/searchScreen";
+import OnboardingScreen from "../screens/onboardingStack/onboardingScreen";
+import SplashScreen from "../screens/onboardingStack/splashScreen";
 
+import GameIcon from "../assets/svg/gameIcon.svg";
+import HomeIcon from "../assets/svg/home.svg";
+import ProfileIcon from "../assets/svg/profile.svg";
+import SearchIcon from "../assets/svg/search.svg";
+import Colors from "../theme/color";
 import {
   AuthStackParamList,
   MainTabParamList,
   RootStackParamList,
 } from "../types/navigationTypes";
-import { Icons } from "../components/common/uvIcons";
-import Colors from "../theme/color";
+import CustomTabBar from "../components/navigation/customTabBar";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -37,9 +40,11 @@ const AuthStackNavigator = () => (
 
 const MainTabNavigator = () => (
   <Tab.Navigator
+    tabBar={(props) => <CustomTabBar {...props} />}
     screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: Colors?.base[500],
+      tabBarInactiveTintColor: Colors?.base[300],
       tabBarShowLabel: false,
       tabBarStyle: {
         backgroundColor: Colors?.base[950],
@@ -52,11 +57,10 @@ const MainTabNavigator = () => (
       options={{
         tabBarLabel: "Home",
         tabBarIcon: ({ focused, color, size }) => (
-          <Icons
-            type="Ionicons"
-            name="home"
-            color={color}
-            size={size}
+          <HomeIcon
+            width={size}
+            height={size}
+            color={focused ? color : Colors.base[200]}
           />
         ),
       }}
@@ -67,11 +71,10 @@ const MainTabNavigator = () => (
       options={{
         tabBarLabel: "Search",
         tabBarIcon: ({ focused, color, size }) => (
-          <Icons
-            type="Ionicons"
-            name="search"
-            color={color}
-            size={size}
+          <SearchIcon
+            width={size}
+            height={size}
+            color={focused ? color : Colors.base[200]}
           />
         ),
       }}
@@ -82,11 +85,10 @@ const MainTabNavigator = () => (
       options={{
         tabBarLabel: "Games",
         tabBarIcon: ({ focused, color, size }) => (
-          <Icons
-            type="Ionicons"
-            name="game-controller"
-            color={color}
-            size={size}
+          <GameIcon
+            width={size}
+            height={size}
+            color={focused ? color : Colors.base[200]}
           />
         ),
       }}
@@ -97,11 +99,10 @@ const MainTabNavigator = () => (
       options={{
         tabBarLabel: "Profile",
         tabBarIcon: ({ focused, color, size }) => (
-          <Icons
-            type="Ionicons"
-            name="person"
-            color={color}
-            size={size}
+          <ProfileIcon
+            width={size}
+            height={size}
+            color={focused ? color : Colors.base[200]}
           />
         ),
       }}

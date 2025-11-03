@@ -1,103 +1,101 @@
-import React from "react";
-import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const ACTIVE_ICON_COLOR = "#FFFFFF";
-const INACTIVE_ICON_COLOR = "#8FA8B3";
+import ButtomTabfludLigtingIcon from '../../assets/svg/buttomTabfludLigting.svg';
+import GameIcon from '../../assets/svg/gameIcon.svg';
+import HomeIcon from '../../assets/svg/home.svg';
+import ProfileIcon from '../../assets/svg/profile.svg';
+import SearchIcon from '../../assets/svg/search.svg';
 
-const CustomTabBar: React.FC<BottomTabBarProps> = ({
-  state,
-  descriptors,
-  navigation,
-}) => {
+const CustomTabBar = (props: BottomTabBarProps) => {
+  const { state, descriptors, navigation } = props;
   const insets = useSafeAreaInsets();
 
-  return (
-    <View
-      style={[
-        styles.container,
-        { paddingBottom: Math.max(insets.bottom, 12) },
-      ]}
-    >
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+  const getIcon = (routeName: string, focused: boolean) => {
+    const iconSize = 22;
+    const iconColor = focused ? '#FFFFFF' : '#A8B0B8';
 
+    switch (routeName) {
+      case 'HomeScreen':
+        return <HomeIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'SearchScreen':
+        return <SearchIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'GamesScreen':
+        return <GameIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'ProfileScreen':
+        return <ProfileIcon width={iconSize} height={iconSize} color={iconColor} />;
+      default:
+        return null;
+    }
+  };
+
+  const getLabel = (routeName: string) => {
+    switch (routeName) {
+      case 'HomeScreen':
+        return 'Home';
+      case 'SearchScreen':
+        return 'Search';
+      case 'GamesScreen':
+        return 'Games';
+      case 'ProfileScreen':
+        return 'Profile';
+      default:
+        return '';
+    }
+  };
+
+  return (
+    <View style={[styles.container, { paddingBottom: insets.bottom }]}>
+      {state.routes.map((route, index) => {
         const isFocused = state.index === index;
-        const iconColor = isFocused ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR;
-        const iconSize = isFocused ? 26 : 22;
+        const label = getLabel(route.name);
 
         const onPress = () => {
           const event = navigation.emit({
-            type: "tabPress",
+            type: 'tabPress',
             target: route.key,
             canPreventDefault: true,
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name as never);
+            navigation.navigate(route.name);
           }
         };
 
         const onLongPress = () => {
           navigation.emit({
-            type: "tabLongPress",
+            type: 'tabLongPress',
             target: route.key,
           });
         };
 
-        const icon =
-          typeof options.tabBarIcon === "function"
-            ? options.tabBarIcon({
-                focused: isFocused,
-                color: iconColor,
-                size: iconSize,
-              })
-            : null;
-
         return (
-          <View key={route.key} style={styles.tabItem}>
-            <TouchableOpacity
-              activeOpacity={0.85}
-              accessibilityRole="button"
-              accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              onLongPress={onLongPress}
-              style={styles.touchable}
-            >
-              {isFocused && (
-                <LinearGradient
-                  colors={["#3FE0FF", "rgba(63, 224, 255, 0.0)"]}
-                  start={{ x: 0.5, y: 0 }}
-                  end={{ x: 0.5, y: 1 }}
-                  style={styles.activeGlow}
-                  pointerEvents="none"
-                />
-              )}
-              <View
-                style={[styles.iconWrapper, isFocused && styles.iconWrapperFocused]}
-              >
-                {icon}
+          <TouchableOpacity
+            key={route.key}
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={descriptors[route.key].options.tabBarAccessibilityLabel}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={styles.tabItem}
+          >
+            {isFocused && (
+              <View style={styles.activeIndicatorContainer}>
+                <View style={styles.whiteLine} />
+                <View style={styles.glowContainer}> 
+                <ButtomTabfludLigtingIcon width={100} />
+                </View>
               </View>
-              <Text style={[styles.label, isFocused && styles.labelFocused]}>
-                {label}
-              </Text>
-            </TouchableOpacity>
-          </View>
+            )}
+            <View style={styles.iconContainer}>
+              {getIcon(route.name, isFocused)}
+            </View>
+            <Text style={[styles.label, isFocused && styles.labelFocused]}>
+              {label}
+            </Text>
+          </TouchableOpacity>
         );
       })}
     </View>
@@ -108,56 +106,50 @@ export default CustomTabBar;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    backgroundColor: "#01060D",
-    paddingTop: 10,
-    paddingHorizontal: 16,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: -6 },
-    shadowOpacity: 0.35,
-    shadowRadius: 12,
-    elevation: 12,
+    flexDirection: 'row',
+    backgroundColor: '#0A0A0A',
+    paddingTop: 8,
+    paddingHorizontal: 8,
   },
   tabItem: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    position: 'relative',
   },
-  touchable: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 6,
-    paddingHorizontal: 12,
+  activeIndicatorContainer: {
+    position: 'absolute',
+    top: -8,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
   },
-  activeGlow: {
-    ...StyleSheet.absoluteFillObject,
-    top: -28,
-    bottom: undefined,
-    height: 86,
-    borderRadius: 32,
-    opacity: 0.9,
+  whiteLine: {
+    width: 40,
+    height: 5,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
   },
-  iconWrapper: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  iconWrapperFocused: {
-    backgroundColor: "rgba(255, 255, 255, 0.12)",
+  iconContainer: {
+    marginBottom: 4,
+    zIndex: 2,
   },
   label: {
-    marginTop: 6,
     fontSize: 12,
-    color: INACTIVE_ICON_COLOR,
+    color: '#A8B0B8',
+    fontWeight: '500',
+    zIndex: 2,
   },
   labelFocused: {
-    color: ACTIVE_ICON_COLOR,
-    fontWeight: "600",
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  glowContainer: {
+    position: 'absolute',
+    top: -4,
+    zIndex: 1,
+    marginLeft: 7,
   },
 });
-
