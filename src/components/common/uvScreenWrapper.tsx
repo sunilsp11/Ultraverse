@@ -1,20 +1,23 @@
 import React, { ReactNode } from 'react';
 import { StatusBar, StyleSheet, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ScreenWrapperProps {
-    children: ReactNode;
-    conatinerStyle?: ViewStyle;
-    translucent?: boolean;
-    inverted?: boolean;
-}  
+  children: ReactNode;
+  conatinerStyle?: ViewStyle;
+  translucent?: boolean;
+  inverted?: boolean;
+}
 
 const UvScreenWrapper = ({
-    children,
-    conatinerStyle,
-    translucent = true,
-    inverted = false,
-  }: ScreenWrapperProps) => {
+  children,
+  conatinerStyle,
+  translucent = true,
+  inverted = false,
+}: ScreenWrapperProps) => {
+  const insets = useSafeAreaInsets();
+  
   const gradientColors = inverted
     ? ["#02080B", "#04202B", "#0B6E9A"]
     : ["#0B6E9A", "#04202B", "#02080B"];
@@ -29,11 +32,12 @@ const UvScreenWrapper = ({
       end={{ x: 0.5, y: 1.0 }}
       style={[
         styles.container,
+        { paddingTop: insets.top },
         conatinerStyle,
       ]}
     >
-    <StatusBar hidden={true} />
-    {children}
+      <StatusBar barStyle="light-content" translucent={translucent} />
+      {children}
     </LinearGradient>
   )
 }
@@ -41,7 +45,7 @@ const UvScreenWrapper = ({
 export default UvScreenWrapper
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
+  container: {
+    flex: 1,
+  },
 })

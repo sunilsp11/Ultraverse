@@ -7,6 +7,7 @@ import LoginScreen from "../screens/authStack/loginScreen";
 import RegisterScreen from "../screens/authStack/registerScreen";
 import ResetPasswordScreen from "../screens/authStack/resetPasswordScreen";
 import HomeScreen from "../screens/homeStack/homeScreen";
+import GameDetailsScreen from "../screens/homeStack/gameDetailsScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
@@ -20,6 +21,7 @@ import SearchIcon from "../assets/svg/search.svg";
 import Colors from "../theme/color";
 import {
   AuthStackParamList,
+  HomeStackParamList,
   MainTabParamList,
   RootStackParamList,
 } from "../types/navigationTypes";
@@ -27,6 +29,7 @@ import CustomTabBar from "../components/navigation/customTabBar";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const AuthStackNavigator = () => (
@@ -36,6 +39,13 @@ const AuthStackNavigator = () => (
     <AuthStack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
     <AuthStack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
   </AuthStack.Navigator>
+);
+
+const HomeStackNavigator = () => (
+  <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+    <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
+    <HomeStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
+  </HomeStack.Navigator>
 );
 
 const MainTabNavigator = () => (
@@ -52,8 +62,8 @@ const MainTabNavigator = () => (
     }}
   >
     <Tab.Screen
-      name="HomeScreen"
-      component={HomeScreen}
+      name="HomeStack"
+      component={HomeStackNavigator}
       options={{
         tabBarLabel: "Home",
         tabBarIcon: ({ focused, color, size }) => (

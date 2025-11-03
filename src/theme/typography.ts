@@ -5,6 +5,7 @@ export type TypographyVariant =
     | 'h4'
     | 'h5'
     | 'h6'
+    | 'h7'
     | 'p'
     | 'body'
     | 'bodyXs'
@@ -65,6 +66,13 @@ export const Typography: Record<TypographyVariant, TypographyStyle> = {
         fontFamily: FontFamilies.display,
         fontSize: 16,
         lineHeight: 24,
+        letterSpacing: 0.4,
+        fontWeight: '500',
+    },
+    h7: {
+        fontFamily: FontFamilies.display,
+        fontSize: 14,
+        lineHeight: 20,
         letterSpacing: 0.4,
         fontWeight: '500',
     },

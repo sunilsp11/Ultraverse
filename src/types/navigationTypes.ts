@@ -7,8 +7,19 @@ export type AuthStackParamList = {
   ForgotPasswordScreen: undefined;
 };
 
-export type MainTabParamList = {
+export type HomeStackParamList = {
   HomeScreen: undefined;
+  GameDetailsScreen: {
+    gameId: string;
+    gameTitle: string;
+    gameImage: any;
+    genre?: string;
+    description?: string;
+  };
+};
+
+export type MainTabParamList = {
+  HomeStack: NavigatorScreenParams<HomeStackParamList> | undefined;
   SearchScreen: undefined;
   GamesScreen: undefined;
   ProfileScreen: undefined;

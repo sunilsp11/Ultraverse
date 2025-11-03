@@ -25,6 +25,7 @@ import {
 import UvSlide from "../../components/onboarding/uvSlide";
 import UvDots from "../../components/onboarding/uvDots";
 import UvNextButton from "../../components/onboarding/uvNextButton";
+import UvActionButton from "../../components/common/uvActionButton";
 import { STORAGE_KEYS } from "../../constants/storageKeys";
 
 const { width, height } = Dimensions.get("window");
@@ -192,17 +193,13 @@ const OnboardingScreen = () => {
               },
             ]}
           >
-            <View style={styles.getStartedBtnWrapper}>
-              <TouchableOpacity
-                onPress={() => {
-                  void completeOnboarding();
-                }}
-                style={styles.getStartedBtn}
-                activeOpacity={0.9}
-              >
-                <Text style={styles.getStartedText}>Get Started</Text>
-              </TouchableOpacity>
-            </View>
+            <UvActionButton
+              title="Get Started"
+              onPress={() => {
+                void completeOnboarding();
+              }}
+              variant="secondary"
+            />
           </Animated.View>
         )}
       </View>
@@ -260,35 +257,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: "Ronix-Classic",
   },
-  getStartedBtn: {
-    marginLeft: "auto",
-    paddingHorizontal: 22,
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
-    justifyContent: "center",
-    borderTopRightRadius: 16,
-    borderBottomLeftRadius: 16,
-  },
   getStartedAnimWrapper: {
     marginLeft: "auto",
-  },
-  getStartedText: {
-    color: "#111111",
-    fontSize: 16,
-    fontFamily: "FormaDJR-Bold",
-  },
-  getStartedBtnWrapper: {
-    height: 48,
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
-    borderTopRightRadius: 16,
-    borderBottomLeftRadius: 16,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 4,
-    backgroundColor: "transparent",
   },
 });

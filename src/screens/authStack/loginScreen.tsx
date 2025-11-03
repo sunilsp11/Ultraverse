@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 48,
   },
   topLogo: {
     alignSelf: "center",

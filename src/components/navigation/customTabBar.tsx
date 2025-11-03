@@ -14,11 +14,11 @@ const CustomTabBar = (props: BottomTabBarProps) => {
   const insets = useSafeAreaInsets();
 
   const getIcon = (routeName: string, focused: boolean) => {
-    const iconSize = 22;
+    const iconSize = 20;
     const iconColor = focused ? '#FFFFFF' : '#A8B0B8';
 
     switch (routeName) {
-      case 'HomeScreen':
+      case 'HomeStack':
         return <HomeIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'SearchScreen':
         return <SearchIcon width={iconSize} height={iconSize} color={iconColor} />;
@@ -33,7 +33,7 @@ const CustomTabBar = (props: BottomTabBarProps) => {
 
   const getLabel = (routeName: string) => {
     switch (routeName) {
-      case 'HomeScreen':
+      case 'HomeStack':
         return 'Home';
       case 'SearchScreen':
         return 'Search';

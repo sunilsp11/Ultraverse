@@ -23,7 +23,6 @@ const ForgotPasswordScreen = () => {
 
   const handleSubmit = () => {
     navigation.navigate("ResetPasswordScreen");
-    // onSubmit && onSubmit(email);
   };
 
   return (
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 48,
   },
   topLogo: {
     alignSelf: "center",
