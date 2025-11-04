@@ -100,7 +100,7 @@ const GameFeedbackScreen = () => {
   };
 
   return (
-    <UvScreenWrapper inverted={true} translucent={false}>
+    <UvScreenWrapper translucent={false}>
     <View style={styles.container}>
       <UvFeedbackHeader
         currentStep={currentStep}

@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 import UvTypography from '../common/uvTypography';
 import Colors from '../../theme/color';
 import Svg, { Path } from 'react-native-svg';
+import UvOptionSelector from '../common/uvOptionSelector';
 
 // Star Rating Component for Step 1
 interface StarRatingProps {
@@ -83,6 +84,7 @@ export const Step2: React.FC<Step2Props> = ({ response, onResponseChange }) => {
         multiline
         textAlignVertical="top"
         numberOfLines={4}
+        autoFocus={true}
       />
     </View>
   );
@@ -113,6 +115,7 @@ export const Step3: React.FC<Step3Props> = ({ response, onResponseChange }) => {
         multiline
         textAlignVertical="top"
         numberOfLines={4}
+        autoFocus={true}
       />
     </View>
   );
@@ -128,41 +131,21 @@ export const Step4: React.FC<Step4Props> = ({
   selectedOption,
   onOptionSelect,
 }) => {
-  const options = ['Skins', 'Boosters', 'Weapons', 'Customizations', 'Exclusive missions'];
+  const options = [
+    { label: 'Skins', value: 'Skins' },
+    { label: 'Boosters', value: 'Boosters' },
+    { label: 'Weapons', value: 'Weapons' },
+    { label: 'Customizations', value: 'Customizations' },
+    { label: 'Exclusive missions', value: 'Exclusive missions' },
+  ];
 
   return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        What type of items or upgrades would you want to purchase in this game?
-      </UvTypography>
-      <View style={styles.optionsContainer}>
-        {options.map((option) => {
-          const isSelected = selectedOption === option;
-          return (
-            <TouchableOpacity
-              key={option}
-              onPress={() => onOptionSelect(option)}
-              style={[
-                styles.optionButton,
-                isSelected && styles.optionButtonSelected,
-              ]}
-              activeOpacity={0.7}
-            >
-              <UvTypography
-                variant="body"
-                color={isSelected ? Colors.primary[500] : Colors.white}
-              >
-                {option}
-              </UvTypography>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-    </View>
+    <UvOptionSelector
+      question="What type of items or upgrades would you want to purchase in this game?"
+      options={options}
+      selectedValue={selectedOption}
+      onSelect={onOptionSelect}
+    />
   );
 };
 
@@ -191,6 +174,7 @@ export const Step5: React.FC<Step5Props> = ({ response, onResponseChange }) => {
         multiline
         textAlignVertical="top"
         numberOfLines={4}
+        autoFocus={true}
       />
     </View>
   );

@@ -6,7 +6,7 @@ import UvFeedbackHeader from '../../components/common/uvFeedbackHeader';
 import UvButton from '../../components/common/uvButton';
 import Colors from '../../theme/color';
 import { RootStackParamList } from '../../types/navigationTypes';
-import { PlatformStep1, PlatformStep2, PlatformStep3, PlatformStep4, PlatformStep5 } from '../../components/feedback/platformSteps';
+import { PlatformStep1, PlatformStep2, PlatformStep3, PlatformStep4, PlatformStep5 } from '../../components/feedback/platformFeedbackSteps';
 import UvScreenWrapper from '../../components/common/uvScreenWrapper';
 import RightArrow from '../../assets/svg/rightArrow.svg';
 
@@ -97,7 +97,7 @@ const PlatformFeedbackScreen = () => {
   };
 
   return (
-    <UvScreenWrapper inverted={true}>
+    <UvScreenWrapper >
       <View style={styles.screenContent}>
         <UvFeedbackHeader
           currentStep={currentStep}

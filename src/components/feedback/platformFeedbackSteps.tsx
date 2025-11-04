@@ -2,9 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 import UvTypography from '../common/uvTypography';
 import Colors from '../../theme/color';
-import FlameIcon from '../../assets/svg/flame.svg';
-import LaggyIcon from '../../assets/svg/laggyIcon.svg';
-import ThumbIcon from '../../assets/svg/thumb.svg';
+import UvOptionSelector from '../common/uvOptionSelector';
 
 
 interface LeafRatingProps {
@@ -73,47 +71,18 @@ export const PlatformStep2: React.FC<PlatformStep2Props> = ({
   onOptionSelect,
 }) => {
   const options = [
-    { label: 'Yes', icon: FlameIcon, value: 'Yes' },
-    { label: 'No', icon: LaggyIcon, value: 'No' },
-    { label: 'Somewhat', icon: ThumbIcon, value: 'Somewhat' },
+    { label: 'Yes', iconName: 'flame', value: 'Yes' },
+    { label: 'No', iconName: 'laggyIcon', value: 'No' },
+    { label: 'Somewhat', iconName: 'thumb', value: 'Somewhat' },
   ];
 
   return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        Did the platform feel stable and responsive during gameplay?
-      </UvTypography>
-      <View style={styles.optionsContainer}>
-        {options.map((option) => {
-          const isSelected = selectedOption === option.value;
-          const IconComponent = option.icon;
-          return (
-            <TouchableOpacity
-              key={option.value}
-              onPress={() => onOptionSelect(option.value)}
-              style={[
-                styles.optionButtonWithIcon,
-                isSelected && styles.optionButtonWithIconSelected,
-              ]}
-              activeOpacity={0.7}
-            >
-              <IconComponent width={24} height={24} />
-              <UvTypography
-                variant="body"
-                color={isSelected ? Colors.primary[500] : Colors.white}
-                style={styles.optionText}
-              >
-                {option.label}
-              </UvTypography>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-    </View>
+    <UvOptionSelector
+      question="Did the platform feel stable and responsive during gameplay?"
+      options={options}
+      selectedValue={selectedOption}
+      onSelect={onOptionSelect}
+    />
   );
 };
 
@@ -142,6 +111,7 @@ export const PlatformStep3: React.FC<PlatformStep3Props> = ({ response, onRespon
         multiline
         textAlignVertical="top"
         numberOfLines={4}
+        autoFocus={true}
       />
     </View>
   );
@@ -158,49 +128,21 @@ export const PlatformStep4: React.FC<PlatformStep4Props> = ({
   onOptionSelect,
 }) => {
   const options = [
-    { label: 'Yes', icon: FlameIcon, value: 'Yes' },
-    { label: 'No', icon: LaggyIcon, value: 'No' },
-    { label: 'Maybe', icon: ThumbIcon, value: 'Maybe' },
+    { label: 'Yes', iconName: 'flame', value: 'Yes' },
+    { label: 'No', iconName: 'laggyIcon', value: 'No' },
+    { label: 'Maybe', iconName: 'thumb', value: 'Maybe' },
   ];
 
   return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        Would you recommend Ultraverse to a friend or teammate?
-      </UvTypography>
-      <View style={styles.optionsContainer}>
-        {options.map((option) => {
-          const isSelected = selectedOption === option.value;
-          const IconComponent = option.icon;
-          return (
-            <TouchableOpacity
-              key={option.value}
-              onPress={() => onOptionSelect(option.value)}
-              style={[
-                styles.optionButtonWithIcon,
-                isSelected && styles.optionButtonWithIconSelected,
-              ]}
-              activeOpacity={0.7}
-            >
-              <IconComponent width={24} height={24} />
-              <UvTypography
-                variant="body"
-                color={isSelected ? Colors.primary[500] : Colors.white}
-                style={styles.optionText}
-              >
-                {option.label}
-              </UvTypography>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-    </View>
+    <UvOptionSelector
+      question="Would you recommend Ultraverse to a friend or teammate?"
+      options={options}
+      selectedValue={selectedOption}
+      onSelect={onOptionSelect}
+    />
   );
 };
+
 
 interface PlatformStep5Props {
   rating: number;
@@ -279,43 +221,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     borderWidth: 1,
     borderColor: Colors.base[700],
-  },
-  optionsContainer: {
-    width: '100%',
-    gap: 16,
-    alignItems: 'center',
-  },
-  optionButton: {
-    width: '100%',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  optionButtonSelected: {
-    borderColor: Colors.primary[500],
-    borderWidth: 2,
-  },
-  optionButtonWithIcon: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.white,
-    gap: 12,
-  },
-  optionButtonWithIconSelected: {
-    borderColor: Colors.primary[500],
-    borderWidth: 2,
-  },
-  optionText: {
-    marginLeft: 0,
   },
 });
 

@@ -5,6 +5,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvTypography from "./uvTypography";
 import Colors from "../../theme/color";
 import AlertIcon from "../../assets/svg/alert.svg";
+import RatingStarIcon from "../../assets/svg/ratingStar.svg";
 import TranslateIcon from "../../assets/svg/translateIcon.svg";
 import LocationIcon from "../../assets/svg/location.svg";
 import SignoutIcon from "../../assets/svg/signoutIcon.svg";
@@ -31,7 +32,7 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
       </UvTypography>
       <View style={styles.prefList}>
       <TouchableOpacity style={styles.prefItem} onPress={handlePlatformFeedbackPress}>
-        <AlertIcon width={24} height={24} color={Colors.white}/>
+        <RatingStarIcon width={24} height={24} color={Colors.white}/>
         <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Platform Feedback</UvTypography>
       </TouchableOpacity>
       <View style={styles.prefItem}>
