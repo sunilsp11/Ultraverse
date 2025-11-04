@@ -8,6 +8,8 @@ import RegisterScreen from "../screens/authStack/registerScreen";
 import ResetPasswordScreen from "../screens/authStack/resetPasswordScreen";
 import HomeScreen from "../screens/homeStack/homeScreen";
 import GameDetailsScreen from "../screens/homeStack/gameDetailsScreen";
+import GameFeedbackScreen from "../screens/homeStack/gameFeedbackScreen";
+import GameFeedbackThankYouScreen from "../screens/homeStack/gameFeedbackThankYouScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
@@ -127,6 +129,8 @@ const AppNavigator = () => {
         <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
         <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
         <RootStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
+        <RootStack.Screen name="GameFeedbackScreen" component={GameFeedbackScreen} />
+        <RootStack.Screen name="GameFeedbackThankYouScreen" component={GameFeedbackThankYouScreen} />
         <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       </RootStack.Navigator>
     </NavigationContainer>

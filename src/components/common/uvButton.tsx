@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Colors from '../../theme/color';
 import UvTypography from './uvTypography';
-
-const { width } = Dimensions.get('window');
 
 interface Props {
   onPress: () => void;
@@ -71,7 +69,7 @@ const styles = StyleSheet.create({
   },
   ctaInner: {
     height: 32,
-    width: width * 0.45,
+    paddingHorizontal: 16,
     backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: '#DDE6EA',
@@ -86,8 +84,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.white,
   },
   ctaInnerDisabled: {
-    backgroundColor: '#CCCCCC',
-    borderColor: '#CCCCCC',
+    backgroundColor: Colors.base[500],
+    borderColor: Colors.base[500],
   },
   iconContainerRight: {
     marginLeft: 8,

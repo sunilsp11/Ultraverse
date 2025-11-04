@@ -27,7 +27,7 @@ const GameDetailsScreen = () => {
   const navigation = useNavigation<GameDetailsScreenNavigationProp>()
   const route = useRoute<GameDetailsScreenRouteProp>()
 
-  const { gameTitle, gameImage, genre, description, gameInfo } = route.params
+  const { gameTitle, gameImage, genre, description, gameInfo, gameId } = route.params
 
   const gameplayVideos = [
     { id: '1', thumbnail: gameImage },
@@ -189,6 +189,12 @@ const GameDetailsScreen = () => {
           onPress={() => console.log('Play Now pressed')}
           icon={<PlayIcon width={16} height={16} color={Colors.base[950]} />}
         />
+        <UvButton
+          title="Feedback"
+          onPress={() => navigation.navigate('GameFeedbackScreen', { gameId: gameId || '1' })}
+          variant="secondary"
+          style={styles.feedbackButton}
+        />
       </View>
     </View>
   )
@@ -321,11 +327,15 @@ const styles = StyleSheet.create({
   bottomButtonContainer: {
     paddingHorizontal: 20,
     paddingBottom: 20,
-    alignSelf:'flex-end',
+    alignItems: 'flex-end',
+    gap: 12,
     position: 'absolute',
     bottom: 20,
     right: 0,
     zIndex: 10,
+  },
+  feedbackButton: {
+    marginTop: 0,
   },
 })
 

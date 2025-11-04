@@ -27,6 +27,10 @@ export type RootStackParamList = {
     description?: string;
     gameInfo?:string
   };
+  GameFeedbackScreen: {
+    gameId: string;
+  };
+  GameFeedbackThankYouScreen: undefined;
   SplashScreen: undefined;
   OnboardingScreen: undefined;
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
