@@ -36,7 +36,7 @@ const GameDetailsScreen = () => {
   ]
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor: Colors.base[950]}]}>
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => navigation.goBack()}
@@ -205,7 +205,7 @@ export default GameDetailsScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.base[950],
+  
   },
   scrollView: {
     flex: 1,

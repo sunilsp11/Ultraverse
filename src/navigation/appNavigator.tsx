@@ -10,6 +10,7 @@ import HomeScreen from "../screens/homeStack/homeScreen";
 import GameDetailsScreen from "../screens/homeStack/gameDetailsScreen";
 import GameFeedbackScreen from "../screens/homeStack/gameFeedbackScreen";
 import GameFeedbackThankYouScreen from "../screens/homeStack/gameFeedbackThankYouScreen";
+import PlatformFeedbackScreen from "../screens/homeStack/platformFeedbackScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
@@ -131,6 +132,7 @@ const AppNavigator = () => {
         <RootStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
         <RootStack.Screen name="GameFeedbackScreen" component={GameFeedbackScreen} />
         <RootStack.Screen name="GameFeedbackThankYouScreen" component={GameFeedbackThankYouScreen} />
+        <RootStack.Screen name="PlatformFeedbackScreen" component={PlatformFeedbackScreen} />
         <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       </RootStack.Navigator>
     </NavigationContainer>

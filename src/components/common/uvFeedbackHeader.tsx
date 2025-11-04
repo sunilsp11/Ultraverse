@@ -9,12 +9,14 @@ interface UvFeedbackHeaderProps {
   currentStep: number;
   totalSteps: number;
   onClose: () => void;
+  title?: string;
 }
 
 const UvFeedbackHeader: React.FC<UvFeedbackHeaderProps> = ({
   currentStep,
   totalSteps,
   onClose,
+  title = 'GAME FEEDBACK',
 }) => {
   const progressPercentage = (currentStep / totalSteps) * 100;
 
@@ -28,8 +30,8 @@ const UvFeedbackHeader: React.FC<UvFeedbackHeaderProps> = ({
         </TouchableOpacity>
 
         <View style={styles.headerTitleContainer}>
-          <UvTypography variant="h6" color={Colors.base[50]}>
-            GAME FEEDBACK
+          <UvTypography variant="h7" color={Colors.base[50]}>
+            {title}
           </UvTypography>
         </View>
       </View>
@@ -58,7 +60,7 @@ export default UvFeedbackHeader;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: 24,
     paddingHorizontal: 20,
     paddingBottom: 20,
   },

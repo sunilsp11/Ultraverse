@@ -15,7 +15,7 @@ const UvStreak = () => {
         {DAYS.map((day, index) => (
           <View key={day+index} style={styles.streakItem}>
             <View style={styles.dayCircle}>
-              <UvTypography variant="p" align="center" color={Colors.base[200]}>
+              <UvTypography variant="p" align="center" color={Colors.white}>
                 {day}
               </UvTypography>
             </View>

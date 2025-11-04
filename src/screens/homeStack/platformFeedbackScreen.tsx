@@ -1,37 +1,34 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import UvFeedbackHeader from '../../components/common/uvFeedbackHeader';
 import UvButton from '../../components/common/uvButton';
 import Colors from '../../theme/color';
 import { RootStackParamList } from '../../types/navigationTypes';
-import { Step1, Step2, Step3, Step4, Step5 } from '../../components/feedback';
+import { PlatformStep1, PlatformStep2, PlatformStep3, PlatformStep4, PlatformStep5 } from '../../components/feedback/platformSteps';
 import UvScreenWrapper from '../../components/common/uvScreenWrapper';
 import RightArrow from '../../assets/svg/rightArrow.svg';
 
-type GameFeedbackScreenRouteProp = RouteProp<RootStackParamList, 'GameFeedbackScreen'>;
-type GameFeedbackScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameFeedbackScreen'>;
+type PlatformFeedbackScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'PlatformFeedbackScreen'>;
 
 const TOTAL_STEPS = 5;
 
-const GameFeedbackScreen = () => {
-  const navigation = useNavigation<GameFeedbackScreenNavigationProp>();
-  const route = useRoute<GameFeedbackScreenRouteProp>();
-  const { gameId } = route.params;
+const PlatformFeedbackScreen = () => {
+  const navigation = useNavigation<PlatformFeedbackScreenNavigationProp>();
 
   const [currentStep, setCurrentStep] = useState(1);
   const [step1Rating, setStep1Rating] = useState(0);
-  const [step2Response, setStep2Response] = useState('');
+  const [step2SelectedOption, setStep2SelectedOption] = useState<string | null>(null);
   const [step3Response, setStep3Response] = useState('');
   const [step4SelectedOption, setStep4SelectedOption] = useState<string | null>(null);
-  const [step5Response, setStep5Response] = useState('');
+  const [step5Rating, setStep5Rating] = useState(0);
 
   const handleNext = () => {
     if (currentStep < TOTAL_STEPS) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(prev => prev + 1);
     } else {
-      console.log('Feedback submitted');
+      console.log('Platform feedback submitted');
       navigation.navigate('GameFeedbackThankYouScreen');
     }
   };
@@ -44,37 +41,37 @@ const GameFeedbackScreen = () => {
     switch (currentStep) {
       case 1:
         return (
-          <Step1
+          <PlatformStep1
             rating={step1Rating}
             onRatingChange={setStep1Rating}
           />
         );
       case 2:
         return (
-          <Step2
-            response={step2Response}
-            onResponseChange={setStep2Response}
+          <PlatformStep2
+            selectedOption={step2SelectedOption}
+            onOptionSelect={setStep2SelectedOption}
           />
         );
       case 3:
         return (
-          <Step3
+          <PlatformStep3
             response={step3Response}
             onResponseChange={setStep3Response}
           />
         );
       case 4:
         return (
-          <Step4
+          <PlatformStep4
             selectedOption={step4SelectedOption}
             onOptionSelect={setStep4SelectedOption}
           />
         );
       case 5:
         return (
-          <Step5
-            response={step5Response}
-            onResponseChange={setStep5Response}
+          <PlatformStep5
+            rating={step5Rating}
+            onRatingChange={setStep5Rating}
           />
         );
       default:
@@ -87,50 +84,51 @@ const GameFeedbackScreen = () => {
       case 1:
         return step1Rating > 0;
       case 2:
-        return step2Response.trim().length > 0;
+        return step2SelectedOption !== null;
       case 3:
         return step3Response.trim().length > 0;
       case 4:
         return step4SelectedOption !== null;
       case 5:
-        return step5Response.trim().length > 0;
+        return step5Rating > 0;
       default:
         return true;
     }
   };
 
   return (
-    <UvScreenWrapper inverted={true} translucent={false}>
-    <View style={styles.container}>
-      <UvFeedbackHeader
-        currentStep={currentStep}
-        totalSteps={TOTAL_STEPS}
-        onClose={handleClose}
-      />
-
-      <View style={styles.content}>
-        {renderStepContent()}
-      </View>
-
-      <View style={styles.bottomButtonContainer}>
-        <UvButton
-          title="Next"
-          onPress={handleNext}
-          disabled={!isStepValid()}
-          icon={<RightArrow width={16} height={16} color={Colors.base[950]} />}
-          iconPosition="right"
-          style={styles.nextButton}
+    <UvScreenWrapper inverted={true}>
+      <View style={styles.screenContent}>
+        <UvFeedbackHeader
+          currentStep={currentStep}
+          totalSteps={TOTAL_STEPS}
+          onClose={handleClose}
+          title="PLATFORM FEEDBACK"
         />
+
+        <View style={styles.content}>
+          {renderStepContent()}
+        </View>
+
+        <View style={styles.bottomButtonContainer}>
+          <UvButton
+            title="Next"
+            onPress={handleNext}
+            disabled={!isStepValid()}
+            icon={<RightArrow width={16} height={16} color={Colors.base[950]} />}
+            iconPosition="right"
+            style={styles.nextButton}
+          />
+        </View>
       </View>
-    </View>
     </UvScreenWrapper>
   );
 };
 
-export default GameFeedbackScreen;
+export default PlatformFeedbackScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  screenContent: {
     flex: 1,
   },
   content: {

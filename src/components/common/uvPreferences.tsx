@@ -1,23 +1,39 @@
 import React from "react";
-import { StyleSheet, View, Switch } from "react-native";
+import { StyleSheet, View, Switch, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvTypography from "./uvTypography";
 import Colors from "../../theme/color";
 import AlertIcon from "../../assets/svg/alert.svg";
 import TranslateIcon from "../../assets/svg/translateIcon.svg";
 import LocationIcon from "../../assets/svg/location.svg";
 import SignoutIcon from "../../assets/svg/signoutIcon.svg";
+import { RootStackParamList } from "../../types/navigationTypes";
+
 type UvPreferencesProps = {
   locationEnabled: boolean;
   onToggle: (value: boolean) => void;
 };
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
+  const navigation = useNavigation<NavigationProp>();
+
+  const handlePlatformFeedbackPress = () => {
+    navigation.navigate('PlatformFeedbackScreen' as never);
+  };
+
   return (
     <View style={styles.sectionContainer}>
       <UvTypography variant="h7" color={Colors.white} style={styles.sectionTitle}>
         PREFERENCES
       </UvTypography>
       <View style={styles.prefList}>
+      <TouchableOpacity style={styles.prefItem} onPress={handlePlatformFeedbackPress}>
+        <AlertIcon width={24} height={24} color={Colors.white}/>
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Platform Feedback</UvTypography>
+      </TouchableOpacity>
       <View style={styles.prefItem}>
         <AlertIcon width={24} height={24} color={Colors.white}/>
         <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Notification Settings</UvTypography>
@@ -37,6 +53,9 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
           onValueChange={onToggle}
           thumbColor={locationEnabled ? Colors.black : Colors.base[300]}
           trackColor={{ true: Colors.primary[500], false: Colors.base[700] }}
+          style={{
+            transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
+          }}
         />
       </View>
       <View style={styles.divider} />

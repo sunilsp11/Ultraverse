@@ -25,22 +25,20 @@ const UvScreenWrapper = ({
   const gradientLocations = [0, 0.2, 1];
 
   return (
-    <LinearGradient
-    
-      colors={gradientColors}
-      locations={gradientLocations}
-      start={{ x: 0.5, y: 0.0 }}
-      end={{ x: 0.5, y: 1.0 }}
-      style={[
-        styles.container,
-        conatinerStyle,
-      ]}
-    >
+    <View style={[styles.container, conatinerStyle]}> 
+      <LinearGradient
+        colors={gradientColors}
+        locations={gradientLocations}
+        start={{ x: 0.5, y: 0.0 }}
+        end={{ x: 0.5, y: 1.0 }}
+        style={StyleSheet.absoluteFill}
+        pointerEvents="none"
+      />
       <StatusBar barStyle="light-content" translucent={translucent} />
       <View style={{ paddingTop: insets.top, flex: 1 }}>
         {children}
       </View>
-    </LinearGradient>
+    </View>
   )
 }
 
