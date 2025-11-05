@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
@@ -35,46 +35,47 @@ const EditProfileScreen = () => {
         </View>
 
         <View style={{ height: 51 }} />
+        <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true}>
+          <UvProfileHeader
+            avatarSource={require("../../assets/images/Fortnite.png")}
+            name={name.toUpperCase()}
+            email={email}
+            onEditPress={() => console.log('Edit avatar pressed')}
+            editIcon={<CameraIcon width={32} height={32} color={Colors.black} />}
+          />
 
-        <UvProfileHeader
-          avatarSource={require("../../assets/images/Fortnite.png")}
-          name={name.toUpperCase()}
-          email={email}
-          onEditPress={() => console.log('Edit avatar pressed')}
-          editIcon={<CameraIcon width={32} height={32} color={Colors.black} />}
-        />
+          <View style={{ height: 32 }} />
 
-        <View style={{ height: 32 }} />
+          <UvTypography variant="h7" color={Colors.base[50]} style={styles.sectionTitle}>
+            PERSONAL INFO
+          </UvTypography>
+          <View style={{ height: 12 }} />
+          <UvFormTextInput value={name} onChangeText={setName} placeholder="Mike Smith" />
+          <View style={{ height: 12 }} />
+          <UvFormTextInput value={email} onChangeText={setEmail} placeholder="mike_smith@mail.com" keyboardType="email-address" />
 
-        <UvTypography variant="h7" color={Colors.base[50]} style={styles.sectionTitle}>
-          PERSONAL INFO
-        </UvTypography>
-        <View style={{ height: 12 }} />
-        <UvFormTextInput value={name} onChangeText={setName} placeholder="Mike Smith"  />
-        <View style={{ height: 12 }} />
-        <UvFormTextInput value={email} onChangeText={setEmail} placeholder="mike_smith@mail.com" keyboardType="email-address" />
+          <View style={{ height: 32 }} />
 
-        <View style={{ height: 32 }} />
-
-        <UvTypography variant="h7" color={Colors.base[50]} style={styles.sectionTitle}>
-          CHANGE PASSWORD
-        </UvTypography>
-        <View style={{ height: 12 }} />
-        <UvFormTextInput
-          value={newPassword}
-          onChangeText={setNewPassword}
-          placeholder="Create new password"
-          showPasswordToggle
-        />
-        <View style={{ height: 12 }} />
-        <UvFormTextInput
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-          placeholder="Confirm new password"
-          showPasswordToggle
-        />
-
-        <View style={{ height: 32 }} />
+          <UvTypography variant="h7" color={Colors.base[50]} style={styles.sectionTitle}>
+            CHANGE PASSWORD
+          </UvTypography>
+          <View style={{ height: 12 }} />
+          <View style={{paddingBottom: 32}}>
+          <UvFormTextInput
+            value={newPassword}
+            onChangeText={setNewPassword}
+            placeholder="Create new password"
+            showPasswordToggle
+          />
+          <View style={{ height: 12 }} />
+          <UvFormTextInput
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            placeholder="Confirm new password"
+            showPasswordToggle
+          />
+          </View>
+        </ScrollView>
 
         <View style={styles.bottomButtonContainer}>
           <UvButton

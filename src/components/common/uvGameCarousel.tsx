@@ -85,6 +85,7 @@ export default UvGameCarousel
 const styles = StyleSheet.create({
     container: {
         marginTop: 32,
+        paddingBottom: 32,
     },
     scrollContent: {
         paddingRight: 20,

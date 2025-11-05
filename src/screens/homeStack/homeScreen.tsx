@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import UvCategoryFilterBar from '../../components/common/uvCategoryFilterBar'
 import UvGameCarousel from '../../components/common/uvGameCarousel'
 import UvHomeHeader from '../../components/common/uvHomeHeader'
@@ -62,12 +62,12 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <UvHomeHeader
           userName="MIKE"
-          onSearchPress={() => console.log('Search pressed')}
+          onSearchPress={() => navigation.navigate('SearchScreen')}
         />
 
         <UvCategoryFilterBar
           onCategoryPress={(category) => console.log('Selected:', category)}
-          onViewAllPress={() => console.log('View All pressed')}
+          onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
         />
 
         <ScrollView
@@ -76,12 +76,13 @@ const HomeScreen = () => {
         >
           <UvGameCarousel
             onGamePress={handleGamePress}
-            onViewAllPress={() => console.log('View All top games pressed')}
+            onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
           />
 
           <UvTrendingCarousel
             onGamePress={handleGamePress}
             onPlayPress={handleGamePress}
+            title="TRENDING IN ULTRAVERSE"
           />
         </ScrollView>
       </View>

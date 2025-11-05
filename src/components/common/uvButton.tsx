@@ -57,7 +57,6 @@ export default UvButton;
 const styles = StyleSheet.create({
   ctaOuter: {
     alignSelf: 'center',
-    marginTop: 32,
     height: 40,
     borderWidth: 1,
     borderColor: Colors.white,

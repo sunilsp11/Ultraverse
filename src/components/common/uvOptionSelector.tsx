@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import UvTypography from './uvTypography';
 import Colors from '../../theme/color';
 
 import FlameIcon from '../../assets/svg/flame.svg';
 import LaggyIcon from '../../assets/svg/laggyIcon.svg';
 import ThumbIcon from '../../assets/svg/thumb.svg';
+import LinearGradient from 'react-native-linear-gradient';
 
 type OptionItem = {
   label: string;
@@ -32,44 +33,60 @@ const UvOptionSelector: React.FC<UvOptionSelectorProps> = ({
   selectedValue,
   onSelect,
 }) => {
+
   return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        {question}
-      </UvTypography>
+    <View style={styles.container}>
+      <UvTypography variant="p" color={Colors.base[50]}>{question}</UvTypography>
 
-      <View style={styles.optionsContainer}>
-        {options.map((option) => {
-          const isSelected = selectedValue === option.value;
-          const IconComponent = option.iconName ? iconMap[option.iconName] : undefined;
-          const hasIcon = !!IconComponent;
+      {options.map((option) => {
+        const isSelected = selectedValue === option.value;
+        const IconComponent = option.iconName ? iconMap[option.iconName] : undefined;
+        const hasIcon = !!IconComponent;
 
-          return (
-            <TouchableOpacity
-              key={option.value}
-              onPress={() => onSelect(option.value)}
-              style={[
-                hasIcon ? styles.optionButtonWithIcon : styles.optionButton,
-                isSelected && (hasIcon ? styles.optionButtonWithIconSelected : styles.optionButtonSelected),
-              ]}
-              activeOpacity={0.7}
-            >
-              {hasIcon ? <IconComponent width={24} height={24} /> : null}
-              <UvTypography
-                variant="body"
-                color={isSelected ? Colors.primary[500] : Colors.white}
-                style={hasIcon ? styles.optionText : undefined}
+        return (
+          <TouchableOpacity
+            key={option.value}
+            activeOpacity={0.8}
+            onPress={() => onSelect(option.value)}
+            style={styles.optionWrapper}
+
+          >
+            {isSelected ? (
+              <LinearGradient
+                colors={[Colors.base[950], Colors.primary[800]]}
+                locations={[0.4, 1]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                style={styles.gradientBorder}
               >
-                {option.label}
-              </UvTypography>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+                <View >
+                  <View style={styles.gradientBackground}>
+                    <View style={styles.row}>
+                      {hasIcon ? (
+                        <IconComponent width={24} height={24} />
+                      ) : null}
+                      <Text style={[styles.optionText, { color: '#FFFFFF' }]}>
+                        {option.label}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </LinearGradient>
+            ) : (
+              <View style={styles.unselected}>
+                <View style={styles.row}>
+                  {hasIcon ? (
+                    <IconComponent width={24} height={24} />
+                  ) : null}
+                  <Text style={[styles.optionText, { color: Colors.base[100] }]}>
+                    {option.label}
+                  </Text>
+                </View>
+              </View>
+            )}
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
@@ -77,48 +94,45 @@ const UvOptionSelector: React.FC<UvOptionSelectorProps> = ({
 export default UvOptionSelector;
 
 const styles = StyleSheet.create({
-  stepContent: {
-    alignItems: 'center',
-    gap: 40,
+  container: {
     paddingHorizontal: 20,
+    gap: 14,
   },
-  optionsContainer: {
-    width: '100%',
-    gap: 16,
-    alignItems: 'center',
+  question: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#FFFFFF',
+    marginBottom: 20,
   },
-  optionButton: {
-    width: '100%',
-    paddingVertical: 16,
+  optionWrapper: {
+    marginBottom: 14,
+  },
+  gradientBorder: {
+    borderRadius: 16,
+  },
+  gradientBackground: {
+    paddingVertical: 14,
     paddingHorizontal: 20,
-    borderRadius: 12,
     borderWidth: 1,
-    borderColor: Colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  optionButtonSelected: {
     borderColor: Colors.primary[500],
-    borderWidth: 2,
+    borderRadius: 16,
   },
-  optionButtonWithIcon: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    borderRadius: 12,
+  unselected: {
+    borderColor: Colors.base[500],
     borderWidth: 1,
-    borderColor: Colors.white,
-    gap: 12,
-  },
-  optionButtonWithIconSelected: {
-    borderColor: Colors.primary[500],
-    borderWidth: 2,
-    backgroundColor: 'rgba(0, 0, 0, 100)',
+    borderRadius: 16,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    backgroundColor: '#0A0C0D',
   },
   optionText: {
-    marginLeft: 0,
+    fontSize: 15,
+    fontWeight: '400',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
   },
 });
 

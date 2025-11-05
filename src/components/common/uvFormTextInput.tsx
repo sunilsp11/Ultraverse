@@ -48,6 +48,7 @@ const UvFormTextInput: React.FC<Props> = ({
         // @ts-ignore - Android specific, harmless on iOS
         includeFontPadding={false}
         {...rest}
+        inputMode="text"
       />
       {showPasswordToggle && (
         <TouchableOpacity 

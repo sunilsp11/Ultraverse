@@ -37,4 +37,5 @@ export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
   MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
   EditProfileScreen: undefined;
+  SearchScreen: undefined;
 };

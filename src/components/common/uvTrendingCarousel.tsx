@@ -14,12 +14,14 @@ type Props = {
   games?: TrendingGame[]
   onGamePress?: (gameId: string) => void
   onPlayPress?: (gameId: string) => void
+  title?: string
 }
 
 const UvTrendingCarousel: React.FC<Props> = ({
   games = [],
   onGamePress,
-  onPlayPress
+  onPlayPress,
+  title
 }) => {
 
   const defaultGames: TrendingGame[] = [
@@ -55,7 +57,7 @@ const UvTrendingCarousel: React.FC<Props> = ({
           letterSpacing={1}
           numberOfLines={1}
         >
-          TRENDING IN ULTRAVERSE
+          {title}
         </UvTypography>
       </View>
 
@@ -117,7 +119,7 @@ export default UvTrendingCarousel
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 32,
+    // marginTop: 32,
   },
   headerContainer: {
     paddingHorizontal: 20,
