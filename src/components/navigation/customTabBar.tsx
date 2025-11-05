@@ -9,6 +9,9 @@ import HomeIcon from '../../assets/svg/home.svg';
 import ProfileIcon from '../../assets/svg/profile.svg';
 import TranslateIcon from '../../assets/svg/translateIcon.svg';
 import TrophyIcon from '../../assets/svg/trophy.svg';
+import WalletIcon from '../../assets/svg/walletIcon.svg';
+import ChatIcon from '../../assets/svg/chat.svg';
+import Colors from '../../theme/color';
 
 const CustomTabBar = (props: BottomTabBarProps) => {
   const { state, descriptors, navigation } = props;
@@ -17,14 +20,17 @@ const CustomTabBar = (props: BottomTabBarProps) => {
   const getIcon = (routeName: string, focused: boolean) => {
     const iconSize = 20;
     const iconColor = focused ? '#FFFFFF' : '#A8B0B8';
+    const walletIconColor = focused ? Colors.base[200] : '#A8B0B8';
 
     switch (routeName) {
       case 'HomeScreen':
         return <HomeIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'GamesScreen':
         return <GameIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'ChatScreen':
+        return <ChatIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'WalletScreen':
-        return <TrophyIcon width={iconSize} height={iconSize} color={iconColor} />;
+        return <WalletIcon width={iconSize} height={iconSize} color={walletIconColor} />;
       case 'TechaidsScreen':
         return <TranslateIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'ProfileScreen':
@@ -40,6 +46,8 @@ const CustomTabBar = (props: BottomTabBarProps) => {
         return 'Home';
       case 'GamesScreen':
         return 'Games';
+      case 'ChatScreen':
+        return 'Chat';
       case 'WalletScreen':
         return 'Wallet';
       case 'TechaidsScreen':

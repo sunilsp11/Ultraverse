@@ -16,6 +16,7 @@ import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
 import WalletScreen from "../screens/mainTabs/walletScreen";
+import ChatScreen from "../screens/mainTabs/chatScreen";
 import TechaidsScreen from "../screens/mainTabs/techaidsScreen";
 import EditProfileScreen from "../screens/mainTabs/editProfileScreen.tsx";
 import OnboardingScreen from "../screens/onboardingStack/onboardingScreen";
@@ -32,8 +33,7 @@ import {
   RootStackParamList,
 } from "../types/navigationTypes";
 import CustomTabBar from "../components/navigation/customTabBar";
-import { Text, View } from "react-native";
-import WalletIcon from "../assets/svg/wallet.svg";
+import WalletIcon from "../assets/svg/walletIcon.svg";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -75,6 +75,20 @@ const MainTabNavigator = () => (
         ),
       }}
     />
+       <Tab.Screen
+      name="ChatScreen"
+      component={ChatScreen}
+      options={{
+        tabBarLabel: "Chat",
+        tabBarIcon: ({ focused, color, size }) => (
+          <HomeIcon
+            width={size}
+            height={size}
+            color={focused ? color : Colors.base[200]}
+          />
+        ),
+      }}
+    />
     <Tab.Screen
       name="GamesScreen"
       component={GamesScreen}
@@ -89,6 +103,7 @@ const MainTabNavigator = () => (
         ),
       }}
     />
+ 
     <Tab.Screen
       name="WalletScreen"
       component={WalletScreen}
@@ -117,7 +132,7 @@ const MainTabNavigator = () => (
         ),
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name="ProfileScreen"
       component={ProfileScreen}
       options={{
@@ -130,7 +145,7 @@ const MainTabNavigator = () => (
           />
         ),
       }}
-    />
+    /> */}
   </Tab.Navigator>
 );
 
@@ -154,7 +169,7 @@ const AppNavigator = () => {
           <RootStack.Screen name="GameFeedbackThankYouScreen" component={GameFeedbackThankYouScreen} />
           <RootStack.Screen name="PlatformFeedbackScreen" component={PlatformFeedbackScreen} />
           <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
-        <RootStack.Screen name="SearchScreen" component={SearchScreen} />
+          <RootStack.Screen name="SearchScreen" component={SearchScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

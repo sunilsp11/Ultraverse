@@ -1,5 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
+import { CompositeNavigationProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import UvCategoryFilterBar from '../../components/common/uvCategoryFilterBar'
@@ -7,9 +9,12 @@ import UvGameCarousel from '../../components/common/uvGameCarousel'
 import UvHomeHeader from '../../components/common/uvHomeHeader'
 import UvScreenWrapper from '../../components/common/uvScreenWrapper'
 import UvTrendingCarousel from '../../components/common/uvTrendingCarousel'
-import { RootStackParamList } from '../../types/navigationTypes'
+import { RootStackParamList, MainTabParamList } from '../../types/navigationTypes'
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
+type HomeScreenNavigationProp = CompositeNavigationProp<
+  NativeStackNavigationProp<RootStackParamList>,
+  BottomTabNavigationProp<MainTabParamList>
+>
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>()
@@ -63,6 +68,7 @@ const HomeScreen = () => {
         <UvHomeHeader
           userName="MIKE"
           onSearchPress={() => navigation.navigate('SearchScreen')}
+          onProfilePress={() => navigation.navigate('MainTabs', { screen: 'ProfileScreen' })}
         />
 
         <UvCategoryFilterBar

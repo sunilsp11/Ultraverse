@@ -14,6 +14,7 @@ export type HomeStackParamList = {
 export type MainTabParamList = {
   HomeScreen: undefined;
   GamesScreen: undefined;
+  ChatScreen: undefined;
   WalletScreen: undefined;
   TechaidsScreen: undefined;
   ProfileScreen: undefined;
