@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
@@ -7,6 +7,7 @@ import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvTrendingCarousel from "../../components/common/uvTrendingCarousel";
 import Colors from "../../theme/color";
 import { RootStackParamList } from "../../types/navigationTypes";
+import BackArrowIcon from "../../assets/svg/backArrow.svg";
 
 type SearchScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
 
@@ -68,13 +69,18 @@ const SearchScreen = () => {
     <UvScreenWrapper>
       <View style={styles.container}>
         <View style={styles.searchContainer}>
-          <UvFormTextInput
-            placeholder="Search games"
-            value={query}
-            onChangeText={setQuery}
-            wrapperStyle={styles.searchInput}
-            returnKeyType="search"
-          />
+          <View style={styles.searchRow}>
+            <TouchableOpacity onPress={() => navigation.goBack()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} style={styles.backButton}>
+              <BackArrowIcon width={20} height={20} />
+            </TouchableOpacity>
+            <UvFormTextInput
+              placeholder="Search games"
+              value={query}
+              onChangeText={setQuery}
+              wrapperStyle={styles.searchInput}
+              returnKeyType="search"
+            />
+          </View>
         </View>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
           <UvTrendingCarousel
@@ -102,9 +108,31 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     height: 44,
+    flex: 1,
+    marginLeft: 12,
+  },
+  searchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   scrollContent: {
     paddingBottom: 20,
+  },
+  backButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: Colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 3,
   },
 });
 

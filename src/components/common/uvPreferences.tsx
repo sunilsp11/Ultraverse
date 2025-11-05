@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Switch, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { CommonActions, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvTypography from "./uvTypography";
 import Colors from "../../theme/color";
@@ -9,20 +9,33 @@ import RatingStarIcon from "../../assets/svg/ratingStar.svg";
 import TranslateIcon from "../../assets/svg/translateIcon.svg";
 import LocationIcon from "../../assets/svg/location.svg";
 import SignoutIcon from "../../assets/svg/signoutIcon.svg";
-import { RootStackParamList } from "../../types/navigationTypes";
+import { AuthStackParamList } from "../../types/navigationTypes";
 
 type UvPreferencesProps = {
   locationEnabled: boolean;
   onToggle: (value: boolean) => void;
 };
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 
 const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
   const navigation = useNavigation<NavigationProp>();
 
   const handlePlatformFeedbackPress = () => {
     navigation.navigate('PlatformFeedbackScreen' as never);
+  };
+  const handleLogOutPress = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'AuthStack' as never,
+            params: { screen: 'LoginScreen' } as never,
+          } as never,
+        ],
+      })
+    );
   };
 
   return (
@@ -35,15 +48,15 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
         <RatingStarIcon width={24} height={24} color={Colors.white}/>
         <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Platform Feedback</UvTypography>
       </TouchableOpacity>
-      <View style={styles.prefItem}>
+      <TouchableOpacity style={styles.prefItem}>
         <AlertIcon width={24} height={24} color={Colors.white}/>
         <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Notification Settings</UvTypography>
-      </View>
+      </TouchableOpacity>
       <View style={styles.divider} />
-      <View style={styles.prefItem}>
+      <TouchableOpacity style={styles.prefItem}>
         <TranslateIcon width={24} height={24} color={Colors.white}/>
         <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Language</UvTypography>
-      </View>
+      </TouchableOpacity>
       <View style={styles.divider} />
       <View style={styles.prefItem}>
         <LocationIcon width={24} height={24} color={Colors.white}/>
@@ -60,10 +73,10 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
         />
       </View>
       <View style={styles.divider} />
-      <View style={styles.prefItem}>
+      <TouchableOpacity style={styles.prefItem} onPress={handleLogOutPress}>
         <SignoutIcon width={24} height={24} color={Colors.white}/>
         <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Log Out</UvTypography>
-      </View>
+      </TouchableOpacity>
       </View>
     </View>
   );

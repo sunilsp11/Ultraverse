@@ -7,7 +7,8 @@ import ButtomTabfludLigtingIcon from '../../assets/svg/buttomTabfludLigting.svg'
 import GameIcon from '../../assets/svg/gameIcon.svg';
 import HomeIcon from '../../assets/svg/home.svg';
 import ProfileIcon from '../../assets/svg/profile.svg';
-import SearchIcon from '../../assets/svg/search.svg';
+import TranslateIcon from '../../assets/svg/translateIcon.svg';
+import TrophyIcon from '../../assets/svg/trophy.svg';
 
 const CustomTabBar = (props: BottomTabBarProps) => {
   const { state, descriptors, navigation } = props;
@@ -20,10 +21,12 @@ const CustomTabBar = (props: BottomTabBarProps) => {
     switch (routeName) {
       case 'HomeScreen':
         return <HomeIcon width={iconSize} height={iconSize} color={iconColor} />;
-      case 'SearchScreen':
-        return <SearchIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'GamesScreen':
         return <GameIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'WalletScreen':
+        return <TrophyIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'TechaidsScreen':
+        return <TranslateIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'ProfileScreen':
         return <ProfileIcon width={iconSize} height={iconSize} color={iconColor} />;
       default:
@@ -35,10 +38,12 @@ const CustomTabBar = (props: BottomTabBarProps) => {
     switch (routeName) {
       case 'HomeScreen':
         return 'Home';
-      case 'SearchScreen':
-        return 'Search';
       case 'GamesScreen':
         return 'Games';
+      case 'WalletScreen':
+        return 'Wallet';
+      case 'TechaidsScreen':
+        return 'Techaids';
       case 'ProfileScreen':
         return 'Profile';
       default:

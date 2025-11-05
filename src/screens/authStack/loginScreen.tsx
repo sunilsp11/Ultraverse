@@ -4,7 +4,8 @@ import {
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
@@ -36,6 +37,7 @@ const LoginScreen = () => {
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={{ paddingHorizontal: 24, flex: 1 }}>
         <View style={styles.header}>
           <Image
@@ -53,6 +55,7 @@ const LoginScreen = () => {
         </View>
 
         <View style={styles.form}>
+          <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} keyboardShouldPersistTaps="handled">
           <View style={styles.formContent}>
             <UvTypography
               variant="h6"
@@ -118,6 +121,7 @@ const LoginScreen = () => {
               </View>
             </View>
           </View>
+          </ScrollView>
 
           <View style={styles.footerRow}>
             <UvTypography variant="body" color="#CFE2EA">
@@ -133,6 +137,7 @@ const LoginScreen = () => {
           </View>
         </View>
       </View>
+      </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );
 };

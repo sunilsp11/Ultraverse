@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import {
   Image,
+  ScrollView,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
@@ -36,6 +38,7 @@ const RegisterScreen = () => {
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={{ paddingHorizontal: 24, flex: 1 }}>
       <View style={styles.header}>
         <Image
@@ -53,6 +56,7 @@ const RegisterScreen = () => {
       </View>
 
       <View style={styles.form}>
+      <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} keyboardShouldPersistTaps="handled">
         <View style={styles.formContent}>
           <UvTypography
             variant="h6"
@@ -144,7 +148,7 @@ const RegisterScreen = () => {
             </View>
           </View>
         </View>
-
+        </ScrollView>
         <View style={styles.footerRow}>
           <UvTypography variant="body" color="#CFE2EA">
             Already have an account?
@@ -158,6 +162,7 @@ const RegisterScreen = () => {
         </View>
       </View>
       </View>
+      </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );
 };

@@ -34,7 +34,7 @@ const UvScreenWrapper = ({
         style={StyleSheet.absoluteFill}
         pointerEvents="none"
       />
-      <StatusBar barStyle="light-content" translucent={translucent} />
+      <StatusBar barStyle="light-content" translucent={translucent} backgroundColor="transparent" />
       <View style={{ paddingTop: insets.top, flex: 1 }}>
         {children}
       </View>
