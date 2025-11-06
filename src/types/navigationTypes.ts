@@ -40,4 +40,5 @@ export type RootStackParamList = {
   MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
   EditProfileScreen: undefined;
   SearchScreen: undefined;
+  ProfileScreen: undefined;
 };

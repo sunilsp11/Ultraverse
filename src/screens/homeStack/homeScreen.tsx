@@ -63,12 +63,12 @@ const HomeScreen = () => {
     }
   }
   return (
-      <UvScreenWrapper>
+      <UvScreenWrapper showAssistant={true}>
       <View style={styles.container}>
         <UvHomeHeader
           userName="MIKE"
           onSearchPress={() => navigation.navigate('SearchScreen')}
-          onProfilePress={() => navigation.navigate('MainTabs', { screen: 'ProfileScreen' })}
+          onProfilePress={() => navigation.navigate('ProfileScreen')}
         />
 
         <UvCategoryFilterBar

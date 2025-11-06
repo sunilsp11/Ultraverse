@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View, Switch, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
-import UvTypography from "../../components/common/uvTypography";
 import UvStreak from "../../components/common/uvStreak";
 import UvQuickStats from "../../components/common/uvQuickStats";
 import UvPreferences from "../../components/common/uvPreferences";
 import UvProfileHeader from "../../components/common/uvProfileHeader";
-import Colors from "../../theme/color";
+import UvHeader from "../../components/common/uvHeader";
 const ProfileScreen = () => {
   const [locationEnabled, setLocationEnabled] = useState(true);
   const navigation = useNavigation();
@@ -19,9 +18,11 @@ const ProfileScreen = () => {
         bounces={false}
       >
         <View style={styles.container}>
-          <UvTypography variant="h4" align="center" color={Colors.white}>
-            PROFILE
-          </UvTypography>
+          <UvHeader 
+            title="PROFILE" 
+            titleVariant="h4"
+            containerStyle={styles.headerContainer}
+          />
 
           <View style={{ height: 24 }} />
 
@@ -56,20 +57,11 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    paddingTop: 24,
   },
   scrollView: {
     flex: 1,
   },
-  sectionTitle: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: 20,
-    marginBottom: 8,
-    letterSpacing: 2,
-  },
-  cardRow: {
-    width: '100%',
+  headerContainer: {
     paddingHorizontal: 20,
   },
 });

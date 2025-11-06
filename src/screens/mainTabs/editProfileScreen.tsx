@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import Colors from "../../theme/color";
-import BackArrowIcon from "../../assets/svg/backArrow.svg";
 import UvProfileHeader from "../../components/common/uvProfileHeader";
 import UvButton from "../../components/common/uvButton";
 import SaveIcon from "../../assets/svg/save.svg";
 import CameraIcon from "../../assets/svg/cameraIcon.svg";
+import UvHeader from "../../components/common/uvHeader";
 
 const EditProfileScreen = () => {
-  const navigation = useNavigation();
   const [name, setName] = useState("Mike Smith");
   const [email, setEmail] = useState("mike_smith@mail.com");
   const [newPassword, setNewPassword] = useState("");
@@ -21,21 +19,14 @@ const EditProfileScreen = () => {
   return (
     <UvScreenWrapper>
       <View style={styles.container}>
-        <View style={styles.headerRow}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}
-            activeOpacity={0.8}
-          >
-            <BackArrowIcon width={20} height={20} color={Colors.black} />
-          </TouchableOpacity>
-          <UvTypography variant="h6" align="center" color={Colors.white}>
-            EDIT PROFILE
-          </UvTypography>
-        </View>
+        <UvHeader 
+          title="EDIT PROFILE" 
+          titleVariant="h4"
+          containerStyle={styles.headerContainer}
+        />
 
         <View style={{ height: 51 }} />
-        <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true}>
+        <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} style={styles.scrollView}>
           <UvProfileHeader
             avatarSource={require("../../assets/images/Fortnite.png")}
             name={name.toUpperCase()}
@@ -95,34 +86,13 @@ export default EditProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  headerContainer: {
     paddingHorizontal: 20,
-    paddingTop: 24,
   },
-  backButton: {
-    backgroundColor: 'white',
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 44,
+  scrollView: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
   sectionTitle: {
     letterSpacing: 2,

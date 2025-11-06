@@ -24,7 +24,6 @@ import SplashScreen from "../screens/onboardingStack/splashScreen";
 
 import GameIcon from "../assets/svg/gameIcon.svg";
 import HomeIcon from "../assets/svg/home.svg";
-import ProfileIcon from "../assets/svg/profile.svg";
 import TranslateIcon from "../assets/svg/translateIcon.svg";
 import Colors from "../theme/color";
 import {
@@ -132,20 +131,6 @@ const MainTabNavigator = () => (
         ),
       }}
     />
-    {/* <Tab.Screen
-      name="ProfileScreen"
-      component={ProfileScreen}
-      options={{
-        tabBarLabel: "Profile",
-        tabBarIcon: ({ focused, color, size }) => (
-          <ProfileIcon
-            width={size}
-            height={size}
-            color={focused ? color : Colors.base[200]}
-          />
-        ),
-      }}
-    /> */}
   </Tab.Navigator>
 );
 
@@ -170,6 +155,7 @@ const AppNavigator = () => {
           <RootStack.Screen name="PlatformFeedbackScreen" component={PlatformFeedbackScreen} />
           <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
           <RootStack.Screen name="SearchScreen" component={SearchScreen} />
+          <RootStack.Screen name="ProfileScreen" component={ProfileScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

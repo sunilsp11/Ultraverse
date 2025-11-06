@@ -6,12 +6,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ButtomTabfludLigtingIcon from '../../assets/svg/buttomTabfludLigting.svg';
 import GameIcon from '../../assets/svg/gameIcon.svg';
 import HomeIcon from '../../assets/svg/home.svg';
-import ProfileIcon from '../../assets/svg/profile.svg';
-import TranslateIcon from '../../assets/svg/translateIcon.svg';
-import TrophyIcon from '../../assets/svg/trophy.svg';
 import WalletIcon from '../../assets/svg/walletIcon.svg';
 import ChatIcon from '../../assets/svg/chat.svg';
 import Colors from '../../theme/color';
+import TechaidsIcon from '../../assets/svg/techaids.svg';
 
 const CustomTabBar = (props: BottomTabBarProps) => {
   const { state, descriptors, navigation } = props;
@@ -32,9 +30,7 @@ const CustomTabBar = (props: BottomTabBarProps) => {
       case 'WalletScreen':
         return <WalletIcon width={iconSize} height={iconSize} color={walletIconColor} />;
       case 'TechaidsScreen':
-        return <TranslateIcon width={iconSize} height={iconSize} color={iconColor} />;
-      case 'ProfileScreen':
-        return <ProfileIcon width={iconSize} height={iconSize} color={iconColor} />;
+        return <TechaidsIcon width={iconSize} height={iconSize} color={iconColor} />;
       default:
         return null;
     }
@@ -52,8 +48,6 @@ const CustomTabBar = (props: BottomTabBarProps) => {
         return 'Wallet';
       case 'TechaidsScreen':
         return 'Techaids';
-      case 'ProfileScreen':
-        return 'Profile';
       default:
         return '';
     }
