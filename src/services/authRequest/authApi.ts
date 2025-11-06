@@ -23,7 +23,25 @@ export const authApi = createApi({
         };
       },
     }),
+    forgotPassword: build.mutation<any, any>({
+      query: payload => {
+        return {
+          url: endPoints.forgotPassword,
+          method: 'POST',
+          body: payload,
+        };
+      },
+    }),
+    resetPassword: build.mutation<any, any>({
+      query: payload => {
+        return {
+          url: endPoints.resetPassword,
+          method: 'POST',
+          body: payload,
+        };
+      },
+    }),
   }),
 });
 
-export const {useRegisterMutation, useLoginMutation} = authApi;
+export const {useRegisterMutation, useLoginMutation, useForgotPasswordMutation, useResetPasswordMutation} = authApi;
