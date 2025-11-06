@@ -1,7 +1,8 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import React from 'react'
+import React, { useRef } from 'react'
 import {
+  Animated,
   Dimensions,
   Image,
   ScrollView,
@@ -15,6 +16,7 @@ import UvButton from '../../components/common/uvButton'
 import UvTypography from '../../components/common/uvTypography'
 import Colors from '../../theme/color'
 import { RootStackParamList } from '../../types/navigationTypes'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const { width: screenWidth } = Dimensions.get('window')
 const GAMEPLAY_CARD_WIDTH = screenWidth * 0.65
@@ -27,7 +29,16 @@ const GameDetailsScreen = () => {
   const navigation = useNavigation<GameDetailsScreenNavigationProp>()
   const route = useRoute<GameDetailsScreenRouteProp>()
 
+  const insets = useSafeAreaInsets();
   const { gameTitle, gameImage, genre, description, gameInfo, gameId } = route.params
+
+  const scrollY = useRef(new Animated.Value(0)).current
+
+  const headerBackgroundColor = scrollY.interpolate({
+    inputRange: [0, 150],
+    outputRange: ['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)'],
+    extrapolate: 'clamp',
+  })
 
   const gameplayVideos = [
     { id: '1', thumbnail: gameImage },
@@ -37,17 +48,30 @@ const GameDetailsScreen = () => {
 
   return (
     <View style={[styles.container,{backgroundColor: Colors.base[950]}]}>
+      <Animated.View 
+        style={[
+          styles.headerBar,
+          { backgroundColor: headerBackgroundColor, height: insets.top + 55}
+        ]}
+      />
+      
       <TouchableOpacity
-        style={styles.backButton}
+        style={[styles.backButton, { top: insets.top  }]}
         onPress={() => navigation.goBack()}
         activeOpacity={0.8}
       >
         <BackArrowIcon width={20} height={20} color={Colors.white} />
       </TouchableOpacity>
-      <ScrollView
+      
+      <Animated.ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
         bounces={false}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: false }
+        )}
+        scrollEventThrottle={16}
       >
         {/* Hero Image Section */}
         <View style={styles.heroSection}>
@@ -182,7 +206,7 @@ const GameDetailsScreen = () => {
         </View>
       </View>
 
-      </ScrollView>
+      </Animated.ScrollView>
       <View style={styles.bottomButtonContainer}>
         <UvButton
           title="Play Now"
@@ -207,6 +231,13 @@ const styles = StyleSheet.create({
     flex: 1,
   
   },
+  headerBar: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 5,
+  },
   scrollView: {
     flex: 1,
   },
@@ -227,7 +258,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    top: 60,
     left: 20,
     zIndex: 10,
     shadowColor: "#000",
@@ -338,4 +368,3 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
 })
-

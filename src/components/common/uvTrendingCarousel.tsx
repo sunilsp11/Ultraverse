@@ -50,16 +50,6 @@ const UvTrendingCarousel: React.FC<Props> = ({
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <UvTypography
-          variant="h7"
-          color={Colors.white}
-          letterSpacing={1}
-          numberOfLines={1}
-        >
-          {title}
-        </UvTypography>
-      </View>
 
       <View style={styles.cardsContainer}>
         {displayGames.map((game) => (
@@ -119,7 +109,7 @@ export default UvTrendingCarousel
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: 32,
+    flex:1
   },
   headerContainer: {
     paddingHorizontal: 20,

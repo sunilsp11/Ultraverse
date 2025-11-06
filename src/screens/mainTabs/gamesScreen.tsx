@@ -1,15 +1,26 @@
-import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import React, { useRef } from "react";
+import { Animated, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import UvScreenWrapper from "../../components/common/uvScreenWrapper";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import UvTrendingCarousel from "../../components/common/uvTrendingCarousel";
+import UvHeader from "../../components/common/uvHeader";
+import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import { RootStackParamList } from "../../types/navigationTypes";
 
 type GamesScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
 
 const GamesScreen = () => {
   const navigation = useNavigation<GamesScreenNavigationProp>()
+  const insets = useSafeAreaInsets();
+  
+  const scrollY = useRef(new Animated.Value(0)).current
+
+  const headerBackgroundColor = scrollY.interpolate({
+    inputRange: [0, 150],
+    outputRange: ['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)'],
+    extrapolate: 'clamp',
+  })
 
   const gamesData: Record<string, {
     title: string;
@@ -39,6 +50,55 @@ const GamesScreen = () => {
       description: 'Embark on a stunning journey through feudal Japan. Master samurai combat and protect your homeland from invaders.',
       gameInfo: 'Ghost of Tsushima is an action-adventure game featuring stealth and sword-based combat set on Tsushima Island during the first Mongol invasion of Japan.'
     },
+    '4': {
+      title: 'God of War Ragnarök',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - Adventure',
+      description: 'Embark on an epic and heartfelt journey as Kratos and Atreus struggle with holding on and letting go.',
+      gameInfo: 'God of War Ragnarök is an action-adventure game developed by Santa Monica Studio. The game is set in ancient Scandinavia and explores Norse mythology as Kratos and his son Atreus embark on a journey to prevent Ragnarök.'
+    },
+    '5': {
+      title: 'The Last of Us Part II',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - Adventure',
+      description: 'Five years after their dangerous journey, Ellie embarks on another brutal journey through a post-pandemic America.',
+      gameInfo: 'The Last of Us Part II is an action-adventure game featuring elements of the survival horror genre. Set five years after The Last of Us, the player controls Ellie, who sets out in revenge for a murder.'
+    },
+    '6': {
+      title: 'Horizon Forbidden West',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - RPG',
+      description: 'Join Aloy as she braves the Forbidden West, a deadly frontier that conceals mysterious new threats.',
+      gameInfo: 'Horizon Forbidden West is an action role-playing game where players control Aloy, a hunter in a world overrun by machines. The sequel takes place in a post-apocalyptic version of the western United States.'
+    },
+    '7': {
+      title: 'Elden Ring',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - RPG',
+      description: 'Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring.',
+      gameInfo: 'Elden Ring is an action role-playing game developed by FromSoftware. The game is set in the Lands Between, where players control a customizable protagonist on a quest to repair the Elden Ring and become the new Elden Lord.'
+    },
+    '8': {
+      title: 'Red Dead Redemption 2',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - Adventure',
+      description: 'Experience the epic story of outlaw Arthur Morgan and the Van der Linde gang.',
+      gameInfo: 'Red Dead Redemption 2 is an action-adventure game set in 1899. Players control Arthur Morgan, a member of the Van der Linde gang, as they navigate the decline of the Wild West era.'
+    },
+    '9': {
+      title: 'Cyberpunk 2077',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - RPG',
+      description: 'Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements in Night City.',
+      gameInfo: 'Cyberpunk 2077 is an open-world, action-adventure RPG set in the megalopolis of Night City. Players take on the role of V, a mercenary outlaw going after a one-of-a-kind implant.'
+    },
+    '10': {
+      title: 'Assassin\'s Creed Valhalla',
+      image: require('../../assets/images/Fortnite.png'),
+      genre: 'Action - RPG',
+      description: 'Become Eivor, a legendary Viking raider, and lead your clan from icy Norway to England.',
+      gameInfo: 'Assassin\'s Creed Valhalla is an action role-playing game set in 873 AD. Players control Eivor, a Viking raider who becomes embroiled in the conflict between the Assassin Brotherhood and the Templar Order.'
+    },
   }
 
   const handleGamePress = (gameId: string) => {
@@ -55,17 +115,48 @@ const GamesScreen = () => {
     }
   }
 
+  const gamesArray = Object.entries(gamesData).map(([id, game]) => ({
+    id,
+    title: game.title,
+    genre: game.genre,
+    image: game.image,
+  }))
+
   return (
-    <UvScreenWrapper>
-      <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-          <UvTrendingCarousel
-            onGamePress={handleGamePress}
-            onPlayPress={handleGamePress}
-            title="TOP GAMES"
-          />
-        </ScrollView>
+    <UvScreenWrapper conatinerStyle={styles.container}>
+      <Animated.View 
+        style={[
+          styles.headerBar,
+          { backgroundColor: headerBackgroundColor, height: insets.top + 60 }
+        ]}
+      />
+      
+      <View style={[styles.headerContainer, { paddingTop: insets.top }]}>
+        <UvHeader 
+          title="GAMES"
+          showBackButton={false}
+          titleVariant="h6"
+          containerStyle={styles.headerContent}
+        />
       </View>
+      
+      <Animated.ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: false }
+        )}
+        scrollEventThrottle={16}
+        style={styles.scrollView}
+      >
+        <UvTrendingCarousel
+          games={gamesArray}
+          onGamePress={handleGamePress}
+          onPlayPress={handleGamePress}
+          title="TOP GAMES"
+        />
+      </Animated.ScrollView>
     </UvScreenWrapper>
   );
 };
@@ -75,9 +166,30 @@ export default GamesScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 32,
+  },
+  headerBar: {
+    position: 'absolute',
+    top: -10,
+    left: 0,
+    right: 0,
+    zIndex: 5,
+  },
+  headerContainer: {
+    position: 'absolute',
+    top: -10,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    paddingHorizontal: 20,
+  },
+  headerContent: {
+    paddingVertical: 12,
+  },
+  scrollView: {
+    flex: 1,
   },
   scrollContent: {
+    paddingTop: 60,
     paddingBottom: 20,
   },
 });

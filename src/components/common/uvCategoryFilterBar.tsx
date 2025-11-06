@@ -65,8 +65,6 @@ export default UvCategoryFilterBar
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 32,
-    paddingBottom: 16,
   },
   scrollContent: {
     gap: 12,

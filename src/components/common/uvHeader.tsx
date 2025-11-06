@@ -1,9 +1,9 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import UvTypography from './uvTypography';
-import Colors from '../../theme/color';
+import React from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 import BackArrowIcon from '../../assets/svg/backArrow.svg';
+import Colors from '../../theme/color';
+import UvTypography from './uvTypography';
 
 interface UvHeaderProps {
   title: string;
@@ -38,22 +38,17 @@ const UvHeader: React.FC<UvHeaderProps> = ({
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <View style={styles.headerRow}>
-        {showBackButton && (
-          <TouchableOpacity
-            style={[styles.backButton, backButtonStyle]}
-            onPress={handleBackPress}
-            activeOpacity={0.8}
-          >
-            <BackArrowIcon width={20} height={20} color={backArrowColor} />
-          </TouchableOpacity>
-        )}
-        <View style={styles.titleContainer}>
-          <UvTypography variant={titleVariant} align="center" color={titleColor}>
-            {title}
-          </UvTypography>
-        </View>
-      </View>
+      {showBackButton ? (
+        <Pressable onPress={handleBackPress} style={[styles.backButton, backButtonStyle]}>
+          <BackArrowIcon width={20} height={20} color={backArrowColor} />
+        </Pressable>
+      ) : (
+        <View style={{width: 44}}/>
+      )}
+      <UvTypography variant={titleVariant} align="center" color={titleColor} style={{marginTop:8}}>
+        {title}
+      </UvTypography>
+      <View style={{width: 44}}/>
     </View>
   );
 };
@@ -62,20 +57,11 @@ export default UvHeader;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 24,
-  },
-  headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 44,
-    position: 'relative',
+    justifyContent: 'space-between',
   },
   backButton: {
-    position: 'absolute',
-    left: 0,
-    width: 44,
-    height: 44,
     borderRadius: 22,
     backgroundColor: Colors.white,
     justifyContent: 'center',
@@ -89,11 +75,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
-  },
-  titleContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
+    width: 44,
   },
 });
 

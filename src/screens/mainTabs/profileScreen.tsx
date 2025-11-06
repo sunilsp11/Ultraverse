@@ -7,25 +7,26 @@ import UvQuickStats from "../../components/common/uvQuickStats";
 import UvPreferences from "../../components/common/uvPreferences";
 import UvProfileHeader from "../../components/common/uvProfileHeader";
 import UvHeader from "../../components/common/uvHeader";
+import UvSpacer from "../../components/common/uvSpacer";
+
 const ProfileScreen = () => {
   const [locationEnabled, setLocationEnabled] = useState(true);
   const navigation = useNavigation();
   return (
     <UvScreenWrapper>
+      <UvHeader
+        title="PROFILE"
+        titleVariant="h4"
+        containerStyle={styles.headerContainer}
+      />
+
       <ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
-        bounces={false}
+        contentContainerStyle={{ paddingBottom: 30 }}
       >
         <View style={styles.container}>
-          <UvHeader 
-            title="PROFILE" 
-            titleVariant="h4"
-            containerStyle={styles.headerContainer}
-          />
-
-          <View style={{ height: 24 }} />
-
+          <UvSpacer gap={15} />
           <UvProfileHeader
             avatarSource={require("../../assets/images/Fortnite.png")}
             name="MIKE SMITH"
@@ -33,15 +34,13 @@ const ProfileScreen = () => {
             onEditPress={() => navigation.navigate('EditProfileScreen' as never)}
           />
 
-
-          <View style={{ height: 24 }} />
+          <UvSpacer gap={15} />
           <UvStreak />
 
-          <View style={{ height: 32 }} />
+          <UvSpacer gap={15} />
           <UvQuickStats />
 
-          <View style={{ height: 32 }} />
-
+          <UvSpacer gap={15} />
           <UvPreferences
             locationEnabled={locationEnabled}
             onToggle={setLocationEnabled}
