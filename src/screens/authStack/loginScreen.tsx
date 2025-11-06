@@ -3,8 +3,9 @@ import {
   useNavigation
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useState } from "react";
+import React from "react";
 import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Alert } from "react-native";
 import { TouchableWithoutFeedback, Keyboard } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
@@ -17,6 +18,8 @@ import {
 } from "../../types/navigationTypes";
 import GoogleIcon from "../../assets/svg/google.svg";
 import FacebookIcon from "../../assets/svg/facebook.svg";
+import { useLoginMutation } from "../../services/authRequest/authApi";
+import { useForm, Controller } from "react-hook-form";
 
 const LoginScreen = () => {
   type LoginNavigationProp = CompositeNavigationProp<
@@ -26,13 +29,38 @@ const LoginScreen = () => {
 
   const navigation = useNavigation<LoginNavigationProp>();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, { isLoading }] = useLoginMutation();
 
-  const handleLogin = () => {
-    navigation.navigate("MainTabs", {
-      screen: "HomeScreen",
-    });
+  type LoginFormData = {
+    email: string;
+    password: string;
+  };
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    mode: "onBlur",
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    if (isLoading) return;
+    try {
+     await login({ email: data.email, password: data.password }).unwrap();
+      navigation.navigate("MainTabs", {
+        screen: "HomeScreen",
+      });
+    } catch (error: any) {
+      Alert.alert(
+        "Login failed",
+        error?.data?.message || "Please check your credentials and try again"
+      );
+    }
   };
 
   return (
@@ -64,13 +92,38 @@ const LoginScreen = () => {
             >
               EMAIL
             </UvTypography>
-            <UvFormTextInput
-              placeholder="Please enter your email address"
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              variant="body"
+            <Controller
+              control={control}
+              name="email"
+              rules={{
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Enter a valid email address",
+                },
+                validate: v => (!!v && v.trim().length > 0) || "Email is required",
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  <UvFormTextInput
+                    placeholder="Please enter your email address"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    variant="body"
+                  />
+                  {errors.email && (
+                    <UvTypography
+                      variant="bodyXs"
+                      color={Colors.danger[400]}
+                    >
+                      {errors.email.message}
+                    </UvTypography>
+                  )}
+                </>
+              )}
             />
 
             <View style={{ height: 16 }} />
@@ -82,13 +135,34 @@ const LoginScreen = () => {
             >
               PASSWORD
             </UvTypography>
-            <UvFormTextInput
-              placeholder="Please enter your password"
-              value={password}
-              onChangeText={setPassword}
-              showPasswordToggle={true}
-              autoCapitalize="none"
-              variant="body"
+            <Controller
+              control={control}
+              name="password"
+              rules={{
+                required: "Password is required",
+                validate: v => (!!v && v.trim().length > 0) || "Password is required",
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  <UvFormTextInput
+                    placeholder="Please enter your password"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    showPasswordToggle={true}
+                    autoCapitalize="none"
+                    variant="body"
+                  />
+                  {errors.password && (
+                    <UvTypography
+                      variant="bodyXs"
+                      color={Colors.danger[400]}
+                    >
+                      {errors.password.message}
+                    </UvTypography>
+                  )}
+                </>
+              )}
             />
 
             <TouchableOpacity
@@ -102,7 +176,7 @@ const LoginScreen = () => {
 
             <View style={{ height: 16 }} />
 
-            <UvButton onPress={handleLogin} title="Login" />
+            <UvButton onPress={handleSubmit(onSubmit)} title="Login" />
 
             <View style={styles.orRow}>
               <View style={styles.divider} />
