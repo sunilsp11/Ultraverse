@@ -4,7 +4,8 @@ import {
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
@@ -14,6 +15,8 @@ import {
   AuthStackParamList,
   RootStackParamList,
 } from "../../types/navigationTypes";
+import GoogleIcon from "../../assets/svg/google.svg";
+import FacebookIcon from "../../assets/svg/facebook.svg";
 
 const LoginScreen = () => {
   type LoginNavigationProp = CompositeNavigationProp<
@@ -34,101 +37,107 @@ const LoginScreen = () => {
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
-      <View style={styles.header}>
-        <Image
-          source={require("../../assets/images/top_header_logo.png")}
-          style={styles.topLogo}
-          resizeMode="contain"
-        />
-        <UvTypography variant="h3" align="center">
-          LOGIN
-        </UvTypography>
-        <View style={{ height: 8 }} />
-        <UvTypography variant="p" color="#D7E7EE" align="center">
-          Enter your email below to login to your account.
-        </UvTypography>
-      </View>
-
-      <View style={styles.form}>
-        <View style={styles.formContent}>
-          <UvTypography
-            variant="h6"
-            color={Colors.white}
-            style={{ marginBottom: 8 }}
-          >
-            EMAIL
-          </UvTypography>
-          <UvFormTextInput
-            placeholder="Please enter your email address"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            variant="body"
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={{ paddingHorizontal: 24, flex: 1 }}>
+        <View style={styles.header}>
+          <Image
+            source={require("../../assets/images/top_header_logo.png")}
+            style={styles.topLogo}
+            resizeMode="contain"
           />
-
-          <View style={{ height: 16 }} />
-
-          <UvTypography
-            variant="h6"
-            color={Colors.white}
-            style={{ marginBottom: 8 }}
-          >
-            PASSWORD
+          <UvTypography variant="h3" align="center">
+            LOGIN
           </UvTypography>
-          <UvFormTextInput
-            placeholder="Please enter your password"
-            value={password}
-            onChangeText={setPassword}
-            showPasswordToggle={true}
-            autoCapitalize="none"
-            variant="body"
-          />
-
-          <TouchableOpacity
-            onPress={() => navigation.navigate("ForgotPasswordScreen")}
-            style={styles.forgotBtn}
-          >
-            <UvTypography variant="p" color="#D7E7EE">
-              Forgot Password?
-            </UvTypography>
-          </TouchableOpacity>
-
-          <View style={{ height: 16 }} />
-
-          <UvButton onPress={handleLogin} title="Login" />
-
-          <View style={styles.orRow}>
-            <View style={styles.divider} />
-            <UvTypography variant="bodyXs" color="#CFE2EA">
-              or continue with
-            </UvTypography>
-            <View style={styles.divider} />
-          </View>
-
-          <View style={styles.socialRow}>
-            <View style={styles.socialCircle}>
-              <UvTypography color="#0F5270">G</UvTypography>
-            </View>
-            <View style={styles.socialCircle}>
-              <UvTypography color="#0F5270">f</UvTypography>
-            </View>
-          </View>
+          <View style={{ height: 8 }} />
+          <UvTypography variant="p" color="#D7E7EE" align="center">
+            Enter your email below to login to your account.
+          </UvTypography>
         </View>
 
-        <View style={styles.footerRow}>
-          <UvTypography variant="body" color="#CFE2EA">
-            Don't have an account?
-          </UvTypography>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("RegisterScreen")}
-          >
-            <UvTypography variant="p" color={Colors.white}>
-              Register Here
+        <View style={styles.form}>
+          <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} keyboardShouldPersistTaps="handled">
+          <View style={styles.formContent}>
+            <UvTypography
+              variant="h6"
+              color={Colors.white}
+              style={{ marginBottom: 8 }}
+            >
+              EMAIL
             </UvTypography>
-          </TouchableOpacity>
+            <UvFormTextInput
+              placeholder="Please enter your email address"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              variant="body"
+            />
+
+            <View style={{ height: 16 }} />
+
+            <UvTypography
+              variant="h6"
+              color={Colors.white}
+              style={{ marginBottom: 8 }}
+            >
+              PASSWORD
+            </UvTypography>
+            <UvFormTextInput
+              placeholder="Please enter your password"
+              value={password}
+              onChangeText={setPassword}
+              showPasswordToggle={true}
+              autoCapitalize="none"
+              variant="body"
+            />
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ForgotPasswordScreen")}
+              style={styles.forgotBtn}
+            >
+              <UvTypography variant="p" color="#D7E7EE">
+                Forgot Password?
+              </UvTypography>
+            </TouchableOpacity>
+
+            <View style={{ height: 16 }} />
+
+            <UvButton onPress={handleLogin} title="Login" />
+
+            <View style={styles.orRow}>
+              <View style={styles.divider} />
+              <UvTypography variant="bodyXs" color="#CFE2EA">
+                or continue with
+              </UvTypography>
+              <View style={styles.divider} />
+            </View>
+
+            <View style={styles.socialRow}>
+              <View style={styles.socialCircle}>
+                <GoogleIcon width={24} height={24} color="#0F5270" />
+              </View>
+              <View style={styles.socialCircle}>
+                <FacebookIcon width={24} height={24} color="#0F5270" />
+              </View>
+            </View>
+          </View>
+          </ScrollView>
+
+          <View style={styles.footerRow}>
+            <UvTypography variant="body" color="#CFE2EA">
+              Don't have an account?
+            </UvTypography>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RegisterScreen")}
+            >
+              <UvTypography variant="p" color={Colors.white}>
+                Register Here
+              </UvTypography>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
+      </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );
 };
@@ -139,8 +148,6 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: 48,
   },
   topLogo: {
     alignSelf: "center",
@@ -185,9 +192,9 @@ const styles = StyleSheet.create({
     gap: 22,
   },
   socialCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    width: 50,
+    height: 50,
+    borderRadius: 50,
     backgroundColor: Colors.black,
     alignItems: "center",
     justifyContent: "center",

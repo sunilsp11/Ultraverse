@@ -12,6 +12,7 @@ import {
   View,
 } from "react-native";
 import Video from "react-native-video";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import {
   NavigationProp,
@@ -25,7 +26,10 @@ import {
 import UvSlide from "../../components/onboarding/uvSlide";
 import UvDots from "../../components/onboarding/uvDots";
 import UvNextButton from "../../components/onboarding/uvNextButton";
+import UvButton from "../../components/common/uvButton";
 import { STORAGE_KEYS } from "../../constants/storageKeys";
+import Colors from "../../theme/color";
+import UvTypography from "../../components/common/uvTypography";
 
 const { width, height } = Dimensions.get("window");
 
@@ -58,6 +62,7 @@ const slides: SlideData[] = [
 
 const OnboardingScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const insets = useSafeAreaInsets();
 
   const [index, setIndex] = useState(0);
   const listRef = useRef<FlatList<SlideData>>(null);
@@ -127,7 +132,7 @@ const OnboardingScreen = () => {
         style={styles.topLogo}
         resizeMode="contain"
       />
-
+      <View style={{ flexGrow:1 }}>
       <Animated.FlatList
         ref={listRef}
         data={slides}
@@ -148,6 +153,7 @@ const OnboardingScreen = () => {
         }}
         contentContainerStyle={styles.listContent}
       />
+      </View>
 
       <View style={styles.dotsOverlay}>
         <UvDots
@@ -164,7 +170,7 @@ const OnboardingScreen = () => {
           }}
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
-          <Text style={styles.skipText}>Skip</Text>
+          <UvTypography variant="p" color={Colors.base[50]}>Skip</UvTypography>
         </TouchableOpacity>
 
         {index < slides.length - 1 ? (
@@ -192,17 +198,13 @@ const OnboardingScreen = () => {
               },
             ]}
           >
-            <View style={styles.getStartedBtnWrapper}>
-              <TouchableOpacity
-                onPress={() => {
-                  void completeOnboarding();
-                }}
-                style={styles.getStartedBtn}
-                activeOpacity={0.9}
-              >
-                <Text style={styles.getStartedText}>Get Started</Text>
-              </TouchableOpacity>
-            </View>
+            <UvButton
+              title="Get Started"
+              onPress={() => {
+                void completeOnboarding();
+              }}
+              variant="primary"
+            />
           </Animated.View>
         )}
       </View>
@@ -227,68 +229,32 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   topLogo: {
-    position: "absolute",
-    top: 50,
     alignSelf: "center",
     width: 52,
     height: 40,
     zIndex: 2,
+    flex:2,
   },
   listContent: {
-    flexGrow: 1,
   },
   dotsOverlay: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 100,
     alignItems: "center",
-    justifyContent: "center",
+    flex:1,
   },
 
   footer: {
-    position: "absolute",
-    left: 20,
-    right: 20,
-    bottom: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    flex:1,
+    paddingHorizontal: 20,
   },
   skipText: {
     color: "#E5E5E5",
     fontSize: 13,
     fontFamily: "Ronix-Classic",
   },
-  getStartedBtn: {
-    marginLeft: "auto",
-    paddingHorizontal: 22,
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
-    justifyContent: "center",
-    borderTopRightRadius: 16,
-    borderBottomLeftRadius: 16,
-  },
   getStartedAnimWrapper: {
     marginLeft: "auto",
-  },
-  getStartedText: {
-    color: "#111111",
-    fontSize: 16,
-    fontFamily: "FormaDJR-Bold",
-  },
-  getStartedBtnWrapper: {
-    height: 48,
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
-    borderTopRightRadius: 16,
-    borderBottomLeftRadius: 16,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 4,
-    backgroundColor: "transparent",
   },
 });

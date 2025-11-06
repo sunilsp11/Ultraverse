@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import {
   Image,
+  ScrollView,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
@@ -15,6 +17,8 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AuthStackParamList } from "../../types/navigationTypes";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
+import GoogleIcon from "../../assets/svg/google.svg";
+import FacebookIcon from "../../assets/svg/facebook.svg";
 
 const RegisterScreen = () => {
   const navigation =
@@ -34,6 +38,8 @@ const RegisterScreen = () => {
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={{ paddingHorizontal: 24, flex: 1 }}>
       <View style={styles.header}>
         <Image
           source={require("../../assets/images/top_header_logo.png")}
@@ -50,6 +56,7 @@ const RegisterScreen = () => {
       </View>
 
       <View style={styles.form}>
+      <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} keyboardShouldPersistTaps="handled">
         <View style={styles.formContent}>
           <UvTypography
             variant="h6"
@@ -134,14 +141,14 @@ const RegisterScreen = () => {
 
           <View style={styles.socialRow}>
             <View style={styles.socialCircle}>
-              <UvTypography color="#0F5270">G</UvTypography>
+              <GoogleIcon width={24} height={24} color="#0F5270" />
             </View>
             <View style={styles.socialCircle}>
-              <UvTypography color="#0F5270">f</UvTypography>
+              <FacebookIcon width={24} height={24} color="#0F5270" />
             </View>
           </View>
         </View>
-
+        </ScrollView>
         <View style={styles.footerRow}>
           <UvTypography variant="body" color="#CFE2EA">
             Already have an account?
@@ -154,6 +161,8 @@ const RegisterScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      </View>
+      </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );
 };
@@ -163,8 +172,6 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: 48,
   },
   topLogo: {
     alignSelf: "center",

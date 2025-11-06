@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import UvTypography from '../common/uvTypography';
+import Colors from '../../theme/color';
 
 const { width } = Dimensions.get('window');
 
@@ -13,10 +14,10 @@ interface Props {
 const UvSlide: React.FC<Props> = ({ title, description, afterContent }) => {
   return (
     <View style={styles.container}>
-      <UvTypography variant="h3" align="center">
+      <UvTypography variant="h4" align="center" color={Colors.base[50]}>
         {title}
       </UvTypography>
-      <UvTypography variant="p" color="#CFCFCF" align="center" style={styles.desc}>
+      <UvTypography variant="body" color={Colors.base[50]} align="center" style={styles.desc}>
         {description}
       </UvTypography>
       {afterContent ? <View style={styles.after}>{afterContent}</View> : null}

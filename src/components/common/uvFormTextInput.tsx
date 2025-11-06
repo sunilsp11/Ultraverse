@@ -38,14 +38,17 @@ const UvFormTextInput: React.FC<Props> = ({
           {
             fontFamily: v.fontFamily,
             fontSize: v.fontSize,
-            lineHeight: v.lineHeight,
             letterSpacing: v.letterSpacing,
           },
           style,
         ]}
         placeholderTextColor={placeholderColor ?? '#8FA8B3'}
         secureTextEntry={showPasswordToggle ? !isPasswordVisible : secureTextEntry}
+        textAlignVertical="center"
+        // @ts-ignore - Android specific, harmless on iOS
+        includeFontPadding={false}
         {...rest}
+        inputMode="text"
       />
       {showPasswordToggle && (
         <TouchableOpacity 
@@ -80,6 +83,7 @@ const styles = StyleSheet.create({
   input: {
     color: Colors.white,
     padding: 0,
+    height: '100%',
     flex: 1,
   },
   passwordToggle: {

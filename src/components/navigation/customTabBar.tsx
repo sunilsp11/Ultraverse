@@ -6,26 +6,31 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ButtomTabfludLigtingIcon from '../../assets/svg/buttomTabfludLigting.svg';
 import GameIcon from '../../assets/svg/gameIcon.svg';
 import HomeIcon from '../../assets/svg/home.svg';
-import ProfileIcon from '../../assets/svg/profile.svg';
-import SearchIcon from '../../assets/svg/search.svg';
+import WalletIcon from '../../assets/svg/walletIcon.svg';
+import ChatIcon from '../../assets/svg/chat.svg';
+import Colors from '../../theme/color';
+import TechaidsIcon from '../../assets/svg/techaids.svg';
 
 const CustomTabBar = (props: BottomTabBarProps) => {
   const { state, descriptors, navigation } = props;
   const insets = useSafeAreaInsets();
 
   const getIcon = (routeName: string, focused: boolean) => {
-    const iconSize = 22;
+    const iconSize = 20;
     const iconColor = focused ? '#FFFFFF' : '#A8B0B8';
+    const walletIconColor = focused ? Colors.base[200] : '#A8B0B8';
 
     switch (routeName) {
       case 'HomeScreen':
         return <HomeIcon width={iconSize} height={iconSize} color={iconColor} />;
-      case 'SearchScreen':
-        return <SearchIcon width={iconSize} height={iconSize} color={iconColor} />;
       case 'GamesScreen':
         return <GameIcon width={iconSize} height={iconSize} color={iconColor} />;
-      case 'ProfileScreen':
-        return <ProfileIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'ChatScreen':
+        return <ChatIcon width={iconSize} height={iconSize} color={iconColor} />;
+      case 'WalletScreen':
+        return <WalletIcon width={iconSize} height={iconSize} color={walletIconColor} />;
+      case 'TechaidsScreen':
+        return <TechaidsIcon width={iconSize} height={iconSize} color={iconColor} />;
       default:
         return null;
     }
@@ -35,12 +40,14 @@ const CustomTabBar = (props: BottomTabBarProps) => {
     switch (routeName) {
       case 'HomeScreen':
         return 'Home';
-      case 'SearchScreen':
-        return 'Search';
       case 'GamesScreen':
         return 'Games';
-      case 'ProfileScreen':
-        return 'Profile';
+      case 'ChatScreen':
+        return 'Chat';
+      case 'WalletScreen':
+        return 'Wallet';
+      case 'TechaidsScreen':
+        return 'Techaids';
       default:
         return '';
     }

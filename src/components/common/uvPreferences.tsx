@@ -1,0 +1,114 @@
+import React from "react";
+import { StyleSheet, View, Switch, TouchableOpacity } from "react-native";
+import { CommonActions, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import UvTypography from "./uvTypography";
+import Colors from "../../theme/color";
+import AlertIcon from "../../assets/svg/alert.svg";
+import RatingStarIcon from "../../assets/svg/ratingStar.svg";
+import TranslateIcon from "../../assets/svg/translateIcon.svg";
+import LocationIcon from "../../assets/svg/location.svg";
+import SignoutIcon from "../../assets/svg/signoutIcon.svg";
+import { AuthStackParamList } from "../../types/navigationTypes";
+
+type UvPreferencesProps = {
+  locationEnabled: boolean;
+  onToggle: (value: boolean) => void;
+};
+
+type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
+
+const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
+  const navigation = useNavigation<NavigationProp>();
+
+  const handlePlatformFeedbackPress = () => {
+    navigation.navigate('PlatformFeedbackScreen' as never);
+  };
+  const handleLogOutPress = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'AuthStack' as never,
+            params: { screen: 'LoginScreen' } as never,
+          } as never,
+        ],
+      })
+    );
+  };
+
+  return (
+    <View style={styles.sectionContainer}>
+      <UvTypography variant="h7" color={Colors.white} style={styles.sectionTitle}>
+        PREFERENCES
+      </UvTypography>
+      <View style={styles.prefList}>
+      <TouchableOpacity style={styles.prefItem} onPress={handlePlatformFeedbackPress}>
+        <RatingStarIcon width={24} height={24} color={Colors.white}/>
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Platform Feedback</UvTypography>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.prefItem}>
+        <AlertIcon width={24} height={24} color={Colors.white}/>
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Notification Settings</UvTypography>
+      </TouchableOpacity>
+      <View style={styles.divider} />
+      <TouchableOpacity style={styles.prefItem}>
+        <TranslateIcon width={24} height={24} color={Colors.white}/>
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Language</UvTypography>
+      </TouchableOpacity>
+      <View style={styles.divider} />
+      <View style={styles.prefItem}>
+        <LocationIcon width={24} height={24} color={Colors.white}/>
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Location Permissions</UvTypography>
+        <View style={{ flex: 1 }} />
+        <Switch
+          value={locationEnabled}
+          onValueChange={onToggle}
+          thumbColor={locationEnabled ? Colors.black : Colors.base[300]}
+          trackColor={{ true: Colors.primary[500], false: Colors.base[700] }}
+          style={{
+            transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
+          }}
+        />
+      </View>
+      <View style={styles.divider} />
+      <TouchableOpacity style={styles.prefItem} onPress={handleLogOutPress}>
+        <SignoutIcon width={24} height={24} color={Colors.white}/>
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Log Out</UvTypography>
+      </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default UvPreferences;
+
+const styles = StyleSheet.create({
+  sectionContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+  },
+  sectionTitle: {
+    alignSelf: 'flex-start',
+    marginBottom: 8,
+    letterSpacing: 2,
+  },
+  prefList: {
+    width: '100%',
+  },
+  prefItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 14,
+  },
+  prefLabel: {
+    marginLeft: 12,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: Colors.base[800],
+  },
+});
+
+

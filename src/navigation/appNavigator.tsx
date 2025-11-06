@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import ForgotPasswordScreen from "../screens/authStack/forgotPasswordScreen";
@@ -7,16 +8,23 @@ import LoginScreen from "../screens/authStack/loginScreen";
 import RegisterScreen from "../screens/authStack/registerScreen";
 import ResetPasswordScreen from "../screens/authStack/resetPasswordScreen";
 import HomeScreen from "../screens/homeStack/homeScreen";
+import GameDetailsScreen from "../screens/homeStack/gameDetailsScreen";
+import GameFeedbackScreen from "../screens/homeStack/gameFeedbackScreen";
+import GameFeedbackThankYouScreen from "../screens/homeStack/gameFeedbackThankYouScreen";
+import PlatformFeedbackScreen from "../screens/homeStack/platformFeedbackScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
+import WalletScreen from "../screens/mainTabs/walletScreen";
+import ChatScreen from "../screens/mainTabs/chatScreen";
+import TechaidsScreen from "../screens/mainTabs/techaidsScreen";
+import EditProfileScreen from "../screens/mainTabs/editProfileScreen.tsx";
 import OnboardingScreen from "../screens/onboardingStack/onboardingScreen";
 import SplashScreen from "../screens/onboardingStack/splashScreen";
 
 import GameIcon from "../assets/svg/gameIcon.svg";
 import HomeIcon from "../assets/svg/home.svg";
-import ProfileIcon from "../assets/svg/profile.svg";
-import SearchIcon from "../assets/svg/search.svg";
+import TranslateIcon from "../assets/svg/translateIcon.svg";
 import Colors from "../theme/color";
 import {
   AuthStackParamList,
@@ -24,6 +32,7 @@ import {
   RootStackParamList,
 } from "../types/navigationTypes";
 import CustomTabBar from "../components/navigation/customTabBar";
+import WalletIcon from "../assets/svg/walletIcon.svg";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -65,13 +74,13 @@ const MainTabNavigator = () => (
         ),
       }}
     />
-    <Tab.Screen
-      name="SearchScreen"
-      component={SearchScreen}
+       <Tab.Screen
+      name="ChatScreen"
+      component={ChatScreen}
       options={{
-        tabBarLabel: "Search",
+        tabBarLabel: "Chat",
         tabBarIcon: ({ focused, color, size }) => (
-          <SearchIcon
+          <HomeIcon
             width={size}
             height={size}
             color={focused ? color : Colors.base[200]}
@@ -93,13 +102,28 @@ const MainTabNavigator = () => (
         ),
       }}
     />
+ 
     <Tab.Screen
-      name="ProfileScreen"
-      component={ProfileScreen}
+      name="WalletScreen"
+      component={WalletScreen}
       options={{
-        tabBarLabel: "Profile",
+        tabBarLabel: "Wallet",
         tabBarIcon: ({ focused, color, size }) => (
-          <ProfileIcon
+          <WalletIcon
+            width={size}
+            height={size}
+            color={focused ? color : Colors.base[200]}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="TechaidsScreen"
+      component={TechaidsScreen}
+      options={{
+        tabBarLabel: "Techaids",
+        tabBarIcon: ({ focused, color, size }) => (
+          <TranslateIcon
             width={size}
             height={size}
             color={focused ? color : Colors.base[200]}
@@ -112,21 +136,32 @@ const MainTabNavigator = () => (
 
 const AppNavigator = () => {
   return (
-    <NavigationContainer>
-      <RootStack.Navigator
-        initialRouteName="SplashScreen"
-        screenOptions={{ headerShown: false }}
-      >
-        <RootStack.Screen name="SplashScreen" component={SplashScreen} />
-        <RootStack.Screen
-          name="OnboardingScreen"
-          component={OnboardingScreen}
-        />
-        <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
-        <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <RootStack.Navigator
+          initialRouteName="SplashScreen"
+          screenOptions={{ headerShown: false }}
+        >
+          <RootStack.Screen name="SplashScreen" component={SplashScreen} />
+          <RootStack.Screen
+            name="OnboardingScreen"
+            component={OnboardingScreen}
+          />
+          <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
+          <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
+          <RootStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
+          <RootStack.Screen name="GameFeedbackScreen" component={GameFeedbackScreen} />
+          <RootStack.Screen name="GameFeedbackThankYouScreen" component={GameFeedbackThankYouScreen} />
+          <RootStack.Screen name="PlatformFeedbackScreen" component={PlatformFeedbackScreen} />
+          <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+          <RootStack.Screen name="SearchScreen" component={SearchScreen} />
+          <RootStack.Screen name="ProfileScreen" component={ProfileScreen} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
+
+
 
 export default AppNavigator;

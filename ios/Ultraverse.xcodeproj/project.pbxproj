@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-Ultraverse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Ultraverse.a */; };
+		0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13E8CC7F4513B918329750AB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */; };
-		0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */; };
 		C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -23,13 +24,13 @@
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Ultraverse/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Ultraverse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ultraverse.debug.xcconfig"; path = "Target Support Files/Pods-Ultraverse/Pods-Ultraverse.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Ultraverse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ultraverse.release.xcconfig"; path = "Target Support Files/Pods-Ultraverse/Pods-Ultraverse.release.xcconfig"; sourceTree = "<group>"; };
+		5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ronix-Classic.otf"; path = "../src/assets/fonts/Ronix-Classic.otf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Ultraverse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ultraverse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FormaDJR-Bold.ttf"; path = "../src/assets/fonts/FormaDJR-Bold.ttf"; sourceTree = "<group>"; };
+		751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FormaDJR-Regular.ttf"; path = "../src/assets/fonts/FormaDJR-Regular.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Ultraverse/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Ultraverse/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */ = {isa = PBXFileReference; name = "Ronix-Classic.otf"; path = "../src/assets/fonts/Ronix-Classic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */ = {isa = PBXFileReference; name = "FormaDJR-Bold.ttf"; path = "../src/assets/fonts/FormaDJR-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */ = {isa = PBXFileReference; name = "FormaDJR-Regular.ttf"; path = "../src/assets/fonts/FormaDJR-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,17 @@
 				5DCACB8F33CDC322A6C60F78 /* libPods-Ultraverse.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64AF0E51F5F9433B939CB95E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */,
+				6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */,
+				751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -103,17 +115,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		64AF0E51F5F9433B939CB95E /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */,
-				6C28741B0BFE47178AD5C016 /* FormaDJR-Bold.ttf */,
-				751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -180,6 +181,7 @@
 				AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */,
 				0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */,
 				C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */,
+				13E8CC7F4513B918329750AB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +397,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -460,7 +465,9 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
