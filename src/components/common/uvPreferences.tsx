@@ -1,8 +1,9 @@
-import React from "react";
-import { StyleSheet, View, Switch, TouchableOpacity } from "react-native";
+import React, { useMemo } from "react";
+import { StyleSheet, View, TouchableOpacity, FlatList } from "react-native";
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvTypography from "./uvTypography";
+import UvToggleSwitch from "./uvToggleSwitch";
 import Colors from "../../theme/color";
 import AlertIcon from "../../assets/svg/alert.svg";
 import RatingStarIcon from "../../assets/svg/ratingStar.svg";
@@ -18,12 +19,26 @@ type UvPreferencesProps = {
 
 type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 
+type PreferenceItemType = 'navigation' | 'toggle' | 'action';
+
+interface PreferenceItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ width: number; height: number; color: string }>;
+  type: PreferenceItemType;
+  onPress?: () => void;
+  showDivider?: boolean;
+  toggleValue?: boolean;
+  onToggle?: (value: boolean) => void;
+}
+
 const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
   const navigation = useNavigation<NavigationProp>();
 
   const handlePlatformFeedbackPress = () => {
     navigation.navigate('PlatformFeedbackScreen' as never);
   };
+
   const handleLogOutPress = () => {
     navigation.dispatch(
       CommonActions.reset({
@@ -38,46 +53,95 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
     );
   };
 
+  const preferenceItems: PreferenceItem[] = useMemo(() => [
+    {
+      id: 'platform-feedback',
+      label: 'Platform Feedback',
+      icon: RatingStarIcon,
+      type: 'navigation',
+      onPress: handlePlatformFeedbackPress,
+    },
+    {
+      id: 'notification-settings',
+      label: 'Notification Settings',
+      icon: AlertIcon,
+      type: 'navigation',
+      showDivider: true,
+    },
+    {
+      id: 'language',
+      label: 'Language',
+      icon: TranslateIcon,
+      type: 'navigation',
+      showDivider: true,
+    },
+    {
+      id: 'location-permissions',
+      label: 'Location Permissions',
+      icon: LocationIcon,
+      type: 'toggle',
+      toggleValue: locationEnabled,
+      onToggle: onToggle,
+      showDivider: true,
+    },
+    {
+      id: 'logout',
+      label: 'Log Out',
+      icon: SignoutIcon,
+      type: 'action',
+      onPress: handleLogOutPress,
+    },
+  ], [locationEnabled, onToggle]);
+
+  const renderPreferenceItem = ({ item }: { item: PreferenceItem }) => {
+    const IconComponent = item.icon;
+
+    if (item.type === 'toggle') {
+      return (
+        <View style={styles.prefItem}>
+          <IconComponent width={24} height={24} color={Colors.white} />
+          <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>
+            {item.label}
+          </UvTypography>
+          <View style={{ flex: 1 }} />
+          <UvToggleSwitch
+            value={item.toggleValue || false}
+            onValueChange={item.onToggle || (() => {})}
+            activeColor={Colors.primary[500]}
+            inactiveColor={Colors.base[700]}
+            thumbColor={Colors.black}
+          />
+        </View>
+      );
+    }
+
+    return (
+      <TouchableOpacity style={styles.prefItem} onPress={item.onPress}>
+        <IconComponent width={24} height={24} color={Colors.white} />
+        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>
+          {item.label}
+        </UvTypography>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderSeparator = ({ leadingItem }: { leadingItem: PreferenceItem }) => {
+    return <View style={styles.divider} />;
+  };
+
   return (
     <View style={styles.sectionContainer}>
       <UvTypography variant="h7" color={Colors.white} style={styles.sectionTitle}>
         PREFERENCES
       </UvTypography>
-      <View style={styles.prefList}>
-      <TouchableOpacity style={styles.prefItem} onPress={handlePlatformFeedbackPress}>
-        <RatingStarIcon width={24} height={24} color={Colors.white}/>
-        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Platform Feedback</UvTypography>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.prefItem}>
-        <AlertIcon width={24} height={24} color={Colors.white}/>
-        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Notification Settings</UvTypography>
-      </TouchableOpacity>
-      <View style={styles.divider} />
-      <TouchableOpacity style={styles.prefItem}>
-        <TranslateIcon width={24} height={24} color={Colors.white}/>
-        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Language</UvTypography>
-      </TouchableOpacity>
-      <View style={styles.divider} />
-      <View style={styles.prefItem}>
-        <LocationIcon width={24} height={24} color={Colors.white}/>
-        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Location Permissions</UvTypography>
-        <View style={{ flex: 1 }} />
-        <Switch
-          value={locationEnabled}
-          onValueChange={onToggle}
-          thumbColor={locationEnabled ? Colors.black : Colors.base[300]}
-          trackColor={{ true: Colors.primary[500], false: Colors.base[700] }}
-          style={{
-            transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
-          }}
-        />
-      </View>
-      <View style={styles.divider} />
-      <TouchableOpacity style={styles.prefItem} onPress={handleLogOutPress}>
-        <SignoutIcon width={24} height={24} color={Colors.white}/>
-        <UvTypography variant="body" color={Colors.white} style={styles.prefLabel}>Log Out</UvTypography>
-      </TouchableOpacity>
-      </View>
+      <FlatList
+        data={preferenceItems}
+        renderItem={renderPreferenceItem}
+        keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={renderSeparator}
+        scrollEnabled={false}
+        style={styles.prefList}
+      />
     </View>
   );
 };

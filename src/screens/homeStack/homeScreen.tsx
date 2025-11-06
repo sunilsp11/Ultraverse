@@ -10,6 +10,7 @@ import UvHomeHeader from '../../components/common/uvHomeHeader'
 import UvScreenWrapper from '../../components/common/uvScreenWrapper'
 import UvTrendingCarousel from '../../components/common/uvTrendingCarousel'
 import { RootStackParamList, MainTabParamList } from '../../types/navigationTypes'
+import UvSpacer from '../../components/common/uvSpacer'
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>,
@@ -70,12 +71,12 @@ const HomeScreen = () => {
           onSearchPress={() => navigation.navigate('SearchScreen')}
           onProfilePress={() => navigation.navigate('ProfileScreen')}
         />
-
+        <UvSpacer gap={15} />
         <UvCategoryFilterBar
           onCategoryPress={(category) => console.log('Selected:', category)}
           onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
         />
-
+        <UvSpacer gap={15} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContent}
@@ -84,7 +85,7 @@ const HomeScreen = () => {
             onGamePress={handleGamePress}
             onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
           />
-
+          <UvSpacer gap={15} />
           <UvTrendingCarousel
             onGamePress={handleGamePress}
             onPlayPress={handleGamePress}
@@ -101,7 +102,6 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 24,
   },
   scrollContent: {
     paddingBottom: 40,
