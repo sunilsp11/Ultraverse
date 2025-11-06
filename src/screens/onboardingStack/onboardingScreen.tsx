@@ -7,29 +7,27 @@ import {
   Image,
   StatusBar,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import Video from "react-native-video";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import {
   NavigationProp,
   NavigatorScreenParams,
   useNavigation,
 } from "@react-navigation/native";
+import UvButton from "../../components/common/uvButton";
+import UvTypography from "../../components/common/uvTypography";
+import UvDots from "../../components/onboarding/uvDots";
+import UvNextButton from "../../components/onboarding/uvNextButton";
+import UvSlide from "../../components/onboarding/uvSlide";
+import { STORAGE_KEYS } from "../../constants/storageKeys";
+import Colors from "../../theme/color";
 import {
   AuthStackParamList,
   RootStackParamList,
 } from "../../types/navigationTypes";
-import UvSlide from "../../components/onboarding/uvSlide";
-import UvDots from "../../components/onboarding/uvDots";
-import UvNextButton from "../../components/onboarding/uvNextButton";
-import UvButton from "../../components/common/uvButton";
-import { STORAGE_KEYS } from "../../constants/storageKeys";
-import Colors from "../../theme/color";
-import UvTypography from "../../components/common/uvTypography";
 
 const { width, height } = Dimensions.get("window");
 
@@ -62,12 +60,12 @@ const slides: SlideData[] = [
 
 const OnboardingScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const insets = useSafeAreaInsets();
 
   const [index, setIndex] = useState(0);
   const listRef = useRef<FlatList<SlideData>>(null);
   const scrollX = useRef(new Animated.Value(0)).current;
   const getStartedAnim = useRef(new Animated.Value(0)).current;
+  const autoScrollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const completeOnboarding = useCallback(async () => {
     try {
@@ -107,6 +105,26 @@ const OnboardingScreen = () => {
     }
   }, [index, getStartedAnim]);
 
+  useEffect(() => {
+    if (autoScrollInterval.current) {
+      clearInterval(autoScrollInterval.current);
+    }
+
+    // Only set up auto-scroll if not on the last slide
+    if (index < slides.length - 1) {
+      autoScrollInterval.current = setInterval(() => {
+        listRef.current?.scrollToIndex({ index: index + 1, animated: true });
+      }, 3000);
+    }
+
+    // Cleanup on unmount or when index changes
+    return () => {
+      if (autoScrollInterval.current) {
+        clearInterval(autoScrollInterval.current);
+      }
+    };
+  }, [index]);
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -126,6 +144,8 @@ const OnboardingScreen = () => {
         playWhenInactive={false}
         ignoreSilentSwitch="obey"
       />
+
+      <View style={styles.overlay} />
 
       <Image
         source={require("../../assets/images/top_header_logo.png")}
@@ -223,10 +243,17 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
+    bottom: 0,
+    width: height * (16 / 9), // Maintain video aspect ratio
+    height: "100%",
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
     right: 0,
     bottom: 0,
-    width: "100%",
-    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
   },
   topLogo: {
     alignSelf: "center",

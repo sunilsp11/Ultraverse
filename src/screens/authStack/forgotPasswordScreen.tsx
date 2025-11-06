@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Image,
-  StatusBar,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import UvTypography from "../../components/common/uvTypography";
-import Colors from "../../theme/color";
-import UvFormTextInput from "../../components/common/uvFormTextInput";
-import UvButton from "../../components/common/uvButton";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { AuthStackParamList } from "../../types/navigationTypes";
+import React, { useState } from "react";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View
+} from "react-native";
+import UvButton from "../../components/common/uvButton";
+import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
+import UvTypography from "../../components/common/uvTypography";
+import Colors from "../../theme/color";
+import { AuthStackParamList } from "../../types/navigationTypes";
 
 const ForgotPasswordScreen = () => {
   const navigation =
@@ -22,7 +20,9 @@ const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = () => {
-    navigation.navigate("ResetPasswordScreen");
+    if (email.trim() !== "") {
+      navigation.navigate("ResetPasswordScreen", { email });
+    }
   };
 
   return (

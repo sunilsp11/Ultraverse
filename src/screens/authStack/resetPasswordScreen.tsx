@@ -5,13 +5,25 @@ import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
 import Colors from "../../theme/color";
+import UvSpacer from "../../components/common/uvSpacer";
+import { useRoute } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { AuthStackParamList } from "../../types/navigationTypes";
+
+type ResetPasswordScreenRouteProp = NativeStackScreenProps<
+  AuthStackParamList,
+  "ResetPasswordScreen"
+>["route"];
 
 const ResetPasswordScreen = () => {
+  const route = useRoute<ResetPasswordScreenRouteProp>();
+  const { email } = route.params;
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [otp, setOtp] = useState("");
 
   const handleReset = () => {
-    // onReset && onReset({ newPassword, confirmPassword });
+    
   };
 
   return (
@@ -25,11 +37,34 @@ const ResetPasswordScreen = () => {
         <UvTypography variant="h3" align="center">
           RESET PASSWORD
         </UvTypography>
+        <View style={{ height: 8 }} />
+        <UvTypography variant="p" color="#D7E7EE" align="center">
+          Sent OTP to {email}
+        </UvTypography>
       </View>
 
       <View style={styles.form}>
+
+      <UvTypography
+          variant="h7"
+          color={Colors.white}
+          style={{ marginBottom: 8 }}
+        >
+          OTP
+        </UvTypography>
+        <UvFormTextInput
+          placeholder="Please enter your OTP"
+          value={otp}
+          onChangeText={setOtp}
+          autoCapitalize="none"
+          variant="body"
+          keyboardType="numeric"
+        />
+
+        <UvSpacer gap={8} />
+
         <UvTypography
-          variant="h6"
+          variant="h7"
           color={Colors.white}
           style={{ marginBottom: 8 }}
         >
@@ -44,10 +79,10 @@ const ResetPasswordScreen = () => {
           variant="body"
         />
 
-        <View style={{ height: 16 }} />
+        <UvSpacer gap={8} />
 
         <UvTypography
-          variant="h6"
+          variant="h7"
           color={Colors.white}
           style={{ marginBottom: 8 }}
         >
@@ -62,7 +97,7 @@ const ResetPasswordScreen = () => {
           variant="body"
         />
 
-        <View style={{ height: 32 }} />
+        <UvSpacer gap={20} />
 
         <UvButton onPress={handleReset} title="Reset Password" />
       </View>

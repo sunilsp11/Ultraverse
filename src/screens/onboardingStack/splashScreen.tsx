@@ -26,12 +26,37 @@ const SplashScreen = () => {
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bgFadeAnim = useRef(new Animated.Value(1)).current;
+  const overlayFadeAnim = useRef(new Animated.Value(1)).current;
   const soundRef = useRef<Sound | null>(null);
   const [shouldShowOnboarding, setShouldShowOnboarding] =
     useState<boolean | null>(null);
+  const hasNavigatedRef = useRef(false);
+
+  const navigateToNextScreen = useCallback(() => {
+    if (hasNavigatedRef.current) return;
+    hasNavigatedRef.current = true;
+
+    const shouldShow = shouldShowOnboarding ?? true;
+
+    if (shouldShow) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "OnboardingScreen" }],
+      });
+      return;
+    }
+
+    const authStackParams: NavigatorScreenParams<AuthStackParamList> = {
+      screen: "LoginScreen",
+    };
+
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "AuthStack", params: authStackParams }],
+    });
+  }, [navigation, shouldShowOnboarding]);
 
   useEffect(() => {
-    // Allow video + sound to play together
     Sound.setCategory(Platform.OS === "ios" ? "Playback" : "Ambient", true);
 
     const loadOnboardingState = async () => {
@@ -48,7 +73,6 @@ const SplashScreen = () => {
 
     void loadOnboardingState();
 
-    // Load and play your audio
     const sound = new Sound(
       "epic_glitch_logo_402329.mp3",
       Sound.MAIN_BUNDLE,
@@ -68,7 +92,14 @@ const SplashScreen = () => {
 
     soundRef.current = sound;
 
-    // Start logo animations
+    setTimeout(() => {
+      Animated.timing(overlayFadeAnim, {
+        toValue: 0,
+        duration: 800,
+        useNativeDriver: true,
+      }).start();
+    }, 200);
+
     Animated.parallel([
       Animated.timing(scaleAnim, {
         toValue: 1,
@@ -90,7 +121,12 @@ const SplashScreen = () => {
       }, 2000);
     });
 
+    const navigateTimer = setTimeout(() => {
+      navigateToNextScreen();
+    }, 3000);
+
     return () => {
+      clearTimeout(navigateTimer);
       if (soundRef.current) {
         soundRef.current.stop(() => {
           soundRef.current?.release();
@@ -98,28 +134,7 @@ const SplashScreen = () => {
         });
       }
     };
-  }, []);
-
-  const handleVideoEnd = useCallback(() => {
-    const shouldShow = shouldShowOnboarding ?? true;
-
-    if (shouldShow) {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "OnboardingScreen" }],
-      });
-      return;
-    }
-
-    const authStackParams: NavigatorScreenParams<AuthStackParamList> = {
-      screen: "LoginScreen",
-    };
-
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "AuthStack", params: authStackParams }],
-    });
-  }, [navigation, shouldShowOnboarding]);
+  }, [navigateToNextScreen]);
 
   const backgroundColor = bgFadeAnim.interpolate({
     inputRange: [0, 1],
@@ -157,13 +172,20 @@ const SplashScreen = () => {
         playInBackground={true}
         playWhenInactive={true}
         ignoreSilentSwitch="ignore"
-        disableFocus={true} // ✅ prevents Android from stopping video when sound starts
+        disableFocus={true}
         onError={(e) => console.log("🎥 Video error:", e)}
         onBuffer={(e) => console.log("⏳ Buffering video...", e.isBuffering)}
-        onEnd={handleVideoEnd}
       />
       <Animated.View style={[styles.overlay, { backgroundColor }]} />
       {renderLogo()}
+      <Animated.View
+        style={[
+          styles.fadeOverlay,
+          {
+            opacity: overlayFadeAnim,
+          },
+        ]}
+      />
     </View>
   );
 };
@@ -182,8 +204,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoImage: {
-    width: 160,
-    height: 160,
+    width: 180,
+    height: 180,
   },
   videoBackground: {
     position: "absolute",
@@ -202,6 +224,15 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: 1,
+  },
+  fadeOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "black",
+    zIndex: 999,
   },
   invisible: {
     width: 1,
