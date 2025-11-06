@@ -40,7 +40,7 @@ const UvHomeHeader: React.FC<UvHomeHeaderProps> = ({
             </UvTypography>
             <View style={styles.readyRow}>
               <UvTypography
-                variant="h5"
+                variant="h6"
                 color={Colors.white}
                 letterSpacing={2}
                 style={styles.readyText}
