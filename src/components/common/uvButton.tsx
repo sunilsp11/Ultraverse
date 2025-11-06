@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import React, { useRef } from 'react';
+import { StyleSheet, TouchableOpacity, View, Animated } from 'react-native';
 import Colors from '../../theme/color';
 import UvTypography from './uvTypography';
 
@@ -22,32 +22,81 @@ const UvButton: React.FC<Props> = ({
   icon,
   iconPosition = 'right',
 }) => {
+  const scaleAnim = useRef(new Animated.Value(1)).current;
+
+  const handlePressIn = () => {
+    Animated.spring(scaleAnim, {
+      toValue: 0.95,
+      useNativeDriver: true,
+      tension: 300,
+      friction: 10,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleAnim, {
+      toValue: 1,
+      useNativeDriver: true,
+      tension: 300,
+      friction: 10,
+    }).start();
+  };
+
+  const handlePress = () => {
+    Animated.sequence([
+      Animated.spring(scaleAnim, {
+        toValue: 0.92,
+        useNativeDriver: true,
+        tension: 400,
+        friction: 8,
+      }),
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        tension: 300,
+        friction: 10,
+      }),
+    ]).start();
+
+    onPress();
+  };
+
   return (
     <View style={[styles.ctaOuter, style]}>
-      <TouchableOpacity 
+      <Animated.View
         style={[
-          styles.ctaInner, 
-          variant === 'secondary' && styles.ctaInnerSecondary,
-          disabled && styles.ctaInnerDisabled
-        ]} 
-        onPress={onPress} 
-        activeOpacity={0.9}
-        disabled={disabled}
+          {
+            transform: [{ scale: scaleAnim }],
+          },
+        ]}
       >
-        {icon && iconPosition === 'left' && (
-          <View style={styles.iconContainerLeft}>{icon}</View>
-        )}
-        <UvTypography 
-          variant="body" 
-          color={variant === 'primary' ? Colors.black : Colors.white} 
-          align="center"
+        <TouchableOpacity 
+          style={[
+            styles.ctaInner, 
+            variant === 'secondary' && styles.ctaInnerSecondary,
+            disabled && styles.ctaInnerDisabled
+          ]} 
+          onPress={handlePress}
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+          activeOpacity={1}
+          disabled={disabled}
         >
-          {title}
-        </UvTypography>
-        {icon && iconPosition === 'right' && (
-          <View style={styles.iconContainerRight}>{icon}</View>
-        )}
-      </TouchableOpacity>
+          {icon && iconPosition === 'left' && (
+            <View style={styles.iconContainerLeft}>{icon}</View>
+          )}
+          <UvTypography 
+            variant="body" 
+            color={variant === 'primary' ? Colors.black : Colors.white} 
+            align="center"
+          >
+            {title}
+          </UvTypography>
+          {icon && iconPosition === 'right' && (
+            <View style={styles.iconContainerRight}>{icon}</View>
+          )}
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   );
 };
