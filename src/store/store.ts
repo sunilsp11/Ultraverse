@@ -7,6 +7,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { ThunkDispatch } from 'redux-thunk';
 import backendBaseApi from '../services/backendBaseApi';
 import { authApi } from '../services/authRequest/authApi';
+import profileReducer from './slices/profileSlice';
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   [backendBaseApi.reducerPath]: backendBaseApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
+  profile: profileReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -6,4 +6,5 @@ export const endPoints = {
   forgotPassword: "/auth/forgot-password/",
   resetPassword: "/auth/reset-password/",
   changePassword: "/auth/profile/change-password/",
+  profile: "/auth/profile/",
 };

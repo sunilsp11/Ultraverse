@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { View, StyleSheet, ScrollView, Alert } from "react-native";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
@@ -12,11 +12,64 @@ import UvHeader from "../../components/common/uvHeader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Controller, useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../services/authRequest/authApi";
+import { useAppSelector } from "../../store/store";
+import { useGetProfileQuery } from "../../services/profile/profileApi";
 
 const EditProfileScreen = () => {
-  const [name, setName] = useState("Mike Smith");
-  const [email, setEmail] = useState("mike_smith@mail.com");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [changePassword, { isLoading }] = useChangePasswordMutation();
+  const { data: profileData } = useGetProfileQuery(undefined, {
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: true,
+  });
+  const storedProfile = useAppSelector((state) => state.profile.profile);
+  const [isProfileInitialized, setIsProfileInitialized] = useState(false);
+
+  const activeProfile = profileData ?? storedProfile ?? null;
+
+  useEffect(() => {
+    if (!activeProfile) {
+      return;
+    }
+
+    const resolvedName = activeProfile.first_name || activeProfile.username || "";
+    const resolvedEmail = activeProfile.email || activeProfile.username || "";
+
+    const shouldSyncName =
+      !isProfileInitialized ||
+      name.length === 0 ||
+      name === resolvedName;
+
+    const shouldSyncEmail =
+      !isProfileInitialized ||
+      email.length === 0 ||
+      email === resolvedEmail;
+
+    if (shouldSyncName) {
+      setName(resolvedName);
+    }
+
+    if (shouldSyncEmail) {
+      setEmail(resolvedEmail);
+    }
+
+    setIsProfileInitialized(true);
+  }, [activeProfile, email, isProfileInitialized, name]);
+
+  const displayName = useMemo(() => {
+    const resolvedName = activeProfile?.first_name || activeProfile?.username || name;
+    return resolvedName.toUpperCase();
+  }, [activeProfile?.first_name, activeProfile?.username, name]);
+
+  const avatarSource = useMemo(() => {
+    if (activeProfile?.profile_picture_url) {
+      return { uri: activeProfile.profile_picture_url };
+    }
+
+    return require("../../assets/images/Fortnite.png");
+  }, [activeProfile?.profile_picture_url]);
 
   type ChangePasswordFormData = {
     oldPassword: string;
@@ -95,8 +148,8 @@ const EditProfileScreen = () => {
         <View style={{ height: 51 }} />
         <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} style={styles.scrollView}>
           <UvProfileHeader
-            avatarSource={require("../../assets/images/Fortnite.png")}
-            name={name.toUpperCase()}
+            avatarSource={avatarSource}
+            name={displayName}
             email={email}
             onEditPress={() => console.log('Edit avatar pressed')}
             editIcon={<CameraIcon width={32} height={32} color={Colors.black} />}

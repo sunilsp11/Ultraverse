@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { CompositeNavigationProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import UvCategoryFilterBar from '../../components/common/uvCategoryFilterBar'
 import UvGameCarousel from '../../components/common/uvGameCarousel'
@@ -11,6 +11,8 @@ import UvScreenWrapper from '../../components/common/uvScreenWrapper'
 import UvTrendingCarousel from '../../components/common/uvTrendingCarousel'
 import { RootStackParamList, MainTabParamList } from '../../types/navigationTypes'
 import UvSpacer from '../../components/common/uvSpacer'
+import { useAppSelector } from '../../store/store'
+import { useGetProfileQuery } from '../../services/profile/profileApi'
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>,
@@ -19,6 +21,19 @@ type HomeScreenNavigationProp = CompositeNavigationProp<
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>()
+  const { data: profileData } = useGetProfileQuery(undefined, {
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: true,
+  })
+
+  const storedProfile = useAppSelector(state => state.profile.profile)
+
+  const userName = useMemo(() => {
+    const activeProfile = profileData ?? storedProfile
+    const name = activeProfile?.first_name || activeProfile?.username || 'GAMER'
+    return name.toUpperCase()
+  }, [profileData?.first_name, profileData?.username, storedProfile?.first_name, storedProfile?.username])
 
   const gamesData: Record<string, {
     title: string;
@@ -67,7 +82,7 @@ const HomeScreen = () => {
       <UvScreenWrapper showAssistant={true}>
       <View style={styles.container}>
         <UvHomeHeader
-          userName="MIKE"
+          userName={userName}
           onSearchPress={() => navigation.navigate('SearchScreen')}
           onProfilePress={() => navigation.navigate('ProfileScreen')}
         />
