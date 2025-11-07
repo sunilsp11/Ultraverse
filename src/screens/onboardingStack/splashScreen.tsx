@@ -29,19 +29,27 @@ const SplashScreen = () => {
   const overlayFadeAnim = useRef(new Animated.Value(1)).current;
   const soundRef = useRef<Sound | null>(null);
   const [shouldShowOnboarding, setShouldShowOnboarding] =
-    useState<boolean | null>(null);
+    useState<boolean>(true);
+  const [hasSession, setHasSession] = useState<boolean>(false);
+  const [appStateLoaded, setAppStateLoaded] = useState<boolean>(false);
   const hasNavigatedRef = useRef(false);
 
   const navigateToNextScreen = useCallback(() => {
-    if (hasNavigatedRef.current) return;
+    if (hasNavigatedRef.current || !appStateLoaded) return;
     hasNavigatedRef.current = true;
 
-    const shouldShow = shouldShowOnboarding ?? true;
-
-    if (shouldShow) {
+    if (shouldShowOnboarding) {
       navigation.reset({
         index: 0,
         routes: [{ name: "OnboardingScreen" }],
+      });
+      return;
+    }
+
+    if (hasSession) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "MainTabs" }],
       });
       return;
     }
@@ -54,37 +62,43 @@ const SplashScreen = () => {
       index: 0,
       routes: [{ name: "AuthStack", params: authStackParams }],
     });
-  }, [navigation, shouldShowOnboarding]);
+  }, [appStateLoaded, hasSession, navigation, shouldShowOnboarding]);
 
   useEffect(() => {
     Sound.setCategory(Platform.OS === "ios" ? "Playback" : "Ambient", true);
 
-    const loadOnboardingState = async () => {
+    const loadAppState = async () => {
       try {
-        const storedValue = await AsyncStorage.getItem(
-          STORAGE_KEYS.HAS_SEEN_ONBOARDING
-        );
-        setShouldShowOnboarding(storedValue !== "true");
+        const [storedOnboardingValue, storedToken] = await Promise.all([
+          AsyncStorage.getItem(STORAGE_KEYS.HAS_SEEN_ONBOARDING),
+          AsyncStorage.getItem("UserToken"),
+        ]);
+
+        setShouldShowOnboarding(storedOnboardingValue !== "true");
+        setHasSession(!!storedToken);
       } catch (error) {
         console.log("Failed to read onboarding state", error);
         setShouldShowOnboarding(true);
+        setHasSession(false);
+      } finally {
+        setAppStateLoaded(true);
       }
     };
 
-    void loadOnboardingState();
+    void loadAppState();
 
     const sound = new Sound(
       "epic_glitch_logo_402329.mp3",
       Sound.MAIN_BUNDLE,
       (error) => {
         if (error) {
-          console.log("❌ Failed to load sound:", error);
+          console.log("Failed to load sound:", error);
           return;
         }
         sound.setVolume(0.8);
         sound.play((success) => {
-          if (success) console.log("✅ Audio finished");
-          else console.log("❌ Playback failed");
+          if (success) console.log("Audio finished");
+          else console.log("Playback failed");
           sound.release();
         });
       }

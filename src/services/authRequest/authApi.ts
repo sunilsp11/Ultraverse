@@ -41,7 +41,25 @@ export const authApi = createApi({
         };
       },
     }),
+    changePassword: build.mutation<any, {token: string; old_password: string; new_password: string}>({
+      query: ({token, ...payload}) => {
+        return {
+          url: endPoints.changePassword,
+          method: 'POST',
+          body: payload,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const {useRegisterMutation, useLoginMutation, useForgotPasswordMutation, useResetPasswordMutation} = authApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+  useChangePasswordMutation,
+} = authApi;

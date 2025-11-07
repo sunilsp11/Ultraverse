@@ -1,12 +1,20 @@
 import {
   CompositeNavigationProp,
-  useNavigation
+  useNavigation,
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import { Alert } from "react-native";
-import { TouchableWithoutFeedback, Keyboard } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
@@ -28,7 +36,6 @@ const LoginScreen = () => {
   >;
 
   const navigation = useNavigation<LoginNavigationProp>();
-
   const [login, { isLoading }] = useLoginMutation();
 
   type LoginFormData = {
@@ -50,11 +57,30 @@ const LoginScreen = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     if (isLoading) return;
+
     try {
-     await login({ email: data.email, password: data.password }).unwrap();
-      navigation.navigate("MainTabs", {
-        screen: "HomeScreen",
-      });
+      const response = await login({
+        email: data.email,
+        password: data.password,
+      }).unwrap();
+
+      const token = response?.tokens?.access;
+
+      if (token) {
+        await AsyncStorage.setItem("UserToken", token);
+
+        (navigation as any).reset({
+          index: 0,
+          routes: [
+            {
+              name: "MainTabs",
+              params: { screen: "HomeScreen" },
+            },
+          ],
+        });
+      } else {
+        console.warn("Login succeeded but no access token found.", response);
+      }
     } catch (error: any) {
       Alert.alert(
         "Login failed",
@@ -66,151 +92,157 @@ const LoginScreen = () => {
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={{ paddingHorizontal: 24, flex: 1 }}>
-        <View style={styles.header}>
-          <Image
-            source={require("../../assets/images/top_header_logo.png")}
-            style={styles.topLogo}
-            resizeMode="contain"
-          />
-          <UvTypography variant="h3" align="center">
-            LOGIN
-          </UvTypography>
-          <View style={{ height: 8 }} />
-          <UvTypography variant="p" color="#D7E7EE" align="center">
-            Enter your email below to login to your account.
-          </UvTypography>
-        </View>
-
-        <View style={styles.form}>
-          <ScrollView showsVerticalScrollIndicator={false} automaticallyAdjustKeyboardInsets={true} keyboardShouldPersistTaps="handled">
-          <View style={styles.formContent}>
-            <UvTypography
-              variant="h6"
-              color={Colors.white}
-              style={{ marginBottom: 8 }}
-            >
-              EMAIL
-            </UvTypography>
-            <Controller
-              control={control}
-              name="email"
-              rules={{
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Enter a valid email address",
-                },
-                validate: v => (!!v && v.trim().length > 0) || "Email is required",
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <>
-                  <UvFormTextInput
-                    placeholder="Please enter your email address"
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    variant="body"
-                  />
-                  {errors.email && (
-                    <UvTypography
-                      variant="bodyXs"
-                      color={Colors.danger[400]}
-                    >
-                      {errors.email.message}
-                    </UvTypography>
-                  )}
-                </>
-              )}
+        <View style={{ paddingHorizontal: 24, flex: 1 }}>
+          <View style={styles.header}>
+            <Image
+              source={require("../../assets/images/top_header_logo.png")}
+              style={styles.topLogo}
+              resizeMode="contain"
             />
-
-            <View style={{ height: 16 }} />
-
-            <UvTypography
-              variant="h6"
-              color={Colors.white}
-              style={{ marginBottom: 8 }}
-            >
-              PASSWORD
+            <UvTypography variant="h3" align="center">
+              LOGIN
             </UvTypography>
-            <Controller
-              control={control}
-              name="password"
-              rules={{
-                required: "Password is required",
-                validate: v => (!!v && v.trim().length > 0) || "Password is required",
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <>
-                  <UvFormTextInput
-                    placeholder="Please enter your password"
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    showPasswordToggle={true}
-                    autoCapitalize="none"
-                    variant="body"
-                  />
-                  {errors.password && (
-                    <UvTypography
-                      variant="bodyXs"
-                      color={Colors.danger[400]}
-                    >
-                      {errors.password.message}
-                    </UvTypography>
-                  )}
-                </>
-              )}
-            />
+            <View style={{ height: 8 }} />
+            <UvTypography variant="p" color="#D7E7EE" align="center">
+              Enter your email below to login to your account.
+            </UvTypography>
+          </View>
 
-            <TouchableOpacity
-              onPress={() => navigation.navigate("ForgotPasswordScreen")}
-              style={styles.forgotBtn}
+          <View style={styles.form}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              automaticallyAdjustKeyboardInsets={true}
+              keyboardShouldPersistTaps="handled"
             >
-              <UvTypography variant="p" color="#D7E7EE">
-                Forgot Password?
-              </UvTypography>
-            </TouchableOpacity>
+              <View style={styles.formContent}>
+                <UvTypography
+                  variant="h6"
+                  color={Colors.white}
+                  style={{ marginBottom: 8 }}
+                >
+                  EMAIL
+                </UvTypography>
+                <Controller
+                  control={control}
+                  name="email"
+                  rules={{
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Enter a valid email address",
+                    },
+                    validate: (v) =>
+                      (!!v && v.trim().length > 0) || "Email is required",
+                  }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <>
+                      <UvFormTextInput
+                        placeholder="Please enter your email address"
+                        value={value}
+                        onChangeText={onChange}
+                        onBlur={onBlur}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                        variant="body"
+                      />
+                      {errors.email && (
+                        <UvTypography
+                          variant="bodyXs"
+                          color={Colors.danger[400]}
+                        >
+                          {errors.email.message}
+                        </UvTypography>
+                      )}
+                    </>
+                  )}
+                />
 
-            <View style={{ height: 16 }} />
+                <View style={{ height: 16 }} />
 
-            <UvButton onPress={handleSubmit(onSubmit)} title="Login" />
+                <UvTypography
+                  variant="h6"
+                  color={Colors.white}
+                  style={{ marginBottom: 8 }}
+                >
+                  PASSWORD
+                </UvTypography>
+                <Controller
+                  control={control}
+                  name="password"
+                  rules={{
+                    required: "Password is required",
+                    validate: (v) =>
+                      (!!v && v.trim().length > 0) || "Password is required",
+                  }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <>
+                      <UvFormTextInput
+                        placeholder="Please enter your password"
+                        value={value}
+                        onChangeText={onChange}
+                        onBlur={onBlur}
+                        showPasswordToggle={true}
+                        autoCapitalize="none"
+                        variant="body"
+                      />
+                      {errors.password && (
+                        <UvTypography
+                          variant="bodyXs"
+                          color={Colors.danger[400]}
+                        >
+                          {errors.password.message}
+                        </UvTypography>
+                      )}
+                    </>
+                  )}
+                />
 
-            <View style={styles.orRow}>
-              <View style={styles.divider} />
-              <UvTypography variant="bodyXs" color="#CFE2EA">
-                or continue with
-              </UvTypography>
-              <View style={styles.divider} />
-            </View>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ForgotPasswordScreen")}
+                  style={styles.forgotBtn}
+                >
+                  <UvTypography variant="p" color="#D7E7EE">
+                    Forgot Password?
+                  </UvTypography>
+                </TouchableOpacity>
 
-            <View style={styles.socialRow}>
-              <View style={styles.socialCircle}>
-                <GoogleIcon width={24} height={24} color="#0F5270" />
+                <View style={{ height: 16 }} />
+
+                <UvButton onPress={handleSubmit(onSubmit)} title="Login" />
+
+                <View style={styles.orRow}>
+                  <View style={styles.divider} />
+                  <UvTypography variant="bodyXs" color="#CFE2EA">
+                    or continue with
+                  </UvTypography>
+                  <View style={styles.divider} />
+                </View>
+
+                <View style={styles.socialRow}>
+                  <View style={styles.socialCircle}>
+                    <GoogleIcon width={24} height={24} color="#0F5270" />
+                  </View>
+                  <View style={styles.socialCircle}>
+                    <FacebookIcon width={24} height={24} color="#0F5270" />
+                  </View>
+                </View>
               </View>
-              <View style={styles.socialCircle}>
-                <FacebookIcon width={24} height={24} color="#0F5270" />
-              </View>
+            </ScrollView>
+
+            <View style={styles.footerRow}>
+              <UvTypography variant="body" color="#CFE2EA">
+                Don't have an account?
+              </UvTypography>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("RegisterScreen")}
+              >
+                <UvTypography variant="p" color={Colors.white}>
+                  Register Here
+                </UvTypography>
+              </TouchableOpacity>
             </View>
           </View>
-          </ScrollView>
-
-          <View style={styles.footerRow}>
-            <UvTypography variant="body" color="#CFE2EA">
-              Don't have an account?
-            </UvTypography>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("RegisterScreen")}
-            >
-              <UvTypography variant="p" color={Colors.white}>
-                Register Here
-              </UvTypography>
-            </TouchableOpacity>
-          </View>
         </View>
-      </View>
       </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { StyleSheet, View, TouchableOpacity, FlatList } from "react-native";
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -15,6 +15,7 @@ import { AuthStackParamList } from "../../types/navigationTypes";
 type UvPreferencesProps = {
   locationEnabled: boolean;
   onToggle: (value: boolean) => void;
+  onLogout?: () => void;
 };
 
 type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
@@ -32,14 +33,19 @@ interface PreferenceItem {
   onToggle?: (value: boolean) => void;
 }
 
-const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
+const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesProps) => {
   const navigation = useNavigation<NavigationProp>();
 
   const handlePlatformFeedbackPress = () => {
     navigation.navigate('PlatformFeedbackScreen' as never);
   };
 
-  const handleLogOutPress = () => {
+  const handleLogOutPress = useCallback(() => {
+    if (onLogout) {
+      onLogout();
+      return;
+    }
+
     navigation.dispatch(
       CommonActions.reset({
         index: 0,
@@ -51,7 +57,7 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
         ],
       })
     );
-  };
+  }, [navigation, onLogout]);
 
   const preferenceItems: PreferenceItem[] = useMemo(() => [
     {
@@ -91,7 +97,7 @@ const UvPreferences = ({ locationEnabled, onToggle }: UvPreferencesProps) => {
       type: 'action',
       onPress: handleLogOutPress,
     },
-  ], [locationEnabled, onToggle]);
+  ], [handleLogOutPress, locationEnabled, onToggle]);
 
   const renderPreferenceItem = ({ item }: { item: PreferenceItem }) => {
     const IconComponent = item.icon;
