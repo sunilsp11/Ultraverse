@@ -1,5 +1,15 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { View, StyleSheet, ScrollView, Alert } from "react-native";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Alert,
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Platform,
+  Image,
+} from "react-native";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
@@ -13,7 +23,17 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Controller, useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../services/authRequest/authApi";
 import { useAppSelector } from "../../store/store";
-import { useGetProfileQuery } from "../../services/profile/profileApi";
+import {
+  useGetProfileQuery,
+  useUploadProfilePictureMutation,
+} from "../../services/profile/profileApi";
+import {
+  Asset,
+  ImageLibraryOptions,
+  CameraOptions,
+  launchImageLibrary,
+  launchCamera,
+} from "react-native-image-picker";
 
 const EditProfileScreen = () => {
   const [name, setName] = useState("");
@@ -26,6 +46,10 @@ const EditProfileScreen = () => {
   });
   const storedProfile = useAppSelector((state) => state.profile.profile);
   const [isProfileInitialized, setIsProfileInitialized] = useState(false);
+  const [isPickerVisible, setIsPickerVisible] = useState(false);
+  const [avatarOverride, setAvatarOverride] = useState<string | null>(null);
+  const [uploadProfilePicture, { isLoading: isUploadingPicture }]
+    = useUploadProfilePictureMutation();
 
   const activeProfile = profileData ?? storedProfile ?? null;
 
@@ -64,12 +88,133 @@ const EditProfileScreen = () => {
   }, [activeProfile?.first_name, activeProfile?.username, name]);
 
   const avatarSource = useMemo(() => {
+    if (avatarOverride) {
+      return { uri: avatarOverride };
+    }
+
     if (activeProfile?.profile_picture_url) {
       return { uri: activeProfile.profile_picture_url };
     }
 
     return require("../../assets/images/Fortnite.png");
-  }, [activeProfile?.profile_picture_url]);
+  }, [activeProfile?.profile_picture_url, avatarOverride]);
+
+  const closePicker = useCallback(() => {
+    setIsPickerVisible(false);
+  }, []);
+
+  const handleUploadAsset = useCallback(
+    async (asset: Asset | undefined) => {
+      if (!asset || !asset.uri) {
+        Alert.alert("Upload failed", "No image selected. Please try again.");
+        return;
+      }
+
+      try {
+        const pendingUri = asset.uri;
+        setAvatarOverride(pendingUri);
+        const formData = new FormData();
+        const nameFromAsset = asset.fileName || `profile-${Date.now()}.jpg`;
+        const mimeType = asset.type || "image/jpeg";
+
+        formData.append("profile_picture", {
+          uri: asset.uri,
+          name: nameFromAsset,
+          type: mimeType,
+        } as any);
+
+        const result = await uploadProfilePicture(formData).unwrap();
+        const resolvedUri = result?.profile_picture_url || pendingUri;
+        const cacheBustedUri = resolvedUri
+          ? `${resolvedUri}${resolvedUri.includes("?") ? "&" : "?"}cb=${Date.now()}`
+          : pendingUri;
+
+        if (cacheBustedUri !== pendingUri) {
+          try {
+            await Image.prefetch(cacheBustedUri);
+          } catch (prefetchError) {
+            console.warn("Failed to prefetch profile image", prefetchError);
+          }
+        }
+
+        setAvatarOverride(cacheBustedUri);
+        Alert.alert("Profile updated", "Your profile picture has been updated.");
+      } catch (error: any) {
+        setAvatarOverride(null);
+        const message =
+          error?.data?.message ||
+          error?.data?.detail ||
+          "Unable to update profile picture. Please try again.";
+        Alert.alert("Upload failed", message);
+      }
+    },
+    [uploadProfilePicture]
+  );
+
+  const handleOpenCamera = useCallback(() => {
+    const options: CameraOptions = {
+      mediaType: "photo",
+      includeBase64: false,
+      quality: 0.8,
+      saveToPhotos: false,
+      presentationStyle: "fullScreen",
+      cameraType: "front",
+      includeExtra: true,
+      maxWidth: 1024,
+      maxHeight: 1024,
+    };
+
+    if (Platform.OS === "ios") {
+      (options as any).allowsEditing = true;
+    }
+
+    launchCamera(options, (response) => {
+      if (response.didCancel) {
+        return;
+      }
+
+      if (response.errorCode) {
+        Alert.alert("Camera error", response.errorMessage || "Unable to open camera.");
+        return;
+      }
+
+      closePicker();
+      const asset = response.assets?.[0];
+      handleUploadAsset(asset);
+    });
+  }, [closePicker, handleUploadAsset]);
+
+  const handleOpenLibrary = useCallback(() => {
+    const options: ImageLibraryOptions = {
+      mediaType: "photo",
+      selectionLimit: 1,
+      includeBase64: false,
+      quality: 0.8,
+      includeExtra: true,
+      presentationStyle: "fullScreen",
+      maxWidth: 2048,
+      maxHeight: 2048,
+    };
+
+    if (Platform.OS === "ios") {
+      (options as any).allowsEditing = true;
+    }
+
+    launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+        return;
+      }
+
+      if (response.errorCode) {
+        Alert.alert("Gallery error", response.errorMessage || "Unable to open gallery.");
+        return;
+      }
+
+      closePicker();
+      const asset = response.assets?.[0];
+      handleUploadAsset(asset);
+    });
+  }, [closePicker, handleUploadAsset]);
 
   type ChangePasswordFormData = {
     oldPassword: string;
@@ -151,7 +296,7 @@ const EditProfileScreen = () => {
             avatarSource={avatarSource}
             name={displayName}
             email={email}
-            onEditPress={() => console.log('Edit avatar pressed')}
+            onEditPress={() => setIsPickerVisible(true)}
             editIcon={<CameraIcon width={32} height={32} color={Colors.black} />}
           />
 
@@ -272,6 +417,53 @@ const EditProfileScreen = () => {
           />
         </View>
       </View>
+
+      <Modal
+        visible={isPickerVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={closePicker}
+      >
+        <TouchableWithoutFeedback onPress={closePicker}>
+          <View style={styles.modalBackdrop}>
+            <TouchableWithoutFeedback onPress={() => {}}>
+              <View style={styles.modalSheet}>
+                <View style={styles.modalHandle} />
+                <UvTypography variant="h6" align="center" style={styles.modalTitle}>
+                  Update Profile Photo
+                </UvTypography>
+                <TouchableOpacity
+                  style={styles.modalOption}
+                  onPress={handleOpenLibrary}
+                  disabled={isUploadingPicture}
+                >
+                  <UvTypography variant="body" align="center" color={Colors.white}>
+                    Upload Photo
+                  </UvTypography>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.modalOption}
+                  onPress={handleOpenCamera}
+                  disabled={isUploadingPicture}
+                >
+                  <UvTypography variant="body" align="center" color={Colors.white}>
+                    Open Camera
+                  </UvTypography>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.modalOption, styles.modalCancel]}
+                  onPress={closePicker}
+                  disabled={isUploadingPicture}
+                >
+                  <UvTypography variant="body" align="center" color={Colors.base[100]}>
+                    Cancel
+                  </UvTypography>
+                </TouchableOpacity>
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
     </UvScreenWrapper>
   );
 };
@@ -298,7 +490,41 @@ const styles = StyleSheet.create({
     bottom: 24,
     right: 24,
     zIndex: 10,
-  }
+  },
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    justifyContent: 'flex-end',
+  },
+  modalSheet: {
+    backgroundColor: Colors.base[900],
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 32,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    gap: 12,
+  },
+  modalHandle: {
+    width: 40,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: Colors.base[700],
+    alignSelf: 'center',
+    marginBottom: 8,
+  },
+  modalTitle: {
+    marginBottom: 8,
+    letterSpacing: 1,
+  },
+  modalOption: {
+    backgroundColor: Colors.base[700],
+    paddingVertical: 14,
+    borderRadius: 14,
+  },
+  modalCancel: {
+    backgroundColor: Colors.base[800],
+  },
 });
 
 

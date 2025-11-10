@@ -1,6 +1,6 @@
 import backendBaseApi from "../backendBaseApi";
 import { endPoints } from "../endPoints";
-import { setProfile } from "../../store/slices/profileSlice";
+import { setProfile, updateProfile } from "../../store/slices/profileSlice";
 
 export type UserProfile = {
   id: number;
@@ -16,6 +16,11 @@ export type UserProfile = {
 export type CreateProfilePayload = {
   first_name?: string | null;
   profile_picture?: string | null;
+};
+
+export type UploadProfilePictureResponse = {
+  profile_picture_url: string | null;
+  profile_picture: string | null;
 };
 
 const profileApi = backendBaseApi.injectEndpoints({
@@ -34,11 +39,57 @@ const profileApi = backendBaseApi.injectEndpoints({
         }
       },
     }),
+    uploadProfilePicture: build.mutation<UploadProfilePictureResponse, FormData>({
+      query: (body) => ({
+        url: endPoints.uploadProfilePicture,
+        method: "POST",
+        body,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+
+          const withCacheBuster = (uri: string | null | undefined) => {
+            if (!uri) {
+              return uri ?? null;
+            }
+
+            const separator = uri.includes("?") ? "&" : "?";
+            return `${uri}${separator}cb=${Date.now()}`;
+          };
+
+          const nextProfilePictureUrl = withCacheBuster(data.profile_picture_url);
+
+          dispatch(
+            profileApi.util.updateQueryData("getProfile", undefined, (draft) => {
+              if (!draft) {
+                return;
+              }
+
+              draft.profile_picture_url =
+                nextProfilePictureUrl ?? draft.profile_picture_url;
+              draft.profile_picture = data.profile_picture ?? draft.profile_picture;
+            })
+          );
+          dispatch(
+            updateProfile({
+              profile_picture_url: nextProfilePictureUrl ?? undefined,
+              profile_picture: data.profile_picture ?? undefined,
+            })
+          );
+        } catch (error) {
+          console.error("Error uploading profile picture:", error);
+        }
+      },
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProfileQuery } = profileApi;
+export const { useGetProfileQuery, useUploadProfilePictureMutation } = profileApi;
 
 export default profileApi;
 
