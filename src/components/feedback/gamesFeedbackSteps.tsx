@@ -5,7 +5,7 @@ import Colors from '../../theme/color';
 import Svg, { Path } from 'react-native-svg';
 import UvOptionSelector from '../common/uvOptionSelector';
 
-// Star Rating Component for Step 1
+
 interface StarRatingProps {
   rating: number;
   onRatingChange: (rating: number) => void;
@@ -14,7 +14,7 @@ interface StarRatingProps {
 const StarRating: React.FC<StarRatingProps> = ({ rating, onRatingChange }) => {
   return (
     <View style={styles.starContainer}>
-      {[1, 2, 3, 4, 5].map((starIndex) => {
+      {[1, 2, 3, 4, 5].map(starIndex => {
         const isFilled = starIndex <= rating;
         return (
           <TouchableOpacity
@@ -38,147 +38,82 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, onRatingChange }) => {
   );
 };
 
-// Step 1: Star Rating
-interface Step1Props {
+interface GameRatingQuestionProps {
+  question: string;
   rating: number;
   onRatingChange: (rating: number) => void;
 }
 
-export const Step1: React.FC<Step1Props> = ({ rating, onRatingChange }) => {
+export const GameRatingQuestion: React.FC<GameRatingQuestionProps> = ({
+  question,
+  rating,
+  onRatingChange,
+}) => {
   return (
     <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        How would you rate your overall gameplay experience?
+      <UvTypography variant="p" color={Colors.base[50]} align="center">
+        {question}
       </UvTypography>
       <StarRating rating={rating} onRatingChange={onRatingChange} />
     </View>
   );
 };
 
-// Step 2: Text Input - What did you enjoy most?
-interface Step2Props {
+interface GameTextQuestionProps {
+  question: string;
   response: string;
   onResponseChange: (response: string) => void;
+  placeholder?: string;
 }
 
-export const Step2: React.FC<Step2Props> = ({ response, onResponseChange }) => {
+export const GameTextQuestion: React.FC<GameTextQuestionProps> = ({
+  question,
+  response,
+  onResponseChange,
+  placeholder = 'Please enter your comments here',
+}) => {
   return (
     <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        What did you enjoy most about this game?
+      <UvTypography variant="p" color={Colors.base[50]} align="center">
+        {question}
       </UvTypography>
       <TextInput
         style={styles.textInput}
-        placeholder="Please enter your comments here"
+        placeholder={placeholder}
         placeholderTextColor={Colors.base[400]}
         value={response}
         onChangeText={onResponseChange}
         multiline
         textAlignVertical="top"
         numberOfLines={4}
-        autoFocus={true}
       />
     </View>
   );
 };
 
-// Step 3: Text Input - What frustrated you?
-interface Step3Props {
-  response: string;
-  onResponseChange: (response: string) => void;
-}
-
-export const Step3: React.FC<Step3Props> = ({ response, onResponseChange }) => {
-  return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        What frustrated you or felt missing during gameplay?
-      </UvTypography>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Please enter your comments here"
-        placeholderTextColor={Colors.base[400]}
-        value={response}
-        onChangeText={onResponseChange}
-        multiline
-        textAlignVertical="top"
-        numberOfLines={4}
-        autoFocus={true}
-      />
-    </View>
-  );
-};
-
-// Step 4: Option Selection
-interface Step4Props {
+interface GameMultipleChoiceQuestionProps {
+  question: string;
+  options: string[] | null | undefined;
   selectedOption: string | null;
   onOptionSelect: (option: string) => void;
 }
 
-export const Step4: React.FC<Step4Props> = ({
-  selectedOption,
-  onOptionSelect,
-}) => {
-  const options = [
-    { label: 'Skins', value: 'Skins' },
-    { label: 'Boosters', value: 'Boosters' },
-    { label: 'Weapons', value: 'Weapons' },
-    { label: 'Customizations', value: 'Customizations' },
-    { label: 'Exclusive missions', value: 'Exclusive missions' },
-  ];
+export const GameMultipleChoiceQuestion: React.FC<GameMultipleChoiceQuestionProps> =
+  ({ question, options, selectedOption, onOptionSelect }) => {
+    const formattedOptions = (options ?? []).map(option => ({
+      label: option,
+      value: option,
+    }));
 
-  return (
-    <UvOptionSelector
-      question="What type of items or upgrades would you want to purchase in this game?"
-      options={options}
-      selectedValue={selectedOption}
-      onSelect={onOptionSelect}
-    />
-  );
-};
-
-// Step 5: Text Input - What new feature?
-interface Step5Props {
-  response: string;
-  onResponseChange: (response: string) => void;
-}
-
-export const Step5: React.FC<Step5Props> = ({ response, onResponseChange }) => {
-  return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        What new feature or improvement would you most like to see next?
-      </UvTypography>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Please enter your comments here"
-        placeholderTextColor={Colors.base[400]}
-        value={response}
-        onChangeText={onResponseChange}
-        multiline
-        textAlignVertical="top"
-        numberOfLines={4}
-        autoFocus={true}
+    return (
+      <UvOptionSelector
+        question={question}
+        options={formattedOptions}
+        selectedValue={selectedOption}
+        onSelect={onOptionSelect}
       />
-    </View>
-  );
-};
+    );
+  };
 
 // Styles
 const styles = StyleSheet.create({
@@ -212,24 +147,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.base[700],
   },
-  optionsContainer: {
-    width: '100%',
-    gap: 16,
-    alignItems: 'center',
-  },
-  optionButton: {
-    width: '100%',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  optionButtonSelected: {
-    borderColor: Colors.primary[500],
-    borderWidth: 2,
-  },
 });
-

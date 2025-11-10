@@ -1,2 +1,6 @@
-export { Step1, Step2, Step3, Step4, Step5 } from './gamesFeedbackSteps';
+export {
+  GameRatingQuestion,
+  GameTextQuestion,
+  GameMultipleChoiceQuestion,
+} from './gamesFeedbackSteps';
 

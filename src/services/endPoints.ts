@@ -12,4 +12,6 @@ export const endPoints = {
   games: "/games/",
   platformFeedbackQuestions: "/platform-feedback/questions/",
   platformFeedbackSubmit: "/platform-feedback/submit/",
+  gameFeedbackQuestions: "/feedback/questions/",
+  gameFeedbackSubmit: "/feedback/submit/",
 };
