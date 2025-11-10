@@ -1,6 +1,6 @@
 import backendBaseApi from '../backendBaseApi'
 import { endPoints } from '../endPoints'
-import { setGames } from '../../store/slices/gamesSlice'
+import { setGames, upsertGame } from '../../store/slices/gamesSlice'
 
 export type GameCategory = {
   id: number
@@ -19,15 +19,28 @@ export type GamePublisher = {
   updated_at?: string
 }
 
+export type GameMedia = {
+  id: number
+  game: number
+  type: 'image' | 'video' | string
+  file?: string | null
+  url?: string | null
+  title?: string | null
+  is_primary?: boolean
+  created_at?: string
+}
+
 export type Game = {
   id: number
   name: string
   categories?: GameCategory[]
   short_description?: string | null
   description?: string | null
+  info?: string | null
   release_date?: string | null
   publisher?: GamePublisher | null
   primary_image?: string | null
+  media?: GameMedia[]
   created_at?: string
   updated_at?: string
 }
@@ -70,7 +83,23 @@ const gamesApi = backendBaseApi.injectEndpoints({
           const { data } = await queryFulfilled
           dispatch(setGames(data))
         } catch (error) {
-       console.log('error', error)
+          console.log('error', error)
+        }
+      },
+    }),
+    getGameById: build.query<Game, string | number>({
+      query: gameId => ({
+        url: `${endPoints.games}${gameId}/`,
+        method: 'GET',
+      }),
+      transformResponse: (response: Game) => response,
+      async onQueryStarted(gameId, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled
+          dispatch(upsertGame(data))
+          console.log('data', data)
+        } catch (error) {
+          console.log('error fetching game', gameId, error)
         }
       },
     }),
@@ -78,7 +107,7 @@ const gamesApi = backendBaseApi.injectEndpoints({
   overrideExisting: true,
 })
 
-export const { useGetTopGamesQuery } = gamesApi
+export const { useGetTopGamesQuery, useGetGameByIdQuery } = gamesApi
 
 export default gamesApi
 

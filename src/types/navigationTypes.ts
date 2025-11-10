@@ -23,11 +23,11 @@ export type MainTabParamList = {
 export type RootStackParamList = {
   GameDetailsScreen: {
     gameId: string;
-    gameTitle: string;
-    gameImage: any;
+    gameTitle?: string;
+    gameImage?: any;
     genre?: string;
     description?: string;
-    gameInfo?:string
+    gameInfo?: string;
   };
   GameFeedbackScreen: {
     gameId: string;

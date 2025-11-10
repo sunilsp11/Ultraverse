@@ -80,15 +80,40 @@ const HomeScreen = () => {
 
   const shouldRenderCategories = categoryNames.length > 0
 
-  const mapToGameDetails = (games: { id?: number | string; name?: string; categories?: { name?: string | null }[]; short_description?: string | null; description?: string | null; primary_image?: string | null }[] = []) =>
+  const mapToGameDetails = (games: {
+    id?: number | string
+    name?: string
+    categories?: { name?: string | null }[]
+    short_description?: string | null
+    description?: string | null
+    info?: string | null
+    primary_image?: string | null
+    media?: { type?: string; url?: string | null; is_primary?: boolean }[]
+  }[] = []) =>
     games
       .map(game => ({
         id: game.id != null ? String(game.id) : '',
         title: game.name ?? 'Untitled Game',
-        image: game.primary_image ? { uri: game.primary_image } : FALLBACK_GAME_IMAGE,
-        genre: game.categories?.[0]?.name ?? 'Unknown Genre',
+        image: (() => {
+          const primaryMediaImage = game.media?.find(
+            media => media?.type === 'image' && media?.url && media?.is_primary,
+          )
+          const fallbackMediaImage = game.media?.find(
+            media => media?.type === 'image' && media?.url,
+          )
+          const imageUrl = primaryMediaImage?.url ?? fallbackMediaImage?.url ?? game.primary_image
+          return imageUrl ? { uri: imageUrl } : FALLBACK_GAME_IMAGE
+        })(),
+        genre: game.categories
+          ?.map(category => category?.name)
+          .filter((name): name is string => Boolean(name))
+          .join(', ') || 'Unknown Genre',
         description: game.short_description ?? game.description ?? 'Description coming soon.',
-        gameInfo: game.description ?? game.short_description ?? 'Stay tuned for more details about this game.',
+        gameInfo:
+          game.info ??
+          game.description ??
+          game.short_description ??
+          'Stay tuned for more details about this game.',
       }))
       .filter(game => game.id !== '')
 

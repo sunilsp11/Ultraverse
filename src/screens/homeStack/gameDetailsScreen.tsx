@@ -1,6 +1,6 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import React, { useRef } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
   Animated,
   Dimensions,
@@ -9,7 +9,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  ImageSourcePropType,
+  ActivityIndicator,
+  Alert,
 } from 'react-native'
+import Video from 'react-native-video'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import BackArrowIcon from '../../assets/svg/backArrow.svg'
 import PlayIcon from '../../assets/svg/playIcon.svg'
 import UvButton from '../../components/common/uvButton'
@@ -17,10 +22,14 @@ import UvTypography from '../../components/common/uvTypography'
 import Colors from '../../theme/color'
 import { RootStackParamList } from '../../types/navigationTypes'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useAppSelector } from '../../store/store'
+import { useGetGameByIdQuery } from '../../services/games/gamesApi'
 
 const { width: screenWidth } = Dimensions.get('window')
 const GAMEPLAY_CARD_WIDTH = screenWidth * 0.65
 const GAMEPLAY_CARD_HEIGHT = GAMEPLAY_CARD_WIDTH * 0.6
+
+const FALLBACK_GAME_IMAGE = require('../../assets/images/Fortnite.png')
 
 type GameDetailsScreenRouteProp = RouteProp<RootStackParamList, 'GameDetailsScreen'>
 type GameDetailsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
@@ -34,20 +43,197 @@ const GameDetailsScreen = () => {
 
   const scrollY = useRef(new Animated.Value(0)).current
 
+  const storedGame = useAppSelector(state =>
+    state.games.games.find(game => String(game.id) === String(gameId)),
+  )
+
+  const { data: fetchedGame, isFetching } = useGetGameByIdQuery(gameId, {
+    skip: !gameId,
+  })
+  console.log('fetchedGame', fetchedGame)
+
+  const resolvedGame = fetchedGame ?? storedGame
+  const [authToken, setAuthToken] = useState<string | null>(null)
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
+  const [loadingVideoId, setLoadingVideoId] = useState<string | null>(null)
+
+  const fallbackHeroImage = (gameImage as ImageSourcePropType | undefined) ?? FALLBACK_GAME_IMAGE
+
+  const heroImageSource: ImageSourcePropType = useMemo(() => {
+    const primaryMediaImage = resolvedGame?.media?.find(
+      media => media?.type === 'image' && media?.url && media?.is_primary,
+    )
+    const fallbackMediaImage = resolvedGame?.media?.find(
+      media => media?.type === 'image' && media?.url,
+    )
+
+    if (primaryMediaImage?.url) {
+      return { uri: primaryMediaImage.url }
+    }
+
+    if (fallbackMediaImage?.url) {
+      return { uri: fallbackMediaImage.url }
+    }
+
+    if (resolvedGame?.primary_image) {
+      return { uri: resolvedGame.primary_image }
+    }
+
+    return fallbackHeroImage
+  }, [resolvedGame, fallbackHeroImage])
+
+  type GameplayMediaItem = {
+    id: string
+    type: 'image' | 'video'
+    source: ImageSourcePropType
+    videoUrl?: string
+    title?: string | null
+  }
+
+  const gameplayMedia = useMemo<GameplayMediaItem[]>(
+    () => {
+      if (resolvedGame?.media?.length) {
+        return resolvedGame.media.reduce<GameplayMediaItem[]>((acc, media, index) => {
+          if (media?.type === 'video' && media?.url) {
+            acc.push({
+              id: String(media?.id ?? `video-${index}`),
+              type: 'video',
+              source: heroImageSource,
+              videoUrl: media.url,
+              title: media.title,
+            })
+          } else if (media?.type === 'image' && media?.url) {
+            acc.push({
+              id: String(media?.id ?? `image-${index}`),
+              type: 'image',
+              source: { uri: media.url } as ImageSourcePropType,
+              title: media.title,
+            })
+          }
+          return acc
+        }, [])
+      }
+
+      return [
+        {
+          id: 'fallback-image',
+          type: 'image',
+          source: heroImageSource,
+        },
+      ]
+    },
+    [resolvedGame?.media, heroImageSource],
+  )
+
+  const displayTitle = useMemo(
+    () => resolvedGame?.name ?? gameTitle ?? 'UNTITLED GAME',
+    [resolvedGame?.name, gameTitle],
+  )
+
+  const displayGenres = useMemo(() => {
+    const categories = resolvedGame?.categories
+      ?.map(category => category?.name)
+      .filter((name): name is string => Boolean(name))
+    if (categories?.length) {
+      return categories.join(', ')
+    }
+    return genre ?? 'Unknown Genre'
+  }, [resolvedGame?.categories, genre])
+
+  const displayDescription = useMemo(
+    () =>
+      resolvedGame?.short_description ??
+      resolvedGame?.description ??
+      description ??
+      '',
+    [resolvedGame?.short_description, resolvedGame?.description, description],
+  )
+
+  const displayInfo = useMemo(
+    () =>
+      resolvedGame?.info ??
+      resolvedGame?.description ??
+      resolvedGame?.short_description ??
+      gameInfo ??
+      '',
+    [resolvedGame?.info, resolvedGame?.description, resolvedGame?.short_description, gameInfo],
+  )
+
+  const formattedReleaseDate = useMemo(() => {
+    if (resolvedGame?.release_date) {
+      return resolvedGame.release_date
+    }
+    return 'TBA'
+  }, [resolvedGame?.release_date])
+
+  const displayPublisher = useMemo(
+    () => resolvedGame?.publisher?.name ?? 'Unknown Publisher',
+    [resolvedGame?.publisher?.name],
+  )
+
+  const handleMediaPress = (mediaItem: GameplayMediaItem) => {
+    if (mediaItem.type !== 'video' || !mediaItem.videoUrl) {
+      return
+    }
+
+    const beginPlayback = () => {
+      if (playingVideoId === mediaItem.id) {
+        setPlayingVideoId(null)
+        setLoadingVideoId(null)
+      } else {
+        setPlayingVideoId(mediaItem.id)
+        setLoadingVideoId(mediaItem.id)
+      }
+    }
+
+    if (authToken) {
+      beginPlayback()
+      return
+    }
+
+    AsyncStorage.getItem('UserToken')
+      .then(token => {
+        if (token) {
+          setAuthToken(token)
+        }
+        beginPlayback()
+      })
+      .catch(error => {
+        console.warn('Failed to fetch auth token for video:', error)
+        beginPlayback()
+      })
+  }
+
+  useEffect(() => {
+    let isMounted = true
+    AsyncStorage.getItem('UserToken')
+      .then(token => {
+        if (isMounted && token) {
+          setAuthToken(token)
+        }
+      })
+      .catch(error => {
+        console.warn('Failed to load auth token for video playback:', error)
+      })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
   const headerBackgroundColor = scrollY.interpolate({
     inputRange: [0, 150],
     outputRange: ['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)'],
     extrapolate: 'clamp',
   })
 
-  const gameplayVideos = [
-    { id: '1', thumbnail: gameImage },
-    { id: '2', thumbnail: gameImage },
-    { id: '3', thumbnail: gameImage },
-  ]
-
   return (
     <View style={[styles.container,{backgroundColor: Colors.base[950]}]}>
+      {(isFetching && !resolvedGame) && (
+        <View style={styles.loadingOverlay}>
+          <ActivityIndicator size="large" color={Colors.white} />
+        </View>
+      )}
       <Animated.View 
         style={[
           styles.headerBar,
@@ -76,7 +262,7 @@ const GameDetailsScreen = () => {
         {/* Hero Image Section */}
         <View style={styles.heroSection}>
           <Image
-            source={gameImage}
+            source={heroImageSource}
             style={styles.heroImage}
             resizeMode="cover"
           />
@@ -90,74 +276,123 @@ const GameDetailsScreen = () => {
             letterSpacing={3}
             style={styles.gameTitle}
           >
-            {gameTitle.toUpperCase()}
+            {displayTitle.toUpperCase()}
           </UvTypography>
 
-          {genre && (
+          {displayGenres && (
             <UvTypography
               variant="body"
               color={Colors.base[300]}
               style={styles.genre}
             >
-              {genre}
+              {displayGenres}
             </UvTypography>
           )}
 
-          {description && (
+          {displayDescription && (
             <UvTypography
               variant="body"
               color={Colors.white}
               style={styles.description}
             >
-              {description}
+              {displayDescription}
             </UvTypography>
           )}
         </View>
 
         {/* Gameplay Section */}
-        <View style={styles.gameplaySection}>
-          <UvTypography
-            variant="h4"
-            color={Colors.white}
-            letterSpacing={2}
-            style={styles.gameplayTitle}
-          >
-            GAMEPLAY
-          </UvTypography>
+        {gameplayMedia.length > 0 && (
+          <View style={styles.gameplaySection}>
+            <UvTypography
+              variant="h4"
+              color={Colors.white}
+              letterSpacing={2}
+              style={styles.gameplayTitle}
+            >
+              GAMEPLAY
+            </UvTypography>
 
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.gameplayScrollContent}
-            decelerationRate="fast"
-            snapToInterval={GAMEPLAY_CARD_WIDTH + 16}
-            snapToAlignment="start"
-          >
-            {gameplayVideos.map((video, index) => (
-              <TouchableOpacity
-                key={video.id}
-                style={[
-                  styles.gameplayCard,
-                  index === 0 && styles.firstGameplayCard,
-                ]}
-                activeOpacity={0.8}
-              >
-                <Image
-                  source={video.thumbnail}
-                  style={styles.gameplayThumbnail}
-                  resizeMode="cover"
-                />
-
-                {/* Play Icon Overlay */}
-                <View style={styles.playIconContainer}>
-                  <PlayIcon width={20} height={20} color={Colors.white} />
-                </View>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.gameplayScrollContent}
+              decelerationRate="fast"
+              snapToInterval={GAMEPLAY_CARD_WIDTH + 16}
+              snapToAlignment="start"
+            >
+              {gameplayMedia.map((mediaItem, index) => (
+                <TouchableOpacity
+                  key={mediaItem.id}
+                  style={[
+                    styles.gameplayCard,
+                    index === 0 && styles.firstGameplayCard,
+                  ]}
+                  activeOpacity={mediaItem.type === 'video' ? 0.8 : 1}
+                  onPress={() => handleMediaPress(mediaItem)}
+                  disabled={mediaItem.type !== 'video'}
+                >
+                  {mediaItem.type === 'video' && playingVideoId === mediaItem.id ? (
+                    <View style={styles.inlineVideoContainer}>
+                      <Video
+                        key={mediaItem.id}
+                        source={{
+                          uri: mediaItem.videoUrl ?? '',
+                          headers: authToken
+                            ? { Authorization: `Bearer ${authToken}` }
+                            : undefined,
+                        }}
+                        style={styles.inlineVideo}
+                        resizeMode="cover"
+                        paused={false}
+                        controls
+                        onLoadStart={() => setLoadingVideoId(mediaItem.id)}
+                        onLoad={() => setLoadingVideoId(null)}
+                        onBuffer={({ isBuffering }) => {
+                          if (isBuffering) {
+                            setLoadingVideoId(mediaItem.id)
+                          } else if (loadingVideoId === mediaItem.id) {
+                            setLoadingVideoId(null)
+                          }
+                        }}
+                        onError={(error) => {
+                          console.warn('Video playback error:', error)
+                          Alert.alert('Playback unavailable', 'We could not play this clip right now. Please try again later.')
+                          setPlayingVideoId(null)
+                          setLoadingVideoId(null)
+                        }}
+                        onEnd={() => {
+                          setPlayingVideoId(null)
+                          setLoadingVideoId(null)
+                        }}
+                      />
+                      {loadingVideoId === mediaItem.id && (
+                        <View style={styles.inlineLoadingOverlay}>
+                          <ActivityIndicator size="large" color={Colors.white} />
+                        </View>
+                      )}
+                    </View>
+                  ) : (
+                    <>
+                      <Image
+                        source={mediaItem.source}
+                        style={styles.gameplayThumbnail}
+                        resizeMode="cover"
+                      />
+                      {mediaItem.type === 'video' && (
+                        <View style={styles.playOverlay}>
+                          <View style={styles.playButton}>
+                            <PlayIcon width={24} height={24} color={Colors.base[950]} />
+                          </View>
+                        </View>
+                      )}
+                    </>
+                  )}
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
   
-
       <View style={styles.gameInfoSection}>
         <UvTypography
           variant="h4"
@@ -168,13 +403,23 @@ const GameDetailsScreen = () => {
           GAME INFO
         </UvTypography>
 
-        <UvTypography
-          variant="body"
-          color={Colors.white}
-          style={styles.gameInfoDescription}
-        >
-          {gameInfo}
-        </UvTypography>
+        {displayInfo ? (
+          <UvTypography
+            variant="body"
+            color={Colors.white}
+            style={styles.gameInfoDescription}
+          >
+            {displayInfo}
+          </UvTypography>
+        ) : (
+          <UvTypography
+            variant="body"
+            color={Colors.base[400]}
+            style={styles.gameInfoDescription}
+          >
+            Details coming soon.
+          </UvTypography>
+        )}
 
         <View style={styles.metaRowGroup}>
           <View style={styles.metaRow}>
@@ -182,7 +427,7 @@ const GameDetailsScreen = () => {
               Release:
             </UvTypography>
             <UvTypography variant="body" color={Colors.white} style={styles.metaValue}>
-              21/7/2017
+              {formattedReleaseDate}
             </UvTypography>
           </View>
 
@@ -191,7 +436,7 @@ const GameDetailsScreen = () => {
               Genres:
             </UvTypography>
             <UvTypography variant="body" color={Colors.white} style={styles.metaValue}>
-              Action, Adventure
+              {displayGenres}
             </UvTypography>
           </View>
 
@@ -200,7 +445,7 @@ const GameDetailsScreen = () => {
               Publisher:
             </UvTypography>
             <UvTypography variant="body" color={Colors.white} style={styles.metaValue}>
-              Epic Games Inc.
+              {displayPublisher}
             </UvTypography>
           </View>
         </View>
@@ -322,7 +567,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  playIconContainer: {
+  playOverlay: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -330,7 +575,19 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+  playButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
   },
   gameInfoSection: {
     paddingHorizontal: 20,
@@ -366,5 +623,28 @@ const styles = StyleSheet.create({
   },
   feedbackButton: {
     marginTop: 0,
+  },
+  loadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 15,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
+  inlineVideoContainer: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    backgroundColor: Colors.base[900],
+  },
+  inlineVideo: {
+    width: '100%',
+    height: '100%',
+  },
+  inlineLoadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
   },
 })

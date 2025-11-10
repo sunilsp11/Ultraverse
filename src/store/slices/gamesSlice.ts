@@ -16,13 +16,22 @@ const gamesSlice = createSlice({
     setGames(state, action: PayloadAction<Game[]>) {
       state.games = action.payload
     },
+    upsertGame(state, action: PayloadAction<Game>) {
+      const incomingGame = action.payload
+      const index = state.games.findIndex(game => game.id === incomingGame.id)
+      if (index >= 0) {
+        state.games[index] = incomingGame
+      } else {
+        state.games.push(incomingGame)
+      }
+    },
     resetGames(state) {
       state.games = []
     },
   },
 })
 
-export const { setGames, resetGames } = gamesSlice.actions
+export const { setGames, upsertGame, resetGames } = gamesSlice.actions
 
 export default gamesSlice.reducer
 

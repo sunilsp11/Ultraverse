@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet, TouchableOpacity, View, ImageSourcePropType, Alert } from 'react-native'
+import { Image, StyleSheet, TouchableOpacity, View, ImageSourcePropType } from 'react-native'
 import Colors from '../../theme/color'
 import UvTypography from './uvTypography'
 import UvSectionHeader from './uvSectionHeader'

@@ -15,7 +15,6 @@ const UvCategoryFilterBar: React.FC<Props> = ({
   onViewAllPress,
   categories = []
 }) => {
- console.log('categories>>>>', categories)
   const handleCategoryPress = (category: string) => {
     onCategoryPress?.(category)
   }
