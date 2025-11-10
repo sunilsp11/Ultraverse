@@ -9,4 +9,5 @@ export const endPoints = {
   profile: "/auth/profile/",
   uploadProfilePicture: "/auth/profile/upload-picture/",
   categories: "/categories/",
+  games: "/games/",
 };

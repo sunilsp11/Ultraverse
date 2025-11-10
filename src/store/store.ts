@@ -9,6 +9,7 @@ import backendBaseApi from '../services/backendBaseApi';
 import { authApi } from '../services/authRequest/authApi';
 import categoriesReducer from './slices/categoriesSlice';
 import profileReducer from './slices/profileSlice';
+import gamesReducer from './slices/gamesSlice';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   categories: categoriesReducer,
   profile: profileReducer,
+  games: gamesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

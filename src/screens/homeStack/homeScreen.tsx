@@ -3,7 +3,7 @@ import { CompositeNavigationProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
 import React, { useMemo } from 'react'
-import { Alert, ScrollView, StyleSheet, View } from 'react-native'
+import { Alert, ImageSourcePropType, ScrollView, StyleSheet, View } from 'react-native'
 import UvCategoryFilterBar from '../../components/common/uvCategoryFilterBar'
 import UvGameCarousel from '../../components/common/uvGameCarousel'
 import UvHomeHeader from '../../components/common/uvHomeHeader'
@@ -14,11 +14,23 @@ import UvSpacer from '../../components/common/uvSpacer'
 import { useAppSelector } from '../../store/store'
 import { useGetProfileQuery } from '../../services/profile/profileApi'
 import { useGetCategoriesQuery } from '../../services/categories/categoriesApi'
+import { useGetTopGamesQuery } from '../../services/games/gamesApi'
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>,
   BottomTabNavigationProp<MainTabParamList>
 >
+
+type GameDetail = {
+  id: string
+  title: string
+  image: ImageSourcePropType
+  genre: string
+  description: string
+  gameInfo: string
+}
+
+const FALLBACK_GAME_IMAGE = require('../../assets/images/Fortnite.png')
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>()
@@ -31,6 +43,11 @@ const HomeScreen = () => {
   const shouldSkipCategoriesQuery = storedCategories?.length > 0
   const { data: categoriesData } = useGetCategoriesQuery(undefined, {
     skip: shouldSkipCategoriesQuery,
+  })
+  const storedGames = useAppSelector(state => state.games.games)
+  const shouldSkipGamesQuery = storedGames?.length > 0
+  const { data: topGamesData } = useGetTopGamesQuery(undefined, {
+    skip: shouldSkipGamesQuery,
   })
 
   const storedProfile = useAppSelector(state => state.profile.profile)
@@ -63,38 +80,62 @@ const HomeScreen = () => {
 
   const shouldRenderCategories = categoryNames.length > 0
 
-  const gamesData: Record<string, {
-    title: string;
-    image: any;
-    genre: string;
-    description: string;
-    gameInfo: string
-  }> = {
-    '1': {
-      title: 'Fortnite',
-      image: require('../../assets/images/Fortnite.png'),
-      genre: 'Action - Adventure',
-      description: 'Join millions in the world\'s most dynamic battle arena. Build, survive, and dominate in real-world AR zones.',
-      gameInfo: 'Fortnite is an online video game and game platform developed by Epic Games and released in 2017. It is available in seven distinct game mode versions that otherwise share the same general gameplay and game engine: Fortnite Battle Royale, a battle royale game in which up to 100 players fight to be the last person standing; Fortnite: Save the World, a cooperative hybrid tower defense-shooter and survival game in which up to four players fight off zombie-like creatures and defend objects with traps and fortifications they can build; Fortnite Creative, in which players are given complete freedom to create worlds and battle arenas; Lego Fortnite, an open world game collection divided between survival game Lego Fortnite Odyssey and social game Lego Fortnite Brick Life; Rocket Racing, a racing game; Fortnite Festival, a rhythm game; and Fortnite Ballistic, a tactical first-person shooter currently in early access. All game modes except Save the World are free-to-play.'
-    },
-    '2': {
-      title: 'Spider-Man',
-      image: require('../../assets/images/Spider-Man.png'),
-      genre: 'Action - Adventure',
-      description: 'Swing through the city as the legendary Spider-Man. Fight crime, save the city, and experience an epic superhero adventure.',
-      gameInfo:'Fortnite is an online video game and game platform developed by Epic Games and released in 2017. It is available in seven distinct game mode versions that otherwise share the same general gameplay and game engine: Fortnite Battle Royale, a battle royale game in which up to 100 players fight to be the last person standing; Fortnite: Save the World, a cooperative hybrid tower defense-shooter and survival game in which up to four players fight off zombie-like creatures and defend objects with traps and fortifications they can build; Fortnite Creative, in which players are given complete freedom to create worlds and battle arenas; Lego Fortnite, an open world game collection divided between survival game Lego Fortnite Odyssey and social game Lego Fortnite Brick Life; Rocket Racing, a racing game; Fortnite Festival, a rhythm game; and Fortnite Ballistic, a tactical first-person shooter currently in early access. All game modes except Save the World are free-to-play.'
-    },
-    '3': {
-      title: 'Ghost of Tsushima',
-      image: require('../../assets/images/Fortnite.png'),
-      genre: 'Action - RPG',
-      description: 'Embark on a stunning journey through feudal Japan. Master samurai combat and protect your homeland from invaders.',
-      gameInfo:'Fortnite is an online video game and game platform developed by Epic Games and released in 2017. It is available in seven distinct game mode versions that otherwise share the same general gameplay and game engine: Fortnite Battle Royale, a battle royale game in which up to 100 players fight to be the last person standing; Fortnite: Save the World, a cooperative hybrid tower defense-shooter and survival game in which up to four players fight off zombie-like creatures and defend objects with traps and fortifications they can build; Fortnite Creative, in which players are given complete freedom to create worlds and battle arenas; Lego Fortnite, an open world game collection divided between survival game Lego Fortnite Odyssey and social game Lego Fortnite Brick Life; Rocket Racing, a racing game; Fortnite Festival, a rhythm game; and Fortnite Ballistic, a tactical first-person shooter currently in early access. All game modes except Save the World are free-to-play.'
-    },
-  }
+  const mapToGameDetails = (games: { id?: number | string; name?: string; categories?: { name?: string | null }[]; short_description?: string | null; description?: string | null; primary_image?: string | null }[] = []) =>
+    games
+      .map(game => ({
+        id: game.id != null ? String(game.id) : '',
+        title: game.name ?? 'Untitled Game',
+        image: game.primary_image ? { uri: game.primary_image } : FALLBACK_GAME_IMAGE,
+        genre: game.categories?.[0]?.name ?? 'Unknown Genre',
+        description: game.short_description ?? game.description ?? 'Description coming soon.',
+        gameInfo: game.description ?? game.short_description ?? 'Stay tuned for more details about this game.',
+      }))
+      .filter(game => game.id !== '')
+
+  const resolvedTopGames: GameDetail[] = useMemo(() => {
+    if (storedGames?.length) {
+      return mapToGameDetails(storedGames)
+    }
+
+    if (topGamesData?.length) {
+      return mapToGameDetails(topGamesData)
+    }
+
+    return []
+  }, [storedGames, topGamesData])
+
+  const carouselGames = useMemo(
+    () =>
+      resolvedTopGames.map(game => ({
+        id: game.id,
+        title: game.title,
+        image: game.image,
+      })),
+    [resolvedTopGames],
+  )
+
+  const trendingGames = useMemo(
+    () =>
+      resolvedTopGames.map(game => ({
+        id: game.id,
+        title: game.title,
+        genre: game.genre,
+        image: game.image,
+      })),
+    [resolvedTopGames],
+  )
+
+  const gameDetailsMap = useMemo(
+    () =>
+      resolvedTopGames.reduce<Record<string, GameDetail>>((acc, game) => {
+        acc[game.id] = game
+        return acc
+      }, {}),
+    [resolvedTopGames],
+  )
 
   const handleGamePress = (gameId: string) => {
-    const game = gamesData[gameId as keyof typeof gamesData]
+    const game = gameDetailsMap[gameId]
     if (game) {
       navigation.navigate('GameDetailsScreen', {  
         gameId,
@@ -129,16 +170,24 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContent}
         >
-          <UvGameCarousel
-            onGamePress={handleGamePress}
-            onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
-          />
-          <UvSpacer gap={15} />
-          <UvTrendingCarousel
-            onGamePress={handleGamePress}
-            onPlayPress={handleGamePress}
-            title="TRENDING IN ULTRAVERSE"
-          />
+          {carouselGames.length > 0 && (
+            <>
+              <UvGameCarousel
+                games={carouselGames}
+                onGamePress={handleGamePress}
+                onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
+              />
+              <UvSpacer gap={15} />
+            </>
+          )}
+          {trendingGames.length > 0 && (
+            <UvTrendingCarousel
+              games={trendingGames}
+              onGamePress={handleGamePress}
+              onPlayPress={handleGamePress}
+              title="TRENDING IN ULTRAVERSE"
+            />
+          )}
         </ScrollView>
       </View>
     </UvScreenWrapper>

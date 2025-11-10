@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, ScrollView, Image, Dimensions, TouchableOpacity, ImageSourcePropType } from 'react-native'
 import UvSectionHeader from './uvSectionHeader'
 
 const { width: screenWidth } = Dimensions.get('window')
@@ -9,7 +9,7 @@ const CARD_HEIGHT = CARD_WIDTH * 1.2
 type GameData = {
     id: string
     title: string
-    image: any
+    image: ImageSourcePropType
 }
 
 type Props = {
@@ -23,26 +23,6 @@ const UvGameCarousel: React.FC<Props> = ({
     onGamePress,
     onViewAllPress
 }) => {
-    const defaultGames: GameData[] = [
-        {
-            id: '1',
-            title: 'Fortnite',
-            image: require('../../assets/images/Fortnite.png'),
-        },
-        {
-            id: '2',
-            title: 'Spider-Man',
-            image: require('../../assets/images/Spider-Man.png'),
-        },
-        {
-            id: '3',
-            title: 'Ghost of Tsushima',
-            image: require('../../assets/images/Fortnite.png'),
-        },
-    ]
-
-    const displayGames = games.length > 0 ? games : defaultGames
-
     return (
         <View style={styles.container}>
             <UvSectionHeader
@@ -57,13 +37,13 @@ const UvGameCarousel: React.FC<Props> = ({
                 snapToInterval={CARD_WIDTH + 16}
                 snapToAlignment="start"
             >
-                {displayGames.map((game, index) => (
+                {games.map((game, index) => (
                     <TouchableOpacity
                         key={game.id}
                         style={[
                             styles.gameCard,
                             index === 0 && styles.firstCard,
-                            index === displayGames.length - 1 && styles.lastCard,
+                            index === games.length - 1 && styles.lastCard,
                         ]}
                         onPress={() => onGamePress?.(game.id)}
                         activeOpacity={0.8}
@@ -71,7 +51,8 @@ const UvGameCarousel: React.FC<Props> = ({
                         <Image
                             source={game.image}
                             style={styles.gameImage}
-                            resizeMode="cover"
+                            resizeMode="stretch"
+
                         />
                     </TouchableOpacity>
                 ))}

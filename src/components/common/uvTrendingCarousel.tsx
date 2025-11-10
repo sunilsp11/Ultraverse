@@ -1,13 +1,14 @@
 import React from 'react'
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, TouchableOpacity, View, ImageSourcePropType, Alert } from 'react-native'
 import Colors from '../../theme/color'
 import UvTypography from './uvTypography'
+import UvSectionHeader from './uvSectionHeader'
 
 type TrendingGame = {
   id: string
   title: string
   genre: string
-  image: any
+  image: ImageSourcePropType
 }
 
 type Props = {
@@ -24,35 +25,15 @@ const UvTrendingCarousel: React.FC<Props> = ({
   title
 }) => {
 
-  const defaultGames: TrendingGame[] = [
-    {
-      id: '1',
-      title: 'Ghost of Tsushima Director\'s Cut',
-      genre: 'Action - Adventure',
-      image: require('../../assets/images/Fortnite.png'),
-    },
-    {
-      id: '2',
-      title: 'The Last of Us Part II',
-      genre: 'Action - Adventure',
-      image: require('../../assets/images/Fortnite.png'),
-    },
-    {
-      id: '3',
-      title: 'God of War Ragnarök',
-      genre: 'Action - Adventure',
-      image: require('../../assets/images/Fortnite.png'),
-    },
-  ]
-
-  const displayGames = games.length > 0 ? games : defaultGames
-
-
   return (
     <View style={styles.container}>
 
+      <UvSectionHeader
+        title={title ?? ''}
+        showViewAll={false}
+      />
       <View style={styles.cardsContainer}>
-        {displayGames.map((game) => (
+        {games.map((game) => (
           <TouchableOpacity
             key={game.id}
             style={styles.gameCard}
@@ -109,7 +90,7 @@ export default UvTrendingCarousel
 
 const styles = StyleSheet.create({
   container: {
-    flex:1
+    flex: 1
   },
   headerContainer: {
     paddingHorizontal: 20,
