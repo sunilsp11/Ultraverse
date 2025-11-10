@@ -4,7 +4,6 @@ import UvTypography from '../common/uvTypography';
 import Colors from '../../theme/color';
 import UvOptionSelector from '../common/uvOptionSelector';
 
-
 interface LeafRatingProps {
   rating: number;
   onRatingChange: (rating: number) => void;
@@ -40,13 +39,37 @@ const LeafRating: React.FC<LeafRatingProps> = ({ rating, onRatingChange }) => {
   );
 };
 
+const normalizeOptionLabel = (label: string): string => label.trim().toLowerCase();
 
-interface PlatformStep1Props {
+const getDefaultIconForOption = (label: string): string | null => {
+  const normalizedLabel = normalizeOptionLabel(label);
+
+  if (normalizedLabel === 'yes') {
+    return 'flame';
+  }
+
+  if (normalizedLabel === 'no') {
+    return 'laggyIcon';
+  }
+
+  if (['maybe', 'somewhat'].includes(normalizedLabel)) {
+    return 'thumb';
+  }
+
+  return null;
+};
+
+interface PlatformRatingQuestionProps {
+  question: string;
   rating: number;
   onRatingChange: (rating: number) => void;
 }
 
-export const PlatformStep1: React.FC<PlatformStep1Props> = ({ rating, onRatingChange }) => {
+export const PlatformRatingQuestion: React.FC<PlatformRatingQuestionProps> = ({
+  question,
+  rating,
+  onRatingChange,
+}) => {
   return (
     <View style={styles.stepContent}>
       <UvTypography
@@ -54,45 +77,55 @@ export const PlatformStep1: React.FC<PlatformStep1Props> = ({ rating, onRatingCh
         color={Colors.base[50]}
         align="center"
       >
-        How easy was it to launch and access this game from the Ultraverse platform?
+        {question}
       </UvTypography>
       <LeafRating rating={rating} onRatingChange={onRatingChange} />
     </View>
   );
 };
 
-interface PlatformStep2Props {
+interface PlatformMultipleChoiceQuestionProps {
+  question: string;
+  options: string[] | null | undefined;
   selectedOption: string | null;
   onOptionSelect: (option: string) => void;
 }
 
-export const PlatformStep2: React.FC<PlatformStep2Props> = ({
+export const PlatformMultipleChoiceQuestion: React.FC<PlatformMultipleChoiceQuestionProps> = ({
+  question,
+  options,
   selectedOption,
   onOptionSelect,
 }) => {
-  const options = [
-    { label: 'Yes', iconName: 'flame', value: 'Yes' },
-    { label: 'No', iconName: 'laggyIcon', value: 'No' },
-    { label: 'Somewhat', iconName: 'thumb', value: 'Somewhat' },
-  ];
+  const formattedOptions = (options ?? []).map(optionLabel => ({
+    label: optionLabel,
+    value: optionLabel,
+    iconName: getDefaultIconForOption(optionLabel),
+  }));
 
   return (
     <UvOptionSelector
-      question="Did the platform feel stable and responsive during gameplay?"
-      options={options}
+      question={question}
+      options={formattedOptions}
       selectedValue={selectedOption}
       onSelect={onOptionSelect}
     />
   );
 };
 
-
-interface PlatformStep3Props {
+interface PlatformTextQuestionProps {
+  question: string;
   response: string;
   onResponseChange: (response: string) => void;
+  placeholder?: string;
 }
 
-export const PlatformStep3: React.FC<PlatformStep3Props> = ({ response, onResponseChange }) => {
+export const PlatformTextQuestion: React.FC<PlatformTextQuestionProps> = ({
+  question,
+  response,
+  onResponseChange,
+  placeholder = 'Please enter your comments here',
+}) => {
   return (
     <View style={styles.stepContent}>
       <UvTypography
@@ -100,66 +133,18 @@ export const PlatformStep3: React.FC<PlatformStep3Props> = ({ response, onRespon
         color={Colors.base[50]}
         align="center"
       >
-        What improvement would make the Ultraverse platform better for you?
+        {question}
       </UvTypography>
       <TextInput
         style={styles.textInput}
-        placeholder="Please enter your comments here"
+        placeholder={placeholder}
         placeholderTextColor={Colors.base[400]}
         value={response}
         onChangeText={onResponseChange}
         multiline
         textAlignVertical="top"
         numberOfLines={4}
-        autoFocus={true}
       />
-    </View>
-  );
-};
-
-
-interface PlatformStep4Props {
-  selectedOption: string | null;
-  onOptionSelect: (option: string) => void;
-}
-
-export const PlatformStep4: React.FC<PlatformStep4Props> = ({
-  selectedOption,
-  onOptionSelect,
-}) => {
-  const options = [
-    { label: 'Yes', iconName: 'flame', value: 'Yes' },
-    { label: 'No', iconName: 'laggyIcon', value: 'No' },
-    { label: 'Maybe', iconName: 'thumb', value: 'Maybe' },
-  ];
-
-  return (
-    <UvOptionSelector
-      question="Would you recommend Ultraverse to a friend or teammate?"
-      options={options}
-      selectedValue={selectedOption}
-      onSelect={onOptionSelect}
-    />
-  );
-};
-
-
-interface PlatformStep5Props {
-  rating: number;
-  onRatingChange: (rating: number) => void;
-}
-
-export const PlatformStep5: React.FC<PlatformStep5Props> = ({ rating, onRatingChange }) => {
-  return (
-    <View style={styles.stepContent}>
-      <UvTypography
-        variant="p"
-        color={Colors.base[50]}
-        align="center"
-      >
-        How was your experience sharing AR gameplay and interacting with friends across multiple games within the Ultraverse platform?
-      </UvTypography>
-      <LeafRating rating={rating} onRatingChange={onRatingChange} />
     </View>
   );
 };

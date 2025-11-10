@@ -10,4 +10,5 @@ export const endPoints = {
   uploadProfilePicture: "/auth/profile/upload-picture/",
   categories: "/categories/",
   games: "/games/",
+  platformFeedbackQuestions: "/platform-feedback/questions/",
 };
