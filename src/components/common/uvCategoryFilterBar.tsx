@@ -4,16 +4,6 @@ import UvTypography from './uvTypography'
 import UvSectionHeader from './uvSectionHeader'
 import Colors from '../../theme/color'
 
-const CATEGORIES = [
-  'Shooter',
-  'Action',
-  'Adventure',
-  'Racing',
-  'Sports',
-  'Strategy',
-  'RPG',
-]
-
 type Props = {
   onCategoryPress?: (category: string) => void
   onViewAllPress?: () => void
@@ -23,9 +13,9 @@ type Props = {
 const UvCategoryFilterBar: React.FC<Props> = ({ 
   onCategoryPress,
   onViewAllPress,
-  categories = CATEGORIES
+  categories = []
 }) => {
-
+ console.log('categories>>>>', categories)
   const handleCategoryPress = (category: string) => {
     onCategoryPress?.(category)
   }

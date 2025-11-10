@@ -27,7 +27,11 @@ const HomeScreen = () => {
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: true,
   })
-  const { data: categoriesData } = useGetCategoriesQuery()
+  const storedCategories = useAppSelector(state => state.categories.categories)
+  const shouldSkipCategoriesQuery = storedCategories?.length > 0
+  const { data: categoriesData } = useGetCategoriesQuery(undefined, {
+    skip: shouldSkipCategoriesQuery,
+  })
 
   const storedProfile = useAppSelector(state => state.profile.profile)
 
@@ -37,17 +41,27 @@ const HomeScreen = () => {
     return name.toUpperCase()
   }, [profileData?.first_name, profileData?.username, storedProfile?.first_name, storedProfile?.username])
 
-  const categoryNames = useMemo(() => {
-    if (!categoriesData?.length) {
-      return undefined
+  const resolvedCategories = useMemo(() => {
+    if (storedCategories?.length) {
+      return storedCategories
     }
 
-    const names = categoriesData
+    if (categoriesData?.length) {
+      return categoriesData
+    }
+
+    return []
+  }, [categoriesData, storedCategories])
+
+  const categoryNames = useMemo(() => {
+    const names = resolvedCategories
       .map(category => category.name || (category as { title?: string }).title || category.slug)
       .filter((name): name is string => Boolean(name))
 
-    return names.length ? names : undefined
-  }, [categoriesData])
+    return names
+  }, [resolvedCategories])
+
+  const shouldRenderCategories = categoryNames.length > 0
 
   const gamesData: Record<string, {
     title: string;
@@ -101,12 +115,16 @@ const HomeScreen = () => {
           onProfilePress={() => navigation.navigate('ProfileScreen')}
         />
         <UvSpacer gap={15} />
-        <UvCategoryFilterBar
-          categories={categoryNames}
-          onCategoryPress={(category) => console.log('Selected:', category)}
-          onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
-        />
-        <UvSpacer gap={15} />
+        {shouldRenderCategories && (
+          <>
+            <UvCategoryFilterBar
+              categories={categoryNames}
+              onCategoryPress={(category) => console.log('Selected:', category)}
+              onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
+            />
+            <UvSpacer gap={15} />
+          </>
+        )}
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContent}
