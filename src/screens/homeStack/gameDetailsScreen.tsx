@@ -50,7 +50,6 @@ const GameDetailsScreen = () => {
   const { data: fetchedGame, isFetching } = useGetGameByIdQuery(gameId, {
     skip: !gameId,
   })
-  console.log('fetchedGame', fetchedGame)
 
   const resolvedGame = fetchedGame ?? storedGame
   const [authToken, setAuthToken] = useState<string | null>(null)
