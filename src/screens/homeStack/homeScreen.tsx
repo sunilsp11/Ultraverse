@@ -13,6 +13,7 @@ import { RootStackParamList, MainTabParamList } from '../../types/navigationType
 import UvSpacer from '../../components/common/uvSpacer'
 import { useAppSelector } from '../../store/store'
 import { useGetProfileQuery } from '../../services/profile/profileApi'
+import { useGetCategoriesQuery } from '../../services/categories/categoriesApi'
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>,
@@ -26,6 +27,7 @@ const HomeScreen = () => {
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: true,
   })
+  const { data: categoriesData } = useGetCategoriesQuery()
 
   const storedProfile = useAppSelector(state => state.profile.profile)
 
@@ -34,6 +36,18 @@ const HomeScreen = () => {
     const name = activeProfile?.first_name || activeProfile?.username || 'GAMER'
     return name.toUpperCase()
   }, [profileData?.first_name, profileData?.username, storedProfile?.first_name, storedProfile?.username])
+
+  const categoryNames = useMemo(() => {
+    if (!categoriesData?.length) {
+      return undefined
+    }
+
+    const names = categoriesData
+      .map(category => category.name || (category as { title?: string }).title || category.slug)
+      .filter((name): name is string => Boolean(name))
+
+    return names.length ? names : undefined
+  }, [categoriesData])
 
   const gamesData: Record<string, {
     title: string;
@@ -88,6 +102,7 @@ const HomeScreen = () => {
         />
         <UvSpacer gap={15} />
         <UvCategoryFilterBar
+          categories={categoryNames}
           onCategoryPress={(category) => console.log('Selected:', category)}
           onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
         />

@@ -8,4 +8,5 @@ export const endPoints = {
   changePassword: "/auth/profile/change-password/",
   profile: "/auth/profile/",
   uploadProfilePicture: "/auth/profile/upload-picture/",
+  categories: "/categories/",
 };

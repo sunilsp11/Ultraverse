@@ -17,11 +17,13 @@ const CATEGORIES = [
 type Props = {
   onCategoryPress?: (category: string) => void
   onViewAllPress?: () => void
+  categories?: string[]
 }
 
 const UvCategoryFilterBar: React.FC<Props> = ({ 
   onCategoryPress,
-  onViewAllPress 
+  onViewAllPress,
+  categories = CATEGORIES
 }) => {
 
   const handleCategoryPress = (category: string) => {
@@ -40,7 +42,7 @@ const UvCategoryFilterBar: React.FC<Props> = ({
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {CATEGORIES.map((category) => (
+        {categories.map((category) => (
           <TouchableOpacity
             key={category}
             style={[
