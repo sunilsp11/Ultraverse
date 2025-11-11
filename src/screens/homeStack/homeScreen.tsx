@@ -34,10 +34,12 @@ const FALLBACK_GAME_IMAGE = require('../../assets/images/Fortnite.png')
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>()
+  const profileProvider = useAppSelector(state => state.profile.provider)
   const { data: profileData } = useGetProfileQuery(undefined, {
     refetchOnFocus: true,
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: true,
+    skip: profileProvider === 'google',
   })
   const storedCategories = useAppSelector(state => state.categories.categories)
   const shouldSkipCategoriesQuery = storedCategories?.length > 0

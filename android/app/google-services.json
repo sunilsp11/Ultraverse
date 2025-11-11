@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "73144482765",
+    "project_id": "ultraverse-ba9b2",
+    "storage_bucket": "ultraverse-ba9b2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73144482765:android:74a66650b7e83858186284",
+        "android_client_info": {
+          "package_name": "com.ultraverse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl1OOnemPcPlBu_fZ0FqFJXUaBmqvPTVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

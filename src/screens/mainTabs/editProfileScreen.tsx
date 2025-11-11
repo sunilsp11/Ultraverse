@@ -40,12 +40,14 @@ const EditProfileScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [changePassword, { isLoading }] = useChangePasswordMutation();
+  const storedProfile = useAppSelector((state) => state.profile.profile);
+  const profileProvider = useAppSelector((state) => state.profile.provider);
   const { data: profileData } = useGetProfileQuery(undefined, {
     refetchOnFocus: true,
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: true,
+    skip: profileProvider === "google",
   });
-  const storedProfile = useAppSelector((state) => state.profile.profile);
   const [isProfileInitialized, setIsProfileInitialized] = useState(false);
   const [isPickerVisible, setIsPickerVisible] = useState(false);
   const [avatarOverride, setAvatarOverride] = useState<string | null>(null);

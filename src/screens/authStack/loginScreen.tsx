@@ -3,7 +3,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   Image,
@@ -14,6 +14,7 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
+  ActivityIndicator,
 } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
@@ -28,6 +29,13 @@ import GoogleIcon from "../../assets/svg/google.svg";
 import FacebookIcon from "../../assets/svg/facebook.svg";
 import { useLoginMutation } from "../../services/authRequest/authApi";
 import { useForm, Controller } from "react-hook-form";
+import { signInWithGoogle } from "../../config/googleSignIn";
+import { useAppDispatch } from "../../store/store";
+import {
+  setAuthProvider,
+  setProfile,
+} from "../../store/slices/profileSlice";
+import { UserProfile } from "../../services/profile/profileApi";
 
 const LoginScreen = () => {
   type LoginNavigationProp = CompositeNavigationProp<
@@ -37,6 +45,9 @@ const LoginScreen = () => {
 
   const navigation = useNavigation<LoginNavigationProp>();
   const [login, { isLoading }] = useLoginMutation();
+  const [isGoogleSignInInProgress, setGoogleSignInInProgress] =
+    useState(false);
+  const dispatch = useAppDispatch();
 
   type LoginFormData = {
     email: string;
@@ -68,6 +79,8 @@ const LoginScreen = () => {
 
       if (token) {
         await AsyncStorage.setItem("UserToken", token);
+        await AsyncStorage.removeItem("UserAccessToken");
+        dispatch(setAuthProvider("credentials"));
 
         (navigation as any).reset({
           index: 0,
@@ -88,6 +101,78 @@ const LoginScreen = () => {
       );
     }
   };
+
+  const handleGoogleLogin = async () => {
+    if (isGoogleSignInInProgress) {
+      return;
+    }
+
+    try {
+      setGoogleSignInInProgress(true);
+      const userInfo = await signInWithGoogle();
+
+      if (!userInfo) {
+        return;
+      }
+
+      const idToken = userInfo.idToken ?? null;
+      const accessToken = userInfo.accessToken ?? null;
+
+      if (!idToken) {
+        Alert.alert(
+          "Google Login Failed",
+          "Unable to retrieve a valid token from Google."
+        );
+        return;
+      }
+
+      await AsyncStorage.setItem("UserToken", idToken);
+
+      if (accessToken) {
+        await AsyncStorage.setItem("UserAccessToken", accessToken);
+      }
+
+      const googleUser = userInfo.user;
+      const nowIso = new Date().toISOString();
+
+      if (googleUser) {
+        const numericId = Number(googleUser.id);
+        const resolvedId =
+          Number.isFinite(numericId) && Number.isSafeInteger(numericId)
+            ? numericId
+            : 0;
+        const syntheticProfile: UserProfile = {
+          id: resolvedId,
+          username: googleUser.email || googleUser.name || googleUser.id,
+          email: googleUser.email || "",
+          first_name: googleUser.givenName || googleUser.name || null,
+          profile_picture: googleUser.photo ?? null,
+          profile_picture_url: googleUser.photo ?? null,
+          created_at: nowIso,
+          updated_at: nowIso,
+        };
+        dispatch(setProfile(syntheticProfile));
+      }
+
+      dispatch(setAuthProvider("google"));
+
+      (navigation as any).reset({
+        index: 0,
+        routes: [
+          {
+            name: "MainTabs",
+            params: { screen: "HomeScreen" },
+          },
+        ],
+      });
+    } catch (err: any) {
+      console.log("Google login error:", err);
+      Alert.alert("Google Login Failed", err?.message || "Please try again");
+    } finally {
+      setGoogleSignInInProgress(false);
+    }
+  };
+
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
@@ -219,9 +304,22 @@ const LoginScreen = () => {
                 </View>
 
                 <View style={styles.socialRow}>
-                  <View style={styles.socialCircle}>
-                    <GoogleIcon width={24} height={24} color="#0F5270" />
-                  </View>
+                  <TouchableOpacity
+                    onPress={handleGoogleLogin}
+                    style={[
+                      styles.socialCircle,
+                      isGoogleSignInInProgress && styles.socialCircleDisabled,
+                    ]}
+                    disabled={isGoogleSignInInProgress}
+                    accessibilityRole="button"
+                    accessibilityLabel="Continue with Google"
+                  >
+                    {isGoogleSignInInProgress ? (
+                      <ActivityIndicator size="small" color={Colors.white} />
+                    ) : (
+                      <GoogleIcon width={24} height={24} color="#0F5270" />
+                    )}
+                  </TouchableOpacity>
                   <View style={styles.socialCircle}>
                     <FacebookIcon width={24} height={24} color="#0F5270" />
                   </View>
@@ -304,6 +402,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.black,
     alignItems: "center",
     justifyContent: "center",
+  },
+  socialCircleDisabled: {
+    opacity: 0.6,
   },
   footerRow: {
     flexDirection: "row",

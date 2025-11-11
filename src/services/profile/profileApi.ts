@@ -1,6 +1,11 @@
 import backendBaseApi from "../backendBaseApi";
 import { endPoints } from "../endPoints";
-import { setProfile, updateProfile } from "../../store/slices/profileSlice";
+import {
+  setAuthProvider,
+  setProfile,
+  updateProfile,
+} from "../../store/slices/profileSlice";
+import { RootState } from "../../store/store";
 
 export type UserProfile = {
   id: number;
@@ -30,12 +35,18 @@ const profileApi = backendBaseApi.injectEndpoints({
         url: endPoints.profile,
         method: "GET",
       }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled, getState }) {
         try {
           const { data } = await queryFulfilled;
           dispatch(setProfile(data));
+          dispatch(setAuthProvider("credentials"));
         } catch (error) {
+          const state = getState() as RootState;
+          if (state.profile.provider === "google") {
+            return;
+          }
           dispatch(setProfile(null));
+          dispatch(setAuthProvider(null));
         }
       },
     }),

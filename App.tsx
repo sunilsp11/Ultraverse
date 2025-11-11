@@ -1,13 +1,19 @@
 
 
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Provider } from "react-redux";
 import { store } from "./src/store/store";
 import AppNavigator from "./src/navigation/appNavigator";
+import { configureGoogleSignIn } from "./src/config/googleSignIn";
+
 
 const App = () => {
+  useEffect(() => {
+    configureGoogleSignIn();
+  }, []);
+
   return (
     <GestureHandlerRootView style={styles.mainAppContainer}>
       <Provider store={store}>

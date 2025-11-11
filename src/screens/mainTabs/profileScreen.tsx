@@ -24,6 +24,7 @@ const ProfileScreen = () => {
   const navigation = useNavigation<any>();
   const dispatch = useAppDispatch();
   const storedProfile = useAppSelector((state) => state.profile.profile);
+  const profileProvider = useAppSelector((state) => state.profile.provider);
   const {
     data: profile,
     isFetching,
@@ -34,6 +35,7 @@ const ProfileScreen = () => {
     refetchOnFocus: true,
     refetchOnReconnect: true,
     refetchOnMountOrArgChange: true,
+    skip: profileProvider === "google",
   });
 
   useEffect(() => {
@@ -80,6 +82,7 @@ const ProfileScreen = () => {
     setIsLoggingOut(true);
     try {
       await AsyncStorage.removeItem("UserToken");
+      await AsyncStorage.removeItem("UserAccessToken");
       dispatch(resetBackendApiState());
       dispatch(authApi.util.resetApiState());
       dispatch(clearProfile());
