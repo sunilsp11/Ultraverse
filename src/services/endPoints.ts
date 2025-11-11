@@ -1,4 +1,4 @@
-export const baseUrl = "https://1d3770f8b151.ngrok-free.app/api"
+export const baseUrl = "https://edea67ac804a.ngrok-free.app/api"
 
 export const endPoints = {
   register: "/auth/register/",
@@ -7,6 +7,7 @@ export const endPoints = {
   resetPassword: "/auth/reset-password/",
   changePassword: "/auth/profile/change-password/",
   profile: "/auth/profile/",
+  updateProfile: "/auth/profile/update/",
   uploadProfilePicture: "/auth/profile/upload-picture/",
   categories: "/categories/",
   games: "/games/",

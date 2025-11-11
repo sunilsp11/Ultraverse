@@ -85,11 +85,40 @@ const profileApi = backendBaseApi.injectEndpoints({
         }
       },
     }),
+    updateProfileDetails: build.mutation<UserProfile, CreateProfilePayload>({
+      query: (body) => ({
+        url: endPoints.updateProfile,
+        method: "PUT",
+        body,
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            profileApi.util.updateQueryData("getProfile", undefined, (draft) => {
+              if (!draft) {
+                return;
+              }
+
+              Object.assign(draft, data);
+            })
+          );
+          dispatch(setProfile(data));
+          dispatch(updateProfile(data));
+        } catch (error) {
+          console.error("Error updating profile details:", error);
+        }
+      },
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProfileQuery, useUploadProfilePictureMutation } = profileApi;
+export const {
+  useGetProfileQuery,
+  useUploadProfilePictureMutation,
+  useUpdateProfileDetailsMutation,
+} = profileApi;
 
 export default profileApi;
 

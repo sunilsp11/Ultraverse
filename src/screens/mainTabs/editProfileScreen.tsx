@@ -26,6 +26,7 @@ import { useAppSelector } from "../../store/store";
 import {
   useGetProfileQuery,
   useUploadProfilePictureMutation,
+  useUpdateProfileDetailsMutation,
 } from "../../services/profile/profileApi";
 import {
   Asset,
@@ -50,6 +51,9 @@ const EditProfileScreen = () => {
   const [avatarOverride, setAvatarOverride] = useState<string | null>(null);
   const [uploadProfilePicture, { isLoading: isUploadingPicture }]
     = useUploadProfilePictureMutation();
+  const [updateProfileDetails, { isLoading: isUpdatingProfile }]
+    = useUpdateProfileDetailsMutation();
+  const [isSaving, setIsSaving] = useState(false);
 
   const activeProfile = profileData ?? storedProfile ?? null;
 
@@ -224,12 +228,13 @@ const EditProfileScreen = () => {
 
   const {
     control,
-    handleSubmit,
     watch,
     setError,
     clearErrors,
     formState: { errors },
     reset,
+    getValues,
+    trigger,
   } = useForm<ChangePasswordFormData>({
     defaultValues: {
       oldPassword: "",
@@ -239,47 +244,170 @@ const EditProfileScreen = () => {
     mode: "onBlur",
   });
 
+  const oldPasswordValue = watch("oldPassword");
   const newPasswordValue = watch("newPassword");
+  const confirmPasswordValue = watch("confirmPassword");
 
-  const onSubmit = async (data: ChangePasswordFormData) => {
-    if (isLoading) return;
+  const isPasswordAttempt = useMemo(() => {
+    return [oldPasswordValue, newPasswordValue, confirmPasswordValue].some(
+      (value) => (value ?? "").trim().length > 0
+    );
+  }, [confirmPasswordValue, newPasswordValue, oldPasswordValue]);
 
-    const token = await AsyncStorage.getItem("UserToken");
+  useEffect(() => {
+    if (!isPasswordAttempt) {
+      clearErrors(["oldPassword", "newPassword", "confirmPassword"]);
+    }
+  }, [clearErrors, isPasswordAttempt]);
 
-    if (!token) {
-      Alert.alert("Unable to change password", "User session not found. Please login again.");
+  const attemptPasswordChange = useCallback(
+    async (oldPassword: string, newPassword: string) => {
+      if (isLoading) {
+        return false;
+      }
+
+      const token = await AsyncStorage.getItem("UserToken");
+
+      if (!token) {
+        Alert.alert(
+          "Unable to change password",
+          "User session not found. Please login again."
+        );
+        return false;
+      }
+
+      try {
+        clearErrors("oldPassword");
+
+        await changePassword({
+          token,
+          old_password: oldPassword,
+          new_password: newPassword,
+        }).unwrap();
+
+        reset();
+        return true;
+      } catch (error: any) {
+        const oldPasswordError = error?.data?.old_password?.[0];
+
+        if (oldPasswordError) {
+          setError("oldPassword", {
+            type: "server",
+            message: oldPasswordError,
+          });
+        } else {
+          Alert.alert(
+            "Password update failed",
+            error?.data?.message ||
+              "Please verify your current password and try again."
+          );
+        }
+
+        return false;
+      }
+    },
+    [changePassword, clearErrors, isLoading, reset, setError]
+  );
+
+  const handleSave = useCallback(async () => {
+    if (isSaving || isLoading || isUpdatingProfile) {
       return;
     }
 
-    try {
-      clearErrors("oldPassword");
+    const referenceName = (
+      activeProfile?.first_name ?? activeProfile?.username ?? ""
+    ).trim();
+    const nextName = name.trim();
+    const nameChanged = nextName !== referenceName;
 
-      await changePassword({
-        token,
-        old_password: data.oldPassword,
-        new_password: data.newPassword,
-      }).unwrap();
+    const { oldPassword, newPassword, confirmPassword } = getValues();
+    const trimmedOldPassword = (oldPassword ?? "").trim();
+    const trimmedNewPassword = (newPassword ?? "").trim();
+    const trimmedConfirmPassword = (confirmPassword ?? "").trim();
+    const shouldAttemptPasswordChange =
+      trimmedOldPassword.length > 0 ||
+      trimmedNewPassword.length > 0 ||
+      trimmedConfirmPassword.length > 0;
 
-      Alert.alert("Password updated", "Your password has been changed successfully.");
-      reset();
-    } catch (error: any) {
-      const oldPasswordError = error?.data?.old_password?.[0];
+    if (!nameChanged && !shouldAttemptPasswordChange) {
+      Alert.alert(
+        "Nothing to update",
+        "Please update your name or password before saving."
+      );
+      return;
+    }
 
-      if (oldPasswordError) {
-        setError("oldPassword", {
-          type: "server",
-          message: oldPasswordError,
-        });
-      }
+    if (nameChanged && nextName.length === 0) {
+      Alert.alert("Invalid name", "Name cannot be empty.");
+      return;
+    }
 
-      if (!oldPasswordError) {
-        Alert.alert(
-          "Password update failed",
-          error?.data?.message || "Please verify your current password and try again."
-        );
+    if (shouldAttemptPasswordChange) {
+      const isValid = await trigger([
+        "oldPassword",
+        "newPassword",
+        "confirmPassword",
+      ]);
+
+      if (!isValid) {
+        return;
       }
     }
-  };
+
+    setIsSaving(true);
+
+    try {
+      let profileUpdated = false;
+      let passwordUpdated = false;
+
+      if (nameChanged) {
+        try {
+          await updateProfileDetails({ first_name: nextName }).unwrap();
+          profileUpdated = true;
+          setName(nextName);
+        } catch (error: any) {
+          const message =
+            error?.data?.first_name?.[0] ||
+            error?.data?.message ||
+            error?.error ||
+            "Unable to update profile. Please try again.";
+          Alert.alert("Profile update failed", message);
+        }
+      }
+
+      if (shouldAttemptPasswordChange) {
+        const passwordChanged = await attemptPasswordChange(
+          trimmedOldPassword,
+          trimmedNewPassword
+        );
+        passwordUpdated = passwordChanged;
+      }
+
+      if (profileUpdated || passwordUpdated) {
+        const successMessage =
+          profileUpdated && passwordUpdated
+            ? "Your profile name and password have been updated."
+            : profileUpdated
+            ? "Your profile name has been updated."
+            : "Your password has been updated.";
+
+        Alert.alert("Success", successMessage);
+      }
+    } finally {
+      setIsSaving(false);
+    }
+  }, [
+    activeProfile?.first_name,
+    activeProfile?.username,
+    attemptPasswordChange,
+    getValues,
+    isLoading,
+    isSaving,
+    isUpdatingProfile,
+    name,
+    trigger,
+    updateProfileDetails,
+  ]);
 
   return (
     <UvScreenWrapper>
@@ -308,7 +436,13 @@ const EditProfileScreen = () => {
           <View style={{ height: 12 }} />
           <UvFormTextInput value={name} onChangeText={setName} placeholder="Mike Smith" />
           <View style={{ height: 12 }} />
-          <UvFormTextInput value={email} onChangeText={setEmail} placeholder="mike_smith@mail.com" keyboardType="email-address" />
+          <UvFormTextInput
+            value={email}
+            placeholder="mike_smith@mail.com"
+            keyboardType="email-address"
+            editable={false}
+            selectTextOnFocus={false}
+          />
 
           <View style={{ height: 32 }} />
 
@@ -321,8 +455,17 @@ const EditProfileScreen = () => {
               control={control}
               name="oldPassword"
               rules={{
-                required: "Current password is required",
-                validate: v => (!!v && v.trim().length > 0) || "Current password is required",
+                validate: (value) => {
+                  if (!isPasswordAttempt) {
+                    return true;
+                  }
+
+                  if (!value || value.trim().length === 0) {
+                    return "Current password is required";
+                  }
+
+                  return true;
+                },
               }}
               render={({ field: { onChange, onBlur, value } }) => (
                 <>
@@ -349,13 +492,36 @@ const EditProfileScreen = () => {
               control={control}
               name="newPassword"
               rules={{
-                required: "New password is required",
-                minLength: { value: 8, message: "Password must be at least 8 characters" },
-                validate: {
-                  hasUpper: v => /[A-Z]/.test(v) || "Include at least one uppercase letter",
-                  hasLower: v => /[a-z]/.test(v) || "Include at least one lowercase letter",
-                  hasNum: v => /[0-9]/.test(v) || "Include at least one number",
-                  hasSpecial: v => /[!@#$%^&*(),.?":{}|<>\[\]_+=\-]/.test(v) || "Include at least one special character",
+                validate: (value) => {
+                  if (!isPasswordAttempt) {
+                    return true;
+                  }
+
+                  if (!value || value.trim().length === 0) {
+                    return "New password is required";
+                  }
+
+                  if (value.length < 8) {
+                    return "Password must be at least 8 characters";
+                  }
+
+                  if (!/[A-Z]/.test(value)) {
+                    return "Include at least one uppercase letter";
+                  }
+
+                  if (!/[a-z]/.test(value)) {
+                    return "Include at least one lowercase letter";
+                  }
+
+                  if (!/[0-9]/.test(value)) {
+                    return "Include at least one number";
+                  }
+
+                  if (!/[!@#$%^&*(),.?":{}|<>\[\]_+=\-]/.test(value)) {
+                    return "Include at least one special character";
+                  }
+
+                  return true;
                 },
               }}
               render={({ field: { onChange, onBlur, value } }) => (
@@ -383,8 +549,21 @@ const EditProfileScreen = () => {
               control={control}
               name="confirmPassword"
               rules={{
-                required: "Please confirm your new password",
-                validate: v => v === newPasswordValue || "Passwords do not match",
+                validate: (value) => {
+                  if (!isPasswordAttempt) {
+                    return true;
+                  }
+
+                  if (!value || value.trim().length === 0) {
+                    return "Please confirm your new password";
+                  }
+
+                  if (value !== newPasswordValue) {
+                    return "Passwords do not match";
+                  }
+
+                  return true;
+                },
               }}
               render={({ field: { onChange, onBlur, value } }) => (
                 <>
@@ -410,8 +589,8 @@ const EditProfileScreen = () => {
         <View style={styles.bottomButtonContainer}>
           <UvButton
             title="Save"
-            onPress={handleSubmit(onSubmit)}
-            disabled={isLoading}
+            onPress={handleSave}
+            disabled={isLoading || isUpdatingProfile || isSaving}
             icon={<SaveIcon width={20} height={20} color={Colors.base[950]} />}
             iconPosition="left"
           />
