@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Alert, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import UvFeedbackHeader from '../../components/common/uvFeedbackHeader';
@@ -12,6 +12,7 @@ import RightArrow from '../../assets/svg/rightArrow.svg';
 import {
   useGetPlatformFeedbackQuestionsQuery,
   useSubmitPlatformFeedbackMutation,
+  useGetUserPlatformFeedbackQuery,
   PlatformFeedbackQuestion,
   PlatformFeedbackAnswerPayload,
 } from '../../services/feedback/platformFeedbackApi';
@@ -25,6 +26,7 @@ const PlatformFeedbackScreen = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submissionError, setSubmissionError] = useState<string | null>(null);
+  const [hasShownExistingFeedbackAlert, setHasShownExistingFeedbackAlert] = useState(false);
 
   const {
     data: questions = [],
@@ -34,6 +36,10 @@ const PlatformFeedbackScreen = () => {
   } = useGetPlatformFeedbackQuestionsQuery();
 
   const [submitPlatformFeedback, { isLoading: isSubmitting }] = useSubmitPlatformFeedbackMutation();
+  const {
+    data: existingFeedback = [],
+    isLoading: isExistingFeedbackLoading,
+  } = useGetUserPlatformFeedbackQuery();
 
   const orderedQuestions = useMemo<PlatformFeedbackQuestion[]>(() => {
     if (!questions) {
@@ -45,6 +51,26 @@ const PlatformFeedbackScreen = () => {
 
   const totalSteps = orderedQuestions.length;
   const currentQuestion = orderedQuestions[currentStep - 1];
+  const hasExistingFeedback = (existingFeedback?.length ?? 0) > 0;
+
+  useEffect(() => {
+    if (!hasShownExistingFeedbackAlert && hasExistingFeedback) {
+      setHasShownExistingFeedbackAlert(true);
+      Alert.alert(
+        'Feedback Already Submitted',
+        'You have already submitted platform feedback.',
+        [
+          {
+            text: 'OK',
+            onPress: () => {
+              navigation.goBack();
+            },
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  }, [hasExistingFeedback, hasShownExistingFeedbackAlert, navigation]);
 
   useEffect(() => {
     if (!orderedQuestions.length) {
@@ -141,7 +167,7 @@ const PlatformFeedbackScreen = () => {
   };
 
   const renderStepContent = () => {
-    if (isLoading) {
+    if (isLoading || isExistingFeedbackLoading) {
       return (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" color={Colors.primary[500]} />
@@ -160,6 +186,16 @@ const PlatformFeedbackScreen = () => {
             onPress={() => refetch()}
             style={styles.retryButton}
           />
+        </View>
+      );
+    }
+
+    if (hasExistingFeedback) {
+      return (
+        <View style={styles.stateContainer}>
+          <UvTypography variant="p" color={Colors.base[50]} align="center">
+            You have already submitted platform feedback.
+          </UvTypography>
         </View>
       );
     }
@@ -244,7 +280,9 @@ const PlatformFeedbackScreen = () => {
     isError ||
     totalSteps === 0 ||
     !isStepValid() ||
-    isSubmitting;
+    isSubmitting ||
+    isExistingFeedbackLoading ||
+    hasExistingFeedback;
 
   return (
     <UvScreenWrapper >

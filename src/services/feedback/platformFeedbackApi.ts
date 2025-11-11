@@ -12,6 +12,20 @@ export type PlatformFeedbackQuestion = {
   updated_at: string;
 };
 
+export type PlatformFeedbackUserResponse = {
+  id: number;
+  user: number;
+  user_name: string;
+  question: number;
+  question_text: string;
+  question_type: 'rating' | 'multiple_choice' | 'text' | string;
+  rating: number | null;
+  text_answer: string | null;
+  selected_option: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 export type PlatformFeedbackAnswerPayload = {
   question_id: number;
   rating?: number | null;
@@ -35,6 +49,12 @@ const platformFeedbackApi = backendBaseApi.injectEndpoints({
           ? [...response].sort((a, b) => a.order - b.order)
           : [],
     }),
+    getUserPlatformFeedback: build.query<PlatformFeedbackUserResponse[], void>({
+      query: () => ({
+        url: endPoints.platformFeedbackUser,
+        method: 'GET',
+      }),
+    }),
     submitPlatformFeedback: build.mutation<void, SubmitPlatformFeedbackRequest>({
       query: body => ({
         url: endPoints.platformFeedbackSubmit,
@@ -48,6 +68,8 @@ const platformFeedbackApi = backendBaseApi.injectEndpoints({
 
 export const {
   useGetPlatformFeedbackQuestionsQuery,
+  useGetUserPlatformFeedbackQuery,
+  useLazyGetUserPlatformFeedbackQuery,
   useSubmitPlatformFeedbackMutation,
 } = platformFeedbackApi;
 

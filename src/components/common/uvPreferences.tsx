@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { StyleSheet, View, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, View, TouchableOpacity, FlatList, Alert } from "react-native";
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvTypography from "./uvTypography";
@@ -11,6 +11,7 @@ import TranslateIcon from "../../assets/svg/translateIcon.svg";
 import LocationIcon from "../../assets/svg/location.svg";
 import SignoutIcon from "../../assets/svg/signoutIcon.svg";
 import { AuthStackParamList } from "../../types/navigationTypes";
+import { useLazyGetUserPlatformFeedbackQuery } from "../../services/feedback/platformFeedbackApi";
 
 type UvPreferencesProps = {
   locationEnabled: boolean;
@@ -35,10 +36,29 @@ interface PreferenceItem {
 
 const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesProps) => {
   const navigation = useNavigation<NavigationProp>();
+  const [fetchUserPlatformFeedback, { isFetching: isCheckingExistingFeedback }] = useLazyGetUserPlatformFeedbackQuery();
 
-  const handlePlatformFeedbackPress = () => {
+  const handlePlatformFeedbackPress = useCallback(async () => {
+    if (isCheckingExistingFeedback) {
+      return;
+    }
+
+    try {
+      const existingFeedback = await fetchUserPlatformFeedback().unwrap();
+
+      if (Array.isArray(existingFeedback) && existingFeedback.length > 0) {
+        Alert.alert(
+          'Feedback Already Submitted',
+          'You have already submitted platform feedback.',
+        );
+        return;
+      }
+    } catch (error) {
+      console.error('Unable to verify existing platform feedback', error);
+    }
+
     navigation.navigate('PlatformFeedbackScreen' as never);
-  };
+  }, [fetchUserPlatformFeedback, isCheckingExistingFeedback, navigation]);
 
   const handleLogOutPress = useCallback(() => {
     if (onLogout) {
@@ -97,7 +117,7 @@ const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesPro
       type: 'action',
       onPress: handleLogOutPress,
     },
-  ], [handleLogOutPress, locationEnabled, onToggle]);
+  ], [handleLogOutPress, handlePlatformFeedbackPress, locationEnabled, onToggle]);
 
   const renderPreferenceItem = ({ item }: { item: PreferenceItem }) => {
     const IconComponent = item.icon;
