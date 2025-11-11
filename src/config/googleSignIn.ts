@@ -1,9 +1,13 @@
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 import { Platform } from "react-native";
+import Config from "react-native-config";
 
 const WEB_CLIENT_ID =
+  Config.GOOGLE_SIGNIN_WEB_CLIENT_ID ??
   "73144482765-8hae40v2iqrhq4dv7etjn3ni7mlv7lmr.apps.googleusercontent.com";
-const IOS_CLIENT_ID = "";
+const IOS_CLIENT_ID =
+  Config.GOOGLE_SIGNIN_IOS_CLIENT_ID ??
+  "73144482765-6j5s7c2otv4i9mp6qa02pk8stcalcdce.apps.googleusercontent.com";
 
 export type GoogleSignInResult = {
   idToken: string | null;
@@ -20,8 +24,12 @@ export type GoogleSignInResult = {
   } | null;
 };
 
+type GoogleSigninConfigureParams = Parameters<
+  typeof GoogleSignin.configure
+>[0] & { iosClientId?: string };
+
 export function configureGoogleSignIn() {
-  const config: Parameters<typeof GoogleSignin.configure>[0] = {
+  const config: GoogleSigninConfigureParams = {
     webClientId: WEB_CLIENT_ID,
     offlineAccess: true,
     forceCodeForRefreshToken: true,
@@ -40,17 +48,18 @@ export async function signInWithGoogle(): Promise<GoogleSignInResult | null> {
     const userInfo = await GoogleSignin.signIn();
     const tokens = await GoogleSignin.getTokens();
 
-    const wrapped = (userInfo as any)?.data;
-    const rawUser = wrapped?.user ?? userInfo?.user ?? null;
+    const userInfoAny = userInfo as any;
+    const wrapped = userInfoAny?.data;
+    const rawUser = wrapped?.user ?? userInfoAny?.user ?? null;
 
     return {
       idToken:
-        wrapped?.idToken ?? userInfo?.idToken ?? tokens?.idToken ?? null,
+        wrapped?.idToken ?? userInfoAny?.idToken ?? tokens?.idToken ?? null,
       accessToken:
         wrapped?.accessToken ?? tokens?.accessToken ?? null,
       serverAuthCode:
-        wrapped?.serverAuthCode ?? userInfo?.serverAuthCode ?? null,
-      scopes: wrapped?.scopes ?? userInfo?.scopes ?? [],
+        wrapped?.serverAuthCode ?? userInfoAny?.serverAuthCode ?? null,
+      scopes: wrapped?.scopes ?? userInfoAny?.scopes ?? [],
       user: rawUser
         ? {
             id: rawUser.id,

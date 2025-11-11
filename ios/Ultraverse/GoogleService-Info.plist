@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyB32MrHW5wrAx_nHRdEN_aY3NpHBhLWOFg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>73144482765</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ultraverse.app</string>
+	<key>PROJECT_ID</key>
+	<string>ultraverse-ba9b2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ultraverse-ba9b2.firebasestorage.app</string>
+	<key>CLIENT_ID</key>
+	<string>73144482765-6j5s7c2otv4i9mp6qa02pk8stcalcdce.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.73144482765-6j5s7c2otv4i9mp6qa02pk8stcalcdce</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:73144482765:ios:091c36c921816ff5186284</string>
+</dict>
+</plist>
