@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Alert, StyleSheet, View } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import UvFeedbackHeader from '../../components/common/uvFeedbackHeader';
@@ -17,6 +17,7 @@ import UvTypography from '../../components/common/uvTypography';
 import {
   useGetGameFeedbackQuestionsQuery,
   useSubmitGameFeedbackMutation,
+  useGetUserGameFeedbackQuery,
   GameFeedbackQuestion,
   GameFeedbackAnswerPayload,
 } from '../../services/feedback/gameFeedbackApi';
@@ -32,6 +33,7 @@ const GameFeedbackScreen = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submissionError, setSubmissionError] = useState<string | null>(null);
+  const [hasShownExistingFeedbackAlert, setHasShownExistingFeedbackAlert] = useState(false);
 
   const {
     data: questions = [],
@@ -57,6 +59,34 @@ const GameFeedbackScreen = () => {
 
   const totalSteps = orderedQuestions.length;
   const currentQuestion = orderedQuestions[currentStep - 1];
+
+  const {
+    data: existingFeedback = [],
+    isLoading: isExistingFeedbackLoading,
+  } = useGetUserGameFeedbackQuery(normalizedGameId ?? 0, {
+    skip: normalizedGameId === null,
+  });
+
+  const hasExistingFeedback = (existingFeedback?.length ?? 0) > 0;
+
+  useEffect(() => {
+    if (!hasShownExistingFeedbackAlert && hasExistingFeedback) {
+      setHasShownExistingFeedbackAlert(true);
+      Alert.alert(
+        'Feedback Already Submitted',
+        'You have already submitted feedback for this game.',
+        [
+          {
+            text: 'OK',
+            onPress: () => {
+              navigation.goBack();
+            },
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  }, [hasExistingFeedback, hasShownExistingFeedbackAlert, navigation]);
 
   useEffect(() => {
     if (!orderedQuestions.length) {
@@ -161,7 +191,7 @@ const GameFeedbackScreen = () => {
   };
 
   const renderStepContent = () => {
-    if (isLoading) {
+    if (isLoading || isExistingFeedbackLoading) {
       return (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" color={Colors.primary[500]} />
@@ -180,6 +210,16 @@ const GameFeedbackScreen = () => {
             onPress={() => refetch()}
             style={styles.retryButton}
           />
+        </View>
+      );
+    }
+
+    if (hasExistingFeedback) {
+      return (
+        <View style={styles.stateContainer}>
+          <UvTypography variant="p" color={Colors.base[50]} align="center">
+            You have already submitted feedback for this game.
+          </UvTypography>
         </View>
       );
     }
@@ -262,9 +302,11 @@ const GameFeedbackScreen = () => {
   const isNextDisabled =
     isLoading ||
     isError ||
+    hasExistingFeedback ||
     totalSteps === 0 ||
     !isStepValid() ||
-    isSubmitting;
+    isSubmitting ||
+    isExistingFeedbackLoading;
 
   return (
     <UvScreenWrapper  >

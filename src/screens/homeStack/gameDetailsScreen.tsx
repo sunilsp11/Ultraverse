@@ -1,6 +1,6 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   Animated,
   Dimensions,
@@ -24,6 +24,7 @@ import { RootStackParamList } from '../../types/navigationTypes'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useAppSelector } from '../../store/store'
 import { useGetGameByIdQuery } from '../../services/games/gamesApi'
+import { useLazyGetUserGameFeedbackQuery } from '../../services/feedback/gameFeedbackApi'
 
 const { width: screenWidth } = Dimensions.get('window')
 const GAMEPLAY_CARD_WIDTH = screenWidth * 0.65
@@ -50,6 +51,40 @@ const GameDetailsScreen = () => {
   const { data: fetchedGame, isFetching } = useGetGameByIdQuery(gameId, {
     skip: !gameId,
   })
+
+  const [checkExistingGameFeedback, { isFetching: isCheckingExistingFeedback }] =
+    useLazyGetUserGameFeedbackQuery()
+
+  const handleFeedbackPress = useCallback(async () => {
+    if (isCheckingExistingFeedback) {
+      return;
+    }
+
+    const parsedGameId = Number(gameId);
+
+    try {
+      if (Number.isFinite(parsedGameId)) {
+        const existingFeedback = await checkExistingGameFeedback(parsedGameId).unwrap();
+
+        if (Array.isArray(existingFeedback) && existingFeedback.length > 0) {
+          Alert.alert(
+            'Feedback Already Submitted',
+            'You have already submitted feedback for this game.',
+          );
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('Unable to verify existing game feedback', error);
+    }
+
+    if (Number.isFinite(parsedGameId)) {
+      navigation.navigate('GameFeedbackScreen', { gameId: String(parsedGameId) });
+      return;
+    }
+
+    navigation.navigate('GameFeedbackScreen', { gameId: gameId || '1' });
+  }, [checkExistingGameFeedback, gameId, isCheckingExistingFeedback, navigation])
 
   const resolvedGame = fetchedGame ?? storedGame
   const [authToken, setAuthToken] = useState<string | null>(null)
@@ -459,9 +494,10 @@ const GameDetailsScreen = () => {
         />
         <UvButton
           title="Feedback"
-          onPress={() => navigation.navigate('GameFeedbackScreen', { gameId: gameId || '1' })}
+          onPress={handleFeedbackPress}
           variant="secondary"
           style={styles.feedbackButton}
+          disabled={isCheckingExistingFeedback}
         />
       </View>
     </View>

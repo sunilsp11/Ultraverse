@@ -24,6 +24,14 @@ export type SubmitGameFeedbackRequest = {
   answers: GameFeedbackAnswerPayload[];
 };
 
+export type GameFeedbackUserResponse = {
+  id: number;
+  game?: number;
+  game_id?: number;
+  name?: string;
+  [key: string]: unknown;
+};
+
 const gameFeedbackApi = backendBaseApi.injectEndpoints({
   endpoints: build => ({
     getGameFeedbackQuestions: build.query<GameFeedbackQuestion[], void>({
@@ -44,12 +52,20 @@ const gameFeedbackApi = backendBaseApi.injectEndpoints({
         },
       }),
     }),
+    getUserGameFeedback: build.query<GameFeedbackUserResponse[], number>({
+      query: gameId => ({
+        url: `${endPoints.gameFeedbackUser}${gameId}/`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
 export const {
   useGetGameFeedbackQuestionsQuery,
   useSubmitGameFeedbackMutation,
+  useGetUserGameFeedbackQuery,
+  useLazyGetUserGameFeedbackQuery,
 } = gameFeedbackApi;
 
 export default gameFeedbackApi;
