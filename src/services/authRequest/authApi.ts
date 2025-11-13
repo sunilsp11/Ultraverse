@@ -1,6 +1,21 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {baseUrl, endPoints} from '../endPoints';
 
+export type SocialLoginPayload = {
+  provider: string;
+  id_token: string;
+};
+
+export type SocialLoginResponse = {
+  id: number;
+  token: string;
+  refresh: string;
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+};
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({baseUrl: baseUrl}),
@@ -53,6 +68,15 @@ export const authApi = createApi({
         };
       },
     }),
+    socialLogin: build.mutation<SocialLoginResponse, SocialLoginPayload>({
+      query: body => {
+        return {
+          url: endPoints.socialLogin,
+          method: 'POST',
+          body,
+        };
+      },
+    }),
   }),
 });
 
@@ -62,4 +86,5 @@ export const {
   useForgotPasswordMutation,
   useResetPasswordMutation,
   useChangePasswordMutation,
+  useSocialLoginMutation,
 } = authApi;

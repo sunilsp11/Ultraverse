@@ -3,7 +3,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   Image,
@@ -27,7 +27,10 @@ import {
 } from "../../types/navigationTypes";
 import GoogleIcon from "../../assets/svg/google.svg";
 import FacebookIcon from "../../assets/svg/facebook.svg";
-import { useLoginMutation } from "../../services/authRequest/authApi";
+import {
+  useLoginMutation,
+  useSocialLoginMutation,
+} from "../../services/authRequest/authApi";
 import { useForm, Controller } from "react-hook-form";
 import { signInWithGoogle } from "../../config/googleSignIn";
 import { useAppDispatch } from "../../store/store";
@@ -36,6 +39,11 @@ import {
   setProfile,
 } from "../../store/slices/profileSlice";
 import { UserProfile } from "../../services/profile/profileApi";
+
+export enum LoginProvider {
+  google = "google-oauth2",
+  facebook = "facebook",
+}
 
 const LoginScreen = () => {
   type LoginNavigationProp = CompositeNavigationProp<
@@ -47,7 +55,13 @@ const LoginScreen = () => {
   const [login, { isLoading }] = useLoginMutation();
   const [isGoogleSignInInProgress, setGoogleSignInInProgress] =
     useState(false);
+  const [socialLogin, { isLoading: isSocialLoginLoading }] =
+    useSocialLoginMutation();
   const dispatch = useAppDispatch();
+  const isGoogleBusy = useMemo(
+    () => isGoogleSignInInProgress || isSocialLoginLoading,
+    [isGoogleSignInInProgress, isSocialLoginLoading]
+  );
 
   type LoginFormData = {
     email: string;
@@ -103,56 +117,64 @@ const LoginScreen = () => {
   };
 
   const handleGoogleLogin = async () => {
-    if (isGoogleSignInInProgress) {
+    if (isGoogleBusy) {
       return;
     }
 
     try {
       setGoogleSignInInProgress(true);
       const userInfo = await signInWithGoogle();
-
       if (!userInfo) {
         return;
       }
 
-      const idToken = userInfo.idToken ?? null;
-      const accessToken = userInfo.accessToken ?? null;
+      const wrappedData: any = (userInfo as any)?.data ?? userInfo;
+      const user = wrappedData?.user ?? (userInfo as any)?.user ?? null;
+      const idToken =
+        wrappedData?.idToken ??
+        wrappedData?.id_token ??
+        (userInfo as any)?.idToken ??
+        null;
 
       if (!idToken) {
         Alert.alert(
           "Google Login Failed",
-          "Unable to retrieve a valid token from Google."
+          "Unable to retrieve a valid ID token from Google."
         );
         return;
       }
-
-      await AsyncStorage.setItem("UserToken", idToken);
-
-      if (accessToken) {
-        await AsyncStorage.setItem("UserAccessToken", accessToken);
-      }
-
-      const googleUser = userInfo.user;
       const nowIso = new Date().toISOString();
 
-      if (googleUser) {
-        const numericId = Number(googleUser.id);
-        const resolvedId =
-          Number.isFinite(numericId) && Number.isSafeInteger(numericId)
-            ? numericId
-            : 0;
-        const syntheticProfile: UserProfile = {
-          id: resolvedId,
-          username: googleUser.email || googleUser.name || googleUser.id,
-          email: googleUser.email || "",
-          first_name: googleUser.givenName || googleUser.name || null,
-          profile_picture: googleUser.photo ?? null,
-          profile_picture_url: googleUser.photo ?? null,
-          created_at: nowIso,
-          updated_at: nowIso,
-        };
-        dispatch(setProfile(syntheticProfile));
+      const response = await socialLogin({
+        provider: LoginProvider.google,
+        id_token: idToken,
+      }).unwrap();
+
+      console.log("response", JSON.stringify(response, null, 2));
+      await AsyncStorage.setItem("UserToken", response.token);
+      if (response.refresh) {
+        await AsyncStorage.setItem("UserRefreshToken", response.refresh);
+      } else {
+        await AsyncStorage.removeItem("UserRefreshToken");
       }
+      await AsyncStorage.removeItem("UserAccessToken");
+
+      const resolvedProfile: UserProfile = {
+        id: response.id ?? 0,
+        username:
+          response.username ||
+          response.email ||
+          user?.email ||
+          `user-${response.id ?? Date.now()}`,
+        email: response.email || user?.email || "",
+        first_name: response.first_name || user?.givenName || null,
+        profile_picture: user?.photo ?? null,
+        profile_picture_url: user?.photo ?? null,
+        created_at: nowIso,
+        updated_at: nowIso,
+      };
+
+      dispatch(setProfile(resolvedProfile));
 
       dispatch(setAuthProvider("google"));
 
@@ -167,7 +189,12 @@ const LoginScreen = () => {
       });
     } catch (err: any) {
       console.log("Google login error:", err);
-      Alert.alert("Google Login Failed", err?.message || "Please try again");
+      const message =
+        err?.data?.detail ||
+        err?.data?.message ||
+        err?.message ||
+        "Please try again";
+      Alert.alert("Google Login Failed", message);
     } finally {
       setGoogleSignInInProgress(false);
     }
@@ -308,13 +335,13 @@ const LoginScreen = () => {
                     onPress={handleGoogleLogin}
                     style={[
                       styles.socialCircle,
-                      isGoogleSignInInProgress && styles.socialCircleDisabled,
+                      isGoogleBusy && styles.socialCircleDisabled,
                     ]}
-                    disabled={isGoogleSignInInProgress}
+                    disabled={isGoogleBusy}
                     accessibilityRole="button"
                     accessibilityLabel="Continue with Google"
                   >
-                    {isGoogleSignInInProgress ? (
+                    {isGoogleBusy ? (
                       <ActivityIndicator size="small" color={Colors.white} />
                     ) : (
                       <GoogleIcon width={24} height={24} color="#0F5270" />

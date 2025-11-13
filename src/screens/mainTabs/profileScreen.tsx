@@ -83,6 +83,7 @@ const ProfileScreen = () => {
     try {
       await AsyncStorage.removeItem("UserToken");
       await AsyncStorage.removeItem("UserAccessToken");
+      await AsyncStorage.removeItem("UserRefreshToken");
       dispatch(resetBackendApiState());
       dispatch(authApi.util.resetApiState());
       dispatch(clearProfile());

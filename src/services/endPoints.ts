@@ -1,8 +1,9 @@
-export const baseUrl = "https://edea67ac804a.ngrok-free.app/api"
+export const baseUrl = "https://a6030d55ac83.ngrok-free.app/api"
 
 export const endPoints = {
   register: "/auth/register/",
   login: "/auth/login/",
+  socialLogin: "/auth/social/jwt-pair-user/",
   forgotPassword: "/auth/forgot-password/",
   resetPassword: "/auth/reset-password/",
   changePassword: "/auth/profile/change-password/",

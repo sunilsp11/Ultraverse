@@ -10,6 +10,7 @@ const IOS_CLIENT_ID =
   "73144482765-6j5s7c2otv4i9mp6qa02pk8stcalcdce.apps.googleusercontent.com";
 
 export type GoogleSignInResult = {
+  data: { idToken: string; };
   idToken: string | null;
   accessToken: string | null;
   serverAuthCode: string | null;
@@ -46,31 +47,7 @@ export async function signInWithGoogle(): Promise<GoogleSignInResult | null> {
   try {
     await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
     const userInfo = await GoogleSignin.signIn();
-    const tokens = await GoogleSignin.getTokens();
-
-    const userInfoAny = userInfo as any;
-    const wrapped = userInfoAny?.data;
-    const rawUser = wrapped?.user ?? userInfoAny?.user ?? null;
-
-    return {
-      idToken:
-        wrapped?.idToken ?? userInfoAny?.idToken ?? tokens?.idToken ?? null,
-      accessToken:
-        wrapped?.accessToken ?? tokens?.accessToken ?? null,
-      serverAuthCode:
-        wrapped?.serverAuthCode ?? userInfoAny?.serverAuthCode ?? null,
-      scopes: wrapped?.scopes ?? userInfoAny?.scopes ?? [],
-      user: rawUser
-        ? {
-            id: rawUser.id,
-            email: rawUser.email,
-            name: rawUser.name,
-            familyName: rawUser.familyName,
-            givenName: rawUser.givenName,
-            photo: rawUser.photo,
-          }
-        : null,
-    };
+return userInfo as any;
   } catch (error: any) {
     if (error?.code === statusCodes.SIGN_IN_CANCELLED) {
       return null;
