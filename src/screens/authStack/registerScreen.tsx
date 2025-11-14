@@ -62,10 +62,22 @@ const RegisterScreen = () => {
       Alert.alert("Registration successful", "Please login to your account");
       navigation.navigate("LoginScreen");
     } catch (error: any) {
-      console.log(error);
+      console.log("Registration error:", error);
+      let errorMessage = "Please try again";
+      
+      if (error?.data?.message) {
+        errorMessage = error.data.message;
+      } else if (error?.error) {
+        errorMessage = error.error;
+      } else if (error?.status === 'FETCH_ERROR' || error?.status === 'TIMEOUT_ERROR') {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+      
       Alert.alert(
         "Registration failed",
-        error?.data?.message || "Please try again"
+        errorMessage
       );
     }
   };
