@@ -1,4 +1,4 @@
-export const baseUrl = "https://a6030d55ac83.ngrok-free.app/api"
+export const baseUrl = "http://3.27.150.246:8000/api"
 
 export const endPoints = {
   register: "/auth/register/",

@@ -39,10 +39,10 @@ const RegisterScreen = () => {
     formState: { errors },
   } = useForm<RegisterFormData>({
     defaultValues: {
-      name: "sunil",
-      email: "sunil11.brainerhub@gmail.com",
-      password: "Sunil@123",
-      confirmPassword: "Sunil@123",
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
     mode: "onBlur",
   });

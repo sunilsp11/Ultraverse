@@ -41,4 +41,8 @@ export type RootStackParamList = {
   EditProfileScreen: undefined;
   SearchScreen: undefined;
   ProfileScreen: undefined;
+  UnityPlayScreen: {
+    unityPayload: string;
+    title?: string;
+  };
 };

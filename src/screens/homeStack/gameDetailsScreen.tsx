@@ -255,6 +255,30 @@ const GameDetailsScreen = () => {
     }
   }, [])
 
+  const handlePlayPress = useCallback(() => {
+    const unityData = {
+      id: gameId,
+      title: displayTitle,
+      genres: displayGenres,
+      description: displayDescription,
+      gameInfo: displayInfo,
+      media: resolvedGame?.media ?? [],
+    }
+
+    navigation.navigate('UnityPlayScreen', {
+      unityPayload: JSON.stringify(unityData),
+      title: displayTitle,
+    })
+  }, [
+    displayDescription,
+    displayGenres,
+    displayInfo,
+    displayTitle,
+    gameId,
+    navigation,
+    resolvedGame?.media,
+  ])
+
   const headerBackgroundColor = scrollY.interpolate({
     inputRange: [0, 150],
     outputRange: ['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)'],
@@ -489,7 +513,7 @@ const GameDetailsScreen = () => {
       <View style={styles.bottomButtonContainer}>
         <UvButton
           title="Play Now"
-          onPress={() => console.log('Play Now pressed')}
+          onPress={handlePlayPress}
           icon={<PlayIcon width={16} height={16} color={Colors.base[950]} />}
         />
         <UvButton

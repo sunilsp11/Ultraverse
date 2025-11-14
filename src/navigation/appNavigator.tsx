@@ -12,6 +12,7 @@ import GameDetailsScreen from "../screens/homeStack/gameDetailsScreen";
 import GameFeedbackScreen from "../screens/homeStack/gameFeedbackScreen";
 import GameFeedbackThankYouScreen from "../screens/homeStack/gameFeedbackThankYouScreen";
 import PlatformFeedbackScreen from "../screens/homeStack/platformFeedbackScreen";
+import UnityPlayScreen from "../screens/homeStack/unityPlayScreen";
 import GamesScreen from "../screens/mainTabs/gamesScreen";
 import ProfileScreen from "../screens/mainTabs/profileScreen";
 import SearchScreen from "../screens/mainTabs/searchScreen";
@@ -156,6 +157,7 @@ const AppNavigator = () => {
           <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
           <RootStack.Screen name="SearchScreen" component={SearchScreen} />
           <RootStack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <RootStack.Screen name="UnityPlayScreen" component={UnityPlayScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -1,11 +1,26 @@
 apply plugin: 'com.android.library'
+apply from: '../shared/keepUnitySymbols.gradle'
+apply from: '../shared/common.gradle'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // implementation(name: 'arcore_client', ext:'aar')
+    // implementation(name: 'UnityARCore', ext:'aar')
+    // implementation(name: 'ARPresto', ext:'aar')
+    // implementation(name: 'unityandroidpermissions', ext:'aar')
+    // implementation project(':unityLibrary:xrmanifest.androidlib')
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.9.0'
+    implementation 'androidx.games:games-activity:3.0.5'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}
 
 android {
     namespace "com.unity3d.player"
     ndkPath "/Applications/Unity/Hub/Editor/6000.2.7f2/PlaybackEngines/AndroidPlayer/NDK"
     ndkVersion "27.2.12479018"
     compileSdk 36
-    buildToolsVersion = "35.0.0"
+    buildToolsVersion = "34.0.0"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -46,23 +61,6 @@ android {
         }
     }
 }
-apply from: '../shared/keepUnitySymbols.gradle'
-apply from: '../shared/common.gradle'
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    // implementation(name: 'arcore_client', ext:'aar')
-    // implementation(name: 'ARPresto', ext:'aar')
-    // implementation(name: 'UnityARCore', ext:'aar')
-    // implementation(name: 'unityandroidpermissions', ext:'aar')
-    // implementation project(':unityLibrary:xrmanifest.androidlib')
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core:1.9.0'
-    implementation 'androidx.games:games-activity:3.0.5'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-}
-
-
 
 
 android.externalNativeBuild {
@@ -129,31 +127,6 @@ def getSdkDir() {
     return local.getProperty('sdk.dir')
 }
 
-def getLocalProperty(String key) {
-    def file = new File("${rootDir}/local.properties")
-    if (!file.exists()) {
-        return null
-    }
-    Properties props = new Properties()
-    props.load(new FileInputStream(file))
-    return props.getProperty(key)
-}
-
-def getUnitySdkPath() {
-    return (project.findProperty('unity.androidSdkPath')
-        ?: getLocalProperty('sdk.dir')
-        ?: System.getenv('ANDROID_SDK_ROOT')
-        ?: System.getenv('ANDROID_HOME'))
-}
-
-def getUnityNdkPath() {
-    return (project.findProperty('unity.androidNdkPath')
-        ?: getLocalProperty('ndk.dir')
-        ?: android.ndkPath
-        ?: System.getenv('ANDROID_NDK_HOME')
-        ?: System.getenv('ANDROID_NDK_ROOT'))
-}
-
 def getIl2CppOutputPath(String workingDir, String abi) {
     return "${workingDir}/src/main/jniLibs/${abi}/libil2cpp.so";
 }
@@ -179,7 +152,7 @@ def buildIl2CppImpl(String workingDir, String configuration, String architecture
     commandLineArgs.add("--data-folder=${workingDir}/src/main/Il2CppOutputProject/Source/il2cppOutput/data")
     commandLineArgs.add("--generatedcppdir=${workingDir}/src/main/Il2CppOutputProject/Source/il2cppOutput")
     commandLineArgs.add("--cachedirectory=${workingDir}/build/il2cpp_${abi}_${configuration}/il2cpp_cache")
-    commandLineArgs.add("--tool-chain-path=" + getUnityNdkPath())
+    commandLineArgs.add("--tool-chain-path=" + getProperty("unity.androidNdkPath"))
 
     staticLibraries.each { fileName ->
         commandLineArgs.add("--additional-libraries=${workingDir}/src/main/jniStaticLibs/${abi}/${fileName}")
@@ -193,10 +166,10 @@ def buildIl2CppImpl(String workingDir, String configuration, String architecture
 
     def command = "${workingDir}/src/main/Il2CppOutputProject/IL2CPP/build/deploy/il2cpp${executableExtension}";
     execCommand(workingDir, [command, *commandLineArgs], [
-        "ANDROID_SDK_ROOT": (getUnitySdkPath() ?: ''),
-        "ANDROID_NDK_ROOT": (getUnityNdkPath() ?: ''),
-        "NDK_ROOT": (getUnityNdkPath() ?: ''),
-        "ANDROID_NDK_HOME": (getUnityNdkPath() ?: ''),
+        "ANDROID_SDK_ROOT": getProperty("unity.androidSdkPath"),
+        "ANDROID_NDK_ROOT": getProperty("unity.androidNdkPath"),
+        "NDK_ROOT": getProperty("unity.androidNdkPath"),
+        "ANDROID_NDK_HOME": getProperty("unity.androidNdkPath"),
     ])
 
     def dbgLevel =  project.android.defaultConfig.ndk.debugSymbolLevel;
