@@ -22,15 +22,12 @@ import UvTypography from '../../components/common/uvTypography'
 import Colors from '../../theme/color'
 import { RootStackParamList } from '../../types/navigationTypes'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useAppSelector } from '../../store/store'
 import { useGetGameByIdQuery } from '../../services/games/gamesApi'
 import { useLazyGetUserGameFeedbackQuery } from '../../services/feedback/gameFeedbackApi'
 
 const { width: screenWidth } = Dimensions.get('window')
 const GAMEPLAY_CARD_WIDTH = screenWidth * 0.65
 const GAMEPLAY_CARD_HEIGHT = GAMEPLAY_CARD_WIDTH * 0.6
-
-const FALLBACK_GAME_IMAGE = require('../../assets/images/Fortnite.png')
 
 type GameDetailsScreenRouteProp = RouteProp<RootStackParamList, 'GameDetailsScreen'>
 type GameDetailsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
@@ -44,10 +41,7 @@ const GameDetailsScreen = () => {
 
   const scrollY = useRef(new Animated.Value(0)).current
 
-  const storedGame = useAppSelector(state =>
-    state.games.games.find(game => String(game.id) === String(gameId)),
-  )
-
+ 
   const { data: fetchedGame, isFetching } = useGetGameByIdQuery(gameId, {
     skip: !gameId,
   })
@@ -86,12 +80,11 @@ const GameDetailsScreen = () => {
     navigation.navigate('GameFeedbackScreen', { gameId: gameId || '1' });
   }, [checkExistingGameFeedback, gameId, isCheckingExistingFeedback, navigation])
 
-  const resolvedGame = fetchedGame ?? storedGame
+  const resolvedGame = fetchedGame
   const [authToken, setAuthToken] = useState<string | null>(null)
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
   const [loadingVideoId, setLoadingVideoId] = useState<string | null>(null)
 
-  const fallbackHeroImage = (gameImage as ImageSourcePropType | undefined) ?? FALLBACK_GAME_IMAGE
 
   const heroImageSource: ImageSourcePropType = useMemo(() => {
     const primaryMediaImage = resolvedGame?.media?.find(
@@ -113,8 +106,8 @@ const GameDetailsScreen = () => {
       return { uri: resolvedGame.primary_image }
     }
 
-    return fallbackHeroImage
-  }, [resolvedGame, fallbackHeroImage])
+    return undefined as unknown as ImageSourcePropType
+  }, [resolvedGame])
 
   type GameplayMediaItem = {
     id: string
@@ -148,13 +141,7 @@ const GameDetailsScreen = () => {
         }, [])
       }
 
-      return [
-        {
-          id: 'fallback-image',
-          type: 'image',
-          source: heroImageSource,
-        },
-      ]
+      return []
     },
     [resolvedGame?.media, heroImageSource],
   )
@@ -318,13 +305,15 @@ const GameDetailsScreen = () => {
         scrollEventThrottle={16}
       >
         {/* Hero Image Section */}
-        <View style={styles.heroSection}>
-          <Image
-            source={heroImageSource}
-            style={styles.heroImage}
-            resizeMode="cover"
-          />
-        </View>
+        {heroImageSource && (
+          <View style={styles.heroSection}>
+            <Image
+              source={heroImageSource}
+              style={styles.heroImage}
+              resizeMode="cover"
+            />
+          </View>
+        )}
 
         {/* Game Info Section */}
         <View style={styles.infoSection}>

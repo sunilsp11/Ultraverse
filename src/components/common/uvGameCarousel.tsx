@@ -37,23 +37,26 @@ const UvGameCarousel: React.FC<Props> = ({
                 snapToInterval={CARD_WIDTH + 16}
                 snapToAlignment="start"
             >
-                {games.map((game, index) => (
+                {games
+                  .filter(game => game.image)
+                  .map((game, index) => (
                     <TouchableOpacity
                         key={game.id}
                         style={[
                             styles.gameCard,
                             index === 0 && styles.firstCard,
-                            index === games.length - 1 && styles.lastCard,
+                            index === games.filter(g => g.image).length - 1 && styles.lastCard,
                         ]}
                         onPress={() => onGamePress?.(game.id)}
                         activeOpacity={0.8}
                     >
-                        <Image
-                            source={game.image}
-                            style={styles.gameImage}
-                            resizeMode="stretch"
-
-                        />
+                        {game.image && (
+                          <Image
+                              source={game.image}
+                              style={styles.gameImage}
+                              resizeMode="stretch"
+                          />
+                        )}
                     </TouchableOpacity>
                 ))}
             </ScrollView>

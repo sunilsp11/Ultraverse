@@ -78,12 +78,14 @@ const gamesApi = backendBaseApi.injectEndpoints({
         method: 'GET',
       }),
       transformResponse: (response: GamesApiResponse) => extractGamesCollection(response),
+      keepUnusedDataFor: 300,
+      
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled
           dispatch(setGames(data))
         } catch (error) {
-          console.log('error', error)
+          console.error('Error fetching top games', error)
         }
       },
     }),
@@ -93,13 +95,12 @@ const gamesApi = backendBaseApi.injectEndpoints({
         method: 'GET',
       }),
       transformResponse: (response: Game) => response,
-      async onQueryStarted(gameId, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled
           dispatch(upsertGame(data))
-          console.log('data', data)
         } catch (error) {
-          console.log('error fetching game', gameId, error)
+          console.error('Error fetching game by id', error)
         }
       },
     }),

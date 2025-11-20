@@ -33,7 +33,9 @@ const UvTrendingCarousel: React.FC<Props> = ({
         showViewAll={false}
       />
       <View style={styles.cardsContainer}>
-        {games.map((game) => (
+        {games
+          .filter(game => game.image)
+          .map((game) => (
           <TouchableOpacity
             key={game.id}
             style={styles.gameCard}
@@ -42,13 +44,15 @@ const UvTrendingCarousel: React.FC<Props> = ({
           >
             <View style={styles.cardContent}>
               {/* Game Image */}
-              <View style={styles.imageContainer}>
-                <Image
-                  source={game.image}
-                  style={styles.gameImage}
-                  resizeMode="cover"
-                />
-              </View>
+              {game.image && (
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={game.image}
+                    style={styles.gameImage}
+                    resizeMode="cover"
+                  />
+                </View>
+              )}
 
               {/* Game Info */}
               <View style={styles.gameInfo}>
