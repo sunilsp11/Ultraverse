@@ -1,4 +1,4 @@
-export const baseUrl = "http://3.27.150.246:8000/api"
+export const baseUrl = "https://api.ultraverse.games/api"
 
 export const endPoints = {
   register: "/auth/register/",
@@ -18,4 +18,5 @@ export const endPoints = {
   gameFeedbackQuestions: "/feedback/questions/",
   gameFeedbackSubmit: "/feedback/submit/",
   gameFeedbackUser: "/feedback/user/",
+  recordActivity: "/auth/activity/record/",
 };

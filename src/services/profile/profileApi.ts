@@ -28,6 +28,18 @@ export type UploadProfilePictureResponse = {
   profile_picture: string | null;
 };
 
+export type StreakData = {
+  streak: boolean[];
+  current_streak: number;
+  week_start: string;
+  week_end: string;
+};
+
+export type RecordActivityResponse = {
+  message: string;
+  streak: StreakData;
+};
+
 const profileApi = backendBaseApi.injectEndpoints({
   endpoints: (build) => ({
     getProfile: build.query<UserProfile, void>({
@@ -121,6 +133,12 @@ const profileApi = backendBaseApi.injectEndpoints({
         }
       },
     }),
+    recordActivity: build.mutation<RecordActivityResponse, void>({
+      query: () => ({
+        url: endPoints.recordActivity,
+        method: "POST",
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -129,6 +147,7 @@ export const {
   useGetProfileQuery,
   useUploadProfilePictureMutation,
   useUpdateProfileDetailsMutation,
+  useRecordActivityMutation,
 } = profileApi;
 
 export default profileApi;
