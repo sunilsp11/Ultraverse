@@ -1,33 +1,34 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   NavigationProp,
   NavigatorScreenParams,
   useNavigation,
 } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
   Image,
-  Platform,
   StatusBar,
   StyleSheet,
-  View,
+  View
 } from "react-native";
-import Sound from "react-native-sound";
 import Video from "react-native-video";
+import { STORAGE_KEYS } from "../../constants/storageKeys";
 import {
   AuthStackParamList,
   RootStackParamList,
 } from "../../types/navigationTypes";
-import { STORAGE_KEYS } from "../../constants/storageKeys";
+import Sound from "react-native-sound";
+import UvTypography from "../../components/common/uvTypography";
+import Colors from "../../theme/color";
 
 const SplashScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
-  const bgFadeAnim = useRef(new Animated.Value(1)).current;
+  const bgFadeAnim = useRef(new Animated.Value(0.8)).current;
   const overlayFadeAnim = useRef(new Animated.Value(1)).current;
-  const soundRef = useRef<Sound | null>(null);
+
   const [shouldShowOnboarding, setShouldShowOnboarding] =
     useState<boolean>(true);
   const [hasSession, setHasSession] = useState<boolean>(false);
@@ -65,8 +66,6 @@ const SplashScreen = () => {
   }, [appStateLoaded, hasSession, navigation, shouldShowOnboarding]);
 
   useEffect(() => {
-    Sound.setCategory(Platform.OS === "ios" ? "Playback" : "Ambient", true);
-
     const loadAppState = async () => {
       try {
         const [storedOnboardingValue, storedToken] = await Promise.all([
@@ -87,33 +86,19 @@ const SplashScreen = () => {
 
     void loadAppState();
 
-    const sound = new Sound(
-      "epic_glitch_logo_402329.mp3",
-      Sound.MAIN_BUNDLE,
-      (error) => {
-        if (error) {
-          console.log("Failed to load sound:", error);
-          return;
-        }
-        sound.setVolume(0.8);
-        sound.play((success) => {
-          if (success) console.log("Audio finished");
-          else console.log("Playback failed");
-          sound.release();
-        });
-      }
-    );
-
-    soundRef.current = sound;
-
-    setTimeout(() => {
-      Animated.timing(overlayFadeAnim, {
-        toValue: 0,
-        duration: 800,
-        useNativeDriver: true,
-      }).start();
-    }, 200);
-
+    Animated.timing(overlayFadeAnim, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  
+    Animated.timing(overlayFadeAnim, {
+      toValue: 0,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
+  
+    // Logo fade + scale (0 → 1500ms)
     Animated.parallel([
       Animated.timing(scaleAnim, {
         toValue: 1,
@@ -125,34 +110,46 @@ const SplashScreen = () => {
         duration: 1500,
         useNativeDriver: true,
       }),
-    ]).start(() => {
-      setTimeout(() => {
-        Animated.timing(bgFadeAnim, {
-          toValue: 0.5,
-          duration: 1000,
-          useNativeDriver: false,
-        }).start();
-      }, 2000);
-    });
+    ]).start();
 
-    const navigateTimer = setTimeout(() => {
-      navigateToNextScreen();
-    }, 3000);
+    // Background fade animation: darker → lighter → darker
+    Animated.sequence([
+      Animated.timing(bgFadeAnim, {
+        toValue: 0.2, // lighter
+        duration: 3000,
+        useNativeDriver: false,
+      }),
+      Animated.timing(bgFadeAnim, {
+        toValue: 0.8, // darker
+        duration: 3000,
+        useNativeDriver: false,
+      }),
+    ]).start();
 
     return () => {
-      clearTimeout(navigateTimer);
-      if (soundRef.current) {
-        soundRef.current.stop(() => {
-          soundRef.current?.release();
-          soundRef.current = null;
-        });
-      }
+      
     };
-  }, [navigateToNextScreen]);
+  }, []);
+
+  const splashScreenSound = new Sound("splash_screen_bg_sound.mp3", Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      console.log("Failed to load the sound", error);
+      return;
+    }
+
+    splashScreenSound.setVolume(0.05);
+    splashScreenSound.play((success) => {
+      if (success) {
+        navigateToNextScreen();
+      } else {
+        navigateToNextScreen();
+      }
+    });
+  });
 
   const backgroundColor = bgFadeAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ["rgba(0,0,0,2)", "rgba(0,0,0,0.1)"],
+    outputRange: ["rgba(0,0,0,0.1)", "rgba(0,0,0,0.8)"],
   });
 
   const renderLogo = () => (
@@ -166,10 +163,13 @@ const SplashScreen = () => {
       ]}
     >
       <Image
-        source={require("../../assets/images/logo.png")}
+        source={require("../../assets/images/spalshScreenLogo.png")}
         style={styles.logoImage}
         resizeMode="contain"
       />
+       <UvTypography variant="h4" align="center" color={Colors.base[50]}>
+        ULTRAVERSE
+      </UvTypography>
     </Animated.View>
   );
 
@@ -180,8 +180,8 @@ const SplashScreen = () => {
         source={require("../../assets/videos/portal_animation.mp4")}
         style={styles.videoBackground}
         resizeMode="cover"
-        repeat={false}
-        muted={false}
+        repeat={true}
+        muted={true}
         paused={false}
         playInBackground={true}
         playWhenInactive={true}
@@ -218,8 +218,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoImage: {
-    width: 180,
-    height: 180,
+    width: 120,
+    height: 120,
   },
   videoBackground: {
     position: "absolute",

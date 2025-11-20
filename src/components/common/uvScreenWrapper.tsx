@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import UvAssistant from './uvAssistant';
 
 interface ScreenWrapperProps {
   children: ReactNode;
@@ -37,9 +38,9 @@ const UvScreenWrapper = ({
         pointerEvents="none"
       />
       <StatusBar barStyle="light-content" translucent={translucent} backgroundColor="transparent" />
-      <View style={{ paddingTop: insets.top + 10, flex: 1 }}>
+      <View style={{ paddingTop: insets.top + 10, flex: 1}}>
         {children}
-        {/* {showAssistant && <UvAssistant />} */}
+        {showAssistant && <UvAssistant />}
       </View>
     </View>
   )

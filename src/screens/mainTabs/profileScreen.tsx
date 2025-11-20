@@ -129,6 +129,7 @@ const ProfileScreen = () => {
             name={displayName}
             email={displayEmail}
             onEditPress={() => navigation.navigate("EditProfileScreen")}
+            editIcon={true}
           />
 
           <UvSpacer gap={15} />

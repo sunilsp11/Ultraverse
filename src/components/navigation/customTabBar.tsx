@@ -1,7 +1,8 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Sound from 'react-native-sound';
 
 import ButtomTabfludLigtingIcon from '../../assets/svg/buttomTabfludLigting.svg';
 import GameIcon from '../../assets/svg/gameIcon.svg';
@@ -14,6 +15,28 @@ import TechaidsIcon from '../../assets/svg/techaids.svg';
 const CustomTabBar = (props: BottomTabBarProps) => {
   const { state, descriptors, navigation } = props;
   const insets = useSafeAreaInsets();
+  const tabPressSoundRef = useRef<Sound | null>(null);
+
+  useEffect(() => {
+    // Initialize the sound
+    const tabSound = new Sound('buttom_tab_press.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('Failed to load tab press sound', error);
+        return;
+      }
+      tabSound.setVolume(0.1);
+      tabPressSoundRef.current = tabSound;
+    });
+
+    // Cleanup on unmount
+    return () => {
+      if (tabPressSoundRef.current) {
+        tabPressSoundRef.current.stop();
+        tabPressSoundRef.current.release();
+        tabPressSoundRef.current = null;
+      }
+    };
+  }, []);
 
   const getIcon = (routeName: string, focused: boolean) => {
     const iconSize = 20;
@@ -65,6 +88,17 @@ const CustomTabBar = (props: BottomTabBarProps) => {
             target: route.key,
             canPreventDefault: true,
           });
+
+          // Play sound when tab is pressed
+          if (tabPressSoundRef.current) {
+            tabPressSoundRef.current.stop(() => {
+              tabPressSoundRef.current?.play((success) => {
+                if (!success) {
+                  console.log('Failed to play tab press sound');
+                }
+              });
+            });
+          }
 
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate(route.name);

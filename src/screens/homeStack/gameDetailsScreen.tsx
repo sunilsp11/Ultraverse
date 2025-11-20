@@ -272,6 +272,7 @@ const GameDetailsScreen = () => {
     extrapolate: 'clamp',
   })
 
+
   return (
     <View style={[styles.container,{backgroundColor: Colors.base[950]}]}>
       {(isFetching && !resolvedGame) && (
@@ -318,7 +319,7 @@ const GameDetailsScreen = () => {
         {/* Game Info Section */}
         <View style={styles.infoSection}>
           <UvTypography
-            variant="h2"
+            variant="h3"
             color={Colors.white}
             letterSpacing={3}
             style={styles.gameTitle}
@@ -382,12 +383,7 @@ const GameDetailsScreen = () => {
                     <View style={styles.inlineVideoContainer}>
                       <Video
                         key={mediaItem.id}
-                        source={{
-                          uri: mediaItem.videoUrl ?? '',
-                          headers: authToken
-                            ? { Authorization: `Bearer ${authToken}` }
-                            : undefined,
-                        }}
+                        source={{ uri: mediaItem.videoUrl }}
                         style={styles.inlineVideo}
                         resizeMode="cover"
                         paused={false}

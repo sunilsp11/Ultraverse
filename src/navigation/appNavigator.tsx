@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, NavigationState } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import Sound from "react-native-sound";
 import ForgotPasswordScreen from "../screens/authStack/forgotPasswordScreen";
 import LoginScreen from "../screens/authStack/loginScreen";
 import RegisterScreen from "../screens/authStack/registerScreen";
@@ -136,9 +137,63 @@ const MainTabNavigator = () => (
 );
 
 const AppNavigator = () => {
+  const backgroundSoundRef = useRef<Sound | null>(null);
+  const hasStartedSoundRef = useRef(false);
+
+  const handleNavigationStateChange = (state: NavigationState | undefined) => {
+    if (!state) return;
+
+    const getCurrentRouteName = (navState: NavigationState): string | undefined => {
+      const route = navState.routes[navState.index];
+      if (route.state) {
+        return getCurrentRouteName(route.state as NavigationState);
+      }
+      return route.name;
+    };
+
+    const currentRouteName = getCurrentRouteName(state);
+
+    if (currentRouteName !== 'SplashScreen' && !hasStartedSoundRef.current) {
+      hasStartedSoundRef.current = true;
+      
+      setTimeout(() => {
+        const bgSound = new Sound('ultraverse_bg_sound.mp3', Sound.MAIN_BUNDLE, (error) => {
+          if (error) {
+            console.log('Failed to load background sound', error);
+            return;
+          }
+
+          bgSound.setVolume(0.5);
+          
+          bgSound.setNumberOfLoops(-1);
+
+          bgSound.play((success) => {
+            if (success) {
+              console.log('Background sound started successfully');
+            } else {
+              console.log('Failed to play background sound');
+            }
+          });
+
+          backgroundSoundRef.current = bgSound;
+        });
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (backgroundSoundRef.current) {
+        backgroundSoundRef.current.stop();
+        backgroundSoundRef.current.release();
+        backgroundSoundRef.current = null;
+      }
+    };
+  }, []);
+
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer onStateChange={handleNavigationStateChange}>
         <RootStack.Navigator
           initialRouteName="SplashScreen"
           screenOptions={{ headerShown: false }}

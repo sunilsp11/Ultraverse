@@ -1,10 +1,10 @@
-import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import React, { useMemo } from 'react'
+import { Image, Pressable, StyleSheet, TouchableOpacity, View } from 'react-native'
 import SearchIcon from '../../assets/svg/search.svg'
-import ProfileIcon from '../../assets/svg/profile.svg'
 import UvAppIcon from '../../assets/svg/uvAppIcon.svg'
-import UvTypography from './uvTypography'
+import { useAppSelector } from '../../store/store'
 import Colors from '../../theme/color'
+import UvTypography from './uvTypography'
 
 interface UvHomeHeaderProps {
   userName?: string
@@ -17,18 +17,28 @@ const UvHomeHeader: React.FC<UvHomeHeaderProps> = ({
   onSearchPress,
   onProfilePress,
 }) => {
+  const storedProfile = useAppSelector((state) => state.profile.profile);
+  const avatarSource = useMemo(() => {
+    if (storedProfile?.profile_picture_url) {
+      return { uri: storedProfile.profile_picture_url };
+    }
+
+    return require('../../assets/images/noProfilePiture.webp');
+  }, [storedProfile?.profile_picture_url]);
+
   return (
     <View style={styles.headerContainer}>
       <View style={styles.mainContent}>
         <View style={styles.leftContent}>
           <View style={styles.logoContainer}>
             <UvAppIcon width={32} height={24} />
-            <TouchableOpacity
-              style={styles.profileButton}
-              onPress={onProfilePress}
-            >
-              <ProfileIcon width={20} height={24} color={Colors.white} />
-            </TouchableOpacity>
+            <Pressable onPress={onProfilePress}>
+            <Image
+              source={avatarSource}
+              style={[styles.avatar]}
+              resizeMode="cover"
+            />
+            </Pressable>
           </View>
           <View style={styles.textSection}>
             <UvTypography
@@ -120,5 +130,12 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
   },
+  avatar:{
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: Colors.white,
+  }
 })
 
