@@ -1,12 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import UvScreenWrapper from '../../components/common/uvScreenWrapper'
+import UvTypography from '../../components/common/uvTypography'
 
 const WalletScreen = () => {
   return (
     <UvScreenWrapper>
       <View style={styles.container}>
-        <Text style={styles.title}>Wallet</Text>
+        <UvTypography variant="h6" >
+          Coming Soon
+        </UvTypography>
       </View>
     </UvScreenWrapper>
   )
@@ -20,11 +23,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#fff'
-  }
 })
 
 

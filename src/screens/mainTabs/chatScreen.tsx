@@ -1,12 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import UvScreenWrapper from '../../components/common/uvScreenWrapper'
+import UvTypography from '../../components/common/uvTypography'
 
 const ChatScreen = () => {
   return (
     <UvScreenWrapper>
       <View style={styles.container}>
-        <Text style={styles.title}>Chat</Text>
+        <UvTypography variant="h6" >
+          Coming Soon
+        </UvTypography>
       </View>
     </UvScreenWrapper>
   )

@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { ScrollView, StyleSheet, View, TouchableOpacity } from "react-native";
+import React, { useCallback, useMemo, useState } from "react";
+import { ActivityIndicator, ImageSourcePropType, ScrollView, StyleSheet, View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
@@ -8,39 +8,76 @@ import UvTrendingCarousel from "../../components/common/uvTrendingCarousel";
 import Colors from "../../theme/color";
 import { RootStackParamList } from "../../types/navigationTypes";
 import BackArrowIcon from "../../assets/svg/backArrow.svg";
+import UvTypography from "../../components/common/uvTypography";
+import { Game, useGetTopGamesQuery } from "../../services/games/gamesApi";
 
 type SearchScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GameDetailsScreen'>
 
 const SearchScreen = () => {
   const navigation = useNavigation<SearchScreenNavigationProp>()
   const [query, setQuery] = useState("")
+  const { data: topGames, isLoading, isError } = useGetTopGamesQuery()
 
-  const gamesData = useMemo(() => ([
-    {
-      id: '1',
-      title: 'Fortnite',
-      genre: 'Action - Adventure',
-      image: require('../../assets/images/Fortnite.png'),
-      description: 'Join millions in the world\'s most dynamic battle arena. Build, survive, and dominate in real-world AR zones.',
-      gameInfo: 'Fortnite is an online video game and game platform developed by Epic Games and released in 2017. It is available in seven distinct game mode versions that otherwise share the same general gameplay and game engine: Fortnite Battle Royale, a battle royale game in which up to 100 players fight to be the last person standing; Fortnite: Save the World, a cooperative hybrid tower defense-shooter and survival game in which up to four players fight off zombie-like creatures and defend objects with traps and fortifications they can build; Fortnite Creative, in which players are given complete freedom to create worlds and battle arenas; Lego Fortnite, an open world game collection divided between survival game Lego Fortnite Odyssey and social game Lego Fortnite Brick Life; Rocket Racing, a racing game; Fortnite Festival, a rhythm game; and Fortnite Ballistic, a tactical first-person shooter currently in early access. All game modes except Save the World are free-to-play.'
-    },
-    {
-      id: '2',
-      title: 'Spider-Man',
-      genre: 'Action - Adventure',
-      image: require('../../assets/images/Spider-Man.png'),
-      description: 'Swing into action in an open-world New York. Fight crime with style and speed.',
-      gameInfo: 'Spider-Man is an action-adventure game set in an open-world New York City where players control Spider-Man as he battles iconic villains and navigates a compelling story.'
-    },
-    {
-      id: '3',
-      title: 'Ghost of Tsushima',
-      genre: 'Action - RPG',
-      image: require('../../assets/images/Fortnite.png'),
-      description: 'Embark on a stunning journey through feudal Japan. Master samurai combat and protect your homeland from invaders.',
-      gameInfo: 'Ghost of Tsushima is an action-adventure game featuring stealth and sword-based combat set on Tsushima Island during the first Mongol invasion of Japan.'
-    },
-  ]), [])
+  const resolveGameImage = useCallback((game: Game): ImageSourcePropType | undefined => {
+    if (game?.primary_image) {
+      return { uri: game.primary_image }
+    }
+
+    const primaryMediaImage = game?.media?.find(
+      media => media?.type === 'image' && media?.is_primary && media?.url,
+    )
+
+    if (primaryMediaImage?.url) {
+      return { uri: primaryMediaImage.url }
+    }
+
+    const fallbackMediaImage = game?.media?.find(
+      media => media?.type === 'image' && media?.url,
+    )
+
+    if (fallbackMediaImage?.url) {
+      return { uri: fallbackMediaImage.url }
+    }
+
+    return undefined
+  }, [])
+
+  const resolveGameGenre = useCallback((game: Game) => {
+    const categories = game?.categories
+      ?.map(category => category?.name)
+      .filter((name): name is string => Boolean(name))
+
+    return categories?.length ? categories.join(', ') : 'Coming Soon'
+  }, [])
+
+  const gamesData = useMemo(() => {
+    return (topGames ?? []).reduce<
+      {
+        id: string
+        title: string
+        genre: string
+        image: ImageSourcePropType
+        description: string
+        gameInfo: string
+      }[]
+    >((acc, game) => {
+      const image = resolveGameImage(game)
+      if (!image) {
+        return acc
+      }
+
+      acc.push({
+        id: String(game.id),
+        title: game.name ?? 'Untitled Game',
+        genre: resolveGameGenre(game),
+        image,
+        description: game.short_description ?? game.description ?? '',
+        gameInfo: game.info ?? '',
+      })
+
+      return acc
+    }, [])
+  }, [resolveGameGenre, resolveGameImage, topGames])
 
   const filteredGames = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -51,19 +88,72 @@ const SearchScreen = () => {
     )
   }, [gamesData, query])
 
-  const handleGamePress = (gameId: string) => {
-    const game = gamesData.find(g => g.id === gameId)
-    if (game) {
-      navigation.navigate('GameDetailsScreen', {
-        gameId: game.id,
-        gameTitle: game.title,
-        gameImage: game.image,
-        genre: game.genre,
-        description: game.description,
-        gameInfo: game.gameInfo
-      })
+  const gamesById = useMemo(() => {
+    return filteredGames.reduce<Record<string, typeof filteredGames[number]>>((acc, game) => {
+      acc[game.id] = game
+      return acc
+    }, {})
+  }, [filteredGames])
+
+  const handleGamePress = useCallback((gameId: string) => {
+    const game = gamesById[gameId]
+    if (!game) {
+      return
     }
-  }
+
+    navigation.navigate('GameDetailsScreen', {
+      gameId: game.id,
+      gameTitle: game.title,
+      gameImage: game.image,
+      genre: game.genre,
+      description: game.description,
+      gameInfo: game.gameInfo
+    })
+  }, [gamesById, navigation])
+
+  const stateContent = useMemo(() => {
+    if (isLoading && !gamesData.length) {
+      return (
+        <View style={styles.stateContainer}>
+          <ActivityIndicator size="large" color={Colors.white} />
+        </View>
+      )
+    }
+
+    if (isError) {
+      return (
+        <View style={styles.stateContainer}>
+          <UvTypography variant="body" style={styles.stateText}>
+            Unable to load games. Please try again shortly.
+          </UvTypography>
+        </View>
+      )
+    }
+
+    if (!filteredGames.length) {
+      return (
+        <View style={styles.stateContainer}>
+          <UvTypography variant="body" style={styles.stateText}>
+            No games match your search.
+          </UvTypography>
+        </View>
+      )
+    }
+
+    return (
+      <UvTrendingCarousel
+        title={query ? 'SEARCH RESULTS' : 'ALL GAMES'}
+        games={filteredGames.map(({ id, title, genre, image }) => ({
+          id,
+          title,
+          genre,
+          image,
+        }))}
+        onGamePress={handleGamePress}
+        onPlayPress={handleGamePress}
+      />
+    )
+  }, [filteredGames, gamesData.length, handleGamePress, isError, isLoading, query])
 
   return (
     <UvScreenWrapper>
@@ -83,12 +173,7 @@ const SearchScreen = () => {
           </View>
         </View>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-          <UvTrendingCarousel
-            title={query ? 'SEARCH RESULTS' : 'ALL GAMES'}
-            games={filteredGames}
-            onGamePress={handleGamePress}
-            onPlayPress={handleGamePress}
-          />
+          {stateContent}
         </ScrollView>
       </View>
     </UvScreenWrapper>
@@ -117,6 +202,16 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 20,
+  },
+  stateContainer: {
+    paddingTop: 40,
+    paddingBottom: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  stateText: {
+    color: Colors.white,
+    textAlign: 'center',
   },
   backButton: {
     width: 44,
