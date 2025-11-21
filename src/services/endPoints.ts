@@ -19,4 +19,5 @@ export const endPoints = {
   gameFeedbackSubmit: "/feedback/submit/",
   gameFeedbackUser: "/feedback/user/",
   recordActivity: "/auth/activity/record/",
+  updateLocation: "/auth/profile/update-location/",
 };

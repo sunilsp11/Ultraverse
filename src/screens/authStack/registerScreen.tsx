@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Linking,
 } from "react-native";
 import { TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
@@ -293,6 +294,21 @@ const RegisterScreen = () => {
                 </View>
               </View>
             </ScrollView>
+            <View style={styles.termsContainer}>
+              <UvTypography variant="bodyXs" color="#CFE2EA" align="center">
+                By continuing, you agree to our{" "}
+              </UvTypography>
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.openURL("https://ultraverse.games/privacy-policy/")
+                }
+                activeOpacity={0.7}
+              >
+                <UvTypography variant="bodyXs" color={Colors.white} style={{ textDecorationLine: 'underline' }}>
+                  Terms and conditions
+                </UvTypography>
+              </TouchableOpacity>
+            </View>
             <View style={styles.footerRow}>
               <UvTypography variant="body" color="#CFE2EA">
                 Already have an account?
@@ -360,6 +376,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.black,
     alignItems: "center",
     justifyContent: "center",
+  },
+  termsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 16,
+    marginBottom: 8,
+    flexWrap: "wrap",
   },
   footerRow: {
     flexDirection: "row",

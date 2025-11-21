@@ -9,6 +9,7 @@ interface UvToggleSwitchProps {
   inactiveColor?: string;
   thumbColor?: string;
   style?: ViewStyle;
+  disabled?: boolean;
 }
 
 const UvToggleSwitch: React.FC<UvToggleSwitchProps> = ({
@@ -18,6 +19,7 @@ const UvToggleSwitch: React.FC<UvToggleSwitchProps> = ({
   inactiveColor = Colors.base[700],
   thumbColor = Colors.black,
   style,
+  disabled = false,
 }) => {
   const animatedValue = useRef(new Animated.Value(value ? 1 : 0)).current;
 
@@ -40,14 +42,21 @@ const UvToggleSwitch: React.FC<UvToggleSwitchProps> = ({
   });
 
   const handlePress = () => {
-    onValueChange(!value);
+    if (!disabled) {
+      onValueChange(!value);
+    }
   };
 
   return (
     <TouchableOpacity
-      activeOpacity={0.8}
+      activeOpacity={disabled ? 1 : 0.8}
       onPress={handlePress}
-      style={[styles.container, style]}
+      disabled={disabled}
+      style={[
+        styles.container,
+        style,
+        disabled && styles.disabled,
+      ]}
     >
       <Animated.View
         style={[
@@ -77,6 +86,9 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  disabled: {
+    opacity: 0.5,
   },
   track: {
     width: 44,

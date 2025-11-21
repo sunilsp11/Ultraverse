@@ -17,6 +17,7 @@ type UvPreferencesProps = {
   locationEnabled: boolean;
   onToggle: (value: boolean) => void;
   onLogout?: () => void;
+  isUpdatingLocation?: boolean;
 };
 
 type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
@@ -32,9 +33,10 @@ interface PreferenceItem {
   showDivider?: boolean;
   toggleValue?: boolean;
   onToggle?: (value: boolean) => void;
+  disabled?: boolean;
 }
 
-const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesProps) => {
+const UvPreferences = ({ locationEnabled, onToggle, onLogout, isUpdatingLocation = false }: UvPreferencesProps) => {
   const navigation = useNavigation<NavigationProp>();
   const [fetchUserPlatformFeedback, { isFetching: isCheckingExistingFeedback }] = useLazyGetUserPlatformFeedbackQuery();
 
@@ -109,6 +111,7 @@ const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesPro
       toggleValue: locationEnabled,
       onToggle: onToggle,
       showDivider: true,
+      disabled: isUpdatingLocation,
     },
     {
       id: 'logout',
@@ -117,7 +120,7 @@ const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesPro
       type: 'action',
       onPress: handleLogOutPress,
     },
-  ], [handleLogOutPress, handlePlatformFeedbackPress, locationEnabled, onToggle]);
+  ], [handleLogOutPress, handlePlatformFeedbackPress, locationEnabled, onToggle, isUpdatingLocation]);
 
   const renderPreferenceItem = ({ item }: { item: PreferenceItem }) => {
     const IconComponent = item.icon;
@@ -136,6 +139,7 @@ const UvPreferences = ({ locationEnabled, onToggle, onLogout }: UvPreferencesPro
             activeColor={Colors.primary[500]}
             inactiveColor={Colors.base[700]}
             thumbColor={Colors.black}
+            disabled={item.disabled || false}
           />
         </View>
       );
