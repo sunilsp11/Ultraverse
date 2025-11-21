@@ -20,6 +20,7 @@ import BackArrowIcon from '../../assets/svg/backArrow.svg'
 import PlayIcon from '../../assets/svg/playIcon.svg'
 import UvButton from '../../components/common/uvButton'
 import UvTypography from '../../components/common/uvTypography'
+import UvImageGalleryModal, { GalleryImageItem } from '../../components/common/uvImageGalleryModal'
 import Colors from '../../theme/color'
 import { RootStackParamList } from '../../types/navigationTypes'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -86,6 +87,8 @@ const GameDetailsScreen = () => {
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
   const [loadingVideoId, setLoadingVideoId] = useState<string | null>(null)
   const [isWarningModalVisible, setWarningModalVisible] = useState(false)
+  const [isImageModalVisible, setImageModalVisible] = useState(false)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
 
   const heroImageSource: ImageSourcePropType = useMemo(() => {
@@ -148,6 +151,42 @@ const GameDetailsScreen = () => {
     [resolvedGame?.media, heroImageSource],
   )
 
+  const galleryImages = useMemo<GalleryImageItem[]>(() => {
+    const gallery: GalleryImageItem[] = []
+    const seenSources = new Set<string>()
+
+    const registerImage = (id: string, source: ImageSourcePropType, title?: string | null, sourceKey?: string) => {
+      const key = sourceKey ?? (typeof source === 'object' && 'uri' in (source as Record<string, unknown>) ? (source as { uri?: string }).uri : undefined) ?? id
+
+      if (key && seenSources.has(key)) {
+        return
+      }
+
+      if (key) {
+        seenSources.add(key)
+      }
+
+      gallery.push({ id, source, title })
+    }
+
+    if (heroImageSource) {
+      registerImage('hero', heroImageSource, resolvedGame?.name)
+    }
+
+    resolvedGame?.media?.forEach((media, index) => {
+      if (media?.type === 'image' && media?.url) {
+        registerImage(
+          String(media?.id ?? `media-image-${index}`),
+          { uri: media.url } as ImageSourcePropType,
+          media.title,
+          media.url,
+        )
+      }
+    })
+
+    return gallery
+  }, [heroImageSource, resolvedGame?.media, resolvedGame?.name])
+
   const displayTitle = useMemo(
     () => resolvedGame?.name ?? gameTitle ?? 'UNTITLED GAME',
     [resolvedGame?.name, gameTitle],
@@ -194,7 +233,29 @@ const GameDetailsScreen = () => {
     [resolvedGame?.publisher?.name],
   )
 
+  const openImageModal = useCallback(
+    (targetId?: string) => {
+      if (!galleryImages.length) {
+        return
+      }
+
+      const foundIndex = targetId ? galleryImages.findIndex(imageEntry => imageEntry.id === targetId) : 0
+      setSelectedImageIndex(foundIndex >= 0 ? foundIndex : 0)
+      setImageModalVisible(true)
+    },
+    [galleryImages],
+  )
+
+  const closeImageModal = useCallback(() => {
+    setImageModalVisible(false)
+  }, [])
+
   const handleMediaPress = (mediaItem: GameplayMediaItem) => {
+    if (mediaItem.type === 'image') {
+      openImageModal(mediaItem.id)
+      return
+    }
+
     if (mediaItem.type !== 'video' || !mediaItem.videoUrl) {
       return
     }
@@ -320,18 +381,21 @@ const GameDetailsScreen = () => {
         )}
         scrollEventThrottle={16}
       >
-        {/* Hero Image Section */}
+
         {heroImageSource && (
-          <View style={styles.heroSection}>
+          <TouchableOpacity
+            activeOpacity={0.9}
+            onPress={() => openImageModal('hero')}
+            style={styles.heroSection}
+          >
             <Image
               source={heroImageSource}
               style={styles.heroImage}
               resizeMode="cover"
             />
-          </View>
+          </TouchableOpacity>
         )}
 
-        {/* Game Info Section */}
         <View style={styles.infoSection}>
           <UvTypography
             variant="h3"
@@ -363,7 +427,6 @@ const GameDetailsScreen = () => {
           )}
         </View>
 
-        {/* Gameplay Section */}
         {gameplayMedia.length > 0 && (
           <View style={styles.gameplaySection}>
             <UvTypography
@@ -390,9 +453,8 @@ const GameDetailsScreen = () => {
                     styles.gameplayCard,
                     index === 0 && styles.firstGameplayCard,
                   ]}
-                  activeOpacity={mediaItem.type === 'video' ? 0.8 : 1}
+                  activeOpacity={mediaItem.type === 'video' ? 0.8 : 0.9}
                   onPress={() => handleMediaPress(mediaItem)}
-                  disabled={mediaItem.type !== 'video'}
                 >
                   {mediaItem.type === 'video' && playingVideoId === mediaItem.id ? (
                     <View style={styles.inlineVideoContainer}>
@@ -554,6 +616,13 @@ const GameDetailsScreen = () => {
           </View>
         </View>
       </Modal>
+      <UvImageGalleryModal
+        visible={isImageModalVisible}
+        images={galleryImages}
+        initialIndex={selectedImageIndex}
+        onClose={closeImageModal}
+        onIndexChange={setSelectedImageIndex}
+      />
     </View>
   )
 }
