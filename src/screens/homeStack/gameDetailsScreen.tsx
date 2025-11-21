@@ -12,6 +12,7 @@ import {
   ImageSourcePropType,
   ActivityIndicator,
   Alert,
+  Modal,
 } from 'react-native'
 import Video from 'react-native-video'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -84,6 +85,7 @@ const GameDetailsScreen = () => {
   const [authToken, setAuthToken] = useState<string | null>(null)
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
   const [loadingVideoId, setLoadingVideoId] = useState<string | null>(null)
+  const [isWarningModalVisible, setWarningModalVisible] = useState(false)
 
 
   const heroImageSource: ImageSourcePropType = useMemo(() => {
@@ -242,7 +244,7 @@ const GameDetailsScreen = () => {
     }
   }, [])
 
-  const handlePlayPress = useCallback(() => {
+  const launchGame = useCallback(() => {
     const unityData = {
       id: gameId,
       title: displayTitle,
@@ -265,6 +267,19 @@ const GameDetailsScreen = () => {
     navigation,
     resolvedGame?.media,
   ])
+
+  const handleShowWarning = useCallback(() => {
+    setWarningModalVisible(true)
+  }, [])
+
+  const handleWarningConfirm = useCallback(() => {
+    setWarningModalVisible(false)
+    launchGame()
+  }, [launchGame])
+
+  const handleWarningDismiss = useCallback(() => {
+    setWarningModalVisible(false)
+  }, [])
 
   const headerBackgroundColor = scrollY.interpolate({
     inputRange: [0, 150],
@@ -498,7 +513,7 @@ const GameDetailsScreen = () => {
       <View style={styles.bottomButtonContainer}>
         <UvButton
           title="Play Now"
-          onPress={handlePlayPress}
+          onPress={handleShowWarning}
           icon={<PlayIcon width={16} height={16} color={Colors.base[950]} />}
         />
         <UvButton
@@ -509,6 +524,36 @@ const GameDetailsScreen = () => {
           disabled={isCheckingExistingFeedback}
         />
       </View>
+      <Modal
+        visible={isWarningModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={handleWarningDismiss}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalCard}>
+            <UvTypography
+              variant="h4"
+              color={Colors.danger[500]}
+              style={styles.modalTitle}
+            >
+              WARNING
+            </UvTypography>
+            <UvTypography
+              variant="p"
+              color={Colors.base[100]}
+              style={styles.modalMessage}
+            >
+              Warning : Be aware of your surroundings and that they may change during your gaming experience, be alert, look around at all times. play at your own risk and have fun.
+            </UvTypography>
+            <UvButton
+              title="OK"
+              onPress={handleWarningConfirm}
+              style={styles.modalButton}
+            />
+          </View>
+        </View>
+      </Modal>
     </View>
   )
 }
@@ -690,5 +735,39 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  modalCard: {
+    width: '100%',
+    maxWidth: 420,
+    minHeight: Dimensions.get('window').height * 0.5,
+    borderRadius: 24,
+    backgroundColor: Colors.base[900],
+    padding: 24,
+    justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOpacity: 0.35,
+    shadowRadius: 20,
+    shadowOffset: { width: 0, height: 12 },
+    elevation: 10,
+  },
+  modalTitle: {
+    textAlign: 'center',
+    letterSpacing: 2,
+    marginBottom: 16,
+  },
+  modalMessage: {
+    flex: 1,
+    textAlign: 'center',
+    lineHeight: 22,
+  },
+  modalButton: {
+    marginTop: 24,
   },
 })
