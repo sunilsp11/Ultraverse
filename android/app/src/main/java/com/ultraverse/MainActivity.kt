@@ -1,5 +1,6 @@
 package com.ultraverse
 
+import android.content.pm.ActivityInfo
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -19,4 +20,13 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
+  /**
+   * Force portrait orientation when activity resumes to ensure Unity doesn't leave it in landscape
+   */
+  override fun onResume() {
+    super.onResume()
+    // Ensure portrait mode is enforced after Unity games
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+  }
 }
