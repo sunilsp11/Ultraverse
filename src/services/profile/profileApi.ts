@@ -40,6 +40,28 @@ export type RecordActivityResponse = {
   streak: StreakData;
 };
 
+export type UpdateLocationPayload = {
+  latitude?: string | number;
+  longitude?: string | number;
+  address?: string;
+  location_permission_enabled: boolean;
+};
+
+export type LocationData = {
+  latitude: number | null;
+  longitude: number | null;
+  address: string | null;
+};
+
+export type UpdateLocationResponse = UserProfile & {
+  latitude: string | null;
+  longitude: string | null;
+  address: string | null;
+  location_permission_enabled: boolean;
+  streak: StreakData;
+  location: LocationData | null;
+};
+
 const profileApi = backendBaseApi.injectEndpoints({
   endpoints: (build) => ({
     getProfile: build.query<UserProfile, void>({
@@ -139,6 +161,13 @@ const profileApi = backendBaseApi.injectEndpoints({
         method: "POST",
       }),
     }),
+    updateLocation: build.mutation<UpdateLocationResponse, UpdateLocationPayload>({
+      query: (body) => ({
+        url: endPoints.updateLocation,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -148,6 +177,7 @@ export const {
   useUploadProfilePictureMutation,
   useUpdateProfileDetailsMutation,
   useRecordActivityMutation,
+  useUpdateLocationMutation,
 } = profileApi;
 
 export default profileApi;
