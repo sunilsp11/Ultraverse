@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { CompositeNavigationProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Alert, ImageSourcePropType, ScrollView, StyleSheet, View, RefreshControl } from 'react-native'
 import UvCategoryFilterBar from '../../components/common/uvCategoryFilterBar'
 import UvGameCarousel from '../../components/common/uvGameCarousel'
@@ -11,6 +11,8 @@ import UvScreenWrapper from '../../components/common/uvScreenWrapper'
 import UvTrendingCarousel from '../../components/common/uvTrendingCarousel'
 import { RootStackParamList, MainTabParamList } from '../../types/navigationTypes'
 import UvSpacer from '../../components/common/uvSpacer'
+import UvTypography from '../../components/common/uvTypography'
+import Colors from '../../theme/color'
 import { useAppSelector } from '../../store/store'
 import { useGetProfileQuery } from '../../services/profile/profileApi'
 import { useGetCategoriesQuery } from '../../services/categories/categoriesApi'
@@ -86,6 +88,12 @@ const HomeScreen = () => {
     return names
   }, [resolvedCategories])
 
+  const categoriesWithAll = useMemo(() => {
+    return ['All', ...categoryNames]
+  }, [categoryNames])
+
+  const [selectedCategory, setSelectedCategory] = useState<string>('All')
+
   const shouldRenderCategories = categoryNames.length > 0
 
   const mapToGameDetails = (games: {
@@ -126,17 +134,35 @@ const HomeScreen = () => {
       })
       .filter(game => game.id !== '' && game.image)
 
-  const resolvedTopGames: GameDetail[] = useMemo(() => {
+  const resolvedRawGames = useMemo(() => {
     if (topGamesData?.length) {
-      return mapToGameDetails(topGamesData)
+      return topGamesData
     }
 
     if (storedGamesFromRedux?.length) {
-      return mapToGameDetails(storedGamesFromRedux)
+      return storedGamesFromRedux
     }
 
     return []
   }, [topGamesData, storedGamesFromRedux])
+
+  const filteredRawGames = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return resolvedRawGames
+    }
+
+    return resolvedRawGames.filter(game => {
+      // Check if the game's categories include the selected category
+      const gameCategories = game.categories || []
+      return gameCategories.some(
+        category => category?.name?.toLowerCase() === selectedCategory.toLowerCase()
+      )
+    })
+  }, [resolvedRawGames, selectedCategory])
+
+  const resolvedTopGames: GameDetail[] = useMemo(() => {
+    return mapToGameDetails(filteredRawGames)
+  }, [filteredRawGames])
 
   const carouselGames = useMemo(
     () =>
@@ -193,8 +219,9 @@ const HomeScreen = () => {
         {shouldRenderCategories && (
           <>
             <UvCategoryFilterBar
-              categories={categoryNames}
-              onCategoryPress={() => {}}
+              categories={categoriesWithAll}
+              selectedCategory={selectedCategory}
+              onCategoryPress={(category) => setSelectedCategory(category)}
               onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
             />
             <UvSpacer gap={15} />
@@ -212,23 +239,46 @@ const HomeScreen = () => {
             />
           }
         >
-          {carouselGames.length > 0 && (
+          {resolvedTopGames.length === 0 && selectedCategory !== 'All' ? (
+            <View style={styles.emptyStateContainer}>
+              <UvTypography
+                variant="h6"
+                color={Colors.white}
+                align="center"
+                style={styles.emptyStateTitle}
+              >
+                {selectedCategory}
+              </UvTypography>
+              <UvTypography
+                variant="body"
+                color={Colors.base[300]}
+                align="center"
+                style={styles.emptyStateMessage}
+              >
+                No games found
+              </UvTypography>
+            </View>
+          ) : (
             <>
-              <UvGameCarousel
-                games={carouselGames}
-                onGamePress={handleGamePress}
-                onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
-              />
-              <UvSpacer gap={15} />
+              {carouselGames.length > 0 && (
+                <>
+                  <UvGameCarousel
+                    games={carouselGames}
+                    onGamePress={handleGamePress}
+                    onViewAllPress={() => Alert.alert('Upcoming Feature', 'This feature is coming soon.')}
+                  />
+                  <UvSpacer gap={15} />
+                </>
+              )}
+              {trendingGames.length > 0 && (
+                <UvTrendingCarousel
+                  games={trendingGames}
+                  onGamePress={handleGamePress}
+                  onPlayPress={handleGamePress}
+                  title="TRENDING IN ULTRAVERSE"
+                />
+              )}
             </>
-          )}
-          {trendingGames.length > 0 && (
-            <UvTrendingCarousel
-              games={trendingGames}
-              onGamePress={handleGamePress}
-              onPlayPress={handleGamePress}
-              title="TRENDING IN ULTRAVERSE"
-            />
           )}
         </ScrollView>
       </View>
@@ -244,5 +294,18 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 110,
+  },
+  emptyStateContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 60,
+    paddingHorizontal: 20,
+  },
+  emptyStateTitle: {
+    marginBottom: 12,
+  },
+  emptyStateMessage: {
+    opacity: 0.8,
   },
 })    

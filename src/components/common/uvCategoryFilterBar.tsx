@@ -8,12 +8,14 @@ type Props = {
   onCategoryPress?: (category: string) => void
   onViewAllPress?: () => void
   categories?: string[]
+  selectedCategory?: string
 }
 
 const UvCategoryFilterBar: React.FC<Props> = ({ 
   onCategoryPress,
   onViewAllPress,
-  categories = []
+  categories = [],
+  selectedCategory
 }) => {
   const handleCategoryPress = (category: string) => {
     onCategoryPress?.(category)
@@ -31,22 +33,26 @@ const UvCategoryFilterBar: React.FC<Props> = ({
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {categories.map((category) => (
-          <TouchableOpacity
-            key={category}
-            style={[
-              styles.categoryButton
-            ]}
-            onPress={() => handleCategoryPress(category)}
-          >
-            <UvTypography 
-              variant="body" 
-              color={Colors.white}
+        {categories.map((category) => {
+          const isSelected = selectedCategory === category
+          return (
+            <TouchableOpacity
+              key={category}
+              style={[
+                styles.categoryButton,
+                isSelected && styles.categoryButtonSelected
+              ]}
+              onPress={() => handleCategoryPress(category)}
             >
-              {category}
-            </UvTypography>
-          </TouchableOpacity>
-        ))}
+              <UvTypography 
+                variant="body" 
+                color={Colors.white}
+              >
+                {category}
+              </UvTypography>
+            </TouchableOpacity>
+          )
+        })}
       </ScrollView>
     </View>
   )
@@ -66,5 +72,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 50,
     backgroundColor: '#00B4FF33',
+  },
+  categoryButtonSelected: {
+    backgroundColor: Colors.primary[400],
   },
 })
