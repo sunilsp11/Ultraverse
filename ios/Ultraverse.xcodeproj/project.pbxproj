@@ -15,6 +15,9 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */; };
 		C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */; };
+		F0B2D49E2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0B2D49D2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 */; };
+		F0B2D49F2ED09E17002E1D94 /* buttom_tab_press.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0B2D49B2ED09E17002E1D94 /* buttom_tab_press.mp3 */; };
+		F0B2D4A02ED09E17002E1D94 /* splash_screen_bg_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0B2D49C2ED09E17002E1D94 /* splash_screen_bg_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Ultraverse/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Ultraverse/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F0B2D49B2ED09E17002E1D94 /* buttom_tab_press.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttom_tab_press.mp3; sourceTree = "<group>"; };
+		F0B2D49C2ED09E17002E1D94 /* splash_screen_bg_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = splash_screen_bg_sound.mp3; sourceTree = "<group>"; };
+		F0B2D49D2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ultraverse_bg_sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +54,9 @@
 		13B07FAE1A68108700A75B9A /* Ultraverse */ = {
 			isa = PBXGroup;
 			children = (
+				F0B2D49B2ED09E17002E1D94 /* buttom_tab_press.mp3 */,
+				F0B2D49C2ED09E17002E1D94 /* splash_screen_bg_sound.mp3 */,
+				F0B2D49D2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -178,6 +187,9 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */,
+				F0B2D49E2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 in Resources */,
+				F0B2D49F2ED09E17002E1D94 /* buttom_tab_press.mp3 in Resources */,
+				F0B2D4A02ED09E17002E1D94 /* splash_screen_bg_sound.mp3 in Resources */,
 				0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */,
 				C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */,
 				13E8CC7F4513B918329750AB /* PrivacyInfo.xcprivacy in Resources */,
@@ -278,26 +290,34 @@
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Ultraverse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4Z6STV2Q59;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../unity/builds/ios",
+				);
 				INFOPLIST_FILE = Ultraverse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				INFOPLIST_KEY_CFBundleDisplayName = Ultraverse;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ultraverse.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ultraverse;
 				PRODUCT_NAME = Ultraverse;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -309,25 +329,33 @@
 			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Ultraverse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4Z6STV2Q59;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../unity/builds/ios",
+				);
 				INFOPLIST_FILE = Ultraverse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				INFOPLIST_KEY_CFBundleDisplayName = Ultraverse;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ultraverse.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ultraverse;
 				PRODUCT_NAME = Ultraverse;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
