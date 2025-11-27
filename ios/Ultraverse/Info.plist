@@ -51,6 +51,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses the camera to capture a new profile photo.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs access to your location, even in the background, to provide continuous location-based features and services.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to your location to provide location-based features and services.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -72,6 +74,7 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
+		<string>metal</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

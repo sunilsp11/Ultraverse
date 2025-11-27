@@ -15,9 +15,15 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AFF867E844124636A7DEC279 /* Ronix-Classic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A60BC6B1C88499C93836E33 /* Ronix-Classic.otf */; };
 		C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751DDC3B1CB94E68B53C08E3 /* FormaDJR-Regular.ttf */; };
+		F02F68AF2ED6CCB500355371 /* UnityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02F68AE2ED6CCB500355371 /* UnityModule.swift */; };
+		F02F68B22ED6CE7A00355371 /* UnityModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F02F68B12ED6CE7A00355371 /* UnityModule.m */; };
+		F03738482ED573E100406885 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F032FF1F2ED56C6000F9221F /* ARKit.framework */; };
 		F0B2D49E2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0B2D49D2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 */; };
 		F0B2D49F2ED09E17002E1D94 /* buttom_tab_press.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0B2D49B2ED09E17002E1D94 /* buttom_tab_press.mp3 */; };
 		F0B2D4A02ED09E17002E1D94 /* splash_screen_bg_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0B2D49C2ED09E17002E1D94 /* splash_screen_bg_sound.mp3 */; };
+		F0BCCD862ED81EBE00A15354 /* buttom_tab_press 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0BCCD832ED81EBE00A15354 /* buttom_tab_press 2.mp3 */; };
+		F0BCCD872ED81EBE00A15354 /* splash_screen_bg_sound 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0BCCD842ED81EBE00A15354 /* splash_screen_bg_sound 2.mp3 */; };
+		F0BCCD882ED81EBE00A15354 /* ultraverse_bg_sound 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0BCCD852ED81EBE00A15354 /* ultraverse_bg_sound 2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +40,16 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Ultraverse/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Ultraverse/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F02F68AD2ED5E6C200355371 /* Ultraverse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ultraverse-Bridging-Header.h"; sourceTree = "<group>"; };
+		F02F68AE2ED6CCB500355371 /* UnityModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityModule.swift; sourceTree = "<group>"; };
+		F02F68B12ED6CE7A00355371 /* UnityModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnityModule.m; sourceTree = "<group>"; };
+		F032FF1F2ED56C6000F9221F /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		F0B2D49B2ED09E17002E1D94 /* buttom_tab_press.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttom_tab_press.mp3; sourceTree = "<group>"; };
 		F0B2D49C2ED09E17002E1D94 /* splash_screen_bg_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = splash_screen_bg_sound.mp3; sourceTree = "<group>"; };
 		F0B2D49D2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ultraverse_bg_sound.mp3; sourceTree = "<group>"; };
+		F0BCCD832ED81EBE00A15354 /* buttom_tab_press 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "buttom_tab_press 2.mp3"; sourceTree = "<group>"; };
+		F0BCCD842ED81EBE00A15354 /* splash_screen_bg_sound 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "splash_screen_bg_sound 2.mp3"; sourceTree = "<group>"; };
+		F0BCCD852ED81EBE00A15354 /* ultraverse_bg_sound 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ultraverse_bg_sound 2.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03738482ED573E100406885 /* ARKit.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-Ultraverse.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +68,10 @@
 		13B07FAE1A68108700A75B9A /* Ultraverse */ = {
 			isa = PBXGroup;
 			children = (
+				F0BCCD832ED81EBE00A15354 /* buttom_tab_press 2.mp3 */,
+				F0BCCD842ED81EBE00A15354 /* splash_screen_bg_sound 2.mp3 */,
+				F0BCCD852ED81EBE00A15354 /* ultraverse_bg_sound 2.mp3 */,
+				F02F68AD2ED5E6C200355371 /* Ultraverse-Bridging-Header.h */,
 				F0B2D49B2ED09E17002E1D94 /* buttom_tab_press.mp3 */,
 				F0B2D49C2ED09E17002E1D94 /* splash_screen_bg_sound.mp3 */,
 				F0B2D49D2ED09E17002E1D94 /* ultraverse_bg_sound.mp3 */,
@@ -62,6 +80,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				F02F68AE2ED6CCB500355371 /* UnityModule.swift */,
+				F02F68B12ED6CE7A00355371 /* UnityModule.m */,
 			);
 			name = Ultraverse;
 			sourceTree = "<group>";
@@ -69,6 +89,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F032FF1F2ED56C6000F9221F /* ARKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-Ultraverse.a */,
 			);
@@ -191,6 +212,9 @@
 				F0B2D49F2ED09E17002E1D94 /* buttom_tab_press.mp3 in Resources */,
 				F0B2D4A02ED09E17002E1D94 /* splash_screen_bg_sound.mp3 in Resources */,
 				0D46A00B94834F73A0E451C3 /* FormaDJR-Bold.ttf in Resources */,
+				F0BCCD862ED81EBE00A15354 /* buttom_tab_press 2.mp3 in Resources */,
+				F0BCCD872ED81EBE00A15354 /* splash_screen_bg_sound 2.mp3 in Resources */,
+				F0BCCD882ED81EBE00A15354 /* ultraverse_bg_sound 2.mp3 in Resources */,
 				C38B839AB6904A6D8AFDD425 /* FormaDJR-Regular.ttf in Resources */,
 				13E8CC7F4513B918329750AB /* PrivacyInfo.xcprivacy in Resources */,
 			);
@@ -278,7 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02F68B22ED6CE7A00355371 /* UnityModule.m in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				F02F68AF2ED6CCB500355371 /* UnityModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +344,7 @@
 				PRODUCT_NAME = Ultraverse;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Ultraverse/Ultraverse-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -356,6 +383,7 @@
 				PRODUCT_NAME = Ultraverse;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Ultraverse/Ultraverse-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
