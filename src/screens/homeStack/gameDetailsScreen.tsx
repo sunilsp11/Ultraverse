@@ -1,4 +1,4 @@
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { RouteProp, useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
@@ -26,6 +26,8 @@ import { RootStackParamList } from '../../types/navigationTypes'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useGetGameByIdQuery } from '../../services/games/gamesApi'
 import { useLazyGetUserGameFeedbackQuery } from '../../services/feedback/gameFeedbackApi'
+import Orientation, { OrientationType } from 'react-native-orientation-locker';
+
 
 const { width: screenWidth } = Dimensions.get('window')
 const GAMEPLAY_CARD_WIDTH = screenWidth * 0.65

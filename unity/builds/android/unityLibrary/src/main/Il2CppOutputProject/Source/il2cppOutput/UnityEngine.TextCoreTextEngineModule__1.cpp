@@ -43568,25 +43568,49 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextGenerator_GetUnderlineSpecialCharact
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Contains_mE545A4609C70E82A744DC4AA28AD7940B7A75F9C_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_get_Count_m654F4B0CF3BAA9A130BC72017949E6B5DA07AD86_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&MaterialManager_t104D2897F78BE83C3377323E18BEB5B8F0704D9B_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
 	bool V_0 = false;
 	bool V_1 = false;
 	FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* V_2 = NULL;
-	bool V_3 = false;
-	Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* V_4 = NULL;
-	bool V_5 = false;
+	TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* V_3 = NULL;
+	bool V_4 = false;
+	Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* V_5 = NULL;
 	bool V_6 = false;
 	bool V_7 = false;
+	bool V_8 = false;
+	bool V_9 = false;
+	bool V_10 = false;
+	bool V_11 = false;
+	bool V_12 = false;
+	bool V_13 = false;
+	bool V_14 = false;
 	FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* G_B2_0 = NULL;
 	FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* G_B1_0 = NULL;
-	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B7_0 = NULL;
-	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B6_0 = NULL;
-	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B8_0 = NULL;
-	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* G_B9_0 = NULL;
-	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B9_1 = NULL;
+	int32_t G_B6_0 = 0;
+	int32_t G_B13_0 = 0;
+	bool G_B17_0 = false;
+	TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* G_B17_1 = NULL;
+	FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* G_B17_2 = NULL;
+	int32_t G_B17_3 = 0;
+	bool G_B16_0 = false;
+	TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* G_B16_1 = NULL;
+	FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* G_B16_2 = NULL;
+	int32_t G_B16_3 = 0;
+	int32_t G_B18_0 = 0;
+	bool G_B18_1 = false;
+	TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* G_B18_2 = NULL;
+	FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* G_B18_3 = NULL;
+	int32_t G_B18_4 = 0;
+	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B27_0 = NULL;
+	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B26_0 = NULL;
+	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B28_0 = NULL;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* G_B29_0 = NULL;
+	SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* G_B29_1 = NULL;
 	{
 		bool L_0;
 		L_0 = TextGenerator_get_IsExecutingJob_m2570EC49336A66E65C8429B8516F8E79578A955C_inline(NULL);
@@ -43610,40 +43634,246 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextGenerator_GetUnderlineSpecialCharact
 IL_001a:
 	{
 		V_2 = G_B2_0;
-		il2cpp_codegen_runtime_class_init_inline(TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_il2cpp_TypeInfo_var);
-		List_1_tDC6862FA7C9B0B533109A8EC28A2142DB7D2DF2E* L_5 = ((TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_StaticFields*)il2cpp_codegen_static_fields_for(TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_il2cpp_TypeInfo_var))->___fontFeatures;
+		TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2* L_5 = ___0_generationSettings;
 		NullCheck(L_5);
-		bool L_6;
-		L_6 = List_1_Contains_mE545A4609C70E82A744DC4AA28AD7940B7A75F9C(L_5, ((int32_t)1818847073), List_1_Contains_mE545A4609C70E82A744DC4AA28AD7940B7A75F9C_RuntimeMethod_var);
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_6 = L_5->___textSettings;
 		V_3 = L_6;
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_7 = V_2;
-		int32_t L_8 = __this->___m_FontStyleInternal;
-		int32_t L_9 = __this->___m_FontWeightInternal;
-		bool L_10 = V_3;
-		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_11;
-		L_11 = FontAssetUtilities_GetCharacterFromFontAsset_m854EBABBF60E9B80275BE56FA803B258D9B61D99(((int32_t)95), L_7, (bool)0, L_8, L_9, (&V_1), L_10, NULL);
-		V_4 = L_11;
-		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_12 = V_4;
-		V_5 = (bool)((((RuntimeObject*)(Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC*)L_12) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
-		bool L_13 = V_5;
-		if (!L_13)
+		il2cpp_codegen_runtime_class_init_inline(TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_il2cpp_TypeInfo_var);
+		List_1_tDC6862FA7C9B0B533109A8EC28A2142DB7D2DF2E* L_7 = ((TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_StaticFields*)il2cpp_codegen_static_fields_for(TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2_il2cpp_TypeInfo_var))->___fontFeatures;
+		NullCheck(L_7);
+		bool L_8;
+		L_8 = List_1_Contains_mE545A4609C70E82A744DC4AA28AD7940B7A75F9C(L_7, ((int32_t)1818847073), List_1_Contains_mE545A4609C70E82A744DC4AA28AD7940B7A75F9C_RuntimeMethod_var);
+		V_4 = L_8;
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_9 = V_2;
+		int32_t L_10 = __this->___m_FontStyleInternal;
+		int32_t L_11 = __this->___m_FontWeightInternal;
+		bool L_12 = V_4;
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_13;
+		L_13 = FontAssetUtilities_GetCharacterFromFontAsset_m854EBABBF60E9B80275BE56FA803B258D9B61D99(((int32_t)95), L_9, (bool)0, L_10, L_11, (&V_1), L_12, NULL);
+		V_5 = L_13;
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_14 = V_5;
+		V_6 = (bool)((((RuntimeObject*)(Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC*)L_14) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_15 = V_6;
+		if (!L_15)
 		{
-			goto IL_0058;
+			goto IL_009c;
 		}
 	}
 	{
-		V_6 = (bool)0;
-		goto IL_0150;
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_16 = V_2;
+		NullCheck(L_16);
+		List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* L_17 = L_16->___m_FallbackFontAssetTable;
+		if (!L_17)
+		{
+			goto IL_0072;
+		}
+	}
+	{
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_18 = V_2;
+		NullCheck(L_18);
+		List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* L_19 = L_18->___m_FallbackFontAssetTable;
+		NullCheck(L_19);
+		int32_t L_20;
+		L_20 = List_1_get_Count_m654F4B0CF3BAA9A130BC72017949E6B5DA07AD86_inline(L_19, List_1_get_Count_m654F4B0CF3BAA9A130BC72017949E6B5DA07AD86_RuntimeMethod_var);
+		G_B6_0 = ((((int32_t)L_20) > ((int32_t)0))? 1 : 0);
+		goto IL_0073;
 	}
 
-IL_0058:
+IL_0072:
 	{
-		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_14 = V_4;
-		int32_t L_15 = __this->___m_CurrentMaterialIndex;
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD L_16;
-		memset((&L_16), 0, sizeof(L_16));
-		SpecialCharacter__ctor_m6697A8BF272F0144733EE12368C038F45E99F969((&L_16), L_14, L_15, NULL);
-		__this->___m_Underline = L_16;
+		G_B6_0 = 0;
+	}
+
+IL_0073:
+	{
+		V_7 = (bool)G_B6_0;
+		bool L_21 = V_7;
+		if (!L_21)
+		{
+			goto IL_009b;
+		}
+	}
+	{
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_22 = V_2;
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_23 = V_2;
+		NullCheck(L_23);
+		List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* L_24 = L_23->___m_FallbackFontAssetTable;
+		int32_t L_25 = __this->___m_FontStyleInternal;
+		int32_t L_26 = __this->___m_FontWeightInternal;
+		bool L_27 = V_4;
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_28;
+		L_28 = FontAssetUtilities_GetCharacterFromFontAssetsInternal_mE53763E9CB71B0606391F6A0CC5524AADE1908BC(((int32_t)95), L_22, L_24, (List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE*)NULL, (bool)1, L_25, L_26, (&V_1), L_27, NULL);
+		V_5 = L_28;
+	}
+
+IL_009b:
+	{
+	}
+
+IL_009c:
+	{
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_29 = V_5;
+		V_8 = (bool)((((RuntimeObject*)(Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC*)L_29) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_30 = V_8;
+		if (!L_30)
+		{
+			goto IL_0104;
+		}
+	}
+	{
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_31 = V_3;
+		NullCheck(L_31);
+		List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* L_32;
+		L_32 = VirtualFuncInvoker0< List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* >::Invoke(4, L_31);
+		if (L_32)
+		{
+			goto IL_00b6;
+		}
+	}
+	{
+		bool L_33 = V_0;
+		G_B13_0 = ((((int32_t)L_33) == ((int32_t)0))? 1 : 0);
+		goto IL_00b7;
+	}
+
+IL_00b6:
+	{
+		G_B13_0 = 0;
+	}
+
+IL_00b7:
+	{
+		V_9 = (bool)G_B13_0;
+		bool L_34 = V_9;
+		if (!L_34)
+		{
+			goto IL_00c5;
+		}
+	}
+	{
+		V_10 = (bool)0;
+		goto IL_024b;
+	}
+
+IL_00c5:
+	{
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_35 = V_2;
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_36 = V_3;
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_37 = V_2;
+		NullCheck(L_37);
+		bool L_38;
+		L_38 = FontAsset_IsRaster_mDB33767B5B55294E3CB8D741803F53D0905C6071(L_37, NULL);
+		bool L_39 = __this->___m_ShouldRenderBitmap;
+		if (L_39)
+		{
+			G_B17_0 = L_38;
+			G_B17_1 = L_36;
+			G_B17_2 = L_35;
+			G_B17_3 = ((int32_t)95);
+			goto IL_00da;
+		}
+		G_B16_0 = L_38;
+		G_B16_1 = L_36;
+		G_B16_2 = L_35;
+		G_B16_3 = ((int32_t)95);
+	}
+	{
+		G_B18_0 = (-1);
+		G_B18_1 = G_B16_0;
+		G_B18_2 = G_B16_1;
+		G_B18_3 = G_B16_2;
+		G_B18_4 = G_B16_3;
+		goto IL_00e0;
+	}
+
+IL_00da:
+	{
+		TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2* L_40 = ___0_generationSettings;
+		NullCheck(L_40);
+		int32_t L_41 = L_40->___fontSize;
+		G_B18_0 = L_41;
+		G_B18_1 = G_B17_0;
+		G_B18_2 = G_B17_1;
+		G_B18_3 = G_B17_2;
+		G_B18_4 = G_B17_3;
+	}
+
+IL_00e0:
+	{
+		NullCheck(G_B18_2);
+		List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* L_42;
+		L_42 = VirtualFuncInvoker2< List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE*, bool, int32_t >::Invoke(6, G_B18_2, G_B18_1, G_B18_0);
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_43 = V_3;
+		NullCheck(L_43);
+		List_1_t55B85B981AC5FD6A5358491F90FE354F78BB97DE* L_44;
+		L_44 = TextSettings_get_fallbackOSFontAssets_mA595476A990F2F1CBD78743707F9CF8F6CC4BBA9(L_43, NULL);
+		int32_t L_45 = __this->___m_FontStyleInternal;
+		int32_t L_46 = __this->___m_FontWeightInternal;
+		bool L_47 = V_4;
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_48;
+		L_48 = FontAssetUtilities_GetCharacterFromFontAssetsInternal_mE53763E9CB71B0606391F6A0CC5524AADE1908BC(G_B18_4, G_B18_3, L_42, L_44, (bool)1, L_45, L_46, (&V_1), L_47, NULL);
+		V_5 = L_48;
+	}
+
+IL_0104:
+	{
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_49 = V_5;
+		V_11 = (bool)((((RuntimeObject*)(Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC*)L_49) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_50 = V_11;
+		if (!L_50)
+		{
+			goto IL_0143;
+		}
+	}
+	{
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_51 = V_3;
+		NullCheck(L_51);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_52;
+		L_52 = TextSettings_get_defaultFontAsset_mC6280464BFEE081DB23243BB94E49C72A0885A1F_inline(L_51, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_53;
+		L_53 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_52, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		V_12 = L_53;
+		bool L_54 = V_12;
+		if (!L_54)
+		{
+			goto IL_0142;
+		}
+	}
+	{
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_55 = V_3;
+		NullCheck(L_55);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_56;
+		L_56 = TextSettings_get_defaultFontAsset_mC6280464BFEE081DB23243BB94E49C72A0885A1F_inline(L_55, NULL);
+		int32_t L_57 = __this->___m_FontStyleInternal;
+		int32_t L_58 = __this->___m_FontWeightInternal;
+		bool L_59 = V_4;
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_60;
+		L_60 = FontAssetUtilities_GetCharacterFromFontAsset_m854EBABBF60E9B80275BE56FA803B258D9B61D99(((int32_t)95), L_56, (bool)1, L_57, L_58, (&V_1), L_59, NULL);
+		V_5 = L_60;
+	}
+
+IL_0142:
+	{
+	}
+
+IL_0143:
+	{
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_61 = V_5;
+		V_13 = (bool)((!(((RuntimeObject*)(Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC*)L_61) <= ((RuntimeObject*)(RuntimeObject*)NULL)))? 1 : 0);
+		bool L_62 = V_13;
+		if (!L_62)
+		{
+			goto IL_0246;
+		}
+	}
+	{
+		Character_t9B671B493FAC8D43638C69AF6AE92CBD103D80EC* L_63 = V_5;
+		int32_t L_64 = __this->___m_CurrentMaterialIndex;
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD L_65;
+		memset((&L_65), 0, sizeof(L_65));
+		SpecialCharacter__ctor_m6697A8BF272F0144733EE12368C038F45E99F969((&L_65), L_63, L_64, NULL);
+		__this->___m_Underline = L_65;
 		Il2CppCodeGenWriteBarrier((void**)&(((&__this->___m_Underline))->___character), (void*)NULL);
 		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
 		Il2CppCodeGenWriteBarrier((void**)&(((&__this->___m_Underline))->___fontAsset), (void*)NULL);
@@ -43651,116 +43881,120 @@ IL_0058:
 		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
 		Il2CppCodeGenWriteBarrier((void**)&(((&__this->___m_Underline))->___material), (void*)NULL);
 		#endif
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_17 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_18 = L_17->___fontAsset;
-		NullCheck(L_18);
-		int32_t L_19;
-		L_19 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_18);
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_20 = __this->___m_CurrentFontAsset;
-		NullCheck(L_20);
-		int32_t L_21;
-		L_21 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_20);
-		V_7 = (bool)((((int32_t)((((int32_t)L_19) == ((int32_t)L_21))? 1 : 0)) == ((int32_t)0))? 1 : 0);
-		bool L_22 = V_7;
-		if (!L_22)
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_66 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_67 = L_66->___fontAsset;
+		NullCheck(L_67);
+		int32_t L_68;
+		L_68 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_67);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_69 = __this->___m_CurrentFontAsset;
+		NullCheck(L_69);
+		int32_t L_70;
+		L_70 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_69);
+		V_14 = (bool)((((int32_t)((((int32_t)L_68) == ((int32_t)L_70))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+		bool L_71 = V_14;
+		if (!L_71)
 		{
-			goto IL_014b;
+			goto IL_0245;
 		}
 	}
 	{
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_23 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2* L_24 = ___0_generationSettings;
-		NullCheck(L_24);
-		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_25 = L_24->___textSettings;
-		NullCheck(L_25);
-		bool L_26;
-		L_26 = TextSettings_get_matchMaterialPreset_m4675979547AE4C83E680260EAE5ACBC4FAC53B87_inline(L_25, NULL);
-		if (!L_26)
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_72 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2* L_73 = ___0_generationSettings;
+		NullCheck(L_73);
+		TextSettings_tB7F55685AFFD4A96F714427BCACFD6958E357D64* L_74 = L_73->___textSettings;
+		NullCheck(L_74);
+		bool L_75;
+		L_75 = TextSettings_get_matchMaterialPreset_m4675979547AE4C83E680260EAE5ACBC4FAC53B87_inline(L_74, NULL);
+		if (!L_75)
 		{
-			G_B7_0 = L_23;
-			goto IL_00ca;
+			G_B27_0 = L_72;
+			goto IL_01c4;
 		}
-		G_B6_0 = L_23;
+		G_B26_0 = L_72;
 	}
 	{
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_27 = __this->___m_CurrentMaterial;
-		NullCheck(L_27);
-		int32_t L_28;
-		L_28 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_27);
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_29 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_30 = L_29->___fontAsset;
-		NullCheck(L_30);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_31;
-		L_31 = TextAsset_get_material_m4B9C02D34426436FDB01F1963A9FDC11D75604EF_inline(L_30, NULL);
-		NullCheck(L_31);
-		int32_t L_32;
-		L_32 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_31);
-		if ((!(((uint32_t)L_28) == ((uint32_t)L_32))))
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_76 = __this->___m_CurrentMaterial;
+		NullCheck(L_76);
+		int32_t L_77;
+		L_77 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_76);
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_78 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_79 = L_78->___fontAsset;
+		NullCheck(L_79);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_80;
+		L_80 = TextAsset_get_material_m4B9C02D34426436FDB01F1963A9FDC11D75604EF_inline(L_79, NULL);
+		NullCheck(L_80);
+		int32_t L_81;
+		L_81 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_80);
+		if ((!(((uint32_t)L_77) == ((uint32_t)L_81))))
 		{
-			G_B8_0 = G_B6_0;
-			goto IL_00dc;
+			G_B28_0 = G_B26_0;
+			goto IL_01d6;
 		}
-		G_B7_0 = G_B6_0;
+		G_B27_0 = G_B26_0;
 	}
 
-IL_00ca:
+IL_01c4:
 	{
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_33 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_34 = L_33->___fontAsset;
-		NullCheck(L_34);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_35;
-		L_35 = TextAsset_get_material_m4B9C02D34426436FDB01F1963A9FDC11D75604EF_inline(L_34, NULL);
-		G_B9_0 = L_35;
-		G_B9_1 = G_B7_0;
-		goto IL_00f7;
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_82 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_83 = L_82->___fontAsset;
+		NullCheck(L_83);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_84;
+		L_84 = TextAsset_get_material_m4B9C02D34426436FDB01F1963A9FDC11D75604EF_inline(L_83, NULL);
+		G_B29_0 = L_84;
+		G_B29_1 = G_B27_0;
+		goto IL_01f1;
 	}
 
-IL_00dc:
+IL_01d6:
 	{
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_36 = __this->___m_CurrentMaterial;
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_37 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_38 = L_37->___fontAsset;
-		NullCheck(L_38);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_39;
-		L_39 = TextAsset_get_material_m4B9C02D34426436FDB01F1963A9FDC11D75604EF_inline(L_38, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_85 = __this->___m_CurrentMaterial;
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_86 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_87 = L_86->___fontAsset;
+		NullCheck(L_87);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_88;
+		L_88 = TextAsset_get_material_m4B9C02D34426436FDB01F1963A9FDC11D75604EF_inline(L_87, NULL);
 		il2cpp_codegen_runtime_class_init_inline(MaterialManager_t104D2897F78BE83C3377323E18BEB5B8F0704D9B_il2cpp_TypeInfo_var);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_40;
-		L_40 = MaterialManager_GetFallbackMaterial_m10F67CE1AE1E0B9D8BA8AFC06110FADA2404B5A1(L_36, L_39, NULL);
-		G_B9_0 = L_40;
-		G_B9_1 = G_B8_0;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_89;
+		L_89 = MaterialManager_GetFallbackMaterial_m10F67CE1AE1E0B9D8BA8AFC06110FADA2404B5A1(L_85, L_88, NULL);
+		G_B29_0 = L_89;
+		G_B29_1 = G_B28_0;
 	}
 
-IL_00f7:
+IL_01f1:
 	{
-		G_B9_1->___material = G_B9_0;
-		Il2CppCodeGenWriteBarrier((void**)(&G_B9_1->___material), (void*)G_B9_0);
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_41 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_42 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_43 = L_42->___material;
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_44 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_45 = L_44->___fontAsset;
-		MaterialReferenceU5BU5D_t4A9B88114E223BD96CE5121053664023CE2DE07E** L_46 = (MaterialReferenceU5BU5D_t4A9B88114E223BD96CE5121053664023CE2DE07E**)(&__this->___m_MaterialReferences);
-		Dictionary_2_tABE19B9C5C52F1DE14F0D3287B2696E7D7419180* L_47 = __this->___m_MaterialReferenceIndexLookup;
-		int32_t L_48;
-		L_48 = MaterialReference_AddMaterialReference_m13CC47A7CA6C8781EA68A355B36FCD5AFF467A40(L_43, L_45, L_46, L_47, NULL);
-		L_41->___materialIndex = L_48;
-		MaterialReferenceU5BU5D_t4A9B88114E223BD96CE5121053664023CE2DE07E* L_49 = __this->___m_MaterialReferences;
-		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_50 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
-		int32_t L_51 = L_50->___materialIndex;
-		NullCheck(L_49);
-		((L_49)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_51)))->___referenceCount = 0;
+		G_B29_1->___material = G_B29_0;
+		Il2CppCodeGenWriteBarrier((void**)(&G_B29_1->___material), (void*)G_B29_0);
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_90 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_91 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_92 = L_91->___material;
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_93 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* L_94 = L_93->___fontAsset;
+		MaterialReferenceU5BU5D_t4A9B88114E223BD96CE5121053664023CE2DE07E** L_95 = (MaterialReferenceU5BU5D_t4A9B88114E223BD96CE5121053664023CE2DE07E**)(&__this->___m_MaterialReferences);
+		Dictionary_2_tABE19B9C5C52F1DE14F0D3287B2696E7D7419180* L_96 = __this->___m_MaterialReferenceIndexLookup;
+		int32_t L_97;
+		L_97 = MaterialReference_AddMaterialReference_m13CC47A7CA6C8781EA68A355B36FCD5AFF467A40(L_92, L_94, L_95, L_96, NULL);
+		L_90->___materialIndex = L_97;
+		MaterialReferenceU5BU5D_t4A9B88114E223BD96CE5121053664023CE2DE07E* L_98 = __this->___m_MaterialReferences;
+		SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD* L_99 = (SpecialCharacter_t869F8BE65A7FE32AFD4196118258F49A63D8E2BD*)(&__this->___m_Underline);
+		int32_t L_100 = L_99->___materialIndex;
+		NullCheck(L_98);
+		((L_98)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_100)))->___referenceCount = 0;
 	}
 
-IL_014b:
+IL_0245:
 	{
-		V_6 = (bool)1;
-		goto IL_0150;
 	}
 
-IL_0150:
+IL_0246:
 	{
-		bool L_52 = V_6;
-		return L_52;
+		V_10 = (bool)1;
+		goto IL_024b;
+	}
+
+IL_024b:
+	{
+		bool L_101 = V_10;
+		return L_101;
 	}
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextGenerator_DoMissingGlyphCallback_m643F3C7C677B4F98BFE251055ECE1E588BEFFB04 (TextGenerator_t6B84DC798596D3A9944DC346DD453C075EE62366* __this, uint32_t ___0_unicode, int32_t ___1_stringIndex, FontAsset_t61A6446D934E582651044E33D250EA8D306AB958* ___2_fontAsset, TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* ___3_textInfo, const RuntimeMethod* method) 

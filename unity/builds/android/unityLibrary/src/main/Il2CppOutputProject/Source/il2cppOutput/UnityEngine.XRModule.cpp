@@ -356,9 +356,6 @@ struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_pinvoke
 struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_com
 {
 };
-struct XRStats_tEEC33A22D22ADE87294F4A4731CBE7423561BADB  : public RuntimeObject
-{
-};
 struct BindingsMarshaller_tDD64B444EBAE1B097106FD70F721B74294971039  : public RuntimeObject
 {
 };
@@ -2306,7 +2303,7 @@ inline void Action_1_Invoke_m69C8773D6967F3B224777183E24EA621CE056F8F_inline (Ac
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t BindingsMarshaller_ConvertToNative_m5CBA6690506FEA79B3D37EA631A714862A2F5573_inline (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* ___0_xrDisplaySubsystem, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThrowHelper_ThrowNullReferenceException_mA9C7629D32240EE0218631933DAC647668CA63CF (RuntimeObject* ___0_obj, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_scaleOfAllViewports_Injected_m5DD1F782BB09388DF16E608B75D15DA29B25923F (intptr_t ___0__unity_self, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_appliedViewportScale_Injected_m667C92545EE0292E02ADEFEC99E857072DE70DCC (intptr_t ___0__unity_self, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRDisplaySubsystem_set_scaleOfAllRenderTargets_Injected_mEA3340ADB771210C251C243F7DFB619A4724ADEE (intptr_t ___0__unity_self, float ___1_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_globalDynamicScale_Injected_m051382F5EE62B4D835794143A572371D6B9F515E (intptr_t ___0__unity_self, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRDisplaySubsystem_set_zNear_Injected_mDBB0F36B76C6860C545DCAA7E995735AF2325BFA (intptr_t ___0__unity_self, float ___1_value, const RuntimeMethod* method) ;
@@ -2336,10 +2333,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_Internal_TryBeginReco
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_Internal_TryBeginRecordingIfLateLatched_Injected_m2ECCEDF7F90D4C84E8985AB0D2CC042BB4BACC74 (intptr_t ___0__unity_self, intptr_t ___1_camera, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_Internal_TryGetCullingParams_m6EB3424D3E830934E7B004BAC01B4BC1F44F612C (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___0_camera, int32_t ___1_cullingPassIndex, ScriptableCullingParameters_tD9539440A4A7DA4C7578CCE16F24466A5DC89899* ___2_scriptableCullingParameters, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_Internal_TryGetCullingParams_Injected_m2258C5C619D522732AE762857C52E4481D419506 (intptr_t ___0__unity_self, intptr_t ___1_camera, int32_t ___2_cullingPassIndex, ScriptableCullingParameters_tD9539440A4A7DA4C7578CCE16F24466A5DC89899* ___3_scriptableCullingParameters, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_Injected_mCC2BE815F7B59CAF7A107340184A0EDBED8512B4 (intptr_t ___0__unity_self, float* ___1_gpuTimeLastFrame, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_Injected_mCBA9BE76ACC09119AF2302726CC31B0E268DA1D4 (intptr_t ___0__unity_self, float* ___1_gpuTimeLastFrameCompositor, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetDisplayRefreshRate_Injected_m3BE512DCA5854F517895D538094E05082D239502 (intptr_t ___0__unity_self, float* ___1_displayRefreshRate, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetMotionToPhoton_Injected_m10D88BD4F186892C74FB503FDDF06A2764E0A166 (intptr_t ___0__unity_self, float* ___1_motionToPhoton, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t XRDisplaySubsystem_GetRenderTexture_Injected_m880EED2C463A975D2EEDDC6DCE13B4D6A7007642 (intptr_t ___0__unity_self, uint32_t ___1_unityXrRenderTextureId, const RuntimeMethod* method) ;
 inline RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* Unmarshal_UnmarshalUnityObject_TisRenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_m87693A3F5C324F0DB61909ED66D2D3EC4EE67070_inline (intptr_t ___0_gcHandlePtr, const RuntimeMethod* method)
 {
@@ -2486,8 +2479,6 @@ inline void IntegratedSubsystemDescriptor_1__ctor_mF4354B29EF84B06E68C05D657260B
 {
 	((  void (*) (IntegratedSubsystemDescriptor_1_tBFE1680F4FA360D4E9AB19FDE2CCBD959E436513*, const RuntimeMethod*))IntegratedSubsystemDescriptor_1__ctor_m94FAA0F6D63A0144035D2645AAE00202B36BE7DC_gshared)(__this, method);
 }
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRStats_TryGetStat_Internal_mDE5287222A37D521F603FAF12C7AB875E43E5DE5 (intptr_t ___0_ptr, String_t* ___1_tag, float* ___2_value, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRStats_TryGetStat_Internal_Injected_m9D2069E99E0404564D4A26D35568F5FE77D830E1 (intptr_t ___0_ptr, ManagedSpanWrapper_tE7FC4BBB631B130757F8DEB15853D98FD3D5DC0E* ___1_tag, float* ___2_value, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline (String_t* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uintptr_t UIntPtr_op_Explicit_mF1E7911DD5AC13B5E59EE8C7903469D12A3861E8 (uint64_t ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void* UIntPtr_op_Explicit_m42C3EA82465934F505B4274A7CE320550A48B7B9 (uintptr_t ___0_value, const RuntimeMethod* method) ;
@@ -7081,7 +7072,7 @@ IL_001b:
 		return;
 	}
 }
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_scaleOfAllViewports_m1D6F59F3BDD94B560C7AD8D5F3FC39D24032E1E7 (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, const RuntimeMethod* method) 
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_appliedViewportScale_m59AAF66BC6B53F953F22F96EC1C8635F2B0A6480 (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, const RuntimeMethod* method) 
 {
 	intptr_t G_B2_0;
 	memset((&G_B2_0), 0, sizeof(G_B2_0));
@@ -7106,7 +7097,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_scaleOfAllViewpo
 IL_000f:
 	{
 		float L_2;
-		L_2 = XRDisplaySubsystem_get_scaleOfAllViewports_Injected_m5DD1F782BB09388DF16E608B75D15DA29B25923F(G_B2_0, NULL);
+		L_2 = XRDisplaySubsystem_get_appliedViewportScale_Injected_m667C92545EE0292E02ADEFEC99E857072DE70DCC(G_B2_0, NULL);
 		return L_2;
 	}
 }
@@ -7763,126 +7754,6 @@ IL_000f:
 		return L_6;
 	}
 }
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_m17BABDCD1716475A2473143A47ECCFE64F17A766 (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, float* ___0_gpuTimeLastFrame, const RuntimeMethod* method) 
-{
-	intptr_t G_B2_0;
-	memset((&G_B2_0), 0, sizeof(G_B2_0));
-	intptr_t G_B1_0;
-	memset((&G_B1_0), 0, sizeof(G_B1_0));
-	{
-		intptr_t L_0;
-		L_0 = BindingsMarshaller_ConvertToNative_m5CBA6690506FEA79B3D37EA631A714862A2F5573_inline(__this, NULL);
-		intptr_t L_1 = L_0;
-		if (L_1)
-		{
-			G_B2_0 = L_1;
-			goto IL_000f;
-		}
-		G_B1_0 = L_1;
-	}
-	{
-		ThrowHelper_ThrowNullReferenceException_mA9C7629D32240EE0218631933DAC647668CA63CF(__this, NULL);
-		G_B2_0 = G_B1_0;
-	}
-
-IL_000f:
-	{
-		float* L_2 = ___0_gpuTimeLastFrame;
-		bool L_3;
-		L_3 = XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_Injected_mCC2BE815F7B59CAF7A107340184A0EDBED8512B4(G_B2_0, L_2, NULL);
-		return L_3;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_m9D8587317EBC9785C2AEAD86ACC3B939A497E82D (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, float* ___0_gpuTimeLastFrameCompositor, const RuntimeMethod* method) 
-{
-	intptr_t G_B2_0;
-	memset((&G_B2_0), 0, sizeof(G_B2_0));
-	intptr_t G_B1_0;
-	memset((&G_B1_0), 0, sizeof(G_B1_0));
-	{
-		intptr_t L_0;
-		L_0 = BindingsMarshaller_ConvertToNative_m5CBA6690506FEA79B3D37EA631A714862A2F5573_inline(__this, NULL);
-		intptr_t L_1 = L_0;
-		if (L_1)
-		{
-			G_B2_0 = L_1;
-			goto IL_000f;
-		}
-		G_B1_0 = L_1;
-	}
-	{
-		ThrowHelper_ThrowNullReferenceException_mA9C7629D32240EE0218631933DAC647668CA63CF(__this, NULL);
-		G_B2_0 = G_B1_0;
-	}
-
-IL_000f:
-	{
-		float* L_2 = ___0_gpuTimeLastFrameCompositor;
-		bool L_3;
-		L_3 = XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_Injected_mCBA9BE76ACC09119AF2302726CC31B0E268DA1D4(G_B2_0, L_2, NULL);
-		return L_3;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetDisplayRefreshRate_mC92C72C1B54E33C4281B714483222D5CD11866BB (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, float* ___0_displayRefreshRate, const RuntimeMethod* method) 
-{
-	intptr_t G_B2_0;
-	memset((&G_B2_0), 0, sizeof(G_B2_0));
-	intptr_t G_B1_0;
-	memset((&G_B1_0), 0, sizeof(G_B1_0));
-	{
-		intptr_t L_0;
-		L_0 = BindingsMarshaller_ConvertToNative_m5CBA6690506FEA79B3D37EA631A714862A2F5573_inline(__this, NULL);
-		intptr_t L_1 = L_0;
-		if (L_1)
-		{
-			G_B2_0 = L_1;
-			goto IL_000f;
-		}
-		G_B1_0 = L_1;
-	}
-	{
-		ThrowHelper_ThrowNullReferenceException_mA9C7629D32240EE0218631933DAC647668CA63CF(__this, NULL);
-		G_B2_0 = G_B1_0;
-	}
-
-IL_000f:
-	{
-		float* L_2 = ___0_displayRefreshRate;
-		bool L_3;
-		L_3 = XRDisplaySubsystem_TryGetDisplayRefreshRate_Injected_m3BE512DCA5854F517895D538094E05082D239502(G_B2_0, L_2, NULL);
-		return L_3;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetMotionToPhoton_mEF734C48F96C17C3A63305B75988F1851298D3E6 (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, float* ___0_motionToPhoton, const RuntimeMethod* method) 
-{
-	intptr_t G_B2_0;
-	memset((&G_B2_0), 0, sizeof(G_B2_0));
-	intptr_t G_B1_0;
-	memset((&G_B1_0), 0, sizeof(G_B1_0));
-	{
-		intptr_t L_0;
-		L_0 = BindingsMarshaller_ConvertToNative_m5CBA6690506FEA79B3D37EA631A714862A2F5573_inline(__this, NULL);
-		intptr_t L_1 = L_0;
-		if (L_1)
-		{
-			G_B2_0 = L_1;
-			goto IL_000f;
-		}
-		G_B1_0 = L_1;
-	}
-	{
-		ThrowHelper_ThrowNullReferenceException_mA9C7629D32240EE0218631933DAC647668CA63CF(__this, NULL);
-		G_B2_0 = G_B1_0;
-	}
-
-IL_000f:
-	{
-		float* L_2 = ___0_motionToPhoton;
-		bool L_3;
-		L_3 = XRDisplaySubsystem_TryGetMotionToPhoton_Injected_m10D88BD4F186892C74FB503FDDF06A2764E0A166(G_B2_0, L_2, NULL);
-		return L_3;
-	}
-}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* XRDisplaySubsystem_GetRenderTexture_mABB964AEAFF9B12DB279EDECAE85A52F6253E5CA (XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* __this, uint32_t ___0_unityXrRenderTextureId, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8135,12 +8006,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRDisplaySubsystem__ctor_m5DA92849F107C6
 		return;
 	}
 }
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_scaleOfAllViewports_Injected_m5DD1F782BB09388DF16E608B75D15DA29B25923F (intptr_t ___0__unity_self, const RuntimeMethod* method) 
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRDisplaySubsystem_get_appliedViewportScale_Injected_m667C92545EE0292E02ADEFEC99E857072DE70DCC (intptr_t ___0__unity_self, const RuntimeMethod* method) 
 {
-	typedef float (*XRDisplaySubsystem_get_scaleOfAllViewports_Injected_m5DD1F782BB09388DF16E608B75D15DA29B25923F_ftn) (intptr_t);
-	static XRDisplaySubsystem_get_scaleOfAllViewports_Injected_m5DD1F782BB09388DF16E608B75D15DA29B25923F_ftn _il2cpp_icall_func;
+	typedef float (*XRDisplaySubsystem_get_appliedViewportScale_Injected_m667C92545EE0292E02ADEFEC99E857072DE70DCC_ftn) (intptr_t);
+	static XRDisplaySubsystem_get_appliedViewportScale_Injected_m667C92545EE0292E02ADEFEC99E857072DE70DCC_ftn _il2cpp_icall_func;
 	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (XRDisplaySubsystem_get_scaleOfAllViewports_Injected_m5DD1F782BB09388DF16E608B75D15DA29B25923F_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::get_scaleOfAllViewports_Injected(System.IntPtr)");
+	_il2cpp_icall_func = (XRDisplaySubsystem_get_appliedViewportScale_Injected_m667C92545EE0292E02ADEFEC99E857072DE70DCC_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::get_appliedViewportScale_Injected(System.IntPtr)");
 	float icallRetVal = _il2cpp_icall_func(___0__unity_self);
 	return icallRetVal;
 }
@@ -8270,42 +8141,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_Internal_TryGetCullin
 	if (!_il2cpp_icall_func)
 	_il2cpp_icall_func = (XRDisplaySubsystem_Internal_TryGetCullingParams_Injected_m2258C5C619D522732AE762857C52E4481D419506_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::Internal_TryGetCullingParams_Injected(System.IntPtr,System.IntPtr,System.Int32,UnityEngine.Rendering.ScriptableCullingParameters&)");
 	bool icallRetVal = _il2cpp_icall_func(___0__unity_self, ___1_camera, ___2_cullingPassIndex, ___3_scriptableCullingParameters);
-	return icallRetVal;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_Injected_mCC2BE815F7B59CAF7A107340184A0EDBED8512B4 (intptr_t ___0__unity_self, float* ___1_gpuTimeLastFrame, const RuntimeMethod* method) 
-{
-	typedef bool (*XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_Injected_mCC2BE815F7B59CAF7A107340184A0EDBED8512B4_ftn) (intptr_t, float*);
-	static XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_Injected_mCC2BE815F7B59CAF7A107340184A0EDBED8512B4_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (XRDisplaySubsystem_TryGetAppGPUTimeLastFrame_Injected_mCC2BE815F7B59CAF7A107340184A0EDBED8512B4_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::TryGetAppGPUTimeLastFrame_Injected(System.IntPtr,System.Single&)");
-	bool icallRetVal = _il2cpp_icall_func(___0__unity_self, ___1_gpuTimeLastFrame);
-	return icallRetVal;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_Injected_mCBA9BE76ACC09119AF2302726CC31B0E268DA1D4 (intptr_t ___0__unity_self, float* ___1_gpuTimeLastFrameCompositor, const RuntimeMethod* method) 
-{
-	typedef bool (*XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_Injected_mCBA9BE76ACC09119AF2302726CC31B0E268DA1D4_ftn) (intptr_t, float*);
-	static XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_Injected_mCBA9BE76ACC09119AF2302726CC31B0E268DA1D4_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (XRDisplaySubsystem_TryGetCompositorGPUTimeLastFrame_Injected_mCBA9BE76ACC09119AF2302726CC31B0E268DA1D4_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::TryGetCompositorGPUTimeLastFrame_Injected(System.IntPtr,System.Single&)");
-	bool icallRetVal = _il2cpp_icall_func(___0__unity_self, ___1_gpuTimeLastFrameCompositor);
-	return icallRetVal;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetDisplayRefreshRate_Injected_m3BE512DCA5854F517895D538094E05082D239502 (intptr_t ___0__unity_self, float* ___1_displayRefreshRate, const RuntimeMethod* method) 
-{
-	typedef bool (*XRDisplaySubsystem_TryGetDisplayRefreshRate_Injected_m3BE512DCA5854F517895D538094E05082D239502_ftn) (intptr_t, float*);
-	static XRDisplaySubsystem_TryGetDisplayRefreshRate_Injected_m3BE512DCA5854F517895D538094E05082D239502_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (XRDisplaySubsystem_TryGetDisplayRefreshRate_Injected_m3BE512DCA5854F517895D538094E05082D239502_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::TryGetDisplayRefreshRate_Injected(System.IntPtr,System.Single&)");
-	bool icallRetVal = _il2cpp_icall_func(___0__unity_self, ___1_displayRefreshRate);
-	return icallRetVal;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRDisplaySubsystem_TryGetMotionToPhoton_Injected_m10D88BD4F186892C74FB503FDDF06A2764E0A166 (intptr_t ___0__unity_self, float* ___1_motionToPhoton, const RuntimeMethod* method) 
-{
-	typedef bool (*XRDisplaySubsystem_TryGetMotionToPhoton_Injected_m10D88BD4F186892C74FB503FDDF06A2764E0A166_ftn) (intptr_t, float*);
-	static XRDisplaySubsystem_TryGetMotionToPhoton_Injected_m10D88BD4F186892C74FB503FDDF06A2764E0A166_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (XRDisplaySubsystem_TryGetMotionToPhoton_Injected_m10D88BD4F186892C74FB503FDDF06A2764E0A166_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.XRDisplaySubsystem::TryGetMotionToPhoton_Injected(System.IntPtr,System.Single&)");
-	bool icallRetVal = _il2cpp_icall_func(___0__unity_self, ___1_motionToPhoton);
 	return icallRetVal;
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t XRDisplaySubsystem_GetRenderTexture_Injected_m880EED2C463A975D2EEDDC6DCE13B4D6A7007642 (intptr_t ___0__unity_self, uint32_t ___1_unityXrRenderTextureId, const RuntimeMethod* method) 
@@ -11175,123 +11010,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRMeshSubsystemDescriptor__ctor_mFD056F6
 		IntegratedSubsystemDescriptor_1__ctor_mF4354B29EF84B06E68C05D657260B044B123087C(__this, IntegratedSubsystemDescriptor_1__ctor_mF4354B29EF84B06E68C05D657260B044B123087C_RuntimeMethod_var);
 		return;
 	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRStats_TryGetStat_mE91924B240A89BA396554CE3742A06210514FA8B (IntegratedSubsystem_t990160A89854D87C0836DC589B720231C02D4CE3* ___0_xrSubsystem, String_t* ___1_tag, float* ___2_value, const RuntimeMethod* method) 
-{
-	bool V_0 = false;
-	{
-		IntegratedSubsystem_t990160A89854D87C0836DC589B720231C02D4CE3* L_0 = ___0_xrSubsystem;
-		NullCheck(L_0);
-		intptr_t L_1 = L_0->___m_Ptr;
-		String_t* L_2 = ___1_tag;
-		float* L_3 = ___2_value;
-		bool L_4;
-		L_4 = XRStats_TryGetStat_Internal_mDE5287222A37D521F603FAF12C7AB875E43E5DE5(L_1, L_2, L_3, NULL);
-		V_0 = L_4;
-		goto IL_0011;
-	}
-
-IL_0011:
-	{
-		bool L_5 = V_0;
-		return L_5;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRStats_TryGetStat_Internal_mDE5287222A37D521F603FAF12C7AB875E43E5DE5 (intptr_t ___0_ptr, String_t* ___1_tag, float* ___2_value, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ReadOnlySpan_1_GetPinnableReference_mB710059C1A1A30270065958DE8345808C6683638_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ReadOnlySpan_1_get_Length_m36BD32453530B535FE60A8123643219FEAABC351_RuntimeMethod_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 V_0;
-	memset((&V_0), 0, sizeof(V_0));
-	Il2CppChar* V_1 = NULL;
-	ManagedSpanWrapper_tE7FC4BBB631B130757F8DEB15853D98FD3D5DC0E V_2;
-	memset((&V_2), 0, sizeof(V_2));
-	bool V_3 = false;
-	intptr_t G_B2_0;
-	memset((&G_B2_0), 0, sizeof(G_B2_0));
-	intptr_t G_B1_0;
-	memset((&G_B1_0), 0, sizeof(G_B1_0));
-	{
-		auto __finallyBlock = il2cpp::utils::Finally([&]
-		{
-
-FINALLY_0036:
-			{
-				V_1 = (Il2CppChar*)((uintptr_t)0);
-				return;
-			}
-		});
-		try
-		{
-			{
-				intptr_t L_0 = ___0_ptr;
-				String_t* L_1 = ___1_tag;
-				bool L_2;
-				L_2 = StringMarshaller_TryMarshalEmptyOrNullString_m615203C511071D59295D889AB136575DFFEA90A6_inline(L_1, (&V_2), NULL);
-				if (L_2)
-				{
-					G_B2_0 = L_0;
-					goto IL_002a_1;
-				}
-				G_B1_0 = L_0;
-			}
-			{
-				String_t* L_3 = ___1_tag;
-				ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_4;
-				L_4 = MemoryExtensions_AsSpan_m0EB07912D71097A8B05F586158966837F5C3DB38_inline(L_3, NULL);
-				V_0 = L_4;
-				Il2CppChar* L_5;
-				L_5 = ReadOnlySpan_1_GetPinnableReference_mB710059C1A1A30270065958DE8345808C6683638((&V_0), ReadOnlySpan_1_GetPinnableReference_mB710059C1A1A30270065958DE8345808C6683638_RuntimeMethod_var);
-				V_1 = L_5;
-				Il2CppChar* L_6 = V_1;
-				int32_t L_7;
-				L_7 = ReadOnlySpan_1_get_Length_m36BD32453530B535FE60A8123643219FEAABC351_inline((&V_0), ReadOnlySpan_1_get_Length_m36BD32453530B535FE60A8123643219FEAABC351_RuntimeMethod_var);
-				ManagedSpanWrapper__ctor_mB29647A21BB87EA4DF859E5C2FA2207F47E525D2((&V_2), (void*)((uintptr_t)L_6), L_7, NULL);
-				G_B2_0 = G_B1_0;
-			}
-
-IL_002a_1:
-			{
-				float* L_8 = ___2_value;
-				bool L_9;
-				L_9 = XRStats_TryGetStat_Internal_Injected_m9D2069E99E0404564D4A26D35568F5FE77D830E1(G_B2_0, (&V_2), L_8, NULL);
-				V_3 = L_9;
-				goto IL_003a;
-			}
-		}
-		catch(Il2CppExceptionWrapper& e)
-		{
-			__finallyBlock.StoreException(e.ex);
-		}
-	}
-
-IL_003a:
-	{
-		bool L_10 = V_3;
-		return L_10;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRStats_TryGetStat_Internal_Injected_m9D2069E99E0404564D4A26D35568F5FE77D830E1 (intptr_t ___0_ptr, ManagedSpanWrapper_tE7FC4BBB631B130757F8DEB15853D98FD3D5DC0E* ___1_tag, float* ___2_value, const RuntimeMethod* method) 
-{
-	typedef bool (*XRStats_TryGetStat_Internal_Injected_m9D2069E99E0404564D4A26D35568F5FE77D830E1_ftn) (intptr_t, ManagedSpanWrapper_tE7FC4BBB631B130757F8DEB15853D98FD3D5DC0E*, float*);
-	static XRStats_TryGetStat_Internal_Injected_m9D2069E99E0404564D4A26D35568F5FE77D830E1_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (XRStats_TryGetStat_Internal_Injected_m9D2069E99E0404564D4A26D35568F5FE77D830E1_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.Provider.XRStats::TryGetStat_Internal_Injected(System.IntPtr,UnityEngine.Bindings.ManagedSpanWrapper&,System.Single&)");
-	bool icallRetVal = _il2cpp_icall_func(___0_ptr, ___1_tag, ___2_value);
-	return icallRetVal;
 }
 #ifdef __clang__
 #pragma clang diagnostic pop

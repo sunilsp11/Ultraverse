@@ -406,7 +406,6 @@ struct ListViewDraggerAnimated_t819F6A24CE088841BF9410C14EDE598E9237EBA5;
 struct ListViewReorderableDragAndDropController_t948F47E41D4C551CCFA89568F2555296C487E8BD;
 struct LoadResourceFunction_tA999A2DDCB9CDCF68E4274A58336A39ABB7AF850;
 struct Manipulator_tD5727ABA1F5AD1A50927212FAEB090E6BBCB4EBE;
-struct Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3;
 struct MemberFilter_tF644F1AE82F611B677CE1964D5A3277DDA21D553;
 struct MethodInfo_t;
 struct MouseManipulator_tE6C609D476BDF311E2934791E620CF833BB4097D;
@@ -911,7 +910,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* ReadOnlyHierarchyViewModelList_RemoveAt_m3E
 IL2CPP_EXTERN_C const RuntimeMethod* ReadOnlyHierarchyViewModelList_Remove_m59E50C84DC37CB609180B671F28CF238E60EE5F3_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReadOnlyHierarchyViewModelList_get_SyncRoot_m42A72931EE54FBAC09F4A2E76C8507AA63DAD91D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReadOnlyHierarchyViewModelList_set_Item_m6C093D1BB10EF4B7222D3CBE7FD03D03C1477ED3_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* ReusableCollectionItem_OnGeometryChanged_m5887D8D48E1708EC472796E143A0F11F171B5F30_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReusableTreeViewItem_OnPointerUp_m2FC1F3F6A71531B8E17D30A24BB524F62075DBD6_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReusableTreeViewItem_OnToggleGeometryChanged_mC9F7EEA9977CF86B83754524733AEAF61333F350_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReusableTreeViewItem_OnToggleValueChanged_mAFA515D1E571BAECE1C75C5E3AF9BAC1824FB9FA_RuntimeMethod_var;
@@ -3449,7 +3447,6 @@ struct VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115  : public Focusab
 	int32_t ___m_LanguageDirection;
 	int32_t ___m_LocalLanguageDirection;
 	Action_1_t3DC3411926243F1DB9C330F8E105B904E38C1A0B* ___U3CgenerateVisualContentU3Ek__BackingField;
-	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___m_defaultMaterial;
 	List_1_t96E9133B70FB6765E6B138E810D33E18901715DA* ___m_RunningAnimations;
 	RuntimeObject* ___m_DataSource;
 	PathRef_t76F7677792A14AF9D6A6EAB7F08C1A3DC2B27A55* ___m_DataSourcePath;
@@ -4122,7 +4119,6 @@ struct VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115_StaticFields
 	String_t* ___disabledUssClassName;
 	int32_t ___s_FinalizerCount;
 	ProfilerMarker_tA256E18DA86EDBC5528CE066FC91C96EE86501AD ___k_GenerateVisualContentMarker;
-	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___s_runtimeMaterial;
 	BindingId_t8BBB6188CD126EACCA07816C78760E92DC16620E ___childCountProperty;
 	BindingId_t8BBB6188CD126EACCA07816C78760E92DC16620E ___contentRectProperty;
 	BindingId_t8BBB6188CD126EACCA07816C78760E92DC16620E ___dataSourcePathProperty;
@@ -5846,6 +5842,8 @@ inline StyleEnum_1_t3B02FFF55849C9C8E6A7C0AA9C7E5F65F10C9C69 StyleEnum_1_op_Impl
 {
 	return ((  StyleEnum_1_t3B02FFF55849C9C8E6A7C0AA9C7E5F65F10C9C69 (*) (int32_t, const RuntimeMethod*))StyleEnum_1_op_Implicit_mD776DEBA28E9493976D039080BBB10FF0DA48362_gshared)(___0_v, method);
 }
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VisualElement_UpdateWorldTransform_m240C22A60413B62C7A793A963AD6C2B36275D5F3 (VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VisualElement_IncrementVersion_m03581665EE480D3C329058FFE08734450493E33E (VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* __this, int32_t ___0_changeType, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem_Init_mD7EF87A4FAF46AF8D0400C43E1F3B601F7168780 (ReusableCollectionItem_t58A07E0E19A545B24DBE7711A46490EF5E239086* __this, VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* ___0_item, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VisualElement__ctor_m4C59A7BA0CE74223A61F07C39A60071DD0207E2D (VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VisualElement_set_name_m5ABC7B8D2586B1839DD436E1AAF25D81395759BC (VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* __this, String_t* ___0_value, const RuntimeMethod* method) ;
@@ -5858,6 +5856,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VisualElement_set_tooltip_mD392FEBD1C4F9
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem_PreAttachElement_mEE0E5E2DE8B1A57C79A960DB1D9560BF801F1FF8 (ReusableCollectionItem_t58A07E0E19A545B24DBE7711A46490EF5E239086* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem_DetachElement_m4C909D58BF00D1F93B439E95D4611619571862BD (ReusableCollectionItem_t58A07E0E19A545B24DBE7711A46490EF5E239086* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem_SetDragGhost_m5C2DCBC82DDEB3C0E50C0C4D8063C3AEB4EA83A3 (ReusableCollectionItem_t58A07E0E19A545B24DBE7711A46490EF5E239086* __this, bool ___0_dragGhost, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem_OnGeometryChanged_m5887D8D48E1708EC472796E143A0F11F171B5F30 (ReusableCollectionItem_t58A07E0E19A545B24DBE7711A46490EF5E239086* __this, GeometryChangedEvent_tB4A621001850F337A676F8CC27F172B8ADB22A9A* ___0_evt, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem__ctor_m3D1DECE74C59C1E8B63296EC013882ACDB269302 (ReusableCollectionItem_t58A07E0E19A545B24DBE7711A46490EF5E239086* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Columns_get_visibleList_m4E86EF55B73DA013C449A7C1D9777002AF1496AC (Columns_t487EAF3B634F6D919D58F1927099A8883964831B* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Columns_IsPrimary_mD3C89EBDBA39EF08807CB7FF31D934373D45B3B9 (Columns_t487EAF3B634F6D919D58F1927099A8883964831B* __this, Column_tD686764EBBB4AFE8473E2464D0039885E3A2EC6A* ___0_column, const RuntimeMethod* method) ;
@@ -22574,7 +22573,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem__ctor_m3D1DECE74C
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventCallback_1_t435839AFF4474F7EAE0AA8A59F737E798CEAFD30_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ReusableCollectionItem_OnGeometryChanged_m5887D8D48E1708EC472796E143A0F11F171B5F30_RuntimeMethod_var);
 		s_Il2CppMethodInitialized = true;
 	}
 	int32_t V_0 = 0;
@@ -22586,7 +22584,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem__ctor_m3D1DECE74C
 		int32_t L_1 = V_0;
 		ReusableCollectionItem_set_index_mBE6E436EF78A151186FE66E59E1F032B653BBF1E_inline(__this, L_1, NULL);
 		EventCallback_1_t435839AFF4474F7EAE0AA8A59F737E798CEAFD30* L_2 = (EventCallback_1_t435839AFF4474F7EAE0AA8A59F737E798CEAFD30*)il2cpp_codegen_object_new(EventCallback_1_t435839AFF4474F7EAE0AA8A59F737E798CEAFD30_il2cpp_TypeInfo_var);
-		EventCallback_1__ctor_mF06BFBEB6C98B9A486C131579BD98388B38997F5(L_2, __this, (intptr_t)((void*)ReusableCollectionItem_OnGeometryChanged_m5887D8D48E1708EC472796E143A0F11F171B5F30_RuntimeMethod_var), NULL);
+		EventCallback_1__ctor_mF06BFBEB6C98B9A486C131579BD98388B38997F5(L_2, __this, (intptr_t)((void*)GetVirtualMethodInfo(__this, 11)), NULL);
 		__this->___m_GeometryChangedEventCallback = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_GeometryChangedEventCallback), (void*)L_2);
 		return;
@@ -22860,26 +22858,38 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableCollectionItem_OnGeometryChanged
 	Action_1_t6043513E89820190529C82ABBDD8FD0BB2A9AC09* G_B2_0 = NULL;
 	Action_1_t6043513E89820190529C82ABBDD8FD0BB2A9AC09* G_B1_0 = NULL;
 	{
-		Action_1_t6043513E89820190529C82ABBDD8FD0BB2A9AC09* L_0 = __this->___onGeometryChanged;
-		Action_1_t6043513E89820190529C82ABBDD8FD0BB2A9AC09* L_1 = L_0;
-		if (L_1)
+		VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* L_0;
+		L_0 = VirtualFuncInvoker0< VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* >::Invoke(4, __this);
+		NullCheck(L_0);
+		VisualElement_UpdateWorldTransform_m240C22A60413B62C7A793A963AD6C2B36275D5F3(L_0, NULL);
+		VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* L_1;
+		L_1 = ReusableCollectionItem_get_bindableElement_m3A2BBD4C95A69A2AAC6292651AEA58B6D41CDF95_inline(__this, NULL);
+		NullCheck(L_1);
+		VisualElement_UpdateWorldTransform_m240C22A60413B62C7A793A963AD6C2B36275D5F3(L_1, NULL);
+		VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* L_2;
+		L_2 = ReusableCollectionItem_get_bindableElement_m3A2BBD4C95A69A2AAC6292651AEA58B6D41CDF95_inline(__this, NULL);
+		NullCheck(L_2);
+		VisualElement_IncrementVersion_m03581665EE480D3C329058FFE08734450493E33E(L_2, ((int32_t)512), NULL);
+		Action_1_t6043513E89820190529C82ABBDD8FD0BB2A9AC09* L_3 = __this->___onGeometryChanged;
+		Action_1_t6043513E89820190529C82ABBDD8FD0BB2A9AC09* L_4 = L_3;
+		if (L_4)
 		{
-			G_B2_0 = L_1;
-			goto IL_000d;
+			G_B2_0 = L_4;
+			goto IL_0036;
 		}
-		G_B1_0 = L_1;
+		G_B1_0 = L_4;
 	}
 	{
-		goto IL_0014;
+		goto IL_003d;
 	}
 
-IL_000d:
+IL_0036:
 	{
 		NullCheck(G_B2_0);
 		Action_1_Invoke_mFD5EC89284E7AAC8D83DE1003566C086F83D1B9D_inline(G_B2_0, __this, NULL);
 	}
 
-IL_0014:
+IL_003d:
 	{
 		return;
 	}
@@ -23325,6 +23335,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableListViewItem_SetDragGhost_mF7D06
 	}
 
 IL_002f:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReusableListViewItem_OnGeometryChanged_m42CAD9AB198D5A02C43C26C9EB2BAE3C8526B680 (ReusableListViewItem_tAF9E92C2374E878D5269E1831B27BCF31B922AF5* __this, GeometryChangedEvent_tB4A621001850F337A676F8CC27F172B8ADB22A9A* ___0_evt, const RuntimeMethod* method) 
+{
+	VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* G_B2_0 = NULL;
+	VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* G_B1_0 = NULL;
+	{
+		GeometryChangedEvent_tB4A621001850F337A676F8CC27F172B8ADB22A9A* L_0 = ___0_evt;
+		ReusableCollectionItem_OnGeometryChanged_m5887D8D48E1708EC472796E143A0F11F171B5F30(__this, L_0, NULL);
+		VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* L_1 = __this->___m_ItemContainer;
+		VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* L_2 = L_1;
+		if (L_2)
+		{
+			G_B2_0 = L_2;
+			goto IL_0015;
+		}
+		G_B1_0 = L_2;
+	}
+	{
+		goto IL_001b;
+	}
+
+IL_0015:
+	{
+		NullCheck(G_B2_0);
+		VisualElement_UpdateWorldTransform_m240C22A60413B62C7A793A963AD6C2B36275D5F3(G_B2_0, NULL);
+	}
+
+IL_001b:
 	{
 		return;
 	}

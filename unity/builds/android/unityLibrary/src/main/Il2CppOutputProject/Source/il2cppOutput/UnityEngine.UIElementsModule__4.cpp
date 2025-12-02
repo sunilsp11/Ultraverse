@@ -375,7 +375,6 @@ struct InlineStyleAccess_t5CA7877999C9442491A220AE50D605C84D09A165;
 struct KeyboardNavigationManipulator_t7E9BA3568ADC1660C4E09B924ECD457E33B835B3;
 struct Label_tC160668F9119CE0F5567021FB208E64A5B1C5B70;
 struct ListViewDragger_t692E8911568C27949D7B443C4B82CB7925111BBD;
-struct Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3;
 struct MethodInfo_t;
 struct MultiColumnCollectionHeader_t0B041BD57A14950E8C33DCD854F3A3C2C3DA706D;
 struct MultiColumnController_t25BFE9B50BC0D69925EC7EEE090F256FFE1244B6;
@@ -3026,7 +3025,6 @@ struct VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115  : public Focusab
 	int32_t ___m_LanguageDirection;
 	int32_t ___m_LocalLanguageDirection;
 	Action_1_t3DC3411926243F1DB9C330F8E105B904E38C1A0B* ___U3CgenerateVisualContentU3Ek__BackingField;
-	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___m_defaultMaterial;
 	List_1_t96E9133B70FB6765E6B138E810D33E18901715DA* ___m_RunningAnimations;
 	RuntimeObject* ___m_DataSource;
 	PathRef_t76F7677792A14AF9D6A6EAB7F08C1A3DC2B27A55* ___m_DataSourcePath;
@@ -3735,7 +3733,6 @@ struct VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115_StaticFields
 	String_t* ___disabledUssClassName;
 	int32_t ___s_FinalizerCount;
 	ProfilerMarker_tA256E18DA86EDBC5528CE066FC91C96EE86501AD ___k_GenerateVisualContentMarker;
-	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___s_runtimeMaterial;
 	BindingId_t8BBB6188CD126EACCA07816C78760E92DC16620E ___childCountProperty;
 	BindingId_t8BBB6188CD126EACCA07816C78760E92DC16620E ___contentRectProperty;
 	BindingId_t8BBB6188CD126EACCA07816C78760E92DC16620E ___dataSourcePathProperty;
@@ -10409,7 +10406,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RadioButtonGroup_UpdateRadioButtons_m2DF
 		}
 	}
 	{
-		goto IL_0140;
+		goto IL_0145;
 	}
 
 IL_0013:
@@ -10423,7 +10420,7 @@ IL_0013:
 		auto __finallyBlock = il2cpp::utils::Finally([&]
 		{
 
-FINALLY_0131:
+FINALLY_0136:
 			{
 				PooledObject_1_System_IDisposable_Dispose_mF63DD4D92CFBD58DC6415A1781018299297FA126((&V_0), PooledObject_1_System_IDisposable_Dispose_mF63DD4D92CFBD58DC6415A1781018299297FA126_RuntimeMethod_var);
 				return;
@@ -10583,12 +10580,12 @@ IL_00be_2:
 
 IL_00d8_1:
 			{
-				goto IL_0128_1;
+				goto IL_012d_1;
 			}
 
 IL_00db_1:
 			{
-				List_1_t83677DD3658C07F0F0DD73BD808F8F9EE45CDDE4* L_27 = V_1;
+				List_1_t83677DD3658C07F0F0DD73BD808F8F9EE45CDDE4* L_27 = __this->___m_RegisteredRadioButtons;
 				NullCheck(L_27);
 				Enumerator_tF921693E6FCB66C86DC10AA4FFC276E4D86C0596 L_28;
 				L_28 = List_1_GetEnumerator_mF7BF9F458D0BDBEF7EE0F77B75317266312DA6FC(L_27, List_1_GetEnumerator_mF7BF9F458D0BDBEF7EE0F77B75317266312DA6FC_RuntimeMethod_var);
@@ -10598,7 +10595,7 @@ IL_00db_1:
 				auto __finallyBlock = il2cpp::utils::Finally([&]
 				{
 
-FINALLY_0118_1:
+FINALLY_011d_1:
 					{
 						Enumerator_Dispose_m6D2DF9CE303E1BB267DAFFDC2247121FB491AE10((&V_9), Enumerator_Dispose_m6D2DF9CE303E1BB267DAFFDC2247121FB491AE10_RuntimeMethod_var);
 						return;
@@ -10607,10 +10604,10 @@ FINALLY_0118_1:
 				try
 				{
 					{
-						goto IL_010d_2;
+						goto IL_0112_2;
 					}
 
-IL_00e7_2:
+IL_00ec_2:
 					{
 						RadioButton_t47B7368AB0B24A865401F69F0AC0BFB54F3CE8C8* L_29;
 						L_29 = Enumerator_get_Current_m12601EA6B5D2E9008374DBE5FC0F2BE727889F7F_inline((&V_9), Enumerator_get_Current_m12601EA6B5D2E9008374DBE5FC0F2BE727889F7F_RuntimeMethod_var);
@@ -10620,38 +10617,38 @@ IL_00e7_2:
 						bool L_31 = V_11;
 						if (!L_31)
 						{
-							goto IL_0103_2;
+							goto IL_0108_2;
 						}
 					}
 					{
 						RadioButton_t47B7368AB0B24A865401F69F0AC0BFB54F3CE8C8* L_32 = V_10;
 						NullCheck(L_32);
 						VirtualActionInvoker1< bool >::Invoke(142, L_32, (bool)0);
-						goto IL_010c_2;
+						goto IL_0111_2;
 					}
 
-IL_0103_2:
+IL_0108_2:
 					{
 						RadioButton_t47B7368AB0B24A865401F69F0AC0BFB54F3CE8C8* L_33 = V_10;
 						NullCheck(L_33);
 						VirtualActionInvoker1< bool >::Invoke(152, L_33, (bool)0);
 					}
 
-IL_010c_2:
+IL_0111_2:
 					{
 					}
 
-IL_010d_2:
+IL_0112_2:
 					{
 						bool L_34;
 						L_34 = Enumerator_MoveNext_mF9E11CE363C163AA3E0AC10DE336B225426584CE((&V_9), Enumerator_MoveNext_mF9E11CE363C163AA3E0AC10DE336B225426584CE_RuntimeMethod_var);
 						if (L_34)
 						{
-							goto IL_00e7_2;
+							goto IL_00ec_2;
 						}
 					}
 					{
-						goto IL_0127_1;
+						goto IL_012c_1;
 					}
 				}
 				catch(Il2CppExceptionWrapper& e)
@@ -10660,14 +10657,14 @@ IL_010d_2:
 				}
 			}
 
-IL_0127_1:
+IL_012c_1:
 			{
 			}
 
-IL_0128_1:
+IL_012d_1:
 			{
 				__this->___m_UpdatingButtons = (bool)0;
-				goto IL_0140;
+				goto IL_0145;
 			}
 		}
 		catch(Il2CppExceptionWrapper& e)
@@ -10676,7 +10673,7 @@ IL_0128_1:
 		}
 	}
 
-IL_0140:
+IL_0145:
 	{
 		return;
 	}

@@ -25,6 +25,16 @@ buildscript {
 
 apply plugin: "com.facebook.react.rootproject"
 
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        flatDir {
+            dirs "${rootProject.projectDir}/../unity/builds/android/unityLibrary/libs"
+        }
+    }
+}
+
 // Temporarily commented out Unity task dependency fixes
 subprojects { subproject ->
   if (subproject.name == 'react-native-unity') {

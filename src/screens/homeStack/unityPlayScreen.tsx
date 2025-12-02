@@ -2,13 +2,15 @@ import React, { useEffect, useRef, useMemo, useCallback } from 'react'
 import { View, StatusBar, StyleSheet, Platform, BackHandler } from 'react-native'
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import Orientation from 'react-native-orientation-locker'
-import UnityView from '@azesmway/react-native-unity'
 import { NativeModules } from 'react-native'
 import Colors from '../../theme/color'
 import { RootStackParamList } from '../../types/navigationTypes'
+import UnityView from '@azesmway/react-native-unity';
+import Orientation from 'react-native-orientation-locker'
 
-const UnityModule = NativeModules.UnityModule
+
+// const UnityModule = NativeModules.UnityModule
+const UnityModule = NativeModules.UnityNativeModule
 
 type UnityPlayScreenRouteProp = RouteProp<RootStackParamList, 'UnityPlayScreen'>
 type UnityPlayScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UnityPlayScreen'>
@@ -46,23 +48,19 @@ const UnityPlayScreen = () => {
     return () => clearTimeout(timeout)
   }, [resolvedPayload])
 
-  // --- Lock orientation to landscape ---
-  useEffect(() => {
-    Orientation.lockToLandscape()
-    return () => Orientation.lockToPortrait()
-  }, [])
-
   // --- Handle back action for Android & iOS gesture ---
   const handleBack = useCallback(() => {
     try {
-      UnityModule.stopUnity()
+      console.log("Closing Unity...");
+      navigation.goBack();
+      setTimeout(() => {
+        Orientation.lockToPortrait(); 
+      }, 2000);
     } catch (error) {
       console.warn('Failed to unload Unity', error)
     }
-    Orientation.lockToPortrait()
-    navigation.goBack()
-    return true
-  }, [navigation])
+    return true;
+  }, [navigation]);
 
   useEffect(() => {
     if (Platform.OS === 'android') {
@@ -89,6 +87,8 @@ const UnityPlayScreen = () => {
               const message = event?.nativeEvent?.message
               if (message) console.log('Message from Unity:', message)
             }}
+            unloadOnUnmount={true}
+            unloadPlayer={true}
           />
         ) : ""}
       </View>

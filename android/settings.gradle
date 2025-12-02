@@ -16,3 +16,6 @@ includeBuild('../node_modules/@react-native/gradle-plugin')
 
 include ':unityLibrary'
 project(':unityLibrary').projectDir=new File('../unity/builds/android/unityLibrary')
+
+include ':unityLibrary:xrmanifest.androidlib'
+project(':unityLibrary:xrmanifest.androidlib').projectDir = new File('../unity/builds/android/unityLibrary/xrmanifest.androidlib')

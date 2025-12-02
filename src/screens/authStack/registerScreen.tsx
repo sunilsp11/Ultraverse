@@ -84,7 +84,7 @@ const RegisterScreen = () => {
   };
 
   return (
-    <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={{ paddingHorizontal: 24, flex: 1 }}>
           <View style={styles.header}>

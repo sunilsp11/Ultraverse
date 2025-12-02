@@ -201,7 +201,7 @@ const LoginScreen = () => {
 
 
   return (
-    <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={{ paddingHorizontal: 24, flex: 1 }}>
           <View style={styles.header}>
@@ -220,11 +220,6 @@ const LoginScreen = () => {
           </View>
 
           <View style={styles.form}>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              automaticallyAdjustKeyboardInsets={true}
-              keyboardShouldPersistTaps="handled"
-            >
               <View style={styles.formContent}>
                 <UvTypography
                   variant="h6"
@@ -351,7 +346,6 @@ const LoginScreen = () => {
                   </View>
                 </View>
               </View>
-            </ScrollView>
 
             <View style={styles.footerRow}>
               <UvTypography variant="body" color="#CFE2EA">

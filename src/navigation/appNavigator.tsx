@@ -139,6 +139,39 @@ const MainTabNavigator = () => (
 const AppNavigator = () => {
   const backgroundSoundRef = useRef<Sound | null>(null);
   const hasStartedSoundRef = useRef(false);
+  const previousRouteRef = useRef<string | undefined>(undefined);
+
+  const startBackgroundMusic = () => {
+    const bgSound = new Sound('ultraverse_bg_sound.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('Failed to load background sound', error);
+        return;
+      }
+
+      bgSound.setVolume(0.5);
+      bgSound.setNumberOfLoops(-1);
+
+      bgSound.play((success) => {
+        if (success) {
+          console.log('Background sound started successfully');
+        } else {
+          console.log('Failed to play background sound');
+        }
+      });
+
+      backgroundSoundRef.current = bgSound;
+    });
+  };
+
+  const stopBackgroundMusic = () => {
+    if (backgroundSoundRef.current) {
+      backgroundSoundRef.current.stop(() => {
+        backgroundSoundRef.current?.release();
+        backgroundSoundRef.current = null;
+        console.log('Background sound stopped and released');
+      });
+    }
+  };
 
   const handleNavigationStateChange = (state: NavigationState | undefined) => {
     if (!state) return;
@@ -152,33 +185,33 @@ const AppNavigator = () => {
     };
 
     const currentRouteName = getCurrentRouteName(state);
+    const previousRouteName = previousRouteRef.current;
 
+    // Start music initially when leaving SplashScreen
     if (currentRouteName !== 'SplashScreen' && !hasStartedSoundRef.current) {
       hasStartedSoundRef.current = true;
       
       setTimeout(() => {
-        const bgSound = new Sound('ultraverse_bg_sound.mp3', Sound.MAIN_BUNDLE, (error) => {
-          if (error) {
-            console.log('Failed to load background sound', error);
-            return;
-          }
-
-          bgSound.setVolume(0.5);
-          
-          bgSound.setNumberOfLoops(-1);
-
-          bgSound.play((success) => {
-            if (success) {
-              console.log('Background sound started successfully');
-            } else {
-              console.log('Failed to play background sound');
-            }
-          });
-
-          backgroundSoundRef.current = bgSound;
-        });
+        startBackgroundMusic();
       }, 2000);
     }
+
+    // Stop and reset music when navigating to UnityPlayScreen
+    if (currentRouteName === 'UnityPlayScreen' && previousRouteName !== 'UnityPlayScreen') {
+      console.log('Navigating to UnityPlayScreen - stopping music');
+      stopBackgroundMusic();
+    }
+
+    // Restart music from beginning when leaving UnityPlayScreen
+    if (previousRouteName === 'UnityPlayScreen' && currentRouteName !== 'UnityPlayScreen') {
+      console.log('Leaving UnityPlayScreen - restarting music');
+      setTimeout(() => {
+        startBackgroundMusic();
+      }, 500);
+    }
+
+    // Update previous route
+    previousRouteRef.current = currentRouteName;
   };
 
   useEffect(() => {

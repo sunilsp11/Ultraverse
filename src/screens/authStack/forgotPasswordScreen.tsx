@@ -43,7 +43,7 @@ const ForgotPasswordScreen = () => {
   };
 
   return (
-    <UvScreenWrapper inverted={true} conatinerStyle={styles.container}>
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true}>
       <View style={styles.header}>
         <Image
           source={require("../../assets/images/top_header_logo.png")}

@@ -409,7 +409,7 @@ IL2CPP_EXTERN_C RuntimeField* InstanceOcclusionEventDebugArray_t090FE53FB162303A
 IL2CPP_EXTERN_C RuntimeField* OcclusionCullingDebugOutput_t00E75A13B6D24D53DAD5AE7469432A86A5F3FBB8____occluderDepthPyramid_FieldInfo_var;
 IL2CPP_EXTERN_C RuntimeField* RenderRequestBatcherContext_t3AAD08898BFDA0E8195A3D37B998ED2B5D49F3E6____commandBuffer_FieldInfo_var;
 IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____44BA24221E92F9903DFA51AB13DDF8E0FD16A86E24228B7CE874E60FA096FA9E_FieldInfo_var;
-IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____CB0CABAA5C0AFB5DB40ED60093DF669737B24438559A946576DED13D18E09738_FieldInfo_var;
+IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____D9379B88A4FFCF703EDFD71E84449C65CBCEFA441661A24C7E4CFA802FFDCB08_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral0154D6D9E28CF683DC81E640D9B974F6E43DC697;
 IL2CPP_EXTERN_C String_t* _stringLiteral0E33ABB40C4DF3DF85A262A9F0995480491F821F;
 IL2CPP_EXTERN_C String_t* _stringLiteral0E519E0537E3C9BDCB3A80E9E287D36B5ACB2EC8;
@@ -422,7 +422,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral23114468D04FA2B7A2DA455B545DB914D0A3ED94
 IL2CPP_EXTERN_C String_t* _stringLiteral26313F1847636692D09A207646FE7FDEE4D0125B;
 IL2CPP_EXTERN_C String_t* _stringLiteral276145F843A0A2EA4154D1D7EFE37766D97F60D7;
 IL2CPP_EXTERN_C String_t* _stringLiteral2AD4372331FCB991DF1FC13215C422ECC40B845A;
-IL2CPP_EXTERN_C String_t* _stringLiteral2C898D82112ED4CE9852A87FC2BD75BA8F5CFE07;
 IL2CPP_EXTERN_C String_t* _stringLiteral2CC737370F7973DDB6A9E0C4C687C9C53629D2A7;
 IL2CPP_EXTERN_C String_t* _stringLiteral2E971C6CF78421785C5682D3CFC1AE98998A150A;
 IL2CPP_EXTERN_C String_t* _stringLiteral2EF467BB2B11222E07C1C8A84B5714665FE97D70;
@@ -456,7 +455,9 @@ IL2CPP_EXTERN_C String_t* _stringLiteral7C21676E2A3DC57610ECA123A647D627B2B395A3
 IL2CPP_EXTERN_C String_t* _stringLiteral7CAC7AAECD4167C47C1330FFD31F1482918E4B7B;
 IL2CPP_EXTERN_C String_t* _stringLiteral8A252B976FA4B7CA2512142DD332BA7B65CD0B40;
 IL2CPP_EXTERN_C String_t* _stringLiteral8AE0AFC05D166DCEF16C3FBCBF926F964EC9BEFC;
+IL2CPP_EXTERN_C String_t* _stringLiteral8B9E836E5AB3E749159940DAE4E0CD92376EB34A;
 IL2CPP_EXTERN_C String_t* _stringLiteral8E42528A7E17936DA03907FB5ACD9378339FE314;
+IL2CPP_EXTERN_C String_t* _stringLiteral90B8B137C5636F7370ACB6AE75C5B377F7C5D1E6;
 IL2CPP_EXTERN_C String_t* _stringLiteral98A479CECE8C98765A21108D072B851F1E6F0D68;
 IL2CPP_EXTERN_C String_t* _stringLiteral9D8CF0979AFB6EF0FAFFBCB198E979A59A4CCC61;
 IL2CPP_EXTERN_C String_t* _stringLiteral9D9D4D9EA2AA9170FB2343543308B01EE69B40FB;
@@ -2530,6 +2531,10 @@ struct RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5
 {
 	intptr_t ___value;
 };
+struct RuntimePlatform_t9A8AAF204603076FCAAECCCC05DA386AEE7BF66E 
+{
+	int32_t ___value__;
+};
 struct RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B 
 {
 	intptr_t ___value;
@@ -3513,7 +3518,8 @@ struct IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_InstanceBuffer;
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_InstanceInfoBuffer;
 	NativeArray_1_tB8F0DDF2408274818FBB9DB19DE6BF57FCE751A2 ___m_InstanceInfoStaging;
-	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_ArgsBuffer;
+	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DispatchArgsBuffer;
+	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DrawArgsBuffer;
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DrawInfoBuffer;
 	NativeArray_1_t53D1F8A0601B0A0A14155D124CA9BE481C9F9507 ___m_DrawInfoStaging;
 	int32_t ___m_ContextAllocCounter;
@@ -3528,7 +3534,8 @@ struct IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5_ma
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_InstanceBuffer;
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_InstanceInfoBuffer;
 	NativeArray_1_tB8F0DDF2408274818FBB9DB19DE6BF57FCE751A2 ___m_InstanceInfoStaging;
-	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_ArgsBuffer;
+	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DispatchArgsBuffer;
+	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DrawArgsBuffer;
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DrawInfoBuffer;
 	NativeArray_1_t53D1F8A0601B0A0A14155D124CA9BE481C9F9507 ___m_DrawInfoStaging;
 	int32_t ___m_ContextAllocCounter;
@@ -3543,7 +3550,8 @@ struct IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5_ma
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_InstanceBuffer;
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_InstanceInfoBuffer;
 	NativeArray_1_tB8F0DDF2408274818FBB9DB19DE6BF57FCE751A2 ___m_InstanceInfoStaging;
-	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_ArgsBuffer;
+	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DispatchArgsBuffer;
+	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DrawArgsBuffer;
 	GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___m_DrawInfoBuffer;
 	NativeArray_1_t53D1F8A0601B0A0A14155D124CA9BE481C9F9507 ___m_DrawInfoStaging;
 	int32_t ___m_ContextAllocCounter;
@@ -3871,7 +3879,8 @@ struct IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D
 {
 	BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___instanceBuffer;
 	BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___instanceInfoBuffer;
-	BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___argsBuffer;
+	BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___dispatchArgsBuffer;
+	BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___drawArgsBuffer;
 	BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___drawInfoBuffer;
 };
 struct InstanceCuller_tA685900A6409379DB011B2919CDDC1F3BFBFE966 
@@ -4331,6 +4340,7 @@ struct Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields
 	String_t* ___rawBufferNotSupportedByPlatform;
 	String_t* ___kernelNotPresent;
 	String_t* ___batchRendererGroupShaderStrippingModeInvalid;
+	String_t* ___visionOSNotSupported;
 };
 struct ClassifyMaterials_000000EAU24BurstDirectCall_tA9D92518F9B5F69672D804C856458E87D7B4C7FB_StaticFields
 {
@@ -4354,6 +4364,7 @@ struct ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields
 	int32_t ___InstanceOcclusionCullerShaderVariables;
 	int32_t ____DrawInfo;
 	int32_t ____InstanceInfo;
+	int32_t ____DispatchArgs;
 	int32_t ____DrawArgs;
 	int32_t ____InstanceIndices;
 	int32_t ____InstanceDataBuffer;
@@ -5745,6 +5756,7 @@ inline void ValueTuple_2__ctor_m8852153FE761359A21E7B8B7F98A2B5779FCAAFF (ValueT
 	((  void (*) (ValueTuple_2_t00298B7EF26DA025E0BBDF2397224F39F05336F5*, NativeList_1_t0EA735A94E6EBF8FE7F3B79411C98BF692EA2213, NativeList_1_t0EA735A94E6EBF8FE7F3B79411C98BF692EA2213, const RuntimeMethod*))ValueTuple_2__ctor_m8852153FE761359A21E7B8B7F98A2B5779FCAAFF_gshared)(__this, ___0_item1, ___1_item2, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GPUResidentDrawer_IsProjectSupported_m4F5CDE5F81A0BE7CF42E37F1545E85A8C5A07DE3 (String_t** ___0_message, int32_t* ___1_severity, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Application_get_platform_m59EF7D6155D18891B24767F83F388160B1FF2138 (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t BatchRendererGroup_get_BufferTarget_m01D4DFEAAE898864AC8D1CA277311E4836CA9B97 (const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GPUResidentDrawer_get_MaintainContext_mC393C718E2CF175293B7B1E86C7C70A5AC6D046C_inline (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2 (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
@@ -6336,7 +6348,7 @@ inline JobHandle_t5DF5F99902FED3C801A81C05205CEA6CE039EF08 IJobExtensions_Schedu
 	return ((  JobHandle_t5DF5F99902FED3C801A81C05205CEA6CE039EF08 (*) (PrefixSumDrawsAndInstances_t270E5AA9BF72798DF9C0F217224637E0B89F710D, JobHandle_t5DF5F99902FED3C801A81C05205CEA6CE039EF08, const RuntimeMethod*))IJobExtensions_Schedule_TisPrefixSumDrawsAndInstances_t270E5AA9BF72798DF9C0F217224637E0B89F710D_mCC979313A633E0FFF5D5EC75DC58C8294BC29AFE_gshared)(___0_jobData, ___1_dependsOn, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GraphicsBufferHandle_t796AECB7D0D9A7DE09882D9EAC25123F6DFA28B5 IndirectBufferContextStorage_get_visibleInstanceBufferHandle_mBD86573F23F6B0F8BF6C46C2996C449E571DC87F (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GraphicsBufferHandle_t796AECB7D0D9A7DE09882D9EAC25123F6DFA28B5 IndirectBufferContextStorage_get_indirectArgsBufferHandle_m7DF465FC2B94D42E1ABE0EE29E0EE4A1C850E925 (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GraphicsBufferHandle_t796AECB7D0D9A7DE09882D9EAC25123F6DFA28B5 IndirectBufferContextStorage_get_indirectDrawArgsBufferHandle_mA6BCBCDAA9410C7932886C01B4F3641F9693E4C4 (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR NativeArray_1_tB8F0DDF2408274818FBB9DB19DE6BF57FCE751A2 IndirectBufferContextStorage_get_instanceInfoGlobalArray_m6D87D347531D8E3C00FB0967CCAEE69FED54FC41_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR NativeArray_1_t53D1F8A0601B0A0A14155D124CA9BE481C9F9507 IndirectBufferContextStorage_get_drawInfoGlobalArray_mF90CEAECE8B83E043E462A4495421A574CC257D4_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
 inline JobHandle_t5DF5F99902FED3C801A81C05205CEA6CE039EF08 IJobParallelForExtensions_Schedule_TisDrawCommandOutputPerBatch_t4A45E11E8E7CBD974DA211971082C0ED66445215_m1CD41A514234A602CA4EB97B64BAFDD1C0D08D10 (DrawCommandOutputPerBatch_t4A45E11E8E7CBD974DA211971082C0ED66445215 ___0_jobData, int32_t ___1_arrayLength, int32_t ___2_innerloopBatchCount, JobHandle_t5DF5F99902FED3C801A81C05205CEA6CE039EF08 ___3_dependsOn, const RuntimeMethod* method)
@@ -6388,7 +6400,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_SetComputeConstantBufferPa
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_drawInfoBuffer_m0168780ED5CFCB3613F04F2C00561471352A5790_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_SetComputeBufferParam_mF358CEC3E841ACFA0ECA0D9495B8287A842F20CA (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* __this, ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* ___0_computeShader, int32_t ___1_kernelIndex, int32_t ___2_nameID, GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___3_buffer, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_instanceInfoBuffer_mC14C040CC88B2F11AFE1301EB1FB9C70E396E8E5_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_argsBuffer_m81BE13A707FAF6B8F9361AEBCDD9CBA69611C334_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_drawArgsBuffer_mA1ECB0B8FCC3C0B229A048C0246109C88846F6E3_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_instanceBuffer_mD965845788AD240262E1C46BB4BA405B73C8EA27_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_DispatchCompute_mF9F5605B77F0480FD4B8C3BCAEC2FC59A24E31A2 (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* __this, ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* ___0_computeShader, int32_t ___1_kernelIndex, int32_t ___2_threadGroupsX, int32_t ___3_threadGroupsY, int32_t ___4_threadGroupsZ, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Graphics_ExecuteCommandBuffer_mE7D922583404AB08A25C1413A3EA9F6B0D2F16B9 (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* ___0_buffer, const RuntimeMethod* method) ;
@@ -6405,13 +6417,12 @@ inline void ComputeCommandBuffer_SetBufferData_TisInstanceOcclusionCullerShaderV
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ComputeCommandBuffer_SetComputeConstantBufferParam_m2146903E8721689A8B0CE36704200A562D7D6311 (ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* __this, ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* ___0_computeShader, int32_t ___1_nameID, ComputeBuffer_t51EADA9015EBCC1B982C5584E9AB2734415A8233* ___2_buffer, int32_t ___3_offset, int32_t ___4_size, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OcclusionCullingCommon_PrepareCulling_mB0789630787C7E0CD26370E649348B1C2E368B0C (OcclusionCullingCommon_t2AFE7DF28379DF1255CFCC766FC1BC7B4C6E59CD* __this, ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* ___0_cmd, OccluderContext_tF8A07609A274625BEEE254608925CAD2BF4DFDB5* ___1_occluderCtx, OcclusionCullingSettings_tC718E8CFEFA8FAAC25DA4E151AEBC0268999D842* ___2_settings, InstanceOcclusionTestSubviewSettings_t82AEE150A78ECA4E3B73D453D7E5352087666541* ___3_subviewSettings, OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* ___4_shader, bool ___5_useOcclusionDebug, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76 (BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___0_buffer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715 (ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* __this, ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* ___0_computeShader, int32_t ___1_kernelIndex, int32_t ___2_nameID, GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___3_buffer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7 (ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* __this, ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* ___0_computeShader, int32_t ___1_kernelIndex, int32_t ___2_threadGroupsX, int32_t ___3_threadGroupsY, int32_t ___4_threadGroupsZ, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76 (BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 ___0_buffer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* RenderersBatchersContext_get_gpuInstanceDataBuffer_m58A374780F991800398A3A5C43B900F17E49CA78 (RenderersBatchersContext_t5D87D79D64D87CEC72560F8BC4690997349F2F98* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OcclusionCullingCommon_SetDepthPyramid_mD653D7921DC4590B1E5DDC848F3B3DDF10D15D07 (ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* ___0_cmd, OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* ___1_shader, int32_t ___2_kernel, OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* ___3_occluderHandles, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OcclusionCullingCommon_SetDebugPyramid_m7DB573CC2B23E59F6E09FE953D2953447FB4D8BE (ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* ___0_cmd, OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* ___1_shader, int32_t ___2_kernel, OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* ___3_occluderHandles, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t IndirectBufferAllocInfo_GetExtraDrawInfoSlotIndex_m2EAD4191867631265610C43212C34A56A2DAD969 (IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ComputeCommandBuffer_DispatchCompute_m637B088ED3343E8A50A66356399B8B3213A3B083 (ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* __this, ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* ___0_computeShader, int32_t ___1_kernelIndex, GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* ___2_indirectBuffer, uint32_t ___3_argsOffset, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstanceCuller_AddOcclusionCullingDispatch_mDA6F922B0734577B8F921E9AE4C02CEE4F8A32A5 (InstanceCuller_tA685900A6409379DB011B2919CDDC1F3BFBFE966* __this, ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* ___0_cmd, OcclusionCullingSettings_tC718E8CFEFA8FAAC25DA4E151AEBC0268999D842* ___1_settings, InstanceOcclusionTestSubviewSettings_t82AEE150A78ECA4E3B73D453D7E5352087666541* ___2_subviewSettings, IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* ___3_bufferHandles, OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* ___4_occluderHandles, RenderersBatchersContext_t5D87D79D64D87CEC72560F8BC4690997349F2F98* ___5_batchersContext, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DebugRendererBatcherStats_FinalizeInstanceCullerViewStats_m49E20B0BB46A56E2A6A10A26D615BEAA01181FFE (DebugRendererBatcherStats_t40186FD9F88B1C6B2670D47645C8440E37CD3706* __this, const RuntimeMethod* method) ;
@@ -6645,7 +6656,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_tFF96136F80CAB7E6BE1078A013693
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____44BA24221E92F9903DFA51AB13DDF8E0FD16A86E24228B7CE874E60FA096FA9E_FieldInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____CB0CABAA5C0AFB5DB40ED60093DF669737B24438559A946576DED13D18E09738_FieldInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____D9379B88A4FFCF703EDFD71E84449C65CBCEFA441661A24C7E4CFA802FFDCB08_FieldInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
 	MonoScriptData_tFF96136F80CAB7E6BE1078A0136938250ACEC135 V_0;
@@ -6654,7 +6665,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_tFF96136F80CAB7E6BE1078A013693
 		il2cpp_codegen_initobj((&V_0), sizeof(MonoScriptData_tFF96136F80CAB7E6BE1078A0136938250ACEC135));
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_0 = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)SZArrayNew(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var, (uint32_t)((int32_t)5250));
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_1 = L_0;
-		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_2 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____CB0CABAA5C0AFB5DB40ED60093DF669737B24438559A946576DED13D18E09738_FieldInfo_var) };
+		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_2 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_t0F11026B65D5A166C6991CE987AF09EBF5390A95____D9379B88A4FFCF703EDFD71E84449C65CBCEFA441661A24C7E4CFA802FFDCB08_FieldInfo_var) };
 		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_1, L_2, NULL);
 		(&V_0)->___FilePathsData = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___FilePathsData), (void*)L_1);
@@ -16952,6 +16963,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GPUResidentDrawer_IsProjectSupported_m4F
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
@@ -16962,25 +16974,46 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GPUResidentDrawer_IsProjectSupported_m4F
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_0, (void*)(RuntimeObject*)L_1);
 		int32_t* L_2 = ___1_severity;
 		*((int32_t*)L_2) = (int32_t)3;
+		il2cpp_codegen_runtime_class_init_inline(Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
 		int32_t L_3;
-		L_3 = BatchRendererGroup_get_BufferTarget_m01D4DFEAAE898864AC8D1CA277311E4836CA9B97(NULL);
-		if ((((int32_t)L_3) == ((int32_t)1)))
+		L_3 = Application_get_platform_m59EF7D6155D18891B24767F83F388160B1FF2138(NULL);
+		if ((!(((uint32_t)L_3) == ((uint32_t)((int32_t)50)))))
 		{
-			goto IL_001e;
+			goto IL_001f;
 		}
 	}
 	{
-		int32_t* L_4 = ___1_severity;
-		*((int32_t*)L_4) = (int32_t)2;
-		String_t** L_5 = ___0_message;
+		String_t** L_4 = ___0_message;
 		il2cpp_codegen_runtime_class_init_inline(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var);
-		String_t* L_6 = ((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___rawBufferNotSupportedByPlatform;
-		*((RuntimeObject**)L_5) = (RuntimeObject*)L_6;
-		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_5, (void*)(RuntimeObject*)L_6);
+		String_t* L_5 = ((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___visionOSNotSupported;
+		*((RuntimeObject**)L_4) = (RuntimeObject*)L_5;
+		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_4, (void*)(RuntimeObject*)L_5);
+		int32_t* L_6 = ___1_severity;
+		*((int32_t*)L_6) = (int32_t)3;
 		return (bool)0;
 	}
 
-IL_001e:
+IL_001f:
+	{
+		int32_t L_7;
+		L_7 = BatchRendererGroup_get_BufferTarget_m01D4DFEAAE898864AC8D1CA277311E4836CA9B97(NULL);
+		if ((((int32_t)L_7) == ((int32_t)1)))
+		{
+			goto IL_0033;
+		}
+	}
+	{
+		int32_t* L_8 = ___1_severity;
+		*((int32_t*)L_8) = (int32_t)2;
+		String_t** L_9 = ___0_message;
+		il2cpp_codegen_runtime_class_init_inline(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var);
+		String_t* L_10 = ((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___rawBufferNotSupportedByPlatform;
+		*((RuntimeObject**)L_9) = (RuntimeObject*)L_10;
+		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_9, (void*)(RuntimeObject*)L_10);
+		return (bool)0;
+	}
+
+IL_0033:
 	{
 		return (bool)1;
 	}
@@ -17351,6 +17384,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Strings__cctor_m40AEC7C35446DC97C6BA1EFB
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2CC737370F7973DDB6A9E0C4C687C9C53629D2A7);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral40E46FC4A663A92A3409AA650CE293C017403150);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral44B7271E94E9DC1FE26950CB16BC6E5BF6F807DC);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral90B8B137C5636F7370ACB6AE75C5B377F7C5D1E6);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA02EE81FDEA84CDEE3273A1AAB758A63FAEB79B5);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBCA98C71BC97C1ADF8351BFF4D680C1D630C9D2F);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD262F3A6CBB27726FC47AE1AF73772FA00381CAA);
@@ -17375,6 +17409,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Strings__cctor_m40AEC7C35446DC97C6BA1EFB
 		Il2CppCodeGenWriteBarrier((void**)(&((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___kernelNotPresent), (void*)_stringLiteral2CC737370F7973DDB6A9E0C4C687C9C53629D2A7);
 		((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___batchRendererGroupShaderStrippingModeInvalid = _stringLiteralD262F3A6CBB27726FC47AE1AF73772FA00381CAA;
 		Il2CppCodeGenWriteBarrier((void**)(&((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___batchRendererGroupShaderStrippingModeInvalid), (void*)_stringLiteralD262F3A6CBB27726FC47AE1AF73772FA00381CAA);
+		((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___visionOSNotSupported = _stringLiteral90B8B137C5636F7370ACB6AE75C5B377F7C5D1E6;
+		Il2CppCodeGenWriteBarrier((void**)(&((Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_StaticFields*)il2cpp_codegen_static_fields_for(Strings_tB70E1C1EAE287E1DD15335E96F93A085F7E9D187_il2cpp_TypeInfo_var))->___visionOSNotSupported), (void*)_stringLiteral90B8B137C5636F7370ACB6AE75C5B377F7C5D1E6);
 		return;
 	}
 }
@@ -23388,7 +23424,7 @@ IL_0229:
 		bool L_93 = V_1;
 		if (!L_93)
 		{
-			goto IL_02ea;
+			goto IL_02e8;
 		}
 	}
 	{
@@ -23403,7 +23439,7 @@ IL_0229:
 		(&V_24)->___instanceCount = L_97;
 		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_98 = V_24;
 		int32_t L_99 = L_98.___drawCount;
-		V_25 = ((int32_t)il2cpp_codegen_add(L_99, 1));
+		V_25 = L_99;
 		int32_t* L_100 = V_23;
 		int32_t* L_101;
 		L_101 = UnsafeUtility_AsRef_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mF01FDF0EACCFED286E93933B693A2BE11A6A8946_inline((void*)((int32_t*)il2cpp_codegen_add((intptr_t)L_100, 4)), UnsafeUtility_AsRef_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mF01FDF0EACCFED286E93933B693A2BE11A6A8946_RuntimeMethod_var);
@@ -23431,7 +23467,7 @@ IL_0229:
 		L_115 = IndirectBufferAllocInfo_IsWithinLimits_mE8807A3A2DDE4F3E3E9091E2441D847F4BFC4067((&V_24), L_114, NULL);
 		if (L_115)
 		{
-			goto IL_02dc;
+			goto IL_02da;
 		}
 	}
 	{
@@ -23439,19 +23475,19 @@ IL_0229:
 		V_8 = (bool)0;
 	}
 
-IL_02dc:
+IL_02da:
 	{
 		NativeArray_1_t010CFDCC413C944832DC3E8129AE25C0D1FD6876* L_116 = (NativeArray_1_t010CFDCC413C944832DC3E8129AE25C0D1FD6876*)(&__this->___indirectBufferAllocInfo);
 		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_117 = V_24;
 		IL2CPP_NATIVEARRAY_SET_ITEM(IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02, (L_116)->___m_Buffer, 0, (L_117));
 	}
 
-IL_02ea:
+IL_02e8:
 	{
 		bool L_118 = V_8;
 		if (L_118)
 		{
-			goto IL_02f5;
+			goto IL_02f3;
 		}
 	}
 	{
@@ -23459,12 +23495,12 @@ IL_02ea:
 		goto IL_001c;
 	}
 
-IL_02f5:
+IL_02f3:
 	{
 		int32_t L_119 = V_3;
 		if (!L_119)
 		{
-			goto IL_0326;
+			goto IL_0324;
 		}
 	}
 	{
@@ -23482,12 +23518,12 @@ IL_02f5:
 		(&V_0)->___visibleInstances = L_125;
 	}
 
-IL_0326:
+IL_0324:
 	{
 		int32_t L_126 = V_5;
 		if (!L_126)
 		{
-			goto IL_0342;
+			goto IL_0340;
 		}
 	}
 	{
@@ -23499,7 +23535,7 @@ IL_0326:
 		(&V_0)->___indirectDrawCommands = L_129;
 	}
 
-IL_0342:
+IL_0340:
 	{
 		int32_t L_130 = V_3;
 		int32_t L_131 = V_5;
@@ -26994,7 +27030,7 @@ IL_022f:
 		(&V_32)->___visibleInstancesBufferHandle = L_163;
 		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_164 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
 		GraphicsBufferHandle_t796AECB7D0D9A7DE09882D9EAC25123F6DFA28B5 L_165;
-		L_165 = IndirectBufferContextStorage_get_indirectArgsBufferHandle_m7DF465FC2B94D42E1ABE0EE29E0EE4A1C850E925(L_164, NULL);
+		L_165 = IndirectBufferContextStorage_get_indirectDrawArgsBufferHandle_mA6BCBCDAA9410C7932886C01B4F3641F9693E4C4(L_164, NULL);
 		(&V_32)->___indirectArgsBufferHandle = L_165;
 		NativeArray_1_t010CFDCC413C944832DC3E8129AE25C0D1FD6876 L_166 = V_23;
 		(&V_32)->___indirectBufferAllocInfo = L_166;
@@ -27277,7 +27313,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstanceCuller_InstanceOcclusionTest_m8E
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RenderGraph_AddComputePass_TisInstanceOcclusionTestPassData_t391687B1746158B5F049BB945503DC49F32CD62C_m96F6B8A985482DC4E7500D9C75A8D51B10D7B036_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3CInstanceOcclusionTestU3Eb__28_0_m018A8024AEBFAC4FDD9DEABAB3FE56C3E2516CCC_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_t246178D53C8ADB823D0C73693CF99C3DF2D3EFA2_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2C898D82112ED4CE9852A87FC2BD75BA8F5CFE07);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8B9E836E5AB3E749159940DAE4E0CD92376EB34A);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral98A479CECE8C98765A21108D072B851F1E6F0D68);
 		s_Il2CppMethodInitialized = true;
 	}
@@ -27333,7 +27369,7 @@ IL_002a:
 		ProfilingSampler_t420D4672EDB44E0EF980B31ADFD9E5747200FECE* L_9 = __this->___m_ProfilingSampleInstanceOcclusionTest;
 		NullCheck(L_8);
 		RuntimeObject* L_10;
-		L_10 = RenderGraph_AddComputePass_TisInstanceOcclusionTestPassData_t391687B1746158B5F049BB945503DC49F32CD62C_m96F6B8A985482DC4E7500D9C75A8D51B10D7B036(L_8, _stringLiteral98A479CECE8C98765A21108D072B851F1E6F0D68, (&V_3), L_9, _stringLiteral2C898D82112ED4CE9852A87FC2BD75BA8F5CFE07, ((int32_t)2326), RenderGraph_AddComputePass_TisInstanceOcclusionTestPassData_t391687B1746158B5F049BB945503DC49F32CD62C_m96F6B8A985482DC4E7500D9C75A8D51B10D7B036_RuntimeMethod_var);
+		L_10 = RenderGraph_AddComputePass_TisInstanceOcclusionTestPassData_t391687B1746158B5F049BB945503DC49F32CD62C_m96F6B8A985482DC4E7500D9C75A8D51B10D7B036(L_8, _stringLiteral98A479CECE8C98765A21108D072B851F1E6F0D68, (&V_3), L_9, _stringLiteral8B9E836E5AB3E749159940DAE4E0CD92376EB34A, ((int32_t)2327), RenderGraph_AddComputePass_TisInstanceOcclusionTestPassData_t391687B1746158B5F049BB945503DC49F32CD62C_m96F6B8A985482DC4E7500D9C75A8D51B10D7B036_RuntimeMethod_var);
 		V_2 = L_10;
 	}
 	{
@@ -27586,7 +27622,7 @@ IL_0035:
 		int32_t L_55 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
 		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_56 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
 		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_57;
-		L_57 = IndirectBufferContextStorage_get_argsBuffer_m81BE13A707FAF6B8F9361AEBCDD9CBA69611C334_inline(L_56, NULL);
+		L_57 = IndirectBufferContextStorage_get_drawArgsBuffer_mA1ECB0B8FCC3C0B229A048C0246109C88846F6E3_inline(L_56, NULL);
 		NullCheck(L_52);
 		CommandBuffer_SetComputeBufferParam_mF358CEC3E841ACFA0ECA0D9495B8287A842F20CA(L_52, L_53, L_54, L_55, L_57, NULL);
 		CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* L_58 = V_3;
@@ -27739,7 +27775,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstanceCuller_AddOcclusionCullingDispat
 		int32_t L_6 = V_1;
 		if ((((int32_t)L_6) < ((int32_t)0)))
 		{
-			goto IL_051e;
+			goto IL_0538;
 		}
 	}
 	{
@@ -27921,7 +27957,7 @@ IL_010c:
 		L_46 = IndirectBufferContext_Matches_m40E2A7974D4B205D4BB770D4A68635D99FE4C721((&V_2), L_43, L_44, L_45, NULL);
 		if (L_46)
 		{
-			goto IL_0511;
+			goto IL_052b;
 		}
 	}
 	{
@@ -28009,7 +28045,7 @@ IL_016c:
 		L_64 = IndirectBufferAllocInfo_IsEmpty_m47785BE361D9B989BE0455AD1884831AB99E4009((&V_16), NULL);
 		if (L_64)
 		{
-			goto IL_0511;
+			goto IL_052b;
 		}
 	}
 	{
@@ -28260,7 +28296,7 @@ IL_02c1:
 		bool L_124 = V_13;
 		if (!L_124)
 		{
-			goto IL_03a1;
+			goto IL_03a5;
 		}
 	}
 	{
@@ -28271,238 +28307,264 @@ IL_02c1:
 		int32_t L_128 = V_24;
 		il2cpp_codegen_runtime_class_init_inline(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var);
 		int32_t L_129 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawInfo;
-		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_130 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_131;
-		L_131 = IndirectBufferContextStorage_get_drawInfoBuffer_m0168780ED5CFCB3613F04F2C00561471352A5790_inline(L_130, NULL);
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_130 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_131 = L_130->___drawInfoBuffer;
+		il2cpp_codegen_runtime_class_init_inline(BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5_il2cpp_TypeInfo_var);
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_132;
+		L_132 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_131, NULL);
 		NullCheck(L_126);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_126, L_127, L_128, L_129, L_131, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_132 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_133 = V_19;
-		int32_t L_134 = V_24;
-		int32_t L_135 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceInfo;
-		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_136 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_137;
-		L_137 = IndirectBufferContextStorage_get_instanceInfoBuffer_mC14C040CC88B2F11AFE1301EB1FB9C70E396E8E5_inline(L_136, NULL);
-		NullCheck(L_132);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_132, L_133, L_134, L_135, L_137, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_138 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_139 = V_19;
-		int32_t L_140 = V_24;
-		int32_t L_141 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
-		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_142 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_143;
-		L_143 = IndirectBufferContextStorage_get_argsBuffer_m81BE13A707FAF6B8F9361AEBCDD9CBA69611C334_inline(L_142, NULL);
-		NullCheck(L_138);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_138, L_139, L_140, L_141, L_143, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_144 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_145 = V_19;
-		int32_t L_146 = V_24;
-		int32_t L_147 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceIndices;
-		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_148 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_149;
-		L_149 = IndirectBufferContextStorage_get_instanceBuffer_mD965845788AD240262E1C46BB4BA405B73C8EA27_inline(L_148, NULL);
-		NullCheck(L_144);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_144, L_145, L_146, L_147, L_149, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_150 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_151 = V_19;
-		int32_t L_152 = V_24;
-		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_153 = V_16;
-		int32_t L_154 = L_153.___instanceCount;
-		NullCheck(L_150);
-		ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7(L_150, L_151, L_152, ((int32_t)(((int32_t)il2cpp_codegen_add(L_154, ((int32_t)63)))/((int32_t)64))), 1, 1, NULL);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_126, L_127, L_128, L_129, L_132, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_133 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_134 = V_19;
+		int32_t L_135 = V_24;
+		int32_t L_136 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceInfo;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_137 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_138 = L_137->___instanceInfoBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_139;
+		L_139 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_138, NULL);
+		NullCheck(L_133);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_133, L_134, L_135, L_136, L_139, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_140 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_141 = V_19;
+		int32_t L_142 = V_24;
+		int32_t L_143 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_144 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_145 = L_144->___drawArgsBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_146;
+		L_146 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_145, NULL);
+		NullCheck(L_140);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_140, L_141, L_142, L_143, L_146, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_147 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_148 = V_19;
+		int32_t L_149 = V_24;
+		int32_t L_150 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceIndices;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_151 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_152 = L_151->___instanceBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_153;
+		L_153 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_152, NULL);
+		NullCheck(L_147);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_147, L_148, L_149, L_150, L_153, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_154 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_155 = V_19;
+		int32_t L_156 = V_24;
+		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_157 = V_16;
+		int32_t L_158 = L_157.___instanceCount;
+		NullCheck(L_154);
+		ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7(L_154, L_155, L_156, ((int32_t)(((int32_t)il2cpp_codegen_add(L_158, ((int32_t)63)))/((int32_t)64))), 1, 1, NULL);
 	}
 
-IL_03a1:
+IL_03a5:
 	{
-		bool L_155 = V_14;
-		if (!L_155)
+		bool L_159 = V_14;
+		if (!L_159)
 		{
-			goto IL_03fc;
+			goto IL_041f;
 		}
 	}
 	{
-		int32_t L_156 = __this->___m_ResetDrawArgsKernel;
-		V_25 = L_156;
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_157 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_158 = V_19;
-		int32_t L_159 = V_25;
+		int32_t L_160 = __this->___m_ResetDrawArgsKernel;
+		V_25 = L_160;
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_161 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_162 = V_19;
+		int32_t L_163 = V_25;
 		il2cpp_codegen_runtime_class_init_inline(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var);
-		int32_t L_160 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawInfo;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_161 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_162 = L_161->___drawInfoBuffer;
+		int32_t L_164 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawInfo;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_165 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_166 = L_165->___drawInfoBuffer;
 		il2cpp_codegen_runtime_class_init_inline(BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5_il2cpp_TypeInfo_var);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_163;
-		L_163 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_162, NULL);
-		NullCheck(L_157);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_157, L_158, L_159, L_160, L_163, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_164 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_165 = V_19;
-		int32_t L_166 = V_25;
-		int32_t L_167 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_168 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_169 = L_168->___argsBuffer;
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_170;
-		L_170 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_169, NULL);
-		NullCheck(L_164);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_164, L_165, L_166, L_167, L_170, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_171 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_172 = V_19;
-		int32_t L_173 = V_25;
-		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_174 = V_16;
-		int32_t L_175 = L_174.___drawCount;
-		NullCheck(L_171);
-		ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7(L_171, L_172, L_173, ((int32_t)(((int32_t)il2cpp_codegen_add(L_175, ((int32_t)63)))/((int32_t)64))), 1, 1, NULL);
-	}
-
-IL_03fc:
-	{
-		bool L_176 = V_15;
-		if (!L_176)
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_167;
+		L_167 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_166, NULL);
+		NullCheck(L_161);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_161, L_162, L_163, L_164, L_167, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_168 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_169 = V_19;
+		int32_t L_170 = V_25;
+		int32_t L_171 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_172 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_173 = L_172->___drawArgsBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_174;
+		L_174 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_173, NULL);
+		NullCheck(L_168);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_168, L_169, L_170, L_171, L_174, NULL);
+		bool L_175 = V_12;
+		if (!L_175)
 		{
-			goto IL_0511;
+			goto IL_0406;
 		}
 	}
 	{
-		int32_t L_177 = __this->___m_CullInstancesKernel;
-		V_26 = L_177;
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_178 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_179 = V_19;
-		int32_t L_180 = V_26;
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_176 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_177 = V_19;
+		int32_t L_178 = V_25;
 		il2cpp_codegen_runtime_class_init_inline(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var);
-		int32_t L_181 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawInfo;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_182 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_183 = L_182->___drawInfoBuffer;
+		int32_t L_179 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DispatchArgs;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_180 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_181 = L_180->___dispatchArgsBuffer;
 		il2cpp_codegen_runtime_class_init_inline(BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5_il2cpp_TypeInfo_var);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_184;
-		L_184 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_183, NULL);
-		NullCheck(L_178);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_178, L_179, L_180, L_181, L_184, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_185 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_186 = V_19;
-		int32_t L_187 = V_26;
-		int32_t L_188 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceInfo;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_189 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_190 = L_189->___instanceInfoBuffer;
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_191;
-		L_191 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_190, NULL);
-		NullCheck(L_185);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_185, L_186, L_187, L_188, L_191, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_192 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_193 = V_19;
-		int32_t L_194 = V_26;
-		int32_t L_195 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_196 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_197 = L_196->___argsBuffer;
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_198;
-		L_198 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_197, NULL);
-		NullCheck(L_192);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_192, L_193, L_194, L_195, L_198, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_199 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_200 = V_19;
-		int32_t L_201 = V_26;
-		int32_t L_202 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceIndices;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_203 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_204 = L_203->___instanceBuffer;
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_205;
-		L_205 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_204, NULL);
-		NullCheck(L_199);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_199, L_200, L_201, L_202, L_205, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_206 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_207 = V_19;
-		int32_t L_208 = V_26;
-		int32_t L_209 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceDataBuffer;
-		RenderersBatchersContext_t5D87D79D64D87CEC72560F8BC4690997349F2F98* L_210 = ___5_batchersContext;
-		NullCheck(L_210);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_211;
-		L_211 = RenderersBatchersContext_get_gpuInstanceDataBuffer_m58A374780F991800398A3A5C43B900F17E49CA78(L_210, NULL);
-		NullCheck(L_206);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_206, L_207, L_208, L_209, L_211, NULL);
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_212 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_213 = V_19;
-		int32_t L_214 = V_26;
-		int32_t L_215 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____OcclusionDebugCounters;
-		InstanceOcclusionEventDebugArray_t090FE53FB162303ADB4A15BB669805B554BDE0AB* L_216 = (InstanceOcclusionEventDebugArray_t090FE53FB162303ADB4A15BB669805B554BDE0AB*)(&__this->___m_OcclusionEventDebugArray);
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_182;
+		L_182 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_181, NULL);
+		NullCheck(L_176);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_176, L_177, L_178, L_179, L_182, NULL);
+	}
+
+IL_0406:
+	{
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_183 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_184 = V_19;
+		int32_t L_185 = V_25;
+		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_186 = V_16;
+		int32_t L_187 = L_186.___drawCount;
+		NullCheck(L_183);
+		ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7(L_183, L_184, L_185, ((int32_t)(((int32_t)il2cpp_codegen_add(L_187, ((int32_t)63)))/((int32_t)64))), 1, 1, NULL);
+	}
+
+IL_041f:
+	{
+		bool L_188 = V_15;
+		if (!L_188)
+		{
+			goto IL_052b;
+		}
+	}
+	{
+		int32_t L_189 = __this->___m_CullInstancesKernel;
+		V_26 = L_189;
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_190 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_191 = V_19;
+		int32_t L_192 = V_26;
+		il2cpp_codegen_runtime_class_init_inline(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var);
+		int32_t L_193 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawInfo;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_194 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_195 = L_194->___drawInfoBuffer;
+		il2cpp_codegen_runtime_class_init_inline(BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5_il2cpp_TypeInfo_var);
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_196;
+		L_196 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_195, NULL);
+		NullCheck(L_190);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_190, L_191, L_192, L_193, L_196, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_197 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_198 = V_19;
+		int32_t L_199 = V_26;
+		int32_t L_200 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceInfo;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_201 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_202 = L_201->___instanceInfoBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_203;
+		L_203 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_202, NULL);
+		NullCheck(L_197);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_197, L_198, L_199, L_200, L_203, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_204 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_205 = V_19;
+		int32_t L_206 = V_26;
+		int32_t L_207 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____DrawArgs;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_208 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_209 = L_208->___drawArgsBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_210;
+		L_210 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_209, NULL);
+		NullCheck(L_204);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_204, L_205, L_206, L_207, L_210, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_211 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_212 = V_19;
+		int32_t L_213 = V_26;
+		int32_t L_214 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceIndices;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_215 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_216 = L_215->___instanceBuffer;
 		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_217;
-		L_217 = InstanceOcclusionEventDebugArray_get_CounterBuffer_mF25E7B744518F980443AFCF79E48EA3CCF852D04_inline(L_216, NULL);
-		NullCheck(L_212);
-		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_212, L_213, L_214, L_215, L_217, NULL);
-		bool L_218 = V_11;
-		bool L_219 = V_12;
-		if (!((int32_t)((int32_t)L_218|(int32_t)L_219)))
+		L_217 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_216, NULL);
+		NullCheck(L_211);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_211, L_212, L_213, L_214, L_217, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_218 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_219 = V_19;
+		int32_t L_220 = V_26;
+		int32_t L_221 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____InstanceDataBuffer;
+		RenderersBatchersContext_t5D87D79D64D87CEC72560F8BC4690997349F2F98* L_222 = ___5_batchersContext;
+		NullCheck(L_222);
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_223;
+		L_223 = RenderersBatchersContext_get_gpuInstanceDataBuffer_m58A374780F991800398A3A5C43B900F17E49CA78(L_222, NULL);
+		NullCheck(L_218);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_218, L_219, L_220, L_221, L_223, NULL);
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_224 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_225 = V_19;
+		int32_t L_226 = V_26;
+		int32_t L_227 = ((ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_StaticFields*)il2cpp_codegen_static_fields_for(ShaderIDs_t44A0CD91DC56DA7AA7D3C7B45364914CFB14ADA7_il2cpp_TypeInfo_var))->____OcclusionDebugCounters;
+		InstanceOcclusionEventDebugArray_t090FE53FB162303ADB4A15BB669805B554BDE0AB* L_228 = (InstanceOcclusionEventDebugArray_t090FE53FB162303ADB4A15BB669805B554BDE0AB*)(&__this->___m_OcclusionEventDebugArray);
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_229;
+		L_229 = InstanceOcclusionEventDebugArray_get_CounterBuffer_mF25E7B744518F980443AFCF79E48EA3CCF852D04_inline(L_228, NULL);
+		NullCheck(L_224);
+		ComputeCommandBuffer_SetComputeBufferParam_m0AAEFBB91465C97ECF0056FF1504778491598715(L_224, L_225, L_226, L_227, L_229, NULL);
+		bool L_230 = V_11;
+		bool L_231 = V_12;
+		if (!((int32_t)((int32_t)L_230|(int32_t)L_231)))
 		{
-			goto IL_04be;
+			goto IL_04e1;
 		}
 	}
 	{
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_220 = ___0_cmd;
-		OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* L_221 = (OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C*)(&__this->___m_OcclusionTestShader);
-		int32_t L_222 = V_26;
-		OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* L_223 = ___4_occluderHandles;
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_232 = ___0_cmd;
+		OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* L_233 = (OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C*)(&__this->___m_OcclusionTestShader);
+		int32_t L_234 = V_26;
+		OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* L_235 = ___4_occluderHandles;
 		il2cpp_codegen_runtime_class_init_inline(OcclusionCullingCommon_t2AFE7DF28379DF1255CFCC766FC1BC7B4C6E59CD_il2cpp_TypeInfo_var);
-		OcclusionCullingCommon_SetDepthPyramid_mD653D7921DC4590B1E5DDC848F3B3DDF10D15D07(L_220, L_221, L_222, L_223, NULL);
+		OcclusionCullingCommon_SetDepthPyramid_mD653D7921DC4590B1E5DDC848F3B3DDF10D15D07(L_232, L_233, L_234, L_235, NULL);
 	}
 
-IL_04be:
+IL_04e1:
 	{
-		bool L_224 = V_18;
-		if (!L_224)
+		bool L_236 = V_18;
+		if (!L_236)
 		{
-			goto IL_04d2;
+			goto IL_04f5;
 		}
 	}
-	{
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_225 = ___0_cmd;
-		OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* L_226 = (OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C*)(&__this->___m_OcclusionTestShader);
-		int32_t L_227 = V_26;
-		OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* L_228 = ___4_occluderHandles;
-		il2cpp_codegen_runtime_class_init_inline(OcclusionCullingCommon_t2AFE7DF28379DF1255CFCC766FC1BC7B4C6E59CD_il2cpp_TypeInfo_var);
-		OcclusionCullingCommon_SetDebugPyramid_m7DB573CC2B23E59F6E09FE953D2953447FB4D8BE(L_225, L_226, L_227, L_228, NULL);
-	}
-
-IL_04d2:
-	{
-		bool L_229 = V_12;
-		if (!L_229)
-		{
-			goto IL_04f8;
-		}
-	}
-	{
-		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_230 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_231 = V_19;
-		int32_t L_232 = V_26;
-		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_233 = ___3_bufferHandles;
-		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_234 = L_233->___argsBuffer;
-		il2cpp_codegen_runtime_class_init_inline(BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5_il2cpp_TypeInfo_var);
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_235;
-		L_235 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_234, NULL);
-		int32_t L_236;
-		L_236 = IndirectBufferAllocInfo_GetExtraDrawInfoSlotIndex_m2EAD4191867631265610C43212C34A56A2DAD969((&V_16), NULL);
-		NullCheck(L_230);
-		ComputeCommandBuffer_DispatchCompute_m637B088ED3343E8A50A66356399B8B3213A3B083(L_230, L_231, L_232, L_235, ((int32_t)il2cpp_codegen_multiply(((int32_t)20), L_236)), NULL);
-		goto IL_0511;
-	}
-
-IL_04f8:
 	{
 		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_237 = ___0_cmd;
-		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_238 = V_19;
+		OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C* L_238 = (OcclusionTestComputeShader_t293316092781B0C995AC96A6B73C897D3772420C*)(&__this->___m_OcclusionTestShader);
 		int32_t L_239 = V_26;
-		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_240 = V_16;
-		int32_t L_241 = L_240.___instanceCount;
-		NullCheck(L_237);
-		ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7(L_237, L_238, L_239, ((int32_t)(((int32_t)il2cpp_codegen_add(L_241, ((int32_t)63)))/((int32_t)64))), 1, 1, NULL);
+		OccluderHandles_t7CF26B9286ACCE9EE0EE410DCAB404459C30B6A3* L_240 = ___4_occluderHandles;
+		il2cpp_codegen_runtime_class_init_inline(OcclusionCullingCommon_t2AFE7DF28379DF1255CFCC766FC1BC7B4C6E59CD_il2cpp_TypeInfo_var);
+		OcclusionCullingCommon_SetDebugPyramid_m7DB573CC2B23E59F6E09FE953D2953447FB4D8BE(L_237, L_238, L_239, L_240, NULL);
 	}
 
-IL_0511:
+IL_04f5:
 	{
-		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_242 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
-		int32_t L_243 = V_1;
-		IndirectBufferContext_tC867F1E4C07484F15773E7A382CCB107C57AC805 L_244 = V_2;
-		IndirectBufferContextStorage_SetBufferContext_mEC8E692A99E595592E12F55F94B7E234A340DC2A(L_242, L_243, L_244, NULL);
+		bool L_241 = V_12;
+		if (!L_241)
+		{
+			goto IL_0512;
+		}
+	}
+	{
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_242 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_243 = V_19;
+		int32_t L_244 = V_26;
+		IndirectBufferContextHandles_t538C1868A84206A7DF9C3F2066551BA1CCE0766D* L_245 = ___3_bufferHandles;
+		BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5 L_246 = L_245->___dispatchArgsBuffer;
+		il2cpp_codegen_runtime_class_init_inline(BufferHandle_t0F30006F1AFC28BAD7E4289A6DE4C26C9F89B0F5_il2cpp_TypeInfo_var);
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_247;
+		L_247 = BufferHandle_op_Implicit_m7F615A6584CE240EBAD5E06288E9AA519A594B76(L_246, NULL);
+		NullCheck(L_242);
+		ComputeCommandBuffer_DispatchCompute_m637B088ED3343E8A50A66356399B8B3213A3B083(L_242, L_243, L_244, L_247, 0, NULL);
+		goto IL_052b;
 	}
 
-IL_051e:
+IL_0512:
+	{
+		ComputeCommandBuffer_tA6FA5F68FE745317C94802C6A828FC21AC0ADF61* L_248 = ___0_cmd;
+		ComputeShader_tA7BDD0F6EE879D149480F5890BA2E665C50CFBF8* L_249 = V_19;
+		int32_t L_250 = V_26;
+		IndirectBufferAllocInfo_t144662EBC9E70E789D782D2340097DF38DCFAB02 L_251 = V_16;
+		int32_t L_252 = L_251.___instanceCount;
+		NullCheck(L_248);
+		ComputeCommandBuffer_DispatchCompute_m8C32F8EB60C2EE3C511CB915C4DA7591A2D4BAE7(L_248, L_249, L_250, ((int32_t)(((int32_t)il2cpp_codegen_add(L_252, ((int32_t)63)))/((int32_t)64))), 1, 1, NULL);
+	}
+
+IL_052b:
+	{
+		IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* L_253 = (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5*)(&__this->___m_IndirectStorage);
+		int32_t L_254 = V_1;
+		IndirectBufferContext_tC867F1E4C07484F15773E7A382CCB107C57AC805 L_255 = V_2;
+		IndirectBufferContextStorage_SetBufferContext_mEC8E692A99E595592E12F55F94B7E234A340DC2A(L_253, L_254, L_255, NULL);
+	}
+
+IL_0538:
 	{
 		return;
 	}
@@ -30711,10 +30773,10 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25
 		return L_0;
 	}
 }
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_argsBuffer_m81BE13A707FAF6B8F9361AEBCDD9CBA69611C334_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) 
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* IndirectBufferContextStorage_get_drawArgsBuffer_mA1ECB0B8FCC3C0B229A048C0246109C88846F6E3_inline (IndirectBufferContextStorage_t163864EFB0FCBEC52967FBC133744C5B7381C1E5* __this, const RuntimeMethod* method) 
 {
 	{
-		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_0 = __this->___m_ArgsBuffer;
+		GraphicsBuffer_t91FACD3CD78588C25C361C453D1A2FE055EC4AF1* L_0 = __this->___m_DrawArgsBuffer;
 		return L_0;
 	}
 }

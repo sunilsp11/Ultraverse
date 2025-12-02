@@ -18533,31 +18533,32 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextGeneratorUtilities_FillCharacterVert
 	int32_t V_1 = 0;
 	TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* V_2 = NULL;
 	bool V_3 = false;
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_4;
-	memset((&V_4), 0, sizeof(V_4));
+	bool V_4 = false;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_5;
 	memset((&V_5), 0, sizeof(V_5));
-	bool V_6 = false;
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B6_0 = NULL;
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B5_0 = NULL;
-	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B7_0;
-	memset((&G_B7_0), 0, sizeof(G_B7_0));
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B7_1 = NULL;
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B9_0 = NULL;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_6;
+	memset((&V_6), 0, sizeof(V_6));
+	bool V_7 = false;
 	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B8_0 = NULL;
-	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B10_0;
-	memset((&G_B10_0), 0, sizeof(G_B10_0));
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B10_1 = NULL;
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B12_0 = NULL;
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B7_0 = NULL;
+	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B9_0;
+	memset((&G_B9_0), 0, sizeof(G_B9_0));
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B9_1 = NULL;
 	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B11_0 = NULL;
-	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B13_0;
-	memset((&G_B13_0), 0, sizeof(G_B13_0));
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B13_1 = NULL;
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B15_0 = NULL;
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B10_0 = NULL;
+	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B12_0;
+	memset((&G_B12_0), 0, sizeof(G_B12_0));
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B12_1 = NULL;
 	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B14_0 = NULL;
-	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B16_0;
-	memset((&G_B16_0), 0, sizeof(G_B16_0));
-	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B16_1 = NULL;
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B13_0 = NULL;
+	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B15_0;
+	memset((&G_B15_0), 0, sizeof(G_B15_0));
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B15_1 = NULL;
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B17_0 = NULL;
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B16_0 = NULL;
+	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B G_B18_0;
+	memset((&G_B18_0), 0, sizeof(G_B18_0));
+	TextCoreVertex_t012334F340F916622ED5237971E8BA32198060E4* G_B18_1 = NULL;
 	{
 		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_0 = ___3_textInfo;
 		NullCheck(L_0);
@@ -18606,436 +18607,461 @@ IL_0062:
 	{
 		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_21 = ___3_textInfo;
 		NullCheck(L_21);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_22 = L_21->___textElementInfo;
-		V_2 = L_22;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_23 = ___3_textInfo;
-		NullCheck(L_23);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_24 = L_23->___textElementInfo;
-		int32_t L_25 = ___0_i;
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_22 = L_21->___meshInfo;
+		int32_t L_23 = V_0;
+		NullCheck(L_22);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_24 = ((L_22)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_23)))->___vertexData;
 		NullCheck(L_24);
-		int32_t L_26 = V_1;
-		((L_24)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_25)))->___vertexIndex = L_26;
-		(&V_4)->___x = (0.0f);
-		TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2* L_27 = ___2_generationSettings;
+		int32_t L_25 = V_1;
+		V_4 = (bool)((((int32_t)((int32_t)(((RuntimeArray*)L_24)->max_length))) < ((int32_t)((int32_t)il2cpp_codegen_add(L_25, 4))))? 1 : 0);
+		bool L_26 = V_4;
+		if (!L_26)
+		{
+			goto IL_0085;
+		}
+	}
+	{
+		goto IL_04d5;
+	}
+
+IL_0085:
+	{
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_27 = ___3_textInfo;
 		NullCheck(L_27);
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_28 = (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D*)(&L_27->___screenRect);
-		float L_29;
-		L_29 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline(L_28, NULL);
-		(&V_4)->___y = L_29;
-		bool L_30 = ___4_needToRound;
-		V_6 = L_30;
-		bool L_31 = V_6;
-		if (!L_31)
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_28 = L_27->___textElementInfo;
+		V_2 = L_28;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_29 = ___3_textInfo;
+		NullCheck(L_29);
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_30 = L_29->___textElementInfo;
+		int32_t L_31 = ___0_i;
+		NullCheck(L_30);
+		int32_t L_32 = V_1;
+		((L_30)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_31)))->___vertexIndex = L_32;
+		(&V_5)->___x = (0.0f);
+		TextGenerationSettings_t3E75DB1D14DF53934AF76C9ACB1CD94A344A92A2* L_33 = ___2_generationSettings;
+		NullCheck(L_33);
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* L_34 = (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D*)(&L_33->___screenRect);
+		float L_35;
+		L_35 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline(L_34, NULL);
+		(&V_5)->___y = L_35;
+		bool L_36 = ___4_needToRound;
+		V_7 = L_36;
+		bool L_37 = V_7;
+		if (!L_37)
 		{
-			goto IL_00b5;
+			goto IL_00d8;
 		}
 	}
 	{
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_32 = V_4;
-		float L_33 = L_32.___y;
-		float L_34;
-		L_34 = bankers_roundf(L_33);
-		(&V_4)->___y = L_34;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38 = V_5;
+		float L_39 = L_38.___y;
+		float L_40;
+		L_40 = bankers_roundf(L_39);
+		(&V_5)->___y = L_40;
 	}
 
-IL_00b5:
+IL_00d8:
 	{
-		(&V_4)->___z = (0.0f);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_35 = V_2;
-		int32_t L_36 = ___0_i;
-		NullCheck(L_35);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_37 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_35)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_36)))->___vertexBottomLeft);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38 = L_37->___position;
-		V_5 = L_38;
-		float* L_39 = (float*)(&(&V_5)->___y);
-		float* L_40 = L_39;
-		float L_41 = *((float*)L_40);
-		*((float*)L_40) = (float)((float)il2cpp_codegen_multiply(L_41, (-1.0f)));
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_42 = ___3_textInfo;
-		NullCheck(L_42);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_43 = L_42->___meshInfo;
-		int32_t L_44 = V_0;
-		NullCheck(L_43);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_45 = ((L_43)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_44)))->___vertexData;
-		int32_t L_46 = V_1;
-		NullCheck(L_45);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_47 = V_5;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48 = V_4;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_49;
-		L_49 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_47, L_48, NULL);
-		((L_45)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_46)))->___position = L_49;
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_50 = V_2;
-		int32_t L_51 = ___0_i;
-		NullCheck(L_50);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_52 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_50)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_51)))->___vertexTopLeft);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_53 = L_52->___position;
-		V_5 = L_53;
-		float* L_54 = (float*)(&(&V_5)->___y);
-		float* L_55 = L_54;
-		float L_56 = *((float*)L_55);
-		*((float*)L_55) = (float)((float)il2cpp_codegen_multiply(L_56, (-1.0f)));
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_57 = ___3_textInfo;
-		NullCheck(L_57);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_58 = L_57->___meshInfo;
-		int32_t L_59 = V_0;
-		NullCheck(L_58);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_60 = ((L_58)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_59)))->___vertexData;
-		int32_t L_61 = V_1;
-		NullCheck(L_60);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_62 = V_5;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_63 = V_4;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_64;
-		L_64 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_62, L_63, NULL);
-		((L_60)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_61)))))->___position = L_64;
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_65 = V_2;
-		int32_t L_66 = ___0_i;
-		NullCheck(L_65);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_67 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_65)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_66)))->___vertexTopRight);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_68 = L_67->___position;
-		V_5 = L_68;
-		float* L_69 = (float*)(&(&V_5)->___y);
-		float* L_70 = L_69;
-		float L_71 = *((float*)L_70);
-		*((float*)L_70) = (float)((float)il2cpp_codegen_multiply(L_71, (-1.0f)));
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_72 = ___3_textInfo;
-		NullCheck(L_72);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_73 = L_72->___meshInfo;
-		int32_t L_74 = V_0;
-		NullCheck(L_73);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_75 = ((L_73)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_74)))->___vertexData;
-		int32_t L_76 = V_1;
-		NullCheck(L_75);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_77 = V_5;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_78 = V_4;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_79;
-		L_79 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_77, L_78, NULL);
-		((L_75)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_76)))))->___position = L_79;
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_80 = V_2;
-		int32_t L_81 = ___0_i;
-		NullCheck(L_80);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_82 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_80)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_81)))->___vertexBottomRight);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_83 = L_82->___position;
-		V_5 = L_83;
-		float* L_84 = (float*)(&(&V_5)->___y);
-		float* L_85 = L_84;
-		float L_86 = *((float*)L_85);
-		*((float*)L_85) = (float)((float)il2cpp_codegen_multiply(L_86, (-1.0f)));
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_87 = ___3_textInfo;
-		NullCheck(L_87);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_88 = L_87->___meshInfo;
-		int32_t L_89 = V_0;
-		NullCheck(L_88);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_90 = ((L_88)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_89)))->___vertexData;
-		int32_t L_91 = V_1;
-		NullCheck(L_90);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_92 = V_5;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_93 = V_4;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_94;
-		L_94 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_92, L_93, NULL);
-		((L_90)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_91)))))->___position = L_94;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_95 = ___3_textInfo;
-		NullCheck(L_95);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_96 = L_95->___meshInfo;
-		int32_t L_97 = V_0;
+		(&V_5)->___z = (0.0f);
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_41 = V_2;
+		int32_t L_42 = ___0_i;
+		NullCheck(L_41);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_43 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_41)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_42)))->___vertexBottomLeft);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44 = L_43->___position;
+		V_6 = L_44;
+		float* L_45 = (float*)(&(&V_6)->___y);
+		float* L_46 = L_45;
+		float L_47 = *((float*)L_46);
+		*((float*)L_46) = (float)((float)il2cpp_codegen_multiply(L_47, (-1.0f)));
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_48 = ___3_textInfo;
+		NullCheck(L_48);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_49 = L_48->___meshInfo;
+		int32_t L_50 = V_0;
+		NullCheck(L_49);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_51 = ((L_49)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_50)))->___vertexData;
+		int32_t L_52 = V_1;
+		NullCheck(L_51);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_53 = V_6;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_54 = V_5;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_55;
+		L_55 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_53, L_54, NULL);
+		((L_51)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_52)))->___position = L_55;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_56 = V_2;
+		int32_t L_57 = ___0_i;
+		NullCheck(L_56);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_58 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_56)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_57)))->___vertexTopLeft);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_59 = L_58->___position;
+		V_6 = L_59;
+		float* L_60 = (float*)(&(&V_6)->___y);
+		float* L_61 = L_60;
+		float L_62 = *((float*)L_61);
+		*((float*)L_61) = (float)((float)il2cpp_codegen_multiply(L_62, (-1.0f)));
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_63 = ___3_textInfo;
+		NullCheck(L_63);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_64 = L_63->___meshInfo;
+		int32_t L_65 = V_0;
+		NullCheck(L_64);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_66 = ((L_64)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_65)))->___vertexData;
+		int32_t L_67 = V_1;
+		NullCheck(L_66);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_68 = V_6;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_69 = V_5;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_70;
+		L_70 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_68, L_69, NULL);
+		((L_66)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_67)))))->___position = L_70;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_71 = V_2;
+		int32_t L_72 = ___0_i;
+		NullCheck(L_71);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_73 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_71)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_72)))->___vertexTopRight);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_74 = L_73->___position;
+		V_6 = L_74;
+		float* L_75 = (float*)(&(&V_6)->___y);
+		float* L_76 = L_75;
+		float L_77 = *((float*)L_76);
+		*((float*)L_76) = (float)((float)il2cpp_codegen_multiply(L_77, (-1.0f)));
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_78 = ___3_textInfo;
+		NullCheck(L_78);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_79 = L_78->___meshInfo;
+		int32_t L_80 = V_0;
+		NullCheck(L_79);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_81 = ((L_79)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_80)))->___vertexData;
+		int32_t L_82 = V_1;
+		NullCheck(L_81);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_83 = V_6;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_84 = V_5;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_85;
+		L_85 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_83, L_84, NULL);
+		((L_81)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_82)))))->___position = L_85;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_86 = V_2;
+		int32_t L_87 = ___0_i;
+		NullCheck(L_86);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_88 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_86)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_87)))->___vertexBottomRight);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_89 = L_88->___position;
+		V_6 = L_89;
+		float* L_90 = (float*)(&(&V_6)->___y);
+		float* L_91 = L_90;
+		float L_92 = *((float*)L_91);
+		*((float*)L_91) = (float)((float)il2cpp_codegen_multiply(L_92, (-1.0f)));
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_93 = ___3_textInfo;
+		NullCheck(L_93);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_94 = L_93->___meshInfo;
+		int32_t L_95 = V_0;
+		NullCheck(L_94);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_96 = ((L_94)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_95)))->___vertexData;
+		int32_t L_97 = V_1;
 		NullCheck(L_96);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_98 = ((L_96)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_97)))->___vertexData;
-		int32_t L_99 = V_1;
-		NullCheck(L_98);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_100 = V_2;
-		int32_t L_101 = ___0_i;
-		NullCheck(L_100);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_102 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_100)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_101)))->___vertexBottomLeft);
-		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_103 = L_102->___uv;
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_104;
-		L_104 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_103, NULL);
-		((L_98)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_99)))->___uv0 = L_104;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_105 = ___3_textInfo;
-		NullCheck(L_105);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_106 = L_105->___meshInfo;
-		int32_t L_107 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_98 = V_6;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_99 = V_5;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_100;
+		L_100 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_98, L_99, NULL);
+		((L_96)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_97)))))->___position = L_100;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_101 = ___3_textInfo;
+		NullCheck(L_101);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_102 = L_101->___meshInfo;
+		int32_t L_103 = V_0;
+		NullCheck(L_102);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_104 = ((L_102)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_103)))->___vertexData;
+		int32_t L_105 = V_1;
+		NullCheck(L_104);
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_106 = V_2;
+		int32_t L_107 = ___0_i;
 		NullCheck(L_106);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_108 = ((L_106)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_107)))->___vertexData;
-		int32_t L_109 = V_1;
-		NullCheck(L_108);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_110 = V_2;
-		int32_t L_111 = ___0_i;
-		NullCheck(L_110);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_112 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_110)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_111)))->___vertexTopLeft);
-		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_113 = L_112->___uv;
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_114;
-		L_114 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_113, NULL);
-		((L_108)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_109)))))->___uv0 = L_114;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_115 = ___3_textInfo;
-		NullCheck(L_115);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_116 = L_115->___meshInfo;
-		int32_t L_117 = V_0;
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_108 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_106)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_107)))->___vertexBottomLeft);
+		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_109 = L_108->___uv;
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_110;
+		L_110 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_109, NULL);
+		((L_104)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_105)))->___uv0 = L_110;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_111 = ___3_textInfo;
+		NullCheck(L_111);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_112 = L_111->___meshInfo;
+		int32_t L_113 = V_0;
+		NullCheck(L_112);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_114 = ((L_112)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_113)))->___vertexData;
+		int32_t L_115 = V_1;
+		NullCheck(L_114);
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_116 = V_2;
+		int32_t L_117 = ___0_i;
 		NullCheck(L_116);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_118 = ((L_116)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_117)))->___vertexData;
-		int32_t L_119 = V_1;
-		NullCheck(L_118);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_120 = V_2;
-		int32_t L_121 = ___0_i;
-		NullCheck(L_120);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_122 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_120)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_121)))->___vertexTopRight);
-		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_123 = L_122->___uv;
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_124;
-		L_124 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_123, NULL);
-		((L_118)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_119)))))->___uv0 = L_124;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_125 = ___3_textInfo;
-		NullCheck(L_125);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_126 = L_125->___meshInfo;
-		int32_t L_127 = V_0;
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_118 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_116)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_117)))->___vertexTopLeft);
+		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_119 = L_118->___uv;
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_120;
+		L_120 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_119, NULL);
+		((L_114)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_115)))))->___uv0 = L_120;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_121 = ___3_textInfo;
+		NullCheck(L_121);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_122 = L_121->___meshInfo;
+		int32_t L_123 = V_0;
+		NullCheck(L_122);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_124 = ((L_122)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_123)))->___vertexData;
+		int32_t L_125 = V_1;
+		NullCheck(L_124);
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_126 = V_2;
+		int32_t L_127 = ___0_i;
 		NullCheck(L_126);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_128 = ((L_126)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_127)))->___vertexData;
-		int32_t L_129 = V_1;
-		NullCheck(L_128);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_130 = V_2;
-		int32_t L_131 = ___0_i;
-		NullCheck(L_130);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_132 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_130)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_131)))->___vertexBottomRight);
-		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_133 = L_132->___uv;
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_134;
-		L_134 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_133, NULL);
-		((L_128)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_129)))))->___uv0 = L_134;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_135 = ___3_textInfo;
-		NullCheck(L_135);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_136 = L_135->___meshInfo;
-		int32_t L_137 = V_0;
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_128 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_126)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_127)))->___vertexTopRight);
+		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_129 = L_128->___uv;
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_130;
+		L_130 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_129, NULL);
+		((L_124)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_125)))))->___uv0 = L_130;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_131 = ___3_textInfo;
+		NullCheck(L_131);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_132 = L_131->___meshInfo;
+		int32_t L_133 = V_0;
+		NullCheck(L_132);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_134 = ((L_132)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_133)))->___vertexData;
+		int32_t L_135 = V_1;
+		NullCheck(L_134);
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_136 = V_2;
+		int32_t L_137 = ___0_i;
 		NullCheck(L_136);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_138 = ((L_136)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_137)))->___vertexData;
-		int32_t L_139 = V_1;
-		NullCheck(L_138);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_140 = V_2;
-		int32_t L_141 = ___0_i;
-		NullCheck(L_140);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_142 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_140)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_141)))->___vertexBottomLeft);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_143 = L_142->___uv2;
-		((L_138)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_139)))->___uv2 = L_143;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_144 = ___3_textInfo;
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_138 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_136)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_137)))->___vertexBottomRight);
+		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_139 = L_138->___uv;
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_140;
+		L_140 = Vector4_op_Implicit_m6673D431FBCA5AFB6CF06CD9783D07A4C90CC2AA_inline(L_139, NULL);
+		((L_134)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_135)))))->___uv0 = L_140;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_141 = ___3_textInfo;
+		NullCheck(L_141);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_142 = L_141->___meshInfo;
+		int32_t L_143 = V_0;
+		NullCheck(L_142);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_144 = ((L_142)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_143)))->___vertexData;
+		int32_t L_145 = V_1;
 		NullCheck(L_144);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_145 = L_144->___meshInfo;
-		int32_t L_146 = V_0;
-		NullCheck(L_145);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_147 = ((L_145)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_146)))->___vertexData;
-		int32_t L_148 = V_1;
-		NullCheck(L_147);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_149 = V_2;
-		int32_t L_150 = ___0_i;
-		NullCheck(L_149);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_151 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_149)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_150)))->___vertexTopLeft);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_152 = L_151->___uv2;
-		((L_147)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_148)))))->___uv2 = L_152;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_153 = ___3_textInfo;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_146 = V_2;
+		int32_t L_147 = ___0_i;
+		NullCheck(L_146);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_148 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_146)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_147)))->___vertexBottomLeft);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_149 = L_148->___uv2;
+		((L_144)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_145)))->___uv2 = L_149;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_150 = ___3_textInfo;
+		NullCheck(L_150);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_151 = L_150->___meshInfo;
+		int32_t L_152 = V_0;
+		NullCheck(L_151);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_153 = ((L_151)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_152)))->___vertexData;
+		int32_t L_154 = V_1;
 		NullCheck(L_153);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_154 = L_153->___meshInfo;
-		int32_t L_155 = V_0;
-		NullCheck(L_154);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_156 = ((L_154)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_155)))->___vertexData;
-		int32_t L_157 = V_1;
-		NullCheck(L_156);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_158 = V_2;
-		int32_t L_159 = ___0_i;
-		NullCheck(L_158);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_160 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_158)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_159)))->___vertexTopRight);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_161 = L_160->___uv2;
-		((L_156)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_157)))))->___uv2 = L_161;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_162 = ___3_textInfo;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_155 = V_2;
+		int32_t L_156 = ___0_i;
+		NullCheck(L_155);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_157 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_155)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_156)))->___vertexTopLeft);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_158 = L_157->___uv2;
+		((L_153)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_154)))))->___uv2 = L_158;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_159 = ___3_textInfo;
+		NullCheck(L_159);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_160 = L_159->___meshInfo;
+		int32_t L_161 = V_0;
+		NullCheck(L_160);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_162 = ((L_160)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_161)))->___vertexData;
+		int32_t L_163 = V_1;
 		NullCheck(L_162);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_163 = L_162->___meshInfo;
-		int32_t L_164 = V_0;
-		NullCheck(L_163);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_165 = ((L_163)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_164)))->___vertexData;
-		int32_t L_166 = V_1;
-		NullCheck(L_165);
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_167 = V_2;
-		int32_t L_168 = ___0_i;
-		NullCheck(L_167);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_169 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_167)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_168)))->___vertexBottomRight);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_170 = L_169->___uv2;
-		((L_165)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_166)))))->___uv2 = L_170;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_171 = ___3_textInfo;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_164 = V_2;
+		int32_t L_165 = ___0_i;
+		NullCheck(L_164);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_166 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_164)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_165)))->___vertexTopRight);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_167 = L_166->___uv2;
+		((L_162)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_163)))))->___uv2 = L_167;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_168 = ___3_textInfo;
+		NullCheck(L_168);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_169 = L_168->___meshInfo;
+		int32_t L_170 = V_0;
+		NullCheck(L_169);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_171 = ((L_169)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_170)))->___vertexData;
+		int32_t L_172 = V_1;
 		NullCheck(L_171);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_172 = L_171->___meshInfo;
-		int32_t L_173 = V_0;
-		NullCheck(L_172);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_174 = ((L_172)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_173)))->___vertexData;
-		int32_t L_175 = V_1;
-		NullCheck(L_174);
-		bool L_176 = ___1_convertToLinearSpace;
-		if (L_176)
-		{
-			G_B6_0 = ((L_174)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_175)));
-			goto IL_03a4;
-		}
-		G_B5_0 = ((L_174)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_175)));
-	}
-	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_177 = V_2;
-		int32_t L_178 = ___0_i;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_173 = V_2;
+		int32_t L_174 = ___0_i;
+		NullCheck(L_173);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_175 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_173)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_174)))->___vertexBottomRight);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_176 = L_175->___uv2;
+		((L_171)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_172)))))->___uv2 = L_176;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_177 = ___3_textInfo;
 		NullCheck(L_177);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_179 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_177)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_178)))->___vertexBottomLeft);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_180 = L_179->___color;
-		G_B7_0 = L_180;
-		G_B7_1 = G_B5_0;
-		goto IL_03ba;
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_178 = L_177->___meshInfo;
+		int32_t L_179 = V_0;
+		NullCheck(L_178);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_180 = ((L_178)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_179)))->___vertexData;
+		int32_t L_181 = V_1;
+		NullCheck(L_180);
+		bool L_182 = ___1_convertToLinearSpace;
+		if (L_182)
+		{
+			G_B8_0 = ((L_180)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_181)));
+			goto IL_03c7;
+		}
+		G_B7_0 = ((L_180)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_181)));
+	}
+	{
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_183 = V_2;
+		int32_t L_184 = ___0_i;
+		NullCheck(L_183);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_185 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_183)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_184)))->___vertexBottomLeft);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_186 = L_185->___color;
+		G_B9_0 = L_186;
+		G_B9_1 = G_B7_0;
+		goto IL_03dd;
 	}
 
-IL_03a4:
+IL_03c7:
 	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_181 = V_2;
-		int32_t L_182 = ___0_i;
-		NullCheck(L_181);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_183 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_181)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_182)))->___vertexBottomLeft);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_184 = L_183->___color;
-		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_185;
-		L_185 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_184, NULL);
-		G_B7_0 = L_185;
-		G_B7_1 = G_B6_0;
-	}
-
-IL_03ba:
-	{
-		G_B7_1->___color = G_B7_0;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_186 = ___3_textInfo;
-		NullCheck(L_186);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_187 = L_186->___meshInfo;
-		int32_t L_188 = V_0;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_187 = V_2;
+		int32_t L_188 = ___0_i;
 		NullCheck(L_187);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_189 = ((L_187)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_188)))->___vertexData;
-		int32_t L_190 = V_1;
-		NullCheck(L_189);
-		bool L_191 = ___1_convertToLinearSpace;
-		if (L_191)
-		{
-			G_B9_0 = ((L_189)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_190)))));
-			goto IL_03ee;
-		}
-		G_B8_0 = ((L_189)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_190)))));
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_189 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_187)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_188)))->___vertexBottomLeft);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_190 = L_189->___color;
+		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_191;
+		L_191 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_190, NULL);
+		G_B9_0 = L_191;
+		G_B9_1 = G_B8_0;
 	}
+
+IL_03dd:
 	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_192 = V_2;
-		int32_t L_193 = ___0_i;
+		G_B9_1->___color = G_B9_0;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_192 = ___3_textInfo;
 		NullCheck(L_192);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_194 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_192)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_193)))->___vertexTopLeft);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_195 = L_194->___color;
-		G_B10_0 = L_195;
-		G_B10_1 = G_B8_0;
-		goto IL_0404;
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_193 = L_192->___meshInfo;
+		int32_t L_194 = V_0;
+		NullCheck(L_193);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_195 = ((L_193)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_194)))->___vertexData;
+		int32_t L_196 = V_1;
+		NullCheck(L_195);
+		bool L_197 = ___1_convertToLinearSpace;
+		if (L_197)
+		{
+			G_B11_0 = ((L_195)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_196)))));
+			goto IL_0411;
+		}
+		G_B10_0 = ((L_195)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(1, L_196)))));
+	}
+	{
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_198 = V_2;
+		int32_t L_199 = ___0_i;
+		NullCheck(L_198);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_200 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_198)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_199)))->___vertexTopLeft);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_201 = L_200->___color;
+		G_B12_0 = L_201;
+		G_B12_1 = G_B10_0;
+		goto IL_0427;
 	}
 
-IL_03ee:
+IL_0411:
 	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_196 = V_2;
-		int32_t L_197 = ___0_i;
-		NullCheck(L_196);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_198 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_196)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_197)))->___vertexTopLeft);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_199 = L_198->___color;
-		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_200;
-		L_200 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_199, NULL);
-		G_B10_0 = L_200;
-		G_B10_1 = G_B9_0;
-	}
-
-IL_0404:
-	{
-		G_B10_1->___color = G_B10_0;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_201 = ___3_textInfo;
-		NullCheck(L_201);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_202 = L_201->___meshInfo;
-		int32_t L_203 = V_0;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_202 = V_2;
+		int32_t L_203 = ___0_i;
 		NullCheck(L_202);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_204 = ((L_202)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_203)))->___vertexData;
-		int32_t L_205 = V_1;
-		NullCheck(L_204);
-		bool L_206 = ___1_convertToLinearSpace;
-		if (L_206)
-		{
-			G_B12_0 = ((L_204)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_205)))));
-			goto IL_0438;
-		}
-		G_B11_0 = ((L_204)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_205)))));
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_204 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_202)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_203)))->___vertexTopLeft);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_205 = L_204->___color;
+		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_206;
+		L_206 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_205, NULL);
+		G_B12_0 = L_206;
+		G_B12_1 = G_B11_0;
 	}
+
+IL_0427:
 	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_207 = V_2;
-		int32_t L_208 = ___0_i;
+		G_B12_1->___color = G_B12_0;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_207 = ___3_textInfo;
 		NullCheck(L_207);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_209 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_207)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_208)))->___vertexTopRight);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_210 = L_209->___color;
-		G_B13_0 = L_210;
-		G_B13_1 = G_B11_0;
-		goto IL_044e;
-	}
-
-IL_0438:
-	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_211 = V_2;
-		int32_t L_212 = ___0_i;
-		NullCheck(L_211);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_213 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_211)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_212)))->___vertexTopRight);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_214 = L_213->___color;
-		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_215;
-		L_215 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_214, NULL);
-		G_B13_0 = L_215;
-		G_B13_1 = G_B12_0;
-	}
-
-IL_044e:
-	{
-		G_B13_1->___color = G_B13_0;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_216 = ___3_textInfo;
-		NullCheck(L_216);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_217 = L_216->___meshInfo;
-		int32_t L_218 = V_0;
-		NullCheck(L_217);
-		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_219 = ((L_217)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_218)))->___vertexData;
-		int32_t L_220 = V_1;
-		NullCheck(L_219);
-		bool L_221 = ___1_convertToLinearSpace;
-		if (L_221)
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_208 = L_207->___meshInfo;
+		int32_t L_209 = V_0;
+		NullCheck(L_208);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_210 = ((L_208)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_209)))->___vertexData;
+		int32_t L_211 = V_1;
+		NullCheck(L_210);
+		bool L_212 = ___1_convertToLinearSpace;
+		if (L_212)
 		{
-			G_B15_0 = ((L_219)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_220)))));
-			goto IL_0482;
+			G_B14_0 = ((L_210)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_211)))));
+			goto IL_045b;
 		}
-		G_B14_0 = ((L_219)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_220)))));
+		G_B13_0 = ((L_210)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(2, L_211)))));
 	}
 	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_222 = V_2;
-		int32_t L_223 = ___0_i;
-		NullCheck(L_222);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_224 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_222)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_223)))->___vertexBottomRight);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_225 = L_224->___color;
-		G_B16_0 = L_225;
-		G_B16_1 = G_B14_0;
-		goto IL_0498;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_213 = V_2;
+		int32_t L_214 = ___0_i;
+		NullCheck(L_213);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_215 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_213)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_214)))->___vertexTopRight);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_216 = L_215->___color;
+		G_B15_0 = L_216;
+		G_B15_1 = G_B13_0;
+		goto IL_0471;
 	}
 
-IL_0482:
+IL_045b:
 	{
-		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_226 = V_2;
-		int32_t L_227 = ___0_i;
-		NullCheck(L_226);
-		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_228 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_226)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_227)))->___vertexBottomRight);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_229 = L_228->___color;
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_217 = V_2;
+		int32_t L_218 = ___0_i;
+		NullCheck(L_217);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_219 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_217)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_218)))->___vertexTopRight);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_220 = L_219->___color;
 		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
-		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_230;
-		L_230 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_229, NULL);
-		G_B16_0 = L_230;
-		G_B16_1 = G_B15_0;
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_221;
+		L_221 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_220, NULL);
+		G_B15_0 = L_221;
+		G_B15_1 = G_B14_0;
 	}
 
-IL_0498:
+IL_0471:
 	{
-		G_B16_1->___color = G_B16_0;
-		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_231 = ___3_textInfo;
-		NullCheck(L_231);
-		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_232 = L_231->___meshInfo;
-		int32_t L_233 = V_0;
+		G_B15_1->___color = G_B15_0;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_222 = ___3_textInfo;
+		NullCheck(L_222);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_223 = L_222->___meshInfo;
+		int32_t L_224 = V_0;
+		NullCheck(L_223);
+		TextCoreVertexU5BU5D_tB1DD4645DEB2946FA2271F94CE23D57FB4B9FE17* L_225 = ((L_223)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_224)))->___vertexData;
+		int32_t L_226 = V_1;
+		NullCheck(L_225);
+		bool L_227 = ___1_convertToLinearSpace;
+		if (L_227)
+		{
+			G_B17_0 = ((L_225)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_226)))));
+			goto IL_04a5;
+		}
+		G_B16_0 = ((L_225)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(3, L_226)))));
+	}
+	{
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_228 = V_2;
+		int32_t L_229 = ___0_i;
+		NullCheck(L_228);
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_230 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_228)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_229)))->___vertexBottomRight);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_231 = L_230->___color;
+		G_B18_0 = L_231;
+		G_B18_1 = G_B16_0;
+		goto IL_04bb;
+	}
+
+IL_04a5:
+	{
+		TextElementInfoU5BU5D_tEC28C9B72883EE21AA798913497C69E179A15C4E* L_232 = V_2;
+		int32_t L_233 = ___0_i;
 		NullCheck(L_232);
-		int32_t L_234 = V_1;
-		((L_232)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_233)))->___vertexCount = ((int32_t)il2cpp_codegen_add(L_234, 4));
+		TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9* L_234 = (TextVertex_tF030A16DC67EAF3F6C9C9C0564D4B88758B173A9*)(&((L_232)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_233)))->___vertexBottomRight);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_235 = L_234->___color;
+		il2cpp_codegen_runtime_class_init_inline(TextGeneratorUtilities_tAD0F329B1A5C7CC27CF63086C11FE092B43FED53_il2cpp_TypeInfo_var);
+		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_236;
+		L_236 = TextGeneratorUtilities_GammaToLinear_m37B603C94918DB93477EFF98E8A77FD4D8B0C8FB(L_235, NULL);
+		G_B18_0 = L_236;
+		G_B18_1 = G_B17_0;
+	}
+
+IL_04bb:
+	{
+		G_B18_1->___color = G_B18_0;
+		TextInfo_t27E58E62A7552C66D38C175AF9D22622365F5D09* L_237 = ___3_textInfo;
+		NullCheck(L_237);
+		MeshInfoU5BU5D_t3DF8B75BF4A213334EED197AD25E432212894AC6* L_238 = L_237->___meshInfo;
+		int32_t L_239 = V_0;
+		NullCheck(L_238);
+		int32_t L_240 = V_1;
+		((L_238)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_239)))->___vertexCount = ((int32_t)il2cpp_codegen_add(L_240, 4));
+	}
+
+IL_04d5:
+	{
 		return;
 	}
 }

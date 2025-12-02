@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import UvAssistant from './uvAssistant';
@@ -10,6 +10,7 @@ interface ScreenWrapperProps {
   translucent?: boolean;
   inverted?: boolean;
   showAssistant?: boolean;
+  isScrollable?: boolean;
 }
 
 const UvScreenWrapper = ({
@@ -18,9 +19,10 @@ const UvScreenWrapper = ({
   translucent = true,
   inverted = false,
   showAssistant = false,
+  isScrollable = false,
 }: ScreenWrapperProps) => {
   const insets = useSafeAreaInsets();
-  
+
   const gradientColors = inverted
     ? ["#02080B", "#04202B", "#0B6E9A"]
     : ["#0B6E9A", "#04202B", "#02080B"];
@@ -28,7 +30,7 @@ const UvScreenWrapper = ({
   const gradientLocations = [0, 0.2, 1];
 
   return (
-    <View style={[styles.container, conatinerStyle]}> 
+    <View style={[styles.container, conatinerStyle]}>
       <LinearGradient
         colors={gradientColors}
         locations={gradientLocations}
@@ -38,10 +40,27 @@ const UvScreenWrapper = ({
         pointerEvents="none"
       />
       <StatusBar barStyle="light-content" translucent={translucent} backgroundColor="transparent" />
-      <View style={{ paddingTop: insets.top + 10, flex: 1}}>
-        {children}
-        {showAssistant && <UvAssistant />}
-      </View>
+      {isScrollable ? (
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.container}
+        >
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={{ paddingTop: insets.top + 10, flex: 1 }}>
+              {children}
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      ) : (
+        <View style={{ paddingTop: insets.top + 10, flex: 1 }}>
+          {children}
+        </View>
+      )}
+      {showAssistant && <UvAssistant />}
     </View>
   )
 }
@@ -51,5 +70,8 @@ export default UvScreenWrapper
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
   },
 })
