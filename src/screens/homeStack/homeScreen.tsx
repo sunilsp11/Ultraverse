@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { CompositeNavigationProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Alert, ImageSourcePropType, ScrollView, StyleSheet, View, RefreshControl } from 'react-native'
 import UvCategoryFilterBar from '../../components/common/uvCategoryFilterBar'
 import UvGameCarousel from '../../components/common/uvGameCarousel'
@@ -17,6 +17,7 @@ import { useAppSelector } from '../../store/store'
 import { useGetProfileQuery } from '../../services/profile/profileApi'
 import { useGetCategoriesQuery } from '../../services/categories/categoriesApi'
 import { useGetTopGamesQuery } from '../../services/games/gamesApi'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>,
@@ -194,7 +195,15 @@ const HomeScreen = () => {
     [resolvedTopGames],
   )
 
+  const breakAccessToken = async () => {
+    const refresh = await AsyncStorage.getItem('UserRefreshToken');
+    console.log('Current refresh token:', refresh);
+    // Make access token intentionally invalid
+    await AsyncStorage.setItem('UserToken', 'invalid-access-token');
+  };
+
   const handleGamePress = (gameId: string) => {
+    // breakAccessToken();
     const game = gameDetailsMap[gameId]
     if (game) {
       navigation.navigate('GameDetailsScreen', {  

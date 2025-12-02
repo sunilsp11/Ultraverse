@@ -74,8 +74,8 @@ const LoginScreen = () => {
     formState: { errors },
   } = useForm<LoginFormData>({
     defaultValues: {
-      email: "",
-      password: "",
+      email: __DEV__ ? "admin@gmail.com" : "",
+      password: __DEV__ ? "admin" : "",
     },
     mode: "onBlur",
   });
@@ -88,11 +88,14 @@ const LoginScreen = () => {
         email: data.email,
         password: data.password,
       }).unwrap();
-
+      console.log("response", JSON.stringify(response, null, 2));
       const token = response?.tokens?.access;
-
+      const refreshToken = response?.tokens?.refresh;
+      console.log("refreshToken", refreshToken);
+      
       if (token) {
         await AsyncStorage.setItem("UserToken", token);
+        await AsyncStorage.setItem("UserRefreshToken", refreshToken);
         await AsyncStorage.removeItem("UserAccessToken");
         dispatch(setAuthProvider("credentials"));
 
@@ -152,11 +155,7 @@ const LoginScreen = () => {
 
       console.log("response", JSON.stringify(response, null, 2));
       await AsyncStorage.setItem("UserToken", response.token);
-      if (response.refresh) {
-        await AsyncStorage.setItem("UserRefreshToken", response.refresh);
-      } else {
-        await AsyncStorage.removeItem("UserRefreshToken");
-      }
+      await AsyncStorage.setItem("UserRefreshToken", response.refresh);
       await AsyncStorage.removeItem("UserAccessToken");
 
       const resolvedProfile: UserProfile = {

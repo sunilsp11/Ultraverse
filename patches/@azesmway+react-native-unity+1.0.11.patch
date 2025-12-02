@@ -1,0 +1,2579 @@
+diff --git a/node_modules/@azesmway/react-native-unity/android/build.gradle b/node_modules/@azesmway/react-native-unity/android/build.gradle
+index a10543a..014ba20 100644
+--- a/node_modules/@azesmway/react-native-unity/android/build.gradle
++++ b/node_modules/@azesmway/react-native-unity/android/build.gradle
+@@ -98,7 +98,7 @@ repositories {
+   }
+   google()
+   mavenCentral()
+-  jcenter()
++  // jcenter()
+ }
+ 
+ 
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/afb2c4d872ad23eee4f42593e1d262d3/results.bin b/node_modules/@azesmway/react-native-unity/android/build/.transforms/afb2c4d872ad23eee4f42593e1d262d3/results.bin
+new file mode 100644
+index 0000000..0d259dd
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/.transforms/afb2c4d872ad23eee4f42593e1d262d3/results.bin
+@@ -0,0 +1 @@
++o/classes
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/afb2c4d872ad23eee4f42593e1d262d3/transformed/classes/classes_dex/classes.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/afb2c4d872ad23eee4f42593e1d262d3/transformed/classes/classes_dex/classes.dex
+new file mode 100644
+index 0000000..f9543d7
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/afb2c4d872ad23eee4f42593e1d262d3/transformed/classes/classes_dex/classes.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/results.bin b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/results.bin
+new file mode 100644
+index 0000000..7ed749e
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/results.bin
+@@ -0,0 +1 @@
++o/bundleLibRuntimeToDirDebug
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/BuildConfig.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/BuildConfig.dex
+new file mode 100644
+index 0000000..008719d
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/BuildConfig.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity$1.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity$1.dex
+new file mode 100644
+index 0000000..b42bd8f
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity$1.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.dex
+new file mode 100644
+index 0000000..ac54388
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity.dex
+new file mode 100644
+index 0000000..f8487d3
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnity.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityView.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityView.dex
+new file mode 100644
+index 0000000..563f160
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityView.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.dex
+new file mode 100644
+index 0000000..7cf2c57
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.dex
+new file mode 100644
+index 0000000..d09de59
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.dex
+new file mode 100644
+index 0000000..575d843
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.dex
+new file mode 100644
+index 0000000..b194fa2
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.dex
+new file mode 100644
+index 0000000..94ed33c
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/UPlayer$1.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/UPlayer$1.dex
+new file mode 100644
+index 0000000..3e1eb97
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/UPlayer$1.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/UPlayer.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/UPlayer.dex
+new file mode 100644
+index 0000000..2191d67
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/azesmwayreactnativeunity/UPlayer.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.dex
+new file mode 100644
+index 0000000..080a9be
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.dex b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.dex
+new file mode 100644
+index 0000000..4ac4450
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.dex differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin
+new file mode 100644
+index 0000000..30961e4
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/.transforms/f966322ea1bb6ad01dfdb0015b2087c4/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/buildConfig/debug/com/azesmwayreactnativeunity/BuildConfig.java b/node_modules/@azesmway/react-native-unity/android/build/generated/source/buildConfig/debug/com/azesmwayreactnativeunity/BuildConfig.java
+new file mode 100644
+index 0000000..4208e2d
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/buildConfig/debug/com/azesmwayreactnativeunity/BuildConfig.java
+@@ -0,0 +1,12 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package com.azesmwayreactnativeunity;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "com.azesmwayreactnativeunity";
++  public static final String BUILD_TYPE = "debug";
++  // Field from default config.
++  public static final boolean IS_NEW_ARCHITECTURE_ENABLED = true;
++}
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/java/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.java b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/java/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.java
+new file mode 100644
+index 0000000..856abfc
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/java/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.java
+@@ -0,0 +1,58 @@
++/**
++* This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++*
++* Do not edit this file as changes may cause incorrect behavior and will be lost
++* once the code is regenerated.
++*
++* @generated by codegen project: GeneratePropsJavaDelegate.js
++*/
++
++package com.facebook.react.viewmanagers;
++
++import android.view.View;
++import androidx.annotation.Nullable;
++import com.facebook.react.bridge.ReadableArray;
++import com.facebook.react.uimanager.BaseViewManager;
++import com.facebook.react.uimanager.BaseViewManagerDelegate;
++import com.facebook.react.uimanager.LayoutShadowNode;
++
++@SuppressWarnings("deprecation")
++public class RNUnityViewManagerDelegate<T extends View, U extends BaseViewManager<T, ? extends LayoutShadowNode> & RNUnityViewManagerInterface<T>> extends BaseViewManagerDelegate<T, U> {
++  public RNUnityViewManagerDelegate(U viewManager) {
++    super(viewManager);
++  }
++  @Override
++  public void setProperty(T view, String propName, @Nullable Object value) {
++    switch (propName) {
++      case "androidKeepPlayerMounted":
++        mViewManager.setAndroidKeepPlayerMounted(view, value == null ? false : (boolean) value);
++        break;
++      case "fullScreen":
++        mViewManager.setFullScreen(view, value == null ? false : (boolean) value);
++        break;
++      default:
++        super.setProperty(view, propName, value);
++    }
++  }
++
++  @Override
++  public void receiveCommand(T view, String commandName, ReadableArray args) {
++    switch (commandName) {
++      case "postMessage":
++        mViewManager.postMessage(view, args.getString(0), args.getString(1), args.getString(2));
++        break;
++      case "unloadUnity":
++        mViewManager.unloadUnity(view);
++        break;
++      case "pauseUnity":
++        mViewManager.pauseUnity(view, args.getBoolean(0));
++        break;
++      case "resumeUnity":
++        mViewManager.resumeUnity(view);
++        break;
++      case "windowFocusChanged":
++        mViewManager.windowFocusChanged(view, args.getBoolean(0));
++        break;
++    }
++  }
++}
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/java/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.java b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/java/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.java
+new file mode 100644
+index 0000000..25edbee
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/java/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.java
+@@ -0,0 +1,23 @@
++/**
++* This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++*
++* Do not edit this file as changes may cause incorrect behavior and will be lost
++* once the code is regenerated.
++*
++* @generated by codegen project: GeneratePropsJavaInterface.js
++*/
++
++package com.facebook.react.viewmanagers;
++
++import android.view.View;
++import com.facebook.react.uimanager.ViewManagerWithGeneratedInterface;
++
++public interface RNUnityViewManagerInterface<T extends View> extends ViewManagerWithGeneratedInterface {
++  void setAndroidKeepPlayerMounted(T view, boolean value);
++  void setFullScreen(T view, boolean value);
++  void postMessage(T view, String gameObject, String methodName, String message);
++  void unloadUnity(T view);
++  void pauseUnity(T view, boolean pause);
++  void resumeUnity(T view);
++  void windowFocusChanged(T view, boolean hasFocus);
++}
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/CMakeLists.txt b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/CMakeLists.txt
+new file mode 100644
+index 0000000..3ed9adc
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/CMakeLists.txt
+@@ -0,0 +1,28 @@
++# Copyright (c) Meta Platforms, Inc. and affiliates.
++#
++# This source code is licensed under the MIT license found in the
++# LICENSE file in the root directory of this source tree.
++
++cmake_minimum_required(VERSION 3.13)
++set(CMAKE_VERBOSE_MAKEFILE on)
++
++file(GLOB react_codegen_SRCS CONFIGURE_DEPENDS *.cpp react/renderer/components/unityview/*.cpp)
++
++add_library(
++  react_codegen_unityview
++  OBJECT
++  ${react_codegen_SRCS}
++)
++
++target_include_directories(react_codegen_unityview PUBLIC . react/renderer/components/unityview)
++
++target_link_libraries(
++  react_codegen_unityview
++  fbjni
++  jsi
++  # We need to link different libraries based on whether we are building rncore or not, that's necessary
++  # because we want to break a circular dependency between react_codegen_rncore and reactnative
++  reactnative
++)
++
++target_compile_reactnative_options(react_codegen_unityview PRIVATE)
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ComponentDescriptors.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ComponentDescriptors.cpp
+new file mode 100644
+index 0000000..2f98a23
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ComponentDescriptors.cpp
+@@ -0,0 +1,22 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateComponentDescriptorCpp.js
++ */
++
++#include <react/renderer/components/unityview/ComponentDescriptors.h>
++#include <react/renderer/core/ConcreteComponentDescriptor.h>
++#include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
++
++namespace facebook::react {
++
++void unityview_registerComponentDescriptorsFromCodegen(
++  std::shared_ptr<const ComponentDescriptorProviderRegistry> registry) {
++registry->add(concreteComponentDescriptorProvider<RNUnityViewComponentDescriptor>());
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ComponentDescriptors.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ComponentDescriptors.h
+new file mode 100644
+index 0000000..81c7038
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ComponentDescriptors.h
+@@ -0,0 +1,24 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateComponentDescriptorH.js
++ */
++
++#pragma once
++
++#include <react/renderer/components/unityview/ShadowNodes.h>
++#include <react/renderer/core/ConcreteComponentDescriptor.h>
++#include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
++
++namespace facebook::react {
++
++using RNUnityViewComponentDescriptor = ConcreteComponentDescriptor<RNUnityViewShadowNode>;
++
++void unityview_registerComponentDescriptorsFromCodegen(
++  std::shared_ptr<const ComponentDescriptorProviderRegistry> registry);
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/EventEmitters.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/EventEmitters.cpp
+new file mode 100644
+index 0000000..2f3dcbb
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/EventEmitters.cpp
+@@ -0,0 +1,42 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateEventEmitterCpp.js
++ */
++
++#include <react/renderer/components/unityview/EventEmitters.h>
++
++
++namespace facebook::react {
++
++void RNUnityViewEventEmitter::onUnityMessage(OnUnityMessage event) const {
++  dispatchEvent("unityMessage", [event=std::move(event)](jsi::Runtime &runtime) {
++    auto payload = jsi::Object(runtime);
++    payload.setProperty(runtime, "message", event.message);
++    return payload;
++  });
++}
++
++
++void RNUnityViewEventEmitter::onPlayerUnload(OnPlayerUnload event) const {
++  dispatchEvent("playerUnload", [event=std::move(event)](jsi::Runtime &runtime) {
++    auto payload = jsi::Object(runtime);
++    payload.setProperty(runtime, "message", event.message);
++    return payload;
++  });
++}
++
++
++void RNUnityViewEventEmitter::onPlayerQuit(OnPlayerQuit event) const {
++  dispatchEvent("playerQuit", [event=std::move(event)](jsi::Runtime &runtime) {
++    auto payload = jsi::Object(runtime);
++    payload.setProperty(runtime, "message", event.message);
++    return payload;
++  });
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/EventEmitters.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/EventEmitters.h
+new file mode 100644
+index 0000000..bbe558d
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/EventEmitters.h
+@@ -0,0 +1,37 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateEventEmitterH.js
++ */
++#pragma once
++
++#include <react/renderer/components/view/ViewEventEmitter.h>
++
++
++namespace facebook::react {
++class RNUnityViewEventEmitter : public ViewEventEmitter {
++ public:
++  using ViewEventEmitter::ViewEventEmitter;
++
++  struct OnUnityMessage {
++      std::string message;
++    };
++
++  struct OnPlayerUnload {
++      std::string message;
++    };
++
++  struct OnPlayerQuit {
++      std::string message;
++    };
++  void onUnityMessage(OnUnityMessage value) const;
++
++  void onPlayerUnload(OnPlayerUnload value) const;
++
++  void onPlayerQuit(OnPlayerQuit value) const;
++};
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/Props.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/Props.cpp
+new file mode 100644
+index 0000000..b80e48a
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/Props.cpp
+@@ -0,0 +1,52 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GeneratePropsCpp.js
++ */
++
++#include <react/renderer/components/unityview/Props.h>
++#include <react/renderer/core/PropsParserContext.h>
++#include <react/renderer/core/propsConversions.h>
++
++namespace facebook::react {
++
++RNUnityViewProps::RNUnityViewProps(
++    const PropsParserContext &context,
++    const RNUnityViewProps &sourceProps,
++    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
++
++    androidKeepPlayerMounted(convertRawProp(context, rawProps, "androidKeepPlayerMounted", sourceProps.androidKeepPlayerMounted, {false})),
++    fullScreen(convertRawProp(context, rawProps, "fullScreen", sourceProps.fullScreen, {false})) {}
++    
++#ifdef RN_SERIALIZABLE_STATE
++ComponentName RNUnityViewProps::getDiffPropsImplementationTarget() const {
++  return "RNUnityView";
++}
++
++folly::dynamic RNUnityViewProps::getDiffProps(
++    const Props* prevProps) const {
++  static const auto defaultProps = RNUnityViewProps();
++  const RNUnityViewProps* oldProps = prevProps == nullptr
++      ? &defaultProps
++      : static_cast<const RNUnityViewProps*>(prevProps);
++  if (this == oldProps) {
++    return folly::dynamic::object();
++  }
++  folly::dynamic result = HostPlatformViewProps::getDiffProps(prevProps);
++  
++  if (androidKeepPlayerMounted != oldProps->androidKeepPlayerMounted) {
++    result["androidKeepPlayerMounted"] = androidKeepPlayerMounted;
++  }
++    
++  if (fullScreen != oldProps->fullScreen) {
++    result["fullScreen"] = fullScreen;
++  }
++  return result;
++}
++#endif
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/Props.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/Props.h
+new file mode 100644
+index 0000000..57d9dcc
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/Props.h
+@@ -0,0 +1,37 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GeneratePropsH.js
++ */
++#pragma once
++
++#include <react/renderer/components/view/ViewProps.h>
++#include <react/renderer/core/PropsParserContext.h>
++#include <react/renderer/debug/DebugStringConvertible.h>
++
++namespace facebook::react {
++
++class RNUnityViewProps final : public ViewProps {
++ public:
++  RNUnityViewProps() = default;
++  RNUnityViewProps(const PropsParserContext& context, const RNUnityViewProps &sourceProps, const RawProps &rawProps);
++
++#pragma mark - Props
++
++  bool androidKeepPlayerMounted{false};
++  bool fullScreen{false};
++
++  #ifdef RN_SERIALIZABLE_STATE
++  ComponentName getDiffPropsImplementationTarget() const override;
++
++  folly::dynamic getDiffProps(const Props* prevProps) const override;
++  #endif
++
++  
++};
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ShadowNodes.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ShadowNodes.cpp
+new file mode 100644
+index 0000000..2d51e58
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ShadowNodes.cpp
+@@ -0,0 +1,17 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateShadowNodeCpp.js
++ */
++
++#include <react/renderer/components/unityview/ShadowNodes.h>
++
++namespace facebook::react {
++
++extern const char RNUnityViewComponentName[] = "RNUnityView";
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ShadowNodes.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ShadowNodes.h
+new file mode 100644
+index 0000000..2e30c3a
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/ShadowNodes.h
+@@ -0,0 +1,32 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateShadowNodeH.js
++ */
++
++#pragma once
++
++#include <react/renderer/components/unityview/EventEmitters.h>
++#include <react/renderer/components/unityview/Props.h>
++#include <react/renderer/components/unityview/States.h>
++#include <react/renderer/components/view/ConcreteViewShadowNode.h>
++#include <jsi/jsi.h>
++
++namespace facebook::react {
++
++JSI_EXPORT extern const char RNUnityViewComponentName[];
++
++/*
++ * `ShadowNode` for <RNUnityView> component.
++ */
++using RNUnityViewShadowNode = ConcreteViewShadowNode<
++    RNUnityViewComponentName,
++    RNUnityViewProps,
++    RNUnityViewEventEmitter,
++    RNUnityViewState>;
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/States.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/States.cpp
+new file mode 100644
+index 0000000..57d71a9
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/States.cpp
+@@ -0,0 +1,16 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateStateCpp.js
++ */
++#include <react/renderer/components/unityview/States.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/States.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/States.h
+new file mode 100644
+index 0000000..379a3ee
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/States.h
+@@ -0,0 +1,20 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateStateH.js
++ */
++#pragma once
++
++#include <react/renderer/core/StateData.h>
++#ifdef RN_SERIALIZABLE_STATE
++#include <folly/dynamic.h>
++#endif
++
++namespace facebook::react {
++
++using RNUnityViewState = StateData;
++
++} // namespace facebook::react
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/unityviewJSI-generated.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/unityviewJSI-generated.cpp
+new file mode 100644
+index 0000000..3ba44ee
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/unityviewJSI-generated.cpp
+@@ -0,0 +1,17 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleCpp.js
++ */
++
++#include "unityviewJSI.h"
++
++namespace facebook::react {
++
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/unityviewJSI.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/unityviewJSI.h
+new file mode 100644
+index 0000000..ec16260
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/react/renderer/components/unityview/unityviewJSI.h
+@@ -0,0 +1,19 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleH.js
++ */
++
++#pragma once
++
++#include <ReactCommon/TurboModule.h>
++#include <react/bridging/Bridging.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/unityview-generated.cpp b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/unityview-generated.cpp
+new file mode 100644
+index 0000000..1139e73
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/unityview-generated.cpp
+@@ -0,0 +1,22 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJniCpp.js
++ */
++
++#include "unityview.h"
++
++namespace facebook::react {
++
++
++
++std::shared_ptr<TurboModule> unityview_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params) {
++
++  return nullptr;
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/unityview.h b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/unityview.h
+new file mode 100644
+index 0000000..3425085
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/jni/unityview.h
+@@ -0,0 +1,24 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJniH.js
++ */
++
++#pragma once
++
++#include <ReactCommon/JavaTurboModule.h>
++#include <ReactCommon/TurboModule.h>
++#include <jsi/jsi.h>
++
++namespace facebook::react {
++
++
++
++JSI_EXPORT
++std::shared_ptr<TurboModule> unityview_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params);
++
++} // namespace facebook::react
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/schema.json b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/schema.json
+new file mode 100644
+index 0000000..9a45c02
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/generated/source/codegen/schema.json
+@@ -0,0 +1 @@
++{"libraryName":"","modules":{"RNUnityView":{"type":"Component","components":{"RNUnityView":{"extendsProps":[{"type":"ReactNativeBuiltInType","knownTypeName":"ReactNativeCoreViewProps"}],"events":[{"name":"onUnityMessage","optional":true,"bubblingType":"direct","typeAnnotation":{"type":"EventTypeAnnotation","argument":{"type":"ObjectTypeAnnotation","properties":[{"name":"message","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}}]}}},{"name":"onPlayerUnload","optional":true,"bubblingType":"direct","typeAnnotation":{"type":"EventTypeAnnotation","argument":{"type":"ObjectTypeAnnotation","properties":[{"name":"message","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}}]}}},{"name":"onPlayerQuit","optional":true,"bubblingType":"direct","typeAnnotation":{"type":"EventTypeAnnotation","argument":{"type":"ObjectTypeAnnotation","properties":[{"name":"message","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}}]}}}],"props":[{"name":"androidKeepPlayerMounted","optional":true,"typeAnnotation":{"type":"BooleanTypeAnnotation","default":false}},{"name":"fullScreen","optional":true,"typeAnnotation":{"type":"BooleanTypeAnnotation","default":false}}],"commands":[{"name":"postMessage","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","params":[{"name":"gameObject","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}},{"name":"methodName","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}},{"name":"message","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}}],"returnTypeAnnotation":{"type":"VoidTypeAnnotation"}}},{"name":"unloadUnity","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","params":[],"returnTypeAnnotation":{"type":"VoidTypeAnnotation"}}},{"name":"pauseUnity","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","params":[{"name":"pause","optional":false,"typeAnnotation":{"type":"BooleanTypeAnnotation"}}],"returnTypeAnnotation":{"type":"VoidTypeAnnotation"}}},{"name":"resumeUnity","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","params":[],"returnTypeAnnotation":{"type":"VoidTypeAnnotation"}}},{"name":"windowFocusChanged","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","params":[{"name":"hasFocus","optional":false,"typeAnnotation":{"type":"BooleanTypeAnnotation"}}],"returnTypeAnnotation":{"type":"VoidTypeAnnotation"}}}]}}}}}
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml b/node_modules/@azesmway/react-native-unity/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..c249783
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.azesmwayreactnativeunity" >
++
++    <uses-sdk android:minSdkVersion="30" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json b/node_modules/@azesmway/react-native-unity/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+new file mode 100644
+index 0000000..7ac1295
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+@@ -0,0 +1,18 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.azesmwayreactnativeunity",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties b/node_modules/@azesmway/react-native-unity/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+new file mode 100644
+index 0000000..1211b1e
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+@@ -0,0 +1,6 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
++minCompileSdk=1
++minCompileSdkExtension=0
++minAndroidGradlePluginVersion=1.0.0
++coreLibraryDesugaringEnabled=false
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json b/node_modules/@azesmway/react-native-unity/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar b/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar
+new file mode 100644
+index 0000000..e442f31
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar b/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar
+new file mode 100644
+index 0000000..86156ae
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt b/node_modules/@azesmway/react-native-unity/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..5188469
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1 @@
++#Mon Dec 01 16:16:30 IST 2025
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..6b5bc2c
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/build/generated/res/resValues/debug"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugAssets/merger.xml b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+new file mode 100644
+index 0000000..6efd8c6
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/assets"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/debug/assets"/></dataSet><dataSet config="generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/build/intermediates/shader_assets/debug/compileDebugShaders/out"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..1d12d5a
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/debug/jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugShaders/merger.xml b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+new file mode 100644
+index 0000000..f78fce7
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/shaders"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/debug/shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/BuildConfig.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/BuildConfig.class
+new file mode 100644
+index 0000000..57dba16
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/BuildConfig.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity$1.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity$1.class
+new file mode 100644
+index 0000000..b2792db
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity$1.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.class
+new file mode 100644
+index 0000000..a80fd8e
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity.class
+new file mode 100644
+index 0000000..84051cf
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnity.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityView.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityView.class
+new file mode 100644
+index 0000000..5d0270f
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityView.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.class
+new file mode 100644
+index 0000000..5b0a352
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.class
+new file mode 100644
+index 0000000..e36e63e
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.class
+new file mode 100644
+index 0000000..8e2e361
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.class
+new file mode 100644
+index 0000000..3b7ffad
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.class
+new file mode 100644
+index 0000000..d2950fe
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/UPlayer$1.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/UPlayer$1.class
+new file mode 100644
+index 0000000..7c5b40b
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/UPlayer$1.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/UPlayer.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/UPlayer.class
+new file mode 100644
+index 0000000..a920024
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/azesmwayreactnativeunity/UPlayer.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.class
+new file mode 100644
+index 0000000..a847c47
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.class
+new file mode 100644
+index 0000000..dfb848d
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt b/node_modules/@azesmway/react-native-unity/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+new file mode 100644
+index 0000000..78ac5b8
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+@@ -0,0 +1,2 @@
++R_DEF: Internal format may change without notice
++local
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt b/node_modules/@azesmway/react-native-unity/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..b231f81
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,7 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="com.azesmwayreactnativeunity" >
++4
++5    <uses-sdk android:minSdkVersion="30" />
++6
++7</manifest>
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml b/node_modules/@azesmway/react-native-unity/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+new file mode 100644
+index 0000000..c249783
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.azesmwayreactnativeunity" >
++
++    <uses-sdk android:minSdkVersion="30" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json b/node_modules/@azesmway/react-native-unity/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt b/node_modules/@azesmway/react-native-unity/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+new file mode 100644
+index 0000000..08f4ebe
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+@@ -0,0 +1 @@
++0 Warning/Error
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/BuildConfig.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/BuildConfig.class
+new file mode 100644
+index 0000000..57dba16
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/BuildConfig.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity$1.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity$1.class
+new file mode 100644
+index 0000000..b2792db
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity$1.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.class
+new file mode 100644
+index 0000000..a80fd8e
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity$UnityPlayerCallback.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity.class
+new file mode 100644
+index 0000000..84051cf
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnity.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityView.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityView.class
+new file mode 100644
+index 0000000..5d0270f
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityView.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.class
+new file mode 100644
+index 0000000..5b0a352
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$1.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.class
+new file mode 100644
+index 0000000..e36e63e
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager$2.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.class
+new file mode 100644
+index 0000000..8e2e361
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManager.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.class
+new file mode 100644
+index 0000000..3b7ffad
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewManagerSpec.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.class
+new file mode 100644
+index 0000000..d2950fe
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/ReactNativeUnityViewPackage.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/UPlayer$1.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/UPlayer$1.class
+new file mode 100644
+index 0000000..7c5b40b
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/UPlayer$1.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/UPlayer.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/UPlayer.class
+new file mode 100644
+index 0000000..a920024
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/azesmwayreactnativeunity/UPlayer.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.class
+new file mode 100644
+index 0000000..a847c47
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/facebook/react/viewmanagers/RNUnityViewManagerDelegate.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.class b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.class
+new file mode 100644
+index 0000000..dfb848d
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/facebook/react/viewmanagers/RNUnityViewManagerInterface.class differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar
+new file mode 100644
+index 0000000..4e822e3
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt b/node_modules/@azesmway/react-native-unity/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+new file mode 100644
+index 0000000..f3035ec
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+@@ -0,0 +1 @@
++com.azesmwayreactnativeunity
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/@azesmway/react-native-unity/android/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..39309d4
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/android/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,16 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml:1:1-2:12
++INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml:1:1-2:12
++	package
++		INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml
++	xmlns:android
++		ADDED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml:1:11-69
++uses-sdk
++INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml reason: use-sdk injection requested
++INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml
++INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml
++	android:targetSdkVersion
++		INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml
++	android:minSdkVersion
++		INJECTED from /Users/rajdeveloper/Desktop/PROJECTS/Ultraverse/node_modules/@azesmway/react-native-unity/android/src/main/AndroidManifestNew.xml
+diff --git a/node_modules/@azesmway/react-native-unity/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin b/node_modules/@azesmway/react-native-unity/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
+new file mode 100644
+index 0000000..e727f7a
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin differ
+diff --git a/node_modules/@azesmway/react-native-unity/android/src/main/java/com/azesmwayreactnativeunity/UPlayer.java b/node_modules/@azesmway/react-native-unity/android/src/main/java/com/azesmwayreactnativeunity/UPlayer.java
+index b944779..b847ad8 100644
+--- a/node_modules/@azesmway/react-native-unity/android/src/main/java/com/azesmwayreactnativeunity/UPlayer.java
++++ b/node_modules/@azesmway/react-native-unity/android/src/main/java/com/azesmwayreactnativeunity/UPlayer.java
+@@ -94,10 +94,13 @@ public class UPlayer {
+     public FrameLayout requestFrame() throws NoSuchMethodException {
+         try {
+             Method getFrameLayout = unityPlayer.getClass().getMethod("getFrameLayout");
+-
+             return (FrameLayout) getFrameLayout.invoke(unityPlayer);
+         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+-            return unityPlayer;
++            // Fallback: return a new empty FrameLayout so that callers still
++            // receive a ViewGroup-compatible container, even if UnityPlayer
++            // itself cannot be attached as a View.
++            FrameLayout container = new FrameLayout(unityPlayer.getContext());
++            return container;
+         }
+     }
+ 
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/Metadata/global-metadata.dat b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/Metadata/global-metadata.dat
+new file mode 100644
+index 0000000..6b3b38b
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/Metadata/global-metadata.dat differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/Resources/mscorlib.dll-resources.dat b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/Resources/mscorlib.dll-resources.dat
+new file mode 100644
+index 0000000..6d144fc
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/Resources/mscorlib.dll-resources.dat differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/mono/4.0/machine.config b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/mono/4.0/machine.config
+new file mode 100644
+index 0000000..f3b71c4
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Managed/mono/4.0/machine.config
+@@ -0,0 +1,307 @@
++<?xml version="1.0" encoding="utf-8"?>
++
++<configuration>
++
++	<configSections>
++		<section name="configProtectedData" type="System.Configuration.ProtectedConfigurationSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++		<section name="appSettings" type="System.Configuration.AppSettingsSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++		<section name="connectionStrings" type="System.Configuration.ConnectionStringsSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++		<section name="mscorlib" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowLocation="false"/>
++		<section name="runtime" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowLocation="false"/>
++		<section name="assemblyBinding"  type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowLocation="false" />
++		<section name="satelliteassemblies" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowLocation="false" />
++		<section name="startup" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowLocation="false"/>
++		<section name="system.codedom" type="System.CodeDom.Compiler.CodeDomConfigurationHandler, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		<section name="system.data" type="System.Data.Common.DbProviderFactoriesConfigurationHandler, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		<section name="system.diagnostics" type="System.Diagnostics.DiagnosticsConfigurationHandler, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		<section name="system.runtime.remoting" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowLocation="false"/>
++		<section name="system.windows.forms" type="System.Windows.Forms.WindowsFormsSection, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		<section name="windows" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowLocation="false" />
++		<section name="strongNames" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowLocation="false"/>
++		<sectionGroup name="system.web" type="System.Web.Configuration.SystemWebSectionGroup, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
++			<section name="anonymousIdentification" type="System.Web.Configuration.AnonymousIdentificationSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="authentication" type="System.Web.Configuration.AuthenticationSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="authorization" type="System.Web.Configuration.AuthorizationSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="browserCaps" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="clientTarget" type="System.Web.Configuration.ClientTargetSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="compilation" type="System.Web.Configuration.CompilationSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="customErrors" type="System.Web.Configuration.CustomErrorsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="deployment" type="System.Web.Configuration.DeploymentSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineOnly" />
++			<section name="globalization" type="System.Web.Configuration.GlobalizationSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="healthMonitoring" type="System.Web.Configuration.HealthMonitoringSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="hostingEnvironment" type="System.Web.Configuration.HostingEnvironmentSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication" />
++			<section name="httpCookies" type="System.Web.Configuration.HttpCookiesSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="httpHandlers" type="System.Web.Configuration.HttpHandlersSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="httpModules" type="System.Web.Configuration.HttpModulesSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="httpRuntime" type="System.Web.Configuration.HttpRuntimeSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="identity" type="System.Web.Configuration.IdentitySection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="machineKey" type="System.Web.Configuration.MachineKeySection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="membership" type="System.Web.Configuration.MembershipSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="mobileControls" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++                        <section name="deviceFilters" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="pages" type="System.Web.Configuration.PagesSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="processModel" type="System.Web.Configuration.ProcessModelSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineOnly" allowLocation="false" />
++			<section name="profile" type="System.Web.Configuration.ProfileSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="roleManager" type="System.Web.Configuration.RoleManagerSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="securityPolicy" type="System.Web.Configuration.SecurityPolicySection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication" />
++			<section name="sessionPageState" type="System.Web.Configuration.SessionPageStateSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="sessionState" type="System.Web.Configuration.SessionStateSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="siteMap" type="System.Web.Configuration.SiteMapSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="trace" type="System.Web.Configuration.TraceSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="trust" type="System.Web.Configuration.TrustSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication" />
++			<section name="urlMappings" type="System.Web.Configuration.UrlMappingsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			<section name="webControls" type="System.Web.Configuration.WebControlsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="webParts" type="System.Web.Configuration.WebPartsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="webServices" type="System.Web.Services.Configuration.WebServicesSection, System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<section name="xhtmlConformance" type="System.Web.Configuration.XhtmlConformanceSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++			<sectionGroup name="caching" type="System.Web.Configuration.SystemWebCachingSectionGroup, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
++				<section name="cache" type="System.Web.Configuration.CacheSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++				<section name="outputCache" type="System.Web.Configuration.OutputCacheSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++				<section name="outputCacheSettings" type="System.Web.Configuration.OutputCacheSettingsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++				<section name="sqlCacheDependency" type="System.Web.Configuration.OutputCacheSettingsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++			</sectionGroup>
++			<section name="monoSettings" type="System.Web.Configuration.MonoSettingsSection, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++		</sectionGroup>
++		<sectionGroup name="system.web.extensions" type="System.Web.Configuration.SystemWebExtensionsSectionGroup, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
++			<sectionGroup name="scripting" type="System.Web.Configuration.ScriptingSectionGroup, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
++				<section name="scriptResourceHandler" type="System.Web.Configuration.ScriptingScriptResourceHandlerSection, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" requirePermission="false" allowDefinition="MachineToApplication"/>
++				<sectionGroup name="webServices" type="System.Web.Configuration.ScriptingWebServicesSectionGroup, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
++					<section name="jsonSerialization" type="System.Web.Configuration.ScriptingJsonSerializationSection, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" requirePermission="false" allowDefinition="Everywhere"/>
++					<section name="profileService" type="System.Web.Configuration.ScriptingProfileServiceSection, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" requirePermission="false" allowDefinition="MachineToApplication"/>
++					<section name="authenticationService" type="System.Web.Configuration.ScriptingAuthenticationServiceSection, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" requirePermission="false" allowDefinition="MachineToApplication"/>
++					<section name="roleService" type="System.Web.Configuration.ScriptingRoleServiceSection, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" requirePermission="false" allowDefinition="MachineToApplication"/>
++				</sectionGroup>
++			</sectionGroup>
++		</sectionGroup>
++		<sectionGroup name="system.net" type="System.Net.Configuration.NetSectionGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
++			<section name="authenticationModules" type="System.Net.Configuration.AuthenticationModulesSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="connectionManagement" type="System.Net.Configuration.ConnectionManagementSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="defaultProxy" type="System.Net.Configuration.DefaultProxySection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<sectionGroup name="mailSettings" type="System.Net.Configuration.MailSettingsSectionGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
++				<section name="smtp" type="System.Net.Configuration.SmtpSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			</sectionGroup>
++			<section name="requestCaching" type="System.Net.Configuration.RequestCachingSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="settings" type="System.Net.Configuration.SettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="webRequestModules" type="System.Net.Configuration.WebRequestModulesSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		</sectionGroup>
++		<section name="system.drawing" type="System.Configuration.NameValueSectionHandler, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		<sectionGroup name="system.serviceModel" type="System.ServiceModel.Configuration.ServiceModelSectionGroup, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
++			<section name="behaviors" type="System.ServiceModel.Configuration.BehaviorsSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="bindings" type="System.ServiceModel.Configuration.BindingsSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="client" type="System.ServiceModel.Configuration.ClientSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="commonBehaviors" type="System.ServiceModel.Configuration.CommonBehaviorsSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="diagnostics" type="System.ServiceModel.Configuration.DiagnosticSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="extensions" type="System.ServiceModel.Configuration.ExtensionsSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="serviceHostingEnvironment" type="System.ServiceModel.Configuration.ServiceHostingEnvironmentSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="services" type="System.ServiceModel.Configuration.ServicesSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<section name="standardEndpoints" type="System.ServiceModel.Configuration.StandardEndpointsSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
++			<section name="routing" type="System.ServiceModel.Routing.Configuration.RoutingSection, System.ServiceModel.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++			<section name="protocolMapping" type="System.ServiceModel.Configuration.ProtocolMappingSection, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
++		</sectionGroup>
++		<sectionGroup name="system.transactions" type="System.Transactions.Configuration.TransactionsSectionGroup, System.Transactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Custom=null">
++			<section name="defaultSettings" type="System.Transactions.Configuration.DefaultSettingsSection, System.Transactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Custom=null"/>
++			<section name="machineSettings" type="System.Transactions.Configuration.MachineSettingsSection, System.Transactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Custom=null" allowDefinition="MachineOnly" allowExeDefinition="MachineOnly"/>
++		</sectionGroup>
++		<section name="system.webServer" type="System.Configuration.IgnoreSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++		<section name="uri" type="System.Configuration.UriSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		<sectionGroup name="system.runtime.caching" type="System.Runtime.Caching.Configuration.CachingSectionGroup, System.Runtime.Caching, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
++		  <section name="memoryCache" type="System.Runtime.Caching.Configuration.MemoryCacheSection, System.Runtime.Caching, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" allowDefinition="MachineToApplication"/>
++                </sectionGroup>
++	</configSections>
++
++	<connectionStrings>
++		<add name="LocalSqlServer" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|aspnetdb.mdf;User Instance=true" providerName="System.Data.SqlClient"/>
++		<add name="LocalSqliteServer" connectionString="Data Source=|DataDirectory|/aspnetdb.sqlite;version=3" providerName="Mono.Data.Sqlite"/>
++	</connectionStrings>
++	
++	<configProtectedData defaultProvider="RsaProtectedConfigurationProvider">
++		<providers>
++			<add name="RsaProtectedConfigurationProvider" type="System.Configuration.RsaProtectedConfigurationProvider, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
++                             description="" keyContainerName="MonoFrameworkConfigurationKey" cspProviderName="" useMachineContainer="true" useOAEP="false" />
++			<add name="DataProtectionConfigurationProvider" type="System.Configuration.DpapiProtectedConfigurationProvider, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
++                             description="" useMachineProtection="true" keyEntropy="" />
++		</providers>
++	</configProtectedData>
++
++	<system.net>
++		<authenticationModules>
++			<add type="System.Net.BasicClient, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<add type="System.Net.DigestClient, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<add type="System.Net.NtlmClient, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		</authenticationModules>
++		<webRequestModules>
++			<add prefix="http" type="System.Net.HttpRequestCreator, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<add prefix="https" type="System.Net.HttpRequestCreator, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<add prefix="file" type="System.Net.FileWebRequestCreator, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<add prefix="ftp" type="System.Net.FtpWebRequestCreator, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		</webRequestModules>
++	</system.net>
++	
++	<system.runtime.remoting>
++		<application>
++			<channels>
++				<channel ref="http client" displayName="http client (delay loaded)" delayLoadAsClientChannel="true" />
++				<channel ref="tcp client" displayName="tcp client (delay loaded)" delayLoadAsClientChannel="true" />
++				<channel ref="ipc client" displayName="ipc client (delay loaded)" delayLoadAsClientChannel="true" />
++			</channels>
++		</application>
++		<channels>
++			<channel id="http" type="System.Runtime.Remoting.Channels.Http.HttpChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="http client" type="System.Runtime.Remoting.Channels.Http.HttpClientChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="http server" type="System.Runtime.Remoting.Channels.Http.HttpServerChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="tcp" type="System.Runtime.Remoting.Channels.Tcp.TcpChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="tcp client" type="System.Runtime.Remoting.Channels.Tcp.TcpClientChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="tcp server" type="System.Runtime.Remoting.Channels.Tcp.TcpServerChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="ipc" type="System.Runtime.Remoting.Channels.Ipc.IpcChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="ipc client" type="System.Runtime.Remoting.Channels.Ipc.IpcClientChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++			<channel id="ipc server" type="System.Runtime.Remoting.Channels.Ipc.IpcServerChannel, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++		</channels>
++			<channelSinkProviders>
++				<clientProviders>
++					<formatter id="soap" type="System.Runtime.Remoting.Channels.SoapClientFormatterSinkProvider, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++					<formatter id="binary" type="System.Runtime.Remoting.Channels.BinaryClientFormatterSinkProvider, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++				</clientProviders>
++				<serverProviders>
++					<formatter id="soap" type="System.Runtime.Remoting.Channels.SoapServerFormatterSinkProvider, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++					<formatter id="binary" type="System.Runtime.Remoting.Channels.BinaryServerFormatterSinkProvider, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++					<provider id="wsdl" type="System.Runtime.Remoting.MetadataServices.SdlChannelSinkProvider, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
++				</serverProviders>
++			</channelSinkProviders>
++	</system.runtime.remoting>
++	
++	<appSettings>
++	<!--<add key="yourkey" value="your value" /> -->
++	<!--<remove key="a key defined higher in the hierarchy" /> -->
++	<!--<clear/> Removes all defined settings -->
++	</appSettings>
++	<system.diagnostics>
++		<trace autoflush="false" indentsize="4" />
++	</system.diagnostics>
++        <system.drawing>
++        </system.drawing>
++
++	<system.data>
++	  <DbProviderFactories>
++	    <add name="Mono Sqlite Data Provider"  invariant="Mono.Data.SqliteClient" 
++		 description="Mono Framework Data Provider for SQLite (old version)" 
++		 type="Mono.Data.SqliteClient.SqliteFactory, Mono.Data.SqliteClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756"/>
++	    <add name="Mono Sqlite Provider"  invariant="Mono.Data.Sqlite" 
++		 description="Mono Framework Data Provider for SQLite (new version)"
++		 type="Mono.Data.Sqlite.SqliteFactory, Mono.Data.Sqlite, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756"/>
++	    <add name="Odbc Data Provider"         invariant="System.Data.Odbc"         
++		 description=".Net Framework Data Provider for Odbc"      
++		 type="System.Data.Odbc.OdbcFactory, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
++            <add name="OleDb Data Provider"        invariant="System.Data.OleDb"        
++		 description=".Net Framework Data Provider for OleDb"     
++		 type="System.Data.OleDb.OleDbFactory, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
++            <add name="OracleClient Data Provider" invariant="System.Data.OracleClient" 
++		 description=".Net Framework Data Provider for Oracle"    
++		 type="System.Data.OracleClient.OracleClientFactory, System.Data.OracleClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
++            <add name="SqlClient Data Provider"    invariant="System.Data.SqlClient"    
++		 description=".Net Framework Data Provider for SqlServer" 
++		 type="System.Data.SqlClient.SqlClientFactory, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
++            <add name="Sybase Data Provider"    invariant="Mono.Data.SybaseClient"    
++		 description=".Net Framework Data Provider for Sybase" 
++		 type="Mono.Data.SybaseClient.SybaseClientFactory, Mono.Data.SybaseClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756"/>
++	  </DbProviderFactories>
++	</system.data>
++
++	<mscorlib>
++		<cryptographySettings>
++			<cryptoNameMapping>
++				<cryptoClasses>
++					<cryptoClass monoMD2="Mono.Security.Cryptography.MD2Managed, Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
++					<cryptoClass monoMD4="Mono.Security.Cryptography.MD4Managed, Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
++				</cryptoClasses>
++				<nameEntry name="MD2" class="monoMD2" />
++				<nameEntry name="MD4" class="monoMD4" />
++			</cryptoNameMapping>
++			<oidMap>
++				<oidEntry OID="1.2.840.113549.2.2" name="MD2" />
++				<oidEntry OID="1.2.840.113549.2.2" name="Mono.Security.Cryptography.MD2Managed" />
++				<oidEntry OID="1.2.840.113549.2.4" name="MD4" />
++				<oidEntry OID="1.2.840.113549.2.4" name="Mono.Security.Cryptography.MD4Managed" />
++			</oidMap>
++		</cryptographySettings>
++	</mscorlib>
++
++	<strongNames>
++		<pubTokenMapping>
++			<!-- ECMA key -->
++			<map Token="b77a5c561934e089" PublicKey="002400000480000094000000060200000024000052534131000400000100010079159977d2d03a8e6bea7a2e74e8d1afcc93e8851974952bb480a12c9134474d04062447c37e0e68c080536fcf3c3fbe2ff9c979ce998475e506e8ce82dd5b0f350dc10e93bf2eeecf874b24770c5081dbea7447fddafa277b22de47d6ffea449674a4f9fccf84d15069089380284dbdd35f46cdff12a1bd78e4ef0065d016df" />
++			<!-- Microsoft (final) key -->
++			<map Token="b03f5f7f11d50a3a" PublicKey="002400000480000094000000060200000024000052534131000400000100010079159977d2d03a8e6bea7a2e74e8d1afcc93e8851974952bb480a12c9134474d04062447c37e0e68c080536fcf3c3fbe2ff9c979ce998475e506e8ce82dd5b0f350dc10e93bf2eeecf874b24770c5081dbea7447fddafa277b22de47d6ffea449674a4f9fccf84d15069089380284dbdd35f46cdff12a1bd78e4ef0065d016df" />
++			<!-- Microsoft (Web Service Enhancement) key -->
++			<map Token="31bf3856ad364e35" PublicKey="002400000480000094000000060200000024000052534131000400000100010079159977d2d03a8e6bea7a2e74e8d1afcc93e8851974952bb480a12c9134474d04062447c37e0e68c080536fcf3c3fbe2ff9c979ce998475e506e8ce82dd5b0f350dc10e93bf2eeecf874b24770c5081dbea7447fddafa277b22de47d6ffea449674a4f9fccf84d15069089380284dbdd35f46cdff12a1bd78e4ef0065d016df" />
++			<!-- IBM (DB2 Data Provider) key -->
++			<map Token="7c307b91aa13d208" PublicKey="002400000480000094000000060200000024000052534131000400000100010079159977d2d03a8e6bea7a2e74e8d1afcc93e8851974952bb480a12c9134474d04062447c37e0e68c080536fcf3c3fbe2ff9c979ce998475e506e8ce82dd5b0f350dc10e93bf2eeecf874b24770c5081dbea7447fddafa277b22de47d6ffea449674a4f9fccf84d15069089380284dbdd35f46cdff12a1bd78e4ef0065d016df" />
++			<!-- Silverlight 2.0 key -->
++			<map Token="7cec85d7bea7798e" PublicKey="002400000480000094000000060200000024000052534131000400000100010079159977d2d03a8e6bea7a2e74e8d1afcc93e8851974952bb480a12c9134474d04062447c37e0e68c080536fcf3c3fbe2ff9c979ce998475e506e8ce82dd5b0f350dc10e93bf2eeecf874b24770c5081dbea7447fddafa277b22de47d6ffea449674a4f9fccf84d15069089380284dbdd35f46cdff12a1bd78e4ef0065d016df" />
++			<!-- XNA Framework key -->                                                            
++			<map Token="6d5c3888ef60e27d" PublicKey="0024000004800000940000000602000000240000525341310004000001000100f9a2641bac9847900d92a33d652ccc4e8b529360f908e7af53e57008b2a9a1938c32a160d47f795a23590557608d2c8d0c0e8846a052d070f9298281b8185343dbe5b479bd52de256f73c2a943e1a8a42065b5c918622dc14b1c0151dbd94d9a4543e7cd03e536b1b1d2d6d99af535d227ab9bdac76af9312a21d457bdf817e6" />
++		</pubTokenMapping>
++	</strongNames>
++
++	<system.web>
++		<webServices>
++			<protocols>
++				<add name="HttpSoap"/>
++				<add name="HttpSoap12"/>
++				<add name="HttpPost"/>
++				<add name="HttpGet"/>
++				<add name="Documentation"/>
++			</protocols>
++			<conformanceWarnings>
++				<add name="BasicProfile1_1"/>
++			</conformanceWarnings>
++			<wsdlHelpGenerator href="DefaultWsdlHelpGenerator.aspx" />
++		</webServices>
++
++		<membership>
++			<providers>
++				<add name="AspNetSqlMembershipProvider" type="System.Web.Security.SqlMembershipProvider, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" connectionStringName="LocalSqlServer" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="true" applicationName="/" requiresUniqueEmail="false" passwordFormat="Hashed" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="7" minRequiredNonalphanumericCharacters="1" passwordAttemptWindow="10" passwordStrengthRegularExpression=""/>
++				<!-- <add name="AspNetSqlMembershipProvider" type="Mainsoft.Web.Security.GenericMembershipProvider, Mainsoft.Web.Security" applicationName="/" connectionStringName="LocalSqlServer" /> -->
++			</providers>
++		</membership>
++
++		<roleManager>
++			<providers>
++				<add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" applicationName="/" connectionStringName="LocalSqlServer" />
++				<!-- <add name="AspNetSqlRoleProvider" type="Mainsoft.Web.Security.GenericRoleProvider, Mainsoft.Web.Security" applicationName="/" connectionStringName="LocalSqlServer" /> -->
++			</providers>
++		</roleManager>
++
++		<profile>
++        		<providers>
++            		    <add name="AspNetSqlProfileProvider" connectionStringName="LocalSqlServer" applicationName="/" type="System.Web.Profile.SqlProfileProvider, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++		        </providers>
++    		</profile>
++	</system.web>
++
++
++	<system.serviceModel>
++		<extensions>
++			<behaviorExtensions>
++				<add name="enableWebScript" type="System.ServiceModel.Configuration.WebScriptEnablingElement, System.ServiceModel.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="webHttp" type="System.ServiceModel.Configuration.WebHttpElement, System.ServiceModel.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++			</behaviorExtensions>
++			<bindingElementExtensions>
++				<add name="webMessageEncoding" type="System.ServiceModel.Configuration.WebMessageEncodingElement, System.ServiceModel.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++			</bindingElementExtensions>
++			<bindingExtensions>
++				<add name="webHttpBinding" type="System.ServiceModel.Configuration.WebHttpBindingCollectionElement, System.ServiceModel.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++			</bindingExtensions>
++			<endpointExtensions>
++				<add name="dynamicEndpoint" type="System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement, System.ServiceModel.Discovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="discoveryEndpoint" type="System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement, System.ServiceModel.Discovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="udpDiscoveryEndpoint" type="System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement, System.ServiceModel.Discovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="announcementEndpoint" type="System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement, System.ServiceModel.Discovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="udpAnnouncementEndpoint" type="System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement, System.ServiceModel.Discovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="webHttpEndpoint" type="System.ServiceModel.Configuration.WebHttpEndpointCollectionElement, System.ServiceModel.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++				<add name="webScriptEndpoint" type="System.ServiceModel.Configuration.WebScriptEndpointCollectionElement, System.ServiceModel.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
++			</endpointExtensions>
++		</extensions>
++	</system.serviceModel>
++</configuration>
++
++
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Resources/unity default resources b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Resources/unity default resources
+new file mode 100644
+index 0000000..49655eb
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Resources/unity default resources differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Resources/unity_builtin_extra b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Resources/unity_builtin_extra
+new file mode 100644
+index 0000000..4cdc53b
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/Resources/unity_builtin_extra differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/RuntimeInitializeOnLoads.json b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/RuntimeInitializeOnLoads.json
+new file mode 100644
+index 0000000..5e1917c
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/RuntimeInitializeOnLoads.json
+@@ -0,0 +1 @@
++{"root":[{"assemblyName":"Unity.Burst","nameSpace":"","className":"$BurstDirectCallInitializer","methodName":"Initialize","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.Collections","nameSpace":"","className":"__JobReflectionRegistrationOutput__1652832624114795843","methodName":"EarlyInit","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.Collections","nameSpace":"","className":"$BurstDirectCallInitializer","methodName":"Initialize","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.InputSystem","nameSpace":"UnityEngine.InputSystem","className":"InputSystem","methodName":"RunInitializeInPlayer","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.InputSystem","nameSpace":"UnityEngine.InputSystem","className":"InputSystem","methodName":"RunInitialUpdate","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.InputSystem","nameSpace":"UnityEngine.InputSystem.UI","className":"InputSystemUIInputModule","methodName":"ResetDefaultActions","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.InputSystem.ForUI","nameSpace":"UnityEngine.InputSystem.Plugins.InputForUI","className":"InputSystemProvider","methodName":"Bootstrap","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.Rendering.LightTransport.Runtime","nameSpace":"","className":"__JobReflectionRegistrationOutput__16164947281921951637","methodName":"EarlyInit","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.RenderPipelines.Core.Runtime","nameSpace":"UnityEngine.Experimental.Rendering","className":"XRSystem","methodName":"XRSystemInit","loadTypes":3,"isUnityClass":true},{"assemblyName":"Unity.RenderPipelines.Core.Runtime","nameSpace":"UnityEngine.Rendering","className":"DebugUpdater","methodName":"RuntimeInit","loadTypes":0,"isUnityClass":true},{"assemblyName":"Unity.RenderPipelines.GPUDriven.Runtime","nameSpace":"","className":"__JobReflectionRegistrationOutput__15867191014387474753","methodName":"EarlyInit","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.RenderPipelines.GPUDriven.Runtime","nameSpace":"","className":"$BurstDirectCallInitializer","methodName":"Initialize","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.RenderPipelines.Universal.2D.Runtime","nameSpace":"","className":"$BurstDirectCallInitializer","methodName":"Initialize","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitAnchorSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitEnvironmentProbeSubsystem","methodName":"Register","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitRaycastSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitSessionSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitCameraSubsystem","methodName":"Register","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitHumanBodySubsystem","methodName":"Register","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitImageTrackingSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"InputLayoutLoader","methodName":"RegisterLayouts","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitObjectTrackingSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitOcclusionSubsystem","methodName":"Register","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitParticipantSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitPlaneSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitPointCloudSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit","nameSpace":"UnityEngine.XR.ARKit","className":"RoomPlanBoundingBoxSubsystem","methodName":"Register","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.ARKit.FaceTracking","nameSpace":"UnityEngine.XR.ARKit","className":"ARKitFaceSubsystem","methodName":"RegisterDescriptor","loadTypes":4,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation","className":"SimulatedInputLayoutLoader","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation","className":"XRInteractionSimulatorLoader","methodName":"Initialize","loadTypes":0,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Interactions","className":"SectorInteraction","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Composites","className":"Vector3FallbackComposite","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Composites","className":"QuaternionFallbackComposite","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Composites","className":"IntegerFallbackComposite","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.Inputs.Composites","className":"ButtonFallbackComposite","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"UnityEngine.XR.Interaction.Toolkit.AR.Inputs","className":"TouchscreenGestureInputLayoutLoader","methodName":"Initialize","loadTypes":1,"isUnityClass":true},{"assemblyName":"Unity.XR.Interaction.Toolkit","nameSpace":"","className":"$BurstDirectCallInitializer","methodName":"Initialize","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.XR.Management","nameSpace":"UnityEngine.XR.Management","className":"XRGeneralSettings","methodName":"AttemptInitializeXRSDKOnLoad","loadTypes":2,"isUnityClass":true},{"assemblyName":"Unity.XR.Management","nameSpace":"UnityEngine.XR.Management","className":"XRGeneralSettings","methodName":"AttemptStartXRSDKOnBeforeSplashScreen","loadTypes":3,"isUnityClass":true}]}
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/ScriptingAssemblies.json b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/ScriptingAssemblies.json
+new file mode 100644
+index 0000000..c5a441c
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/ScriptingAssemblies.json
+@@ -0,0 +1 @@
++{"names":["UnityEngine.dll","UnityEngine.AIModule.dll","UnityEngine.ARModule.dll","UnityEngine.AccessibilityModule.dll","UnityEngine.AndroidJNIModule.dll","UnityEngine.AnimationModule.dll","UnityEngine.AssetBundleModule.dll","UnityEngine.AudioModule.dll","UnityEngine.ClothModule.dll","UnityEngine.ContentLoadModule.dll","UnityEngine.CoreModule.dll","UnityEngine.CrashReportingModule.dll","UnityEngine.DSPGraphModule.dll","UnityEngine.DirectorModule.dll","UnityEngine.GIModule.dll","UnityEngine.GameCenterModule.dll","UnityEngine.GraphicsStateCollectionSerializerModule.dll","UnityEngine.GridModule.dll","UnityEngine.HierarchyCoreModule.dll","UnityEngine.HotReloadModule.dll","UnityEngine.IMGUIModule.dll","UnityEngine.ImageConversionModule.dll","UnityEngine.InputModule.dll","UnityEngine.InputForUIModule.dll","UnityEngine.InputLegacyModule.dll","UnityEngine.JSONSerializeModule.dll","UnityEngine.LocalizationModule.dll","UnityEngine.MarshallingModule.dll","UnityEngine.MultiplayerModule.dll","UnityEngine.ParticleSystemModule.dll","UnityEngine.PerformanceReportingModule.dll","UnityEngine.PhysicsModule.dll","UnityEngine.Physics2DModule.dll","UnityEngine.PropertiesModule.dll","UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll","UnityEngine.ScreenCaptureModule.dll","UnityEngine.ShaderVariantAnalyticsModule.dll","UnityEngine.SharedInternalsModule.dll","UnityEngine.SpriteMaskModule.dll","UnityEngine.SpriteShapeModule.dll","UnityEngine.StreamingModule.dll","UnityEngine.SubstanceModule.dll","UnityEngine.SubsystemsModule.dll","UnityEngine.TLSModule.dll","UnityEngine.TerrainModule.dll","UnityEngine.TerrainPhysicsModule.dll","UnityEngine.TextCoreFontEngineModule.dll","UnityEngine.TextCoreTextEngineModule.dll","UnityEngine.TextRenderingModule.dll","UnityEngine.TilemapModule.dll","UnityEngine.UIModule.dll","UnityEngine.UIElementsModule.dll","UnityEngine.UmbraModule.dll","UnityEngine.UnityAnalyticsModule.dll","UnityEngine.UnityAnalyticsCommonModule.dll","UnityEngine.UnityConnectModule.dll","UnityEngine.UnityCurlModule.dll","UnityEngine.UnityTestProtocolModule.dll","UnityEngine.UnityWebRequestModule.dll","UnityEngine.UnityWebRequestAssetBundleModule.dll","UnityEngine.UnityWebRequestAudioModule.dll","UnityEngine.UnityWebRequestTextureModule.dll","UnityEngine.UnityWebRequestWWWModule.dll","UnityEngine.VFXModule.dll","UnityEngine.VRModule.dll","UnityEngine.VehiclesModule.dll","UnityEngine.VideoModule.dll","UnityEngine.WindModule.dll","UnityEngine.XRModule.dll","Assembly-CSharp.dll","Unity.Burst.dll","Unity.Collections.dll","Unity.InputSystem.dll","Unity.InputSystem.ForUI.dll","Unity.Mathematics.dll","Unity.Multiplayer.Center.Common.dll","Unity.Rendering.LightTransport.Runtime.dll","Unity.RenderPipeline.Universal.ShaderLibrary.dll","Unity.RenderPipelines.Core.Runtime.dll","Unity.RenderPipelines.Core.Runtime.Shared.dll","Unity.RenderPipelines.Core.ShaderLibrary.dll","Unity.RenderPipelines.GPUDriven.Runtime.dll","Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll","Unity.RenderPipelines.Universal.2D.Runtime.dll","Unity.RenderPipelines.Universal.Config.Runtime.dll","Unity.RenderPipelines.Universal.Runtime.dll","Unity.RenderPipelines.Universal.Shaders.dll","Unity.TextMeshPro.dll","Unity.Timeline.dll","Unity.Tutorials.Core.dll","Unity.XR.ARFoundation.dll","Unity.XR.ARFoundation.InternalUtils.dll","Unity.XR.ARFoundation.VisualScripting.dll","Unity.XR.ARKit.dll","Unity.XR.ARKit.FaceTracking.dll","Unity.XR.ARSubsystems.dll","Unity.XR.CoreUtils.dll","Unity.XR.Interaction.Toolkit.dll","Unity.XR.Interaction.Toolkit.Samples.ARStarterAssets.dll","Unity.XR.Interaction.Toolkit.Samples.StarterAssets.dll","Unity.XR.Management.dll","Unity.XR.Oculus.dll","UnityEngine.SpatialTracking.dll","UnityEngine.UI.dll","UnityEngine.XR.LegacyInputHelpers.dll","Unity.Collections.LowLevel.ILSupport.dll","Unity.Burst.Unsafe.dll"],"types":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16]}
+\ No newline at end of file
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/UnitySubsystems/UnityARKit/UnitySubsystemsManifest.json b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/UnitySubsystems/UnityARKit/UnitySubsystemsManifest.json
+new file mode 100644
+index 0000000..fef89cb
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/UnitySubsystems/UnityARKit/UnitySubsystemsManifest.json
+@@ -0,0 +1,13 @@
++{
++    "name": "UnityARKit",
++    "version": "1.0.0",
++    "libraryName": "UnityARKit",
++    "inputs": [
++    {
++        "id": "ARKit-Input"
++    }],
++    "meshings": [
++    {
++        "id": "ARKit-Meshing"
++    }]
++}
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/boot.config b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/boot.config
+new file mode 100644
+index 0000000..3c35a24
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/boot.config
+@@ -0,0 +1,5 @@
++gfx-disable-mt-rendering=1
++gfx-threading-mode=4
++wait-for-native-debugger=0
++hdr-display-enabled=0
++build-guid=27ebdc5ef6d242f989f517dc784a1830
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers
+new file mode 100644
+index 0000000..aaefbc6
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers.assets b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers.assets
+new file mode 100644
+index 0000000..8805732
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers.assets differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers.assets.resS b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers.assets.resS
+new file mode 100644
+index 0000000..a06d36f
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/globalgamemanagers.assets.resS differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/level0 b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/level0
+new file mode 100644
+index 0000000..3c1e000
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/level0 differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/level1 b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/level1
+new file mode 100644
+index 0000000..4f62003
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/level1 differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/resources.assets b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/resources.assets
+new file mode 100644
+index 0000000..616be5b
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/resources.assets differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/resources.assets.resS b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/resources.assets.resS
+new file mode 100644
+index 0000000..1d0d62c
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/resources.assets.resS differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.assets b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.assets
+new file mode 100644
+index 0000000..2f2806e
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.assets differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.assets.resS b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.assets.resS
+new file mode 100644
+index 0000000..69517b4
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.assets.resS differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.resource b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.resource
+new file mode 100644
+index 0000000..ce4d91d
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets0.resource differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.assets b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.assets
+new file mode 100644
+index 0000000..dac4e4c
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.assets differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.assets.resS b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.assets.resS
+new file mode 100644
+index 0000000..29a564f
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.assets.resS differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.resource b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.resource
+new file mode 100644
+index 0000000..569583e
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Data/sharedassets1.resource differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/AppDelegateListener.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/AppDelegateListener.h
+new file mode 100644
+index 0000000..08117ac
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/AppDelegateListener.h
+@@ -0,0 +1,37 @@
++#pragma once
++
++#include "LifeCycleListener.h"
++
++
++@protocol AppDelegateListener<LifeCycleListener>
++@optional
++// these do not have apple defined notifications, so we use our own notifications
++
++// notification will be posted from
++// - (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
++// notification user data is the NSDictionary containing all the params
++- (void)onOpenURL:(NSNotification*)notification;
++
++// notification will be posted from
++// - (BOOL)application:(UIApplication*)application willFinishLaunchingWithOptions:(NSDictionary*)launchOptions
++// notification user data is the NSDictionary containing launchOptions
++- (void)applicationWillFinishLaunchingWithOptions:(NSNotification*)notification;
++// notification will be posted from
++// - (void)application:(UIApplication*)application handleEventsForBackgroundURLSession:(nonnull NSString *)identifier completionHandler:(nonnull void (^)())completionHandler
++// notification user data is NSDictionary with one item where key is session identifier and value is completion handler
++- (void)onHandleEventsForBackgroundURLSession:(NSNotification*)notification;
++
++// these are just hooks to existing notifications
++- (void)applicationDidReceiveMemoryWarning:(NSNotification*)notification;
++- (void)applicationSignificantTimeChange:(NSNotification*)notification;
++@end
++
++void UnityRegisterAppDelegateListener(id<AppDelegateListener> obj);
++void UnityUnregisterAppDelegateListener(id<AppDelegateListener> obj);
++
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityDidRegisterForRemoteNotificationsWithDeviceToken;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityDidFailToRegisterForRemoteNotificationsWithError;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityDidReceiveRemoteNotification;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityOnOpenURL;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityWillFinishLaunchingWithOptions;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityHandleEventsForBackgroundURLSession;
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/LifeCycleListener.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/LifeCycleListener.h
+new file mode 100644
+index 0000000..6471baa
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/LifeCycleListener.h
+@@ -0,0 +1,29 @@
++#pragma once
++
++// important app life-cycle events
++
++@protocol LifeCycleListener<NSObject>
++@optional
++- (void)didFinishLaunching:(NSNotification*)notification;
++- (void)didBecomeActive:(NSNotification*)notification;
++- (void)willResignActive:(NSNotification*)notification;
++- (void)didEnterBackground:(NSNotification*)notification;
++- (void)willEnterForeground:(NSNotification*)notification;
++- (void)willTerminate:(NSNotification*)notification;
++- (void)unityDidUnload:(NSNotification*)notification;
++- (void)unityDidQuit:(NSNotification*)notification;
++@end
++
++void UnityRegisterLifeCycleListener(id<LifeCycleListener> obj);
++void UnityUnregisterLifeCycleListener(id<LifeCycleListener> obj);
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++extern __attribute__((visibility("default"))) NSString* const kUnityDidUnload;
++extern __attribute__((visibility("default"))) NSString* const kUnityDidQuit;
++
++#ifdef __cplusplus
++} // extern "C"
++#endif
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/NativeCallProxy.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/NativeCallProxy.h
+new file mode 100644
+index 0000000..aecfee6
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/NativeCallProxy.h
+@@ -0,0 +1,15 @@
++#import <Foundation/Foundation.h>
++
++@protocol NativeCallsProtocol
++@required
++
++- (void) sendMessageToMobileApp:(NSString*)message;
++
++@end
++
++__attribute__ ((visibility("default")))
++@interface FrameworkLibAPI : NSObject
++
+++(void) registerAPIforNativeCalls:(id<NativeCallsProtocol>) aApi;
++
++@end
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/RedefinePlatforms.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/RedefinePlatforms.h
+new file mode 100644
+index 0000000..bea750a
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/RedefinePlatforms.h
+@@ -0,0 +1,43 @@
++// DO NOT PUT #pragma once or include guard check here
++// This header is designed to be able to be included multiple times
++
++// This header is used to redefine iOS/tvOS platforms after they were temporary undefined by UndefinePlatforms.h
++// Please make sure to always use this paired with the UndefinePlatforms.h header.
++// Note: PLATFORM_IOS and PLATFORM_TVOS are redefined in 
++// /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include/mach-o/loader.h
++//
++// ex.
++//
++// #include "UndefinePlatforms.h"
++// #include "Some3rdParty.h"
++// #include "RedefinePlatforms.h"
++
++#ifndef DETAIL__PLATFORMS_HAD_BEEN_UNDEFINED_BY_UNDEFINEPLATFORMS_H
++    #error "RedefinePlatforms.h can only be used after UndefinePlatforms.h got included before."
++#endif
++
++#undef DETAIL__PLATFORMS_HAD_BEEN_UNDEFINED_BY_UNDEFINEPLATFORMS_H
++
++#undef PLATFORM_IOS
++#if defined(DETAIL__TEMP_PLATFORM_IOS_WAS_1)
++    #undef DETAIL__TEMP_PLATFORM_IOS_WAS_1
++    #define PLATFORM_IOS 1
++#else
++    #define PLATFORM_IOS 0
++#endif
++
++#undef PLATFORM_TVOS
++#if defined(DETAIL__TEMP_PLATFORM_TVOS_WAS_1)
++    #undef DETAIL__TEMP_PLATFORM_TVOS_WAS_1
++    #define PLATFORM_TVOS 1
++#else
++    #define PLATFORM_TVOS 0
++#endif
++
++#undef PLATFORM_VISIONOS
++#if defined(DETAIL__TEMP_PLATFORM_VISIONOS_WAS_1)
++#undef DETAIL__TEMP_PLATFORM_VISIONOS_WAS_1
++#define PLATFORM_VISIONOS 1
++#else
++#define PLATFORM_VISIONOS 0
++#endif
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/RenderPluginDelegate.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/RenderPluginDelegate.h
+new file mode 100644
+index 0000000..be8922b
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/RenderPluginDelegate.h
+@@ -0,0 +1,68 @@
++#pragma once
++
++#import <UnityFramework/LifeCycleListener.h>
++
++struct UnityDisplaySurfaceBase; // Unity/UnityRendering.h
++struct RenderingSurfaceParams;  // Unity/DisplayManager.h
++
++// due to delicate nature of render loop we have just one delegate in app
++// if you need to use several rendering delegates you need to do one of:
++// 1. create custom delegate that will have code to combine effects by itself
++// 2. use helper that simply holds array of delegates (which will work only in easiest cases)
++@protocol RenderPluginDelegate<LifeCycleListener, NSObject>
++
++@required
++// this will be called right after gles intialization.
++// surface pointer will never be changed, so you should keep it.
++// the only valid fields in there as of now are layer and context
++- (void)mainDisplayInited:(struct UnityDisplaySurfaceBase*)surface;
++
++@optional
++
++// this will be called before recreating main display surface (from [UnityView recreateRenderingSurface])
++// you can tweak params here.
++// use it for enabling CVTextureCache support and the likes
++- (void)onBeforeMainDisplaySurfaceRecreate:(struct RenderingSurfaceParams*)params;
++
++// this will be called right after recreating main display surface (from [UnityView recreateRenderingSurface])
++// as [UnityView recreateRenderingSurface] is the only place where unity itself will trigger surface recreate
++// you can use this method to update your rendering depending on changes
++- (void)onAfterMainDisplaySurfaceRecreate;
++
++// this will be called after frame render and msaa resolve but before blitting to system FB
++// you can expect that frame contents are ready (though still in target resolution)
++// use it for anylizing/postprocessing rendered frame, taking screenshot and the like
++// you should use targetFB if it is not 0
++// otherwise use systemFB (covers case of intermediate fb not needed: no msaa, native res, no CVTextureCache involved)
++- (void)onFrameResolved;
++@end
++
++
++// simple helper for common plugin stuff
++// you can implement protocol directly, but subclassing this will provide some common implementation
++@interface RenderPluginDelegate : NSObject<RenderPluginDelegate>
++{
++    struct UnityDisplaySurfaceBase* mainDisplaySurface;
++}
++- (void)mainDisplayInited:(struct UnityDisplaySurfaceBase*)surface;
++@end
++
++
++// simple helper to have an array of render delegates.
++// be warned that it works in simplest cases only, when there is no interop between delegates
++@interface RenderPluginArrayDelegate : RenderPluginDelegate
++{
++    NSArray* delegateArray;
++}
++@property(nonatomic, retain) NSArray* delegateArray;
++- (void)mainDisplayInited:(struct UnityDisplaySurfaceBase*)surface;
++- (void)onBeforeMainDisplaySurfaceRecreate:(struct RenderingSurfaceParams*)params;
++- (void)onAfterMainDisplaySurfaceRecreate;
++- (void)onFrameResolved;
++
++- (void)didBecomeActive:(NSNotification*)notification;
++- (void)willResignActive:(NSNotification*)notification;
++- (void)didEnterBackground:(NSNotification*)notification;
++- (void)willEnterForeground:(NSNotification*)notification;
++- (void)willTerminate:(NSNotification*)notification;
++@end
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UndefinePlatforms.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UndefinePlatforms.h
+new file mode 100644
+index 0000000..c8ca524
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UndefinePlatforms.h
+@@ -0,0 +1,35 @@
++// DO NOT PUT #pragma once or include guard check here
++// This header is designed to be able to be included multiple times
++
++// This header is used to temporary undefine iOS/tvOS platform definitions in case there is a naming conflict with
++// 3rd party code. Please make sure to always use this paired with the RedefinePlatforms.h header.
++// Note: PLATFORM_IOS and PLATFORM_TVOS are redefined in 
++// /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include/mach-o/loader.h
++//
++//
++// ex.
++//
++// #include "UndefinePlatforms.h"
++// #include "Some3rdParty.h"
++// #include "RedefinePlatforms.h"
++
++#ifdef DETAIL__PLATFORMS_HAD_BEEN_UNDEFINED_BY_UNDEFINEPLATFORMS_H
++#error "UndefinePlatforms.h has been included more than once or RedefinePlatforms.h is missing."
++#endif
++
++#if PLATFORM_IOS
++    #define DETAIL__TEMP_PLATFORM_IOS_WAS_1
++#endif
++#undef PLATFORM_IOS
++
++#if PLATFORM_TVOS
++    #define DETAIL__TEMP_PLATFORM_TVOS_WAS_1
++#endif
++#undef PLATFORM_TVOS
++
++#if PLATFORM_VISIONOS
++#define DETAIL__TEMP_PLATFORM_VISIONOS_WAS_1
++#endif
++#undef PLATFORM_VISIONOS
++
++#define DETAIL__PLATFORMS_HAD_BEEN_UNDEFINED_BY_UNDEFINEPLATFORMS_H
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityAppController.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityAppController.h
+new file mode 100644
+index 0000000..1407f72
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityAppController.h
+@@ -0,0 +1,171 @@
++#pragma once
++
++#import <QuartzCore/CADisplayLink.h>
++
++// we want to use CAMetalDisplayLink if it is available
++// if CADisplayLink is always preferred, this can be changed to #define UNITY_USES_METAL_DISPLAY_LINK 0
++// further, shouldUseMetalDisplayLink method can be overriden/tweaked to disable metal display link at runtime
++//   e.g. you might want to use old display link on slower devices where stable frametime cannot be guaranteed
++#define UNITY_USES_METAL_DISPLAY_LINK (UNITY_HAS_IOSSDK_17_0 || UNITY_HAS_TVOSSDK_17_0)
++#if UNITY_USES_METAL_DISPLAY_LINK
++    #import <QuartzCore/CAMetalDisplayLink.h>
++#endif
++
++#import <UnityFramework/RenderPluginDelegate.h>
++
++@class UnityView;
++@class UnityViewControllerBase;
++@class DisplayConnection;
++
++typedef enum
++{
++    kUnityEngineLoadStateNotStarted = 0,
++    // Minimal initialization done, allowing limited API use, such as reporting URL app was launched with
++    kUnityEngineLoadStateMinimal = 1,
++    // Core of Unity engine is loaded, but no graphics or first scene yet
++    kUnityEngineLoadStateCoreInitialized = 2,
++    // Rendering was initialized, nothing related to rendering should be touched before this state
++    kUnityEngineLoadStateRenderingInitialized = 3,
++    // Unity is fully initialized, it's not safe to call Unity APIs before this state
++    kUnityEngineLoadStateAppReady = 4,
++} UnityEngineLoadState;
++
++__attribute__ ((visibility("default")))
++@interface UnityAppController : NSObject<UIApplicationDelegate>
++{
++    UnityView*          _unityView;
++    CADisplayLink*      _displayLink;
++#if UNITY_USES_METAL_DISPLAY_LINK
++    CAMetalDisplayLink* _metalDisplayLink API_AVAILABLE(ios(17.0), tvos(17.0));
++#endif
++    // since we can have CAMetalDisplayLink not available both at runtime (old ios) and at compile time (old xcode)
++    //   and we can have it disabled completely (not all applications need it)
++    // the code supporting both CAMetalDisplayLink and CADisplayLink can easily become very convoluted
++    // hence we add a boolean to check CAMetalDisplayLink usage without checks for @available and preprocessor ifdefs
++    BOOL                _usesMetalDisplayLink;
++
++    UIWindow*           _window;
++    UIView*             _rootView;
++    UIViewController*   _rootController;
++    UIViewController*   _snapshotViewController;
++
++    DisplayConnection*  _mainDisplay;
++
++    // CODE ARCHEOLOGY: we were caching view controllers, both autorotation one and per-fixed-orientation ones
++    // CODE ARCHEOLOGY: we stopped doing this as the performance impact is negligible,
++    // CODE ARCHEOLOGY: yet it introduces corner cases and in general lots of code
++
++#if UNITY_SUPPORT_ROTATION
++    UIInterfaceOrientation  _curOrientation;
++#endif
++
++    id<RenderPluginDelegate>    _renderDelegate;
++}
++
++// override it to add your render plugin delegate
++- (void)shouldAttachRenderDelegate;
++
++// this one is called at the very end of didFinishLaunchingWithOptions:
++// after views have been created but before initing engine itself
++// override it to register plugins, tweak UI etc
++- (void)preStartUnity;
++
++// this one is called at at the very end of didFinishLaunchingWithOptions:
++// it will start showing unity view and rendering unity content
++- (void)startUnity:(UIApplication*)application;
++
++// override it if you want to have custom logic for the decision to use CAMetalDisplayLink or not
++// in any case, CAMetalDisplayLink will be used only if actually supported by the device
++// this will be called once on startup, before any rendering but after initializing unity
++- (BOOL)shouldUseMetalDisplayLink;
++
++- (BOOL)advanceEngineLoadState:(UnityEngineLoadState)newState;
++- (BOOL)downgradeEngineLoadState:(UnityEngineLoadState)newState;
++
++// this is a part of UIApplicationDelegate protocol starting with ios5
++// setter will be generated empty
++@property (retain, nonatomic) UIWindow* window;
++
++@property (readonly, copy, nonatomic) UnityView*            unityView;
++@property (readonly, copy, nonatomic) CADisplayLink*        unityDisplayLink;
++@property (readonly, nonatomic) BOOL                        unityUsesMetalDisplayLink;
++
++#if UNITY_USES_METAL_DISPLAY_LINK
++@property (readonly, copy, nonatomic) CAMetalDisplayLink*   unityMetalDisplayLink API_AVAILABLE(ios(17.0), tvos(17.0));
++#endif
++
++@property (readonly, copy, nonatomic) UIView*               rootView;
++@property (readonly, copy, nonatomic) UIViewController*     rootViewController;
++@property (readonly, copy, nonatomic) DisplayConnection*    mainDisplay;
++
++#if UNITY_SUPPORT_ROTATION
++@property (readonly, nonatomic) UIInterfaceOrientation      interfaceOrientation;
++#endif
++
++@property (readonly) UnityEngineLoadState                   engineLoadState;
++@property (readonly) bool                                   didResignActive;
++@property (nonatomic, retain) id                            renderDelegate;
++@property (nonatomic, copy)                                 void (^quitHandler)(void);
++
++@end
++
++// accessing app controller
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++extern UnityAppController* _UnityAppController;
++extern UnityAppController* GetAppController(void);
++
++#ifdef __cplusplus
++} // extern "C"
++#endif
++
++// Put this into mm file with your subclass implementation
++// pass subclass name to define
++
++#define IMPL_APP_CONTROLLER_SUBCLASS(ClassName) \
++@interface ClassName(OverrideAppDelegate)       \
++{                                               \
++}                                               \
+++(void)load;                                    \
++@end                                            \
++@implementation ClassName(OverrideAppDelegate)  \
+++(void)load                                     \
++{                                               \
++    extern const char* AppControllerClassName;  \
++    AppControllerClassName = #ClassName;        \
++}                                               \
++@end                                            \
++
++
++// plugins
++
++#define APP_CONTROLLER_RENDER_PLUGIN_METHOD(method)                         \
++do {                                                                        \
++    id<RenderPluginDelegate> delegate = GetAppController().renderDelegate;  \
++    if([delegate respondsToSelector:@selector(method)])                     \
++        [delegate method];                                                  \
++} while(0)
++
++#define APP_CONTROLLER_RENDER_PLUGIN_METHOD_ARG(method, arg)                \
++do {                                                                        \
++    id<RenderPluginDelegate> delegate = GetAppController().renderDelegate;  \
++    if([delegate respondsToSelector:@selector(method:)])                    \
++        [delegate method:arg];                                              \
++} while(0)
++
++
++// these are simple wrappers about ios api, added for convenience
++void AppController_SendNotification(NSString* name);
++void AppController_SendNotificationWithArg(NSString* name, id arg);
++
++void AppController_SendUnityViewControllerNotification(NSString* name);
++
++// in the case when apple adds new api that has easy fallback path for old ios
++// we will add new api methods at runtime on older ios, so we can switch to new api universally
++// in that case we still need actual declaration: we will do it here as it is the most convenient place
++
++// history:
++// [CADisplayLink preferredFramesPerSecond], [UIScreen maximumFramesPerSecond], [UIView safeAreaInsets]
++//   were removed after we started to enforce xcode9 (sdk 11)
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityFramework.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityFramework.h
+new file mode 100644
+index 0000000..bc9aa93
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityFramework.h
+@@ -0,0 +1,69 @@
++#import <UIKit/UIKit.h>
++#import <Foundation/Foundation.h>
++
++#import <UnityFramework/UnityAppController.h>
++
++// this is coming from mach-o/ldsyms.h
++// we were including this header header here directly
++
++// alas we were including <mach-o/ldsyms.h> directly in UnityFramework.h (for mach_header definition)
++//   instead of doing forward declaration and using, say, void pointers in unity c-interface
++// and this resulted in code in the wild that uses _mh_execute_header directly without this include
++// now, with C++/ObjC++ modules support we end up in a funny situation,
++// where we need to include UndefinePlatforms/RedefinePlatforms quoted which gives a warning
++// thankfully, we can easily provide the definition of _mh_execute_header ourselves
++
++typedef struct mach_header_64 MachHeader;
++extern const struct mach_header_64 _mh_execute_header;
++
++//! Project version number for UnityFramework.
++FOUNDATION_EXPORT double UnityFrameworkVersionNumber;
++
++//! Project version string for UnityFramework.
++FOUNDATION_EXPORT const unsigned char UnityFrameworkVersionString[];
++
++// In this header, you should import all the public headers of your framework using statements like #import <UnityFramework/PublicHeader.h>
++
++#pragma once
++
++// important app life-cycle events
++__attribute__ ((visibility("default")))
++@protocol UnityFrameworkListener<NSObject>
++@optional
++- (void)unityDidUnload:(NSNotification*)notification;
++- (void)unityDidQuit:(NSNotification*)notification;
++@end
++
++__attribute__ ((visibility("default")))
++@interface UnityFramework : NSObject
++{
++}
++
++- (UnityAppController*)appController;
++
++- (UITextField*)keyboardTextField;
++
+++ (UnityFramework*)getInstance;
++
++- (void)setDataBundleId:(const char*)bundleId;
++
++- (void)runUIApplicationMainWithArgc:(int)argc argv:(char*[])argv;
++- (void)runEmbeddedWithArgc:(int)argc argv:(char*[])argv appLaunchOpts:(NSDictionary*)appLaunchOpts;
++
++- (void)unloadApplication;
++- (void)quitApplication:(int)exitCode;
++
++- (void)registerFrameworkListener:(id<UnityFrameworkListener>)obj;
++- (void)unregisterFrameworkListener:(id<UnityFrameworkListener>)obj;
++
++- (void)showUnityWindow;
++- (void)pause:(bool)pause;
++
++- (void)setAbsoluteURL:(const char *)url;
++
++- (void)setExecuteHeader:(const MachHeader*)header;
++- (void)sendMessageToGOWithName:(const char*)goName functionName:(const char*)name message:(const char*)msg;
++
++- (int)shouldRunInBackground;
++
++@end
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityViewControllerListener.h b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityViewControllerListener.h
+new file mode 100644
+index 0000000..0df8f21
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Headers/UnityViewControllerListener.h
+@@ -0,0 +1,51 @@
++#pragma once
++
++#import <Foundation/NSNotification.h>
++
++// view changes on the main view controller
++
++@protocol UnityViewControllerListener<NSObject>
++@optional
++- (void)viewWillLayoutSubviews:(NSNotification*)notification;
++- (void)viewDidLayoutSubviews:(NSNotification*)notification;
++- (void)viewWillDisappear:(NSNotification*)notification;
++- (void)viewDidDisappear:(NSNotification*)notification;
++- (void)viewWillAppear:(NSNotification*)notification;
++- (void)viewDidAppear:(NSNotification*)notification;
++
++- (void)interfaceWillChangeOrientation:(NSNotification*)notification;
++- (void)interfaceDidChangeOrientation:(NSNotification*)notification;
++@end
++
++@protocol UnityViewControllerNotifications<NSObject>
++@optional
++- (void)onViewWillLayoutSubviews;
++- (void)onViewDidLayoutSubviews;
++- (void)onViewDidDisappear:(BOOL)animated;
++- (void)onViewWillDisappear:(BOOL)animated;
++- (void)onViewDidAppear:(BOOL)animated;
++- (void)onViewWillAppear:(BOOL)animated;
++@end
++
++// this default delegate will send notifications for UnityViewControllerListener
++@interface UnityViewControllerNotificationsDefaultSender : NSObject<UnityViewControllerNotifications>
++- (void)onViewWillLayoutSubviews;
++- (void)onViewDidLayoutSubviews;
++- (void)onViewDidDisappear:(BOOL)animated;
++- (void)onViewWillDisappear:(BOOL)animated;
++- (void)onViewDidAppear:(BOOL)animated;
++- (void)onViewWillAppear:(BOOL)animated;
++@end
++
++
++void UnityRegisterViewControllerListener(id<UnityViewControllerListener> obj);
++void UnityUnregisterViewControllerListener(id<UnityViewControllerListener> obj);
++
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityViewWillLayoutSubviews;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityViewDidLayoutSubviews;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityViewWillDisappear;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityViewDidDisappear;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityViewWillAppear;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityViewDidAppear;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityInterfaceWillChangeOrientation;
++extern "C" __attribute__((visibility("default"))) NSString* const kUnityInterfaceDidChangeOrientation;
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Info.plist b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Info.plist
+new file mode 100644
+index 0000000..0815d26
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Info.plist differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Modules/module.modulemap b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Modules/module.modulemap
+new file mode 100644
+index 0000000..7657362
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/Modules/module.modulemap
+@@ -0,0 +1,6 @@
++framework module UnityFramework {
++  umbrella header "UnityFramework.h"
++  export *
++
++  module * { export * }
++}
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/PrivacyInfo.xcprivacy b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/PrivacyInfo.xcprivacy
+new file mode 100644
+index 0000000..3223a85
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/PrivacyInfo.xcprivacy
+@@ -0,0 +1,41 @@
++<?xml version="1.0" encoding="utf-8"?>
++<plist version="1.0">
++  <dict>
++    <key>NSPrivacyAccessedAPITypes</key>
++    <array>
++      <dict>
++        <key>NSPrivacyAccessedAPIType</key>
++        <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
++        <key>NSPrivacyAccessedAPITypeReasons</key>
++        <array>
++          <string>35F9.1</string>
++        </array>
++      </dict>
++      <dict>
++        <key>NSPrivacyAccessedAPIType</key>
++        <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
++        <key>NSPrivacyAccessedAPITypeReasons</key>
++        <array>
++          <string>E174.1</string>
++        </array>
++      </dict>
++      <dict>
++        <key>NSPrivacyAccessedAPIType</key>
++        <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
++        <key>NSPrivacyAccessedAPITypeReasons</key>
++        <array>
++          <string>CA92.1</string>
++        </array>
++      </dict>
++      <dict>
++        <key>NSPrivacyAccessedAPIType</key>
++        <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
++        <key>NSPrivacyAccessedAPITypeReasons</key>
++        <array>
++          <string>0A2A.1</string>
++          <string>C617.1</string>
++        </array>
++      </dict>
++    </array>
++  </dict>
++</plist>
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/UnityFramework b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/UnityFramework
+new file mode 100755
+index 0000000..3426797
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/UnityFramework differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/_CodeSignature/CodeResources b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/_CodeSignature/CodeResources
+new file mode 100644
+index 0000000..46283c2
+--- /dev/null
++++ b/node_modules/@azesmway/react-native-unity/ios/UnityFramework.framework/_CodeSignature/CodeResources
+@@ -0,0 +1,465 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>files</key>
++	<dict>
++		<key>Data/Managed/Metadata/global-metadata.dat</key>
++		<data>
++		b2Y5G5v6PkiWhzao+SGbVM0upYE=
++		</data>
++		<key>Data/Managed/Resources/mscorlib.dll-resources.dat</key>
++		<data>
++		EaHA4qsvjAb+RQdTXtR+DdJ5pg0=
++		</data>
++		<key>Data/Managed/mono/4.0/machine.config</key>
++		<data>
++		epvKYeavmtcg2h19JBkmN9kDeIY=
++		</data>
++		<key>Data/Resources/unity default resources</key>
++		<data>
++		mKfydPZ3U6PCw41VqlyrCFtWJh0=
++		</data>
++		<key>Data/Resources/unity_builtin_extra</key>
++		<data>
++		ABXLF9My+Ge4cZf0X/xf/aF8hYw=
++		</data>
++		<key>Data/RuntimeInitializeOnLoads.json</key>
++		<data>
++		HgPDq90U/uRLLRa8A5o3+E/2sdo=
++		</data>
++		<key>Data/ScriptingAssemblies.json</key>
++		<data>
++		QfoWk63+fXbThdSk4frFYZSRVhI=
++		</data>
++		<key>Data/UnitySubsystems/UnityARKit/UnitySubsystemsManifest.json</key>
++		<data>
++		+GKRDz3gg4Oukye/b7m43rGA3yE=
++		</data>
++		<key>Data/boot.config</key>
++		<data>
++		KALSlCY/ZziaaMDIroQ9bPvqv94=
++		</data>
++		<key>Data/globalgamemanagers</key>
++		<data>
++		8T7WP/9a7xFvMe3CZlSkyCYbq/E=
++		</data>
++		<key>Data/globalgamemanagers.assets</key>
++		<data>
++		Nnd0vAMLGXFXzVWCgNh5DUU45d0=
++		</data>
++		<key>Data/globalgamemanagers.assets.resS</key>
++		<data>
++		3NqaYpwwSXMeqpnqySSgcwoOc7E=
++		</data>
++		<key>Data/level0</key>
++		<data>
++		yxXFAHjZGr9VdPABISJcUVvgZW0=
++		</data>
++		<key>Data/level1</key>
++		<data>
++		Dymw9MwN46zlvfBzZzTd367WEDw=
++		</data>
++		<key>Data/resources.assets</key>
++		<data>
++		o7/oRrgHHT/HjLCZvxONyGsNWb0=
++		</data>
++		<key>Data/resources.assets.resS</key>
++		<data>
++		9AhTxqNTh5/cQd4fh9mBxmXHzz4=
++		</data>
++		<key>Data/sharedassets0.assets</key>
++		<data>
++		fPFSoFxNCUUt1mZzxqHbjj5c1D0=
++		</data>
++		<key>Data/sharedassets0.assets.resS</key>
++		<data>
++		nujZTB2skHs3QK8/5vNqznF5P0s=
++		</data>
++		<key>Data/sharedassets0.resource</key>
++		<data>
++		rHUM3z0p75ASfVMiaBz09PLo3xU=
++		</data>
++		<key>Data/sharedassets1.assets</key>
++		<data>
++		v9p8bHQk7N5CbjzGg0NICyuztxU=
++		</data>
++		<key>Data/sharedassets1.assets.resS</key>
++		<data>
++		dNbLRPCRV08ga58KsE5K1YlMio8=
++		</data>
++		<key>Data/sharedassets1.resource</key>
++		<data>
++		PX4zjV8IN5UrUD4IxJLsevdhBHo=
++		</data>
++		<key>Headers/AppDelegateListener.h</key>
++		<data>
++		p2D8gIbx/bvxgsh9UKGueUN6+1I=
++		</data>
++		<key>Headers/LifeCycleListener.h</key>
++		<data>
++		HY+nnMKHOyvbyXVGB6x7JKMrFIk=
++		</data>
++		<key>Headers/NativeCallProxy.h</key>
++		<data>
++		aZJq4HDwu06jqfSmpIpnmO0+g/8=
++		</data>
++		<key>Headers/RedefinePlatforms.h</key>
++		<data>
++		Z0jWGRdBKDqn4dWFNEW2Z7CDevA=
++		</data>
++		<key>Headers/RenderPluginDelegate.h</key>
++		<data>
++		QwnZE9G82ciiI/J4pb0pGc6zwps=
++		</data>
++		<key>Headers/UndefinePlatforms.h</key>
++		<data>
++		5hcS7AI5t4wkKmffQBUUTwF3Odk=
++		</data>
++		<key>Headers/UnityAppController.h</key>
++		<data>
++		e6Lg5NhA1bqSYKYwWMG4kW6R/hI=
++		</data>
++		<key>Headers/UnityFramework.h</key>
++		<data>
++		8yp08wQW5OBNfNrDKF2pQY5sDYU=
++		</data>
++		<key>Headers/UnityViewControllerListener.h</key>
++		<data>
++		TKL48BKlldJ6/raW+FfO6wQMc7k=
++		</data>
++		<key>Info.plist</key>
++		<data>
++		qtiJ7Cx0ODC9kuaDb50x+hyGua8=
++		</data>
++		<key>Modules/module.modulemap</key>
++		<data>
++		SFQiyevI/ljChVJkSZuUe8macr4=
++		</data>
++		<key>PrivacyInfo.xcprivacy</key>
++		<data>
++		s3d0gu6BAqmX9L9A+flB8GlJPbQ=
++		</data>
++	</dict>
++	<key>files2</key>
++	<dict>
++		<key>Data/Managed/Metadata/global-metadata.dat</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			9/oj4rRDzs0gZz8HFl0TzwQwrL/SIIU3WEJXYJNn7LY=
++			</data>
++		</dict>
++		<key>Data/Managed/Resources/mscorlib.dll-resources.dat</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			xbqhdqW3LNVFJmNA5CEC05Ol5D04yVeWvIKJGLuVJ38=
++			</data>
++		</dict>
++		<key>Data/Managed/mono/4.0/machine.config</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			5grsLFEV1ls6yzxV6iFXbb13D1eRZsAXElVx5GrlYO0=
++			</data>
++		</dict>
++		<key>Data/Resources/unity default resources</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			cyZxROWnK/m0Pox5RKoKpcSGPsh4DhfvF1YD56IodP4=
++			</data>
++		</dict>
++		<key>Data/Resources/unity_builtin_extra</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			cJhQF2Ev7HlTWHBSkTxH3vEqTfaBsMdA4koIUhsQ4hM=
++			</data>
++		</dict>
++		<key>Data/RuntimeInitializeOnLoads.json</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			wfOYFW5+j6VPKOLQPquKej1Bf2tlsQ28k0i00z2iciU=
++			</data>
++		</dict>
++		<key>Data/ScriptingAssemblies.json</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			Z3xsXBSSp5034yqWqpuBMsGHHC3PRzBvxrFwuvYpaS0=
++			</data>
++		</dict>
++		<key>Data/UnitySubsystems/UnityARKit/UnitySubsystemsManifest.json</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			OowzfIJUGnytDfoEt7lccszsPgIdLTjBnLN3z/Fyv4o=
++			</data>
++		</dict>
++		<key>Data/boot.config</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			VcD79MeLliEwh5ZgNGm3jN56PutriOmnOjT+50CX3yE=
++			</data>
++		</dict>
++		<key>Data/globalgamemanagers</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			K7gkw6rOzI2ZkofGdt7ElPCEfJ6d1J5sv8eE4sEIHqo=
++			</data>
++		</dict>
++		<key>Data/globalgamemanagers.assets</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			Pe1ta0GJIcbEkuwQA3KMHjFHZKSRKr7/jGOylFonAdM=
++			</data>
++		</dict>
++		<key>Data/globalgamemanagers.assets.resS</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			cfqNXuAJA6cQ5PqcL12tgMsONBkQLkUCVco+XxI03Ew=
++			</data>
++		</dict>
++		<key>Data/level0</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			q21gcxVXZDzmdDdyVrqNp6cm5Vuc4/9JYp/peBqPqFo=
++			</data>
++		</dict>
++		<key>Data/level1</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			S3eyUxm6oxPB108d5dsGI+Lhtwd2jiVVxTzt+UUKh10=
++			</data>
++		</dict>
++		<key>Data/resources.assets</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			X935s2e1hHxVAwGd/TbDTCudioillUEgET1JB6jjZns=
++			</data>
++		</dict>
++		<key>Data/resources.assets.resS</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			/JugjpMjpBCD89OFQ3sdsJT6KtFqT2bMo7RLn8dyaJY=
++			</data>
++		</dict>
++		<key>Data/sharedassets0.assets</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			u7mpefys5AcMUlfR6bxhvXM/IgwkM00RBiRgEFtCv/c=
++			</data>
++		</dict>
++		<key>Data/sharedassets0.assets.resS</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			/kgsdY6yX/BED2qRtgXpvos16AnsyHk8qt2CpsSB9/Y=
++			</data>
++		</dict>
++		<key>Data/sharedassets0.resource</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			nD62TM0IXm/18eY+FgWHcqe7Kp4pqi1+czJNPvCuR8E=
++			</data>
++		</dict>
++		<key>Data/sharedassets1.assets</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			9Cw3d2MgENSiO5kvbEofnkcXcPWg2OalXxOjQhPxkvQ=
++			</data>
++		</dict>
++		<key>Data/sharedassets1.assets.resS</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			yJGZofM/PuApAA6vvByat0RkaXPJE/KM3Qj5eiNVEZQ=
++			</data>
++		</dict>
++		<key>Data/sharedassets1.resource</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			eMY3ROSPOR+GnLIXr18Qrugg8vM2Cm6RZPOVRhK1Ngk=
++			</data>
++		</dict>
++		<key>Headers/AppDelegateListener.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			dft3SGLYk9CDHpECkZ03YLQGvREnnbea1Tis3S8lIag=
++			</data>
++		</dict>
++		<key>Headers/LifeCycleListener.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			3IyJk2JNSU2+gjMWlagCbqN+VVNY49yY4JkX6eG4w0E=
++			</data>
++		</dict>
++		<key>Headers/NativeCallProxy.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			/o52D3cNdpBzeXSmswjCvUo05BxwrQPGgQ53rM36jSc=
++			</data>
++		</dict>
++		<key>Headers/RedefinePlatforms.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			R3BdzZ1tYutAYGxKP+O0kh9nxzgJVoJhENhZLQrK42I=
++			</data>
++		</dict>
++		<key>Headers/RenderPluginDelegate.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			hXFbMS3t9jr40I4TLtphAErZrWvRidhTUm0VK/GR1+I=
++			</data>
++		</dict>
++		<key>Headers/UndefinePlatforms.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			9v2VBzSy/HkveK+e+GFxUJYTW/HOscuCKAE0b9AxMtU=
++			</data>
++		</dict>
++		<key>Headers/UnityAppController.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			sHO2ik/EuhTmPGZi2CWdqsyPifXt5hDjyq1t82QRVsE=
++			</data>
++		</dict>
++		<key>Headers/UnityFramework.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			JJsi3omqz/PzI8CiZi8PoNuAn4m+LoF77C7/qwAybPM=
++			</data>
++		</dict>
++		<key>Headers/UnityViewControllerListener.h</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			n3GuNrcHr5xwMukAyIiiM9nwjmG+wvMiuxq7LJJE81Y=
++			</data>
++		</dict>
++		<key>Modules/module.modulemap</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			/hp60SByiSs4UCpvP1p57YIFETrLBldNnx4pcELJAx8=
++			</data>
++		</dict>
++		<key>PrivacyInfo.xcprivacy</key>
++		<dict>
++			<key>hash2</key>
++			<data>
++			zBKybnNzluhHICr1gk1BVoKt7LTg4tlXEhT1xAifuG8=
++			</data>
++		</dict>
++	</dict>
++	<key>rules</key>
++	<dict>
++		<key>^.*</key>
++		<true/>
++		<key>^.*\.lproj/</key>
++		<dict>
++			<key>optional</key>
++			<true/>
++			<key>weight</key>
++			<real>1000</real>
++		</dict>
++		<key>^.*\.lproj/locversion.plist$</key>
++		<dict>
++			<key>omit</key>
++			<true/>
++			<key>weight</key>
++			<real>1100</real>
++		</dict>
++		<key>^Base\.lproj/</key>
++		<dict>
++			<key>weight</key>
++			<real>1010</real>
++		</dict>
++		<key>^version.plist$</key>
++		<true/>
++	</dict>
++	<key>rules2</key>
++	<dict>
++		<key>.*\.dSYM($|/)</key>
++		<dict>
++			<key>weight</key>
++			<real>11</real>
++		</dict>
++		<key>^(.*/)?\.DS_Store$</key>
++		<dict>
++			<key>omit</key>
++			<true/>
++			<key>weight</key>
++			<real>2000</real>
++		</dict>
++		<key>^.*</key>
++		<true/>
++		<key>^.*\.lproj/</key>
++		<dict>
++			<key>optional</key>
++			<true/>
++			<key>weight</key>
++			<real>1000</real>
++		</dict>
++		<key>^.*\.lproj/locversion.plist$</key>
++		<dict>
++			<key>omit</key>
++			<true/>
++			<key>weight</key>
++			<real>1100</real>
++		</dict>
++		<key>^Base\.lproj/</key>
++		<dict>
++			<key>weight</key>
++			<real>1010</real>
++		</dict>
++		<key>^Info\.plist$</key>
++		<dict>
++			<key>omit</key>
++			<true/>
++			<key>weight</key>
++			<real>20</real>
++		</dict>
++		<key>^PkgInfo$</key>
++		<dict>
++			<key>omit</key>
++			<true/>
++			<key>weight</key>
++			<real>20</real>
++		</dict>
++		<key>^embedded\.provisionprofile$</key>
++		<dict>
++			<key>weight</key>
++			<real>20</real>
++		</dict>
++		<key>^version\.plist$</key>
++		<dict>
++			<key>weight</key>
++			<real>20</real>
++		</dict>
++	</dict>
++</dict>
++</plist>

@@ -34,17 +34,7 @@ const UnityPlayScreen = () => {
   useEffect(() => {
     if (Platform.OS === 'ios') {
       UnityModule.startUnity()
-    }
-
-    return () => {
-      // Close Unity when leaving screen
-      try {
-        UnityModule.stopUnity()
-      } catch (error) {
-        console.warn('Failed to unload Unity', error)
-      }
-      Orientation.lockToPortrait()
-    }
+    }    
   }, [])
 
   // --- Send payload to Unity ---

@@ -50,9 +50,75 @@ import { baseUrl } from './endPoints';
     return result;
   };
   
+  /**
+   * Base query wrapper that handles token refresh when an authenticated request fails
+   * due to an expired/invalid access token.
+   */
+  const baseQueryWithReauth: BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchBaseQueryError
+  > = async (args, api, extraOptions) => {
+    let result = await timeoutFetchBaseQuery(args, api, extraOptions);
+  
+    if (result.error && (result.error.status === 401 || result.error.status === 403)) {
+      try {
+        const refreshToken = await AsyncStorage.getItem('UserRefreshToken');
+        console.log("refreshToken", refreshToken);
+        
+        if (!refreshToken) {
+          return result;
+        }
+  
+        const refreshBaseQuery = fetchBaseQuery({
+          baseUrl: baseUrl,
+          prepareHeaders: (headers) => {
+            headers.set('Accept', 'application/json');
+            headers.set('Content-Type', 'application/json');
+            return headers;
+          },
+        });
+  
+        const refreshResult = await refreshBaseQuery(
+          {
+            url: '/auth/token/refresh/',
+            method: 'POST',
+            body: {refresh: refreshToken},
+          },
+          api,
+          extraOptions,
+        );
+        
+        if (refreshResult.data) {
+          const data = refreshResult.data as any;
+          const newAccessToken = data.access;
+          const newRefreshToken = data.refresh ?? refreshToken;
+  
+          if (newAccessToken) {
+            await AsyncStorage.setItem('UserToken', newAccessToken);
+            if (newRefreshToken) {
+              await AsyncStorage.setItem('UserRefreshToken', newRefreshToken);
+            }
+  
+            // Retry the original query with the new access token
+            result = await timeoutFetchBaseQuery(args, api, extraOptions);
+          }
+        } else {
+          // If refresh failed, clear stored tokens
+          await AsyncStorage.multiRemove(['UserToken', 'UserRefreshToken']);
+        }
+      } catch (e) {
+        // In case of any unexpected error, just return the original result
+        return result;
+      }
+    }
+  
+    return result;
+  };
+  
   const baseQueryWithRetriesAndBailout = retry(
     async (args, api, options) => {
-      const result = await timeoutFetchBaseQuery(args, api, options);
+      const result = await baseQueryWithReauth(args, api, options);
       return result;
     },
     {maxRetries: 2},
