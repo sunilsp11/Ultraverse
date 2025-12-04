@@ -11418,10 +11418,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TreeViewReorderableDragAndDropController
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Contains_m4FD96E89F15844C90032C7386BAB528817F1FF5B_RuntimeMethod_var);
 		s_Il2CppMethodInitialized = true;
 	}
-	RuntimeObject* V_0 = NULL;
-	int32_t V_1 = 0;
-	bool V_2 = false;
+	bool V_0 = false;
+	RuntimeObject* V_1 = NULL;
+	int32_t V_2 = 0;
+	bool V_3 = false;
+	bool V_4 = false;
 	{
+		V_0 = (bool)0;
 		BaseTreeView_t4B72EA959CB8F22C78269844A43D51C4AB360DD7* L_0 = __this->___m_TreeView;
 		NullCheck(L_0);
 		BaseTreeViewController_t8359BFF7DA01FF2425D81CB17628B4B43AC6E5C0* L_1;
@@ -11432,28 +11435,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TreeViewReorderableDragAndDropController
 		NullCheck(L_2);
 		RuntimeObject* L_3;
 		L_3 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(0, IEnumerable_1_tCE758D940790D6D0D56B457E522C195F8C413AF2_il2cpp_TypeInfo_var, L_2);
-		V_0 = L_3;
+		V_1 = L_3;
 	}
 	{
 		auto __finallyBlock = il2cpp::utils::Finally([&]
 		{
 
-FINALLY_004d:
+FINALLY_0051:
 			{
 				{
-					RuntimeObject* L_4 = V_0;
+					RuntimeObject* L_4 = V_1;
 					if (!L_4)
 					{
-						goto IL_0057;
+						goto IL_005b;
 					}
 				}
 				{
-					RuntimeObject* L_5 = V_0;
+					RuntimeObject* L_5 = V_1;
 					NullCheck(L_5);
 					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_5);
 				}
 
-IL_0057:
+IL_005b:
 				{
 					return;
 				}
@@ -11462,52 +11465,53 @@ IL_0057:
 		try
 		{
 			{
-				goto IL_0043_1;
+				goto IL_0047_1;
 			}
 
-IL_001b_1:
+IL_001d_1:
 			{
-				RuntimeObject* L_6 = V_0;
+				RuntimeObject* L_6 = V_1;
 				NullCheck(L_6);
 				int32_t L_7;
 				L_7 = InterfaceFuncInvoker0< int32_t >::Invoke(0, IEnumerator_1_tD6A90A7446DA8E6CF865EDFBBF18C1200BB6D452_il2cpp_TypeInfo_var, L_6);
-				V_1 = L_7;
+				V_2 = L_7;
 				List_1_t05915E9237850A58106982B7FE4BC5DA4E872E73* L_8 = ___0_ids;
-				int32_t L_9 = V_1;
+				int32_t L_9 = V_2;
 				NullCheck(L_8);
 				bool L_10;
 				L_10 = List_1_Contains_m4FD96E89F15844C90032C7386BAB528817F1FF5B(L_8, L_9, List_1_Contains_m4FD96E89F15844C90032C7386BAB528817F1FF5B_RuntimeMethod_var);
-				V_2 = (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
-				bool L_11 = V_2;
+				V_3 = (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
+				bool L_11 = V_3;
 				if (!L_11)
 				{
-					goto IL_0042_1;
+					goto IL_0046_1;
 				}
 			}
 			{
 				BaseTreeView_t4B72EA959CB8F22C78269844A43D51C4AB360DD7* L_12 = __this->___m_TreeView;
-				int32_t L_13 = V_1;
+				int32_t L_13 = V_2;
 				NullCheck(L_12);
-				BaseTreeView_CollapseItem_m2A89C8211CA8E303D5609813AD7744DC8D903D64(L_12, L_13, (bool)0, (bool)1, NULL);
+				BaseTreeView_CollapseItem_m2A89C8211CA8E303D5609813AD7744DC8D903D64(L_12, L_13, (bool)0, (bool)0, NULL);
+				V_0 = (bool)1;
 			}
 
-IL_0042_1:
+IL_0046_1:
 			{
 			}
 
-IL_0043_1:
+IL_0047_1:
 			{
-				RuntimeObject* L_14 = V_0;
+				RuntimeObject* L_14 = V_1;
 				NullCheck(L_14);
 				bool L_15;
 				L_15 = InterfaceFuncInvoker0< bool >::Invoke(0, IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var, L_14);
 				if (L_15)
 				{
-					goto IL_001b_1;
+					goto IL_001d_1;
 				}
 			}
 			{
-				goto IL_0058;
+				goto IL_005c;
 			}
 		}
 		catch(Il2CppExceptionWrapper& e)
@@ -11516,7 +11520,23 @@ IL_0043_1:
 		}
 	}
 
-IL_0058:
+IL_005c:
+	{
+		bool L_16 = V_0;
+		V_4 = L_16;
+		bool L_17 = V_4;
+		if (!L_17)
+		{
+			goto IL_0071;
+		}
+	}
+	{
+		BaseTreeView_t4B72EA959CB8F22C78269844A43D51C4AB360DD7* L_18 = __this->___m_TreeView;
+		NullCheck(L_18);
+		BaseVerticalCollectionView_RefreshItems_m53943EBC70FFE5C66EE6A7FEF5ECA33DE80AC0D6(L_18, NULL);
+	}
+
+IL_0071:
 	{
 		return;
 	}

@@ -65,7 +65,6 @@ export const {
   useGetGameFeedbackQuestionsQuery,
   useSubmitGameFeedbackMutation,
   useGetUserGameFeedbackQuery,
-  useLazyGetUserGameFeedbackQuery,
 } = gameFeedbackApi;
 
 export default gameFeedbackApi;

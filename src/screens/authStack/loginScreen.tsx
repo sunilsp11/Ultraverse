@@ -62,6 +62,7 @@ const LoginScreen = () => {
     () => isGoogleSignInInProgress || isSocialLoginLoading,
     [isGoogleSignInInProgress, isSocialLoginLoading]
   );
+  const [globalErrorMessage, setGlobalErrorMessage] = useState<string | null>(null);
 
   type LoginFormData = {
     email: string;
@@ -112,10 +113,12 @@ const LoginScreen = () => {
         console.warn("Login succeeded but no access token found.", response);
       }
     } catch (error: any) {
-      Alert.alert(
-        "Login failed",
-        error?.data?.message || "Please check your credentials and try again"
-      );
+      console.log("error", JSON.stringify(error, null, 2));
+      setGlobalErrorMessage(error?.data?.message || "Please check your credentials and try again");
+      // Alert.alert(
+      //   "Login failed",
+      //   error?.data?.message || "Please check your credentials and try again"
+      // );
     }
   };
 
@@ -201,8 +204,7 @@ const LoginScreen = () => {
 
 
   return (
-    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true} isLoading={isLoading}>
         <View style={{ paddingHorizontal: 24, flex: 1 }}>
           <View style={styles.header}>
             <Image
@@ -303,6 +305,12 @@ const LoginScreen = () => {
                   )}
                 />
 
+                {globalErrorMessage && (
+                  <UvTypography variant="bodyXs" color={Colors.danger[400]}>
+                    {globalErrorMessage}
+                  </UvTypography>
+                )}
+
                 <TouchableOpacity
                   onPress={() => navigation.navigate("ForgotPasswordScreen")}
                   style={styles.forgotBtn}
@@ -361,7 +369,6 @@ const LoginScreen = () => {
             </View>
           </View>
         </View>
-      </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );
 };

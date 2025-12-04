@@ -2,12 +2,6 @@ apply plugin: 'com.android.library'
 apply from: '../shared/keepUnitySymbols.gradle'
 apply from: '../shared/common.gradle'
 
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // implementation fileTree(dir: 'libs', include: ['*.aar'])
@@ -24,7 +18,7 @@ dependencies {
 
 android {
     namespace "com.unity3d.player"
-    ndkPath "/Applications/Unity/Hub/Editor/6000.2.12f1/PlaybackEngines/AndroidPlayer/NDK"
+    ndkPath "/Applications/Unity/Hub/Editor/6000.2.14f1/PlaybackEngines/AndroidPlayer/NDK"
     ndkVersion "27.2.12479018"
     compileSdk 36
     buildToolsVersion = "36.0.0"
@@ -151,7 +145,6 @@ def buildIl2CppImpl(String workingDir, String configuration, String architecture
     commandLineArgs.add("--architecture=${architecture}")
     commandLineArgs.add("--outputpath=${workingDir}/src/main/jniLibs/${abi}/libil2cpp.so")
     commandLineArgs.add("--baselib-directory=${workingDir}/src/main/jniStaticLibs/${abi}")
-    commandLineArgs.add("--enable-arm-pac-bti")
     commandLineArgs.add("--configuration=${configuration}")
     commandLineArgs.add("--dotnetprofile=unityaot-linux")
     commandLineArgs.add("--usymtool-path=${workingDir}/src/main/Il2CppOutputProject/usymtool")

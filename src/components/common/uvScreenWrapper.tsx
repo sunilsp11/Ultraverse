@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StatusBar, StyleSheet, View, ViewStyle, ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import UvAssistant from './uvAssistant';
+import Colors from '../../theme/color';
 
 interface ScreenWrapperProps {
   children: ReactNode;
@@ -11,6 +12,7 @@ interface ScreenWrapperProps {
   inverted?: boolean;
   showAssistant?: boolean;
   isScrollable?: boolean;
+  isLoading?: boolean;
 }
 
 const UvScreenWrapper = ({
@@ -20,6 +22,7 @@ const UvScreenWrapper = ({
   inverted = false,
   showAssistant = false,
   isScrollable = false,
+  isLoading = false,
 }: ScreenWrapperProps) => {
   const insets = useSafeAreaInsets();
 
@@ -61,6 +64,11 @@ const UvScreenWrapper = ({
         </View>
       )}
       {showAssistant && <UvAssistant />}
+      {isLoading && (
+        <View style={styles.loadingOverlay}>
+          <ActivityIndicator size="large" color={Colors.white} />
+        </View>
+      )}
     </View>
   )
 }
@@ -73,5 +81,12 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+  },
+  loadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 9999,
   },
 })

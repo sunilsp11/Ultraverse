@@ -608,7 +608,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral3B391981538EAE9A7DE7B67FEFC5A3098368F391
 IL2CPP_EXTERN_C String_t* _stringLiteral3C9DCDEDEDD1755351F679B0ECB6B5B03E5EC8F5;
 IL2CPP_EXTERN_C String_t* _stringLiteral3CE647910980E451EBDEC4D07EC86A23EEF8B93B;
 IL2CPP_EXTERN_C String_t* _stringLiteral3F33523076D7B2B54E8E2D8B8C07500867A53E03;
-IL2CPP_EXTERN_C String_t* _stringLiteral3F8690731E578BE830DA666CE7CA3A97F337CE9A;
 IL2CPP_EXTERN_C String_t* _stringLiteral40B19A042B696703E50DE64FDBBE1390617D7BDC;
 IL2CPP_EXTERN_C String_t* _stringLiteral40D73CA9EC0CC1B45C11E16BDBB1FB5C81021326;
 IL2CPP_EXTERN_C String_t* _stringLiteral41B51FFCE780DC0EB3F0FF787A65D2E222FDA9AD;
@@ -664,6 +663,8 @@ IL2CPP_EXTERN_C String_t* _stringLiteral7AD3B8F0AE03B30E7EF1A150A08259397F2A7D50
 IL2CPP_EXTERN_C String_t* _stringLiteral7B322ED0878F58311B815AE15521463470CDA86D;
 IL2CPP_EXTERN_C String_t* _stringLiteral7B8AA39EEAF586AAE4B49BE920B4A7420EF396E3;
 IL2CPP_EXTERN_C String_t* _stringLiteral7C5F87E48AE358BCF7E470E9FEB175EF05D3C087;
+IL2CPP_EXTERN_C String_t* _stringLiteral7D6AA49853E44CD9C335164EDCB82AEC7D01B393;
+IL2CPP_EXTERN_C String_t* _stringLiteral7DB46EEFC041A6DF65A3CC4EC043ECC8A04F3499;
 IL2CPP_EXTERN_C String_t* _stringLiteral81CCE0E32B3FAE8A5E31E76BDE36C28FAD811009;
 IL2CPP_EXTERN_C String_t* _stringLiteral82FB32740B7B1EB4F8BFEC52BA61B31F537C4818;
 IL2CPP_EXTERN_C String_t* _stringLiteral839C0838727775DB9BADFDB2935BF509CDD1419E;
@@ -690,7 +691,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral97080CB50229F087DB66B25AC23A759B2D12F1B6
 IL2CPP_EXTERN_C String_t* _stringLiteral978600362E17418CDF6C99B1CA1CF6CCCCBEF31A;
 IL2CPP_EXTERN_C String_t* _stringLiteral9902CB2CF573656EB6C874E54A63A8660B378AFF;
 IL2CPP_EXTERN_C String_t* _stringLiteral99047461202765202274922C6338EF9DC6A8CA1F;
-IL2CPP_EXTERN_C String_t* _stringLiteral99CFF74C2E3D813E9054DD858A3BDB76BAC80A14;
 IL2CPP_EXTERN_C String_t* _stringLiteral9B7AA06F14063EC92A7FBC1CEE8569098230A4F0;
 IL2CPP_EXTERN_C String_t* _stringLiteral9BB74B8EBE78D5829463282CA14F2FA18C60431B;
 IL2CPP_EXTERN_C String_t* _stringLiteral9D33B957A70086305E20F090BE2A21FFF6A6A04D;
@@ -6433,7 +6433,6 @@ inline UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* ContextCont
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UniversalRenderPipeline_GetMainLightIndex_m54F627DC2AA23719325B9C96219DB94CF50C6613 (UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* ___0_settings, NativeArray_1_t71485A1E60B31CCAD3E525C907CF172E8B804468 ___1_visibleLights, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t UniversalRenderPipelineAsset_get_maxAdditionalLightsCount_mB5B6C7561C5C4A9CF82FA775684D79DA22151208_inline (UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UniversalRenderPipeline_get_maxPerObjectLights_mA86D1173261C4296691637CF9F74C2F14C6F87E3 (const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UniversalRenderPipeline_GetBrightestDirectionalLightIndex_m05B129F0EB8874C82DA02ECD80B4CC937B781BB6 (UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* ___0_settings, NativeArray_1_t71485A1E60B31CCAD3E525C907CF172E8B804468 ___1_visibleLights, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UniversalRenderPipelineAsset_get_supportsMixedLighting_m3BF0530B747A7662DC8F8D46CB5E12064110B66C_inline (UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UniversalRenderPipelineAsset_get_reflectionProbeBoxProjection_m27A4783B1A0D98AE8AD17E4F6CFB70FB1A4130AE_inline (UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RenderingUtils_SupportsLightLayers_m4FFC2E98E1E0DB0FD12B7934FF3F58A00A985312 (int32_t ___0_type, const RuntimeMethod* method) ;
@@ -6478,6 +6477,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRPass_get_multipassId_m3
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RenderingUtils_get_useStructuredBuffer_m0B310996FC76E8BF72EBBCA9F94AB840277DAB1B (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* RenderSettings_get_sun_m5D3CDD2B31B8F48F77D5DC3830E3BB67A44869EC (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Light_get_intensity_m8FA28D515853068A93FA68B2148809BBEE4E710F (Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UniversalRenderPipeline_GetBrightestDirectionalLightIndex_m05B129F0EB8874C82DA02ECD80B4CC937B781BB6 (UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* ___0_settings, NativeArray_1_t71485A1E60B31CCAD3E525C907CF172E8B804468 ___1_visibleLights, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Shader_SetGlobalColor_m07EF500ECA39770CC4758EA22861E6B4058CA6AE (int32_t ___0_nameID, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___1_value, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR UniversalRenderPipelineRuntimeTextures_tDA15F1E9BFCD85610D963AC723C03EB214D1EB86* UniversalRenderPipeline_get_runtimeTextures_m61567EEAAA37DA27BAFBB934EBDD79D4ED66994E_inline (UniversalRenderPipeline_t54B4737DC500C08628C5BE283D8C583C14DED98F* __this, const RuntimeMethod* method) ;
@@ -7768,8 +7768,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClearTargetsPass_Render_m6D8C18E9E3343A6
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TextureHandle_t680ABA3F8B50859351BA5DD66220084F87F37388_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3CRenderU3Eb__3_0_mD1346451077E418F56AE737F3D7C07C3900D2E79_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_tE2F577A639C5FA3846BFF109059BD156C94F21DC_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral7D6AA49853E44CD9C335164EDCB82AEC7D01B393);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral940D9D43F86586CDEE551569CFD7A7CF394900BD);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral99CFF74C2E3D813E9054DD858A3BDB76BAC80A14);
 		s_Il2CppMethodInitialized = true;
 	}
 	RuntimeObject* V_0 = NULL;
@@ -7784,7 +7784,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClearTargetsPass_Render_m6D8C18E9E3343A6
 		ProfilingSampler_t420D4672EDB44E0EF980B31ADFD9E5747200FECE* L_1 = ((ClearTargetsPass_tE871E7860C82F1575110F27E9D5505D71C1E8D0E_StaticFields*)il2cpp_codegen_static_fields_for(ClearTargetsPass_tE871E7860C82F1575110F27E9D5505D71C1E8D0E_il2cpp_TypeInfo_var))->___s_ClearProfilingSampler;
 		NullCheck(L_0);
 		RuntimeObject* L_2;
-		L_2 = RenderGraph_AddRasterRenderPass_TisPassData_t2CAE615CA17D4873C41658D4E5CAC4468B50BBDD_mB3525DA882639925D05EE49E55971936CAA15ED6(L_0, _stringLiteral940D9D43F86586CDEE551569CFD7A7CF394900BD, (&V_1), L_1, _stringLiteral99CFF74C2E3D813E9054DD858A3BDB76BAC80A14, ((int32_t)2039), RenderGraph_AddRasterRenderPass_TisPassData_t2CAE615CA17D4873C41658D4E5CAC4468B50BBDD_mB3525DA882639925D05EE49E55971936CAA15ED6_RuntimeMethod_var);
+		L_2 = RenderGraph_AddRasterRenderPass_TisPassData_t2CAE615CA17D4873C41658D4E5CAC4468B50BBDD_mB3525DA882639925D05EE49E55971936CAA15ED6(L_0, _stringLiteral940D9D43F86586CDEE551569CFD7A7CF394900BD, (&V_1), L_1, _stringLiteral7D6AA49853E44CD9C335164EDCB82AEC7D01B393, ((int32_t)2039), RenderGraph_AddRasterRenderPass_TisPassData_t2CAE615CA17D4873C41658D4E5CAC4468B50BBDD_mB3525DA882639925D05EE49E55971936CAA15ED6_RuntimeMethod_var);
 		V_0 = L_2;
 	}
 	{
@@ -15145,20 +15145,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UniversalLightData_tCFFFAB4033CD97BE9F339F0C9
 	ProfilingScope_t57898BA31E8EF8F083EF84E0DA2737AC61CBC5BD V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* V_1 = NULL;
-	int32_t V_2 = 0;
-	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* V_3 = NULL;
+	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* V_2 = NULL;
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B4_0 = NULL;
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B3_0 = NULL;
 	int32_t G_B5_0 = 0;
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B5_1 = NULL;
+	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B9_0 = NULL;
+	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B8_0 = NULL;
+	int32_t G_B10_0 = 0;
+	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B10_1 = NULL;
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B12_0 = NULL;
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B11_0 = NULL;
 	int32_t G_B13_0 = 0;
 	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B13_1 = NULL;
-	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B15_0 = NULL;
-	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B14_0 = NULL;
-	int32_t G_B16_0 = 0;
-	UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* G_B16_1 = NULL;
 	{
 		il2cpp_codegen_runtime_class_init_inline(Pipeline_tF54F4123C703558BF57DF69D210E6E36859806A7_il2cpp_TypeInfo_var);
 		ProfilingSampler_t420D4672EDB44E0EF980B31ADFD9E5747200FECE* L_0 = ((Pipeline_tF54F4123C703558BF57DF69D210E6E36859806A7_StaticFields*)il2cpp_codegen_static_fields_for(Pipeline_tF54F4123C703558BF57DF69D210E6E36859806A7_il2cpp_TypeInfo_var))->___initializeLightData;
@@ -15168,7 +15167,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UniversalLightData_tCFFFAB4033CD97BE9F339F0C9
 		auto __finallyBlock = il2cpp::utils::Finally([&]
 		{
 
-FINALLY_0129:
+FINALLY_0100:
 			{
 				ProfilingScope_Dispose_m4231A2ACA1F8E345BB0078310A9F7601704C8BE4((&V_0), NULL);
 				return;
@@ -15267,146 +15266,109 @@ IL_0072_1:
 
 IL_0080_1:
 			{
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_25 = ___1_settings;
+				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_25 = V_1;
+				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_26 = ___1_settings;
+				NullCheck(L_26);
+				int32_t L_27;
+				L_27 = UniversalRenderPipelineAsset_get_additionalLightsRenderingMode_m3AA2C7C727F0193DC989BF2B07062C4CEE94B5D0_inline(L_26, NULL);
 				NullCheck(L_25);
-				int32_t L_26;
-				L_26 = UniversalRenderPipelineAsset_get_mainLightRenderingMode_mB81738693921E662D9398985351173D03B45C335_inline(L_25, NULL);
-				if (L_26)
-				{
-					goto IL_00a9_1;
-				}
-			}
-			{
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_27 = ___1_settings;
-				NativeArray_1_t71485A1E60B31CCAD3E525C907CF172E8B804468 L_28 = ___2_visibleLights;
-				il2cpp_codegen_runtime_class_init_inline(UniversalRenderPipeline_t54B4737DC500C08628C5BE283D8C583C14DED98F_il2cpp_TypeInfo_var);
-				int32_t L_29;
-				L_29 = UniversalRenderPipeline_GetBrightestDirectionalLightIndex_m05B129F0EB8874C82DA02ECD80B4CC937B781BB6(L_27, L_28, NULL);
-				V_2 = L_29;
-				int32_t L_30 = V_2;
-				if ((((int32_t)L_30) == ((int32_t)(-1))))
-				{
-					goto IL_00a9_1;
-				}
-			}
-			{
+				L_25->___supportsAdditionalLights = (bool)((!(((uint32_t)L_27) <= ((uint32_t)0)))? 1 : 0);
+				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_28 = V_1;
+				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_29 = ___1_settings;
+				NullCheck(L_29);
+				int32_t L_30;
+				L_30 = UniversalRenderPipelineAsset_get_additionalLightsRenderingMode_m3AA2C7C727F0193DC989BF2B07062C4CEE94B5D0_inline(L_29, NULL);
+				NullCheck(L_28);
+				L_28->___shadeAdditionalLightsPerVertex = (bool)((((int32_t)L_30) == ((int32_t)2))? 1 : 0);
 				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_31 = V_1;
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_32 = L_31;
+				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_32 = ___1_settings;
 				NullCheck(L_32);
-				int32_t L_33 = L_32->___additionalLightsCount;
-				NullCheck(L_32);
-				L_32->___additionalLightsCount = ((int32_t)il2cpp_codegen_subtract(L_33, 1));
+				bool L_33;
+				L_33 = UniversalRenderPipelineAsset_get_supportsMixedLighting_m3BF0530B747A7662DC8F8D46CB5E12064110B66C_inline(L_32, NULL);
+				NullCheck(L_31);
+				L_31->___supportsMixedLighting = L_33;
 				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_34 = V_1;
-				int32_t L_35 = V_2;
+				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_35 = ___1_settings;
+				NullCheck(L_35);
+				bool L_36;
+				L_36 = UniversalRenderPipelineAsset_get_reflectionProbeBoxProjection_m27A4783B1A0D98AE8AD17E4F6CFB70FB1A4130AE_inline(L_35, NULL);
 				NullCheck(L_34);
-				L_34->___mainLightIndex = L_35;
-			}
-
-IL_00a9_1:
-			{
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_36 = V_1;
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_37 = ___1_settings;
-				NullCheck(L_37);
+				L_34->___reflectionProbeBoxProjection = L_36;
+				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_37 = V_1;
 				int32_t L_38;
-				L_38 = UniversalRenderPipelineAsset_get_additionalLightsRenderingMode_m3AA2C7C727F0193DC989BF2B07062C4CEE94B5D0_inline(L_37, NULL);
-				NullCheck(L_36);
-				L_36->___supportsAdditionalLights = (bool)((!(((uint32_t)L_38) <= ((uint32_t)0)))? 1 : 0);
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_39 = V_1;
+				L_38 = SystemInfo_get_graphicsDeviceType_m2D54A0B94D138727041B29B127D8837165686545(NULL);
+				il2cpp_codegen_runtime_class_init_inline(RenderingUtils_t4E40200449A82FA3A172A563C490DF11FADA2BE1_il2cpp_TypeInfo_var);
+				bool L_39;
+				L_39 = RenderingUtils_SupportsLightLayers_m4FFC2E98E1E0DB0FD12B7934FF3F58A00A985312(L_38, NULL);
+				if (!L_39)
+				{
+					G_B9_0 = L_37;
+					goto IL_00cb_1;
+				}
+				G_B8_0 = L_37;
+			}
+			{
 				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_40 = ___1_settings;
 				NullCheck(L_40);
-				int32_t L_41;
-				L_41 = UniversalRenderPipelineAsset_get_additionalLightsRenderingMode_m3AA2C7C727F0193DC989BF2B07062C4CEE94B5D0_inline(L_40, NULL);
-				NullCheck(L_39);
-				L_39->___shadeAdditionalLightsPerVertex = (bool)((((int32_t)L_41) == ((int32_t)2))? 1 : 0);
+				bool L_41;
+				L_41 = UniversalRenderPipelineAsset_get_useRenderingLayers_mA473541E634D2A1BEB4CEAFBF27B79251E0FA5E6_inline(L_40, NULL);
+				G_B10_0 = ((int32_t)(L_41));
+				G_B10_1 = G_B8_0;
+				goto IL_00cc_1;
+			}
+
+IL_00cb_1:
+			{
+				G_B10_0 = 0;
+				G_B10_1 = G_B9_0;
+			}
+
+IL_00cc_1:
+			{
+				NullCheck(G_B10_1);
+				G_B10_1->___supportsLightLayers = (bool)G_B10_0;
 				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_42 = V_1;
 				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_43 = ___1_settings;
 				NullCheck(L_43);
 				bool L_44;
-				L_44 = UniversalRenderPipelineAsset_get_supportsMixedLighting_m3BF0530B747A7662DC8F8D46CB5E12064110B66C_inline(L_43, NULL);
+				L_44 = UniversalRenderPipelineAsset_ShouldUseReflectionProbeBlending_m91DBDA36EF35C607113A474DD90521247728CB7D(L_43, NULL);
 				NullCheck(L_42);
-				L_42->___supportsMixedLighting = L_44;
+				L_42->___reflectionProbeBlending = L_44;
 				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_45 = V_1;
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_46 = ___1_settings;
-				NullCheck(L_46);
-				bool L_47;
-				L_47 = UniversalRenderPipelineAsset_get_reflectionProbeBoxProjection_m27A4783B1A0D98AE8AD17E4F6CFB70FB1A4130AE_inline(L_46, NULL);
-				NullCheck(L_45);
-				L_45->___reflectionProbeBoxProjection = L_47;
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_48 = V_1;
-				int32_t L_49;
-				L_49 = SystemInfo_get_graphicsDeviceType_m2D54A0B94D138727041B29B127D8837165686545(NULL);
-				il2cpp_codegen_runtime_class_init_inline(RenderingUtils_t4E40200449A82FA3A172A563C490DF11FADA2BE1_il2cpp_TypeInfo_var);
-				bool L_50;
-				L_50 = RenderingUtils_SupportsLightLayers_m4FFC2E98E1E0DB0FD12B7934FF3F58A00A985312(L_49, NULL);
-				if (!L_50)
+				bool L_46;
+				L_46 = Nullable_1_get_HasValue_m610649F683B9A14E0F298BD393267CB55CE6FDFF_inline((&___3_renderingMode), Nullable_1_get_HasValue_m610649F683B9A14E0F298BD393267CB55CE6FDFF_RuntimeMethod_var);
+				if (L_46)
 				{
-					G_B12_0 = L_48;
-					goto IL_00f4_1;
+					G_B12_0 = L_45;
+					goto IL_00ea_1;
 				}
-				G_B11_0 = L_48;
+				G_B11_0 = L_45;
 			}
-			{
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_51 = ___1_settings;
-				NullCheck(L_51);
-				bool L_52;
-				L_52 = UniversalRenderPipelineAsset_get_useRenderingLayers_mA473541E634D2A1BEB4CEAFBF27B79251E0FA5E6_inline(L_51, NULL);
-				G_B13_0 = ((int32_t)(L_52));
-				G_B13_1 = G_B11_0;
-				goto IL_00f5_1;
-			}
-
-IL_00f4_1:
 			{
 				G_B13_0 = 0;
+				G_B13_1 = G_B11_0;
+				goto IL_00f7_1;
+			}
+
+IL_00ea_1:
+			{
+				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_47 = ___1_settings;
+				int32_t L_48;
+				L_48 = Nullable_1_get_Value_m66AF356326420EFC4770C4B182185E3DCA202866((&___3_renderingMode), Nullable_1_get_Value_m66AF356326420EFC4770C4B182185E3DCA202866_RuntimeMethod_var);
+				NullCheck(L_47);
+				bool L_49;
+				L_49 = UniversalRenderPipelineAsset_ShouldUseReflectionProbeAtlasBlending_mA337CB771990777CD6450C590A412E02B6120CB1(L_47, L_48, NULL);
+				G_B13_0 = ((int32_t)(L_49));
 				G_B13_1 = G_B12_0;
 			}
 
-IL_00f5_1:
+IL_00f7_1:
 			{
 				NullCheck(G_B13_1);
-				G_B13_1->___supportsLightLayers = (bool)G_B13_0;
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_53 = V_1;
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_54 = ___1_settings;
-				NullCheck(L_54);
-				bool L_55;
-				L_55 = UniversalRenderPipelineAsset_ShouldUseReflectionProbeBlending_m91DBDA36EF35C607113A474DD90521247728CB7D(L_54, NULL);
-				NullCheck(L_53);
-				L_53->___reflectionProbeBlending = L_55;
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_56 = V_1;
-				bool L_57;
-				L_57 = Nullable_1_get_HasValue_m610649F683B9A14E0F298BD393267CB55CE6FDFF_inline((&___3_renderingMode), Nullable_1_get_HasValue_m610649F683B9A14E0F298BD393267CB55CE6FDFF_RuntimeMethod_var);
-				if (L_57)
-				{
-					G_B15_0 = L_56;
-					goto IL_0113_1;
-				}
-				G_B14_0 = L_56;
-			}
-			{
-				G_B16_0 = 0;
-				G_B16_1 = G_B14_0;
-				goto IL_0120_1;
-			}
-
-IL_0113_1:
-			{
-				UniversalRenderPipelineAsset_tE8A9AA6F030CC3B558CEA2EB54FFF4FC58CA6232* L_58 = ___1_settings;
-				int32_t L_59;
-				L_59 = Nullable_1_get_Value_m66AF356326420EFC4770C4B182185E3DCA202866((&___3_renderingMode), Nullable_1_get_Value_m66AF356326420EFC4770C4B182185E3DCA202866_RuntimeMethod_var);
-				NullCheck(L_58);
-				bool L_60;
-				L_60 = UniversalRenderPipelineAsset_ShouldUseReflectionProbeAtlasBlending_mA337CB771990777CD6450C590A412E02B6120CB1(L_58, L_59, NULL);
-				G_B16_0 = ((int32_t)(L_60));
-				G_B16_1 = G_B15_0;
-			}
-
-IL_0120_1:
-			{
-				NullCheck(G_B16_1);
-				G_B16_1->___reflectionProbeAtlas = (bool)G_B16_0;
-				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_61 = V_1;
-				V_3 = L_61;
-				goto IL_0137;
+				G_B13_1->___reflectionProbeAtlas = (bool)G_B13_0;
+				UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_50 = V_1;
+				V_2 = L_50;
+				goto IL_010e;
 			}
 		}
 		catch(Il2CppExceptionWrapper& e)
@@ -15415,10 +15377,10 @@ IL_0120_1:
 		}
 	}
 
-IL_0137:
+IL_010e:
 	{
-		UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_62 = V_3;
-		return L_62;
+		UniversalLightData_tCFFFAB4033CD97BE9F339F0C90BB7F98C06FFBA2* L_51 = V_2;
+		return L_51;
 	}
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniversalRenderPipeline_ApplyTaaRenderingDebugOverrides_m72B0EFF78EACA9102670DA10529F265B4147D342 (Settings_t3BEFDFF2C1A3D3A215DAF7B76E735B1BFB946C92* ___0_taaSettings, const RuntimeMethod* method) 
@@ -25364,7 +25326,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DeferredLights_SetupRenderGraphLights_mD
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RenderGraph_AddUnsafePass_TisSetupLightPassData_tA40A910C9436A6305128815883D46A828A97F59E_mDF92BE9BC88886925A82FCC24BB304ACC752E259_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3CSetupRenderGraphLightsU3Eb__140_0_mDE57ED098540BC9B392DC4DF2CCFBEC3ECCB2E77_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_t13CC57AF784608DDD81AB4CFD075A699F4E9D248_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3F8690731E578BE830DA666CE7CA3A97F337CE9A);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral7DB46EEFC041A6DF65A3CC4EC043ECC8A04F3499);
 		s_Il2CppMethodInitialized = true;
 	}
 	RuntimeObject* V_0 = NULL;
@@ -25383,7 +25345,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DeferredLights_SetupRenderGraphLights_mD
 		ProfilingSampler_t420D4672EDB44E0EF980B31ADFD9E5747200FECE* L_3 = ((DeferredLights_t8A3C2AC9C4AF92CF3411F722D8A094EA07DA14AC_StaticFields*)il2cpp_codegen_static_fields_for(DeferredLights_t8A3C2AC9C4AF92CF3411F722D8A094EA07DA14AC_il2cpp_TypeInfo_var))->___s_SetupDeferredLights;
 		NullCheck(L_0);
 		RuntimeObject* L_4;
-		L_4 = RenderGraph_AddUnsafePass_TisSetupLightPassData_tA40A910C9436A6305128815883D46A828A97F59E_mDF92BE9BC88886925A82FCC24BB304ACC752E259(L_0, L_2, (&V_1), L_3, _stringLiteral3F8690731E578BE830DA666CE7CA3A97F337CE9A, ((int32_t)313), RenderGraph_AddUnsafePass_TisSetupLightPassData_tA40A910C9436A6305128815883D46A828A97F59E_mDF92BE9BC88886925A82FCC24BB304ACC752E259_RuntimeMethod_var);
+		L_4 = RenderGraph_AddUnsafePass_TisSetupLightPassData_tA40A910C9436A6305128815883D46A828A97F59E_mDF92BE9BC88886925A82FCC24BB304ACC752E259(L_0, L_2, (&V_1), L_3, _stringLiteral7DB46EEFC041A6DF65A3CC4EC043ECC8A04F3499, ((int32_t)313), RenderGraph_AddUnsafePass_TisSetupLightPassData_tA40A910C9436A6305128815883D46A828A97F59E_mDF92BE9BC88886925A82FCC24BB304ACC752E259_RuntimeMethod_var);
 		V_0 = L_4;
 	}
 	{

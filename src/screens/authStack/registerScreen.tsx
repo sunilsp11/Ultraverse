@@ -7,7 +7,7 @@ import {
   View,
   Linking,
 } from "react-native";
-import { TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
+import { Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
@@ -84,8 +84,7 @@ const RegisterScreen = () => {
   };
 
   return (
-    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true} isLoading={isLoading}>
         <View style={{ paddingHorizontal: 24, flex: 1 }}>
           <View style={styles.header}>
             <Image
@@ -322,7 +321,6 @@ const RegisterScreen = () => {
             </View>
           </View>
         </View>
-      </TouchableWithoutFeedback>
     </UvScreenWrapper>
   );
 };

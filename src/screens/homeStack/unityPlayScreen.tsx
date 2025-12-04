@@ -9,8 +9,8 @@ import UnityView from '@azesmway/react-native-unity';
 import Orientation from 'react-native-orientation-locker'
 
 
-// const UnityModule = NativeModules.UnityModule
-const UnityModule = NativeModules.UnityNativeModule
+const UnityModule = NativeModules.UnityModule
+// const UnityModule = NativeModules.UnityNativeModule
 
 type UnityPlayScreenRouteProp = RouteProp<RootStackParamList, 'UnityPlayScreen'>
 type UnityPlayScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UnityPlayScreen'>

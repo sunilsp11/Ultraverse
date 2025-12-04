@@ -5784,7 +5784,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR PhysicsScene_t55222DD37072E8560EE054A07C0E3FE
 	{
 		il2cpp_codegen_initobj((&V_0), sizeof(PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE));
 		(&V_0)->___m_index = 0;
-		(&V_0)->___m_version = 1;
+		(&V_0)->___m_version = 0;
 		PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE L_0 = V_0;
 		V_1 = L_0;
 		goto IL_001d;
@@ -7730,7 +7730,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR PhysicsScene_t55222DD37072E8560EE
 	{
 		il2cpp_codegen_initobj((&V_0), sizeof(PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE));
 		(&V_0)->___m_index = 0;
-		(&V_0)->___m_version = 1;
+		(&V_0)->___m_version = 0;
 		PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE L_0 = V_0;
 		V_1 = L_0;
 		goto IL_001d;

@@ -1813,9 +1813,9 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
-  - react-native-config (1.6.1):
-    - react-native-config/App (= 1.6.1)
-  - react-native-config/App (1.6.1):
+  - react-native-config (1.6.0):
+    - react-native-config/App (= 1.6.0)
+  - react-native-config/App (1.6.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -3201,7 +3201,7 @@ SPEC CHECKSUMS:
   React-logger: 500f2fa5697d224e63c33d913c8a4765319e19bf
   React-Mapbuffer: 06d59c448da7e34eb05b3fb2189e12f6a30fec57
   React-microtasksnativemodule: d1ee999dc9052e23f6488b730fa2d383a4ea40e5
-  react-native-config: 2249b7e68644c86ea68358f5a0d746d1c648f900
+  react-native-config: c45f992856651ec4c05251431ea57a18ceaa8ae4
   react-native-geolocation: 95e48fe2687e5a8280103085372fa62c2297c5d6
   react-native-image-picker: 0314366753615115fa55c3cc937ac44cb7e75702
   react-native-orientation-locker: cc6f357b289a2e0dd2210fea0c52cb8e0727fdaa

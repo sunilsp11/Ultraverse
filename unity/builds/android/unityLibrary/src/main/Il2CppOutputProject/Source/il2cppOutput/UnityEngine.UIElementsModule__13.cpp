@@ -9223,6 +9223,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TouchScreenKeyboard_set_text_m0A8AA05F4D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR InputEvent_t7C4CFCDF49880FB8473340D0BFD298EEA49ECCCF* InputEvent_GetPooled_mCA1162981528C0506E58F4DC20E11952F1A9A8F6 (String_t* ___0_previousData, String_t* ___1_newData, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* VisualElement_get_parent_m80978E6D0A928AB4885EE4CD0E2295C72AA73000 (VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_get_hasFocus_mB0CD84C594CCEBF6E35C1FFE4FD4DA4C91B6621D (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_get_needsPlaceholderIfTextIsEmpty_mBE6E2525477AD7212D6D55C1A537DB4067F55ECC (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RenderedText__ctor_m96430C7045F316918FD79C218263B55A240D083A (RenderedText_t727191BC1F93D4E7DF9CFE18F7681582D45CBE49* __this, String_t* ___0_value, String_t* ___1_suffix, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Il2CppChar TextElement_get_effectiveMaskChar_mA53235CB05E5A5C86DF14F54950778A5BDEB1434 (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RenderedText__ctor_mA4DB8477929189BAD3F68C72F4384282592890E8 (RenderedText_t727191BC1F93D4E7DF9CFE18F7681582D45CBE49* __this, Il2CppChar ___0_repeat, int32_t ___1_repeatCount, String_t* ___2_suffix, const RuntimeMethod* method) ;
@@ -31491,7 +31492,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextElement_UnityEngine_UIElements_IText
 		return;
 	}
 }
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_get_showPlaceholderText_mD1C64E77AFB8E6B0F50EE1BCF9DD3D0E38683561 (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) 
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_get_needsPlaceholderIfTextIsEmpty_mBE6E2525477AD7212D6D55C1A537DB4067F55ECC (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
@@ -31502,10 +31503,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_get_showPlaceholderText_mD1C
 	bool V_0 = false;
 	bool V_1 = false;
 	bool V_2 = false;
-	bool V_3 = false;
-	bool V_4 = false;
-	bool V_5 = false;
 	int32_t G_B3_0 = 0;
+	int32_t G_B6_0 = 0;
 	{
 		String_t* L_0 = __this->___m_PlaceholderText;
 		NullCheck(L_0);
@@ -31537,50 +31536,71 @@ IL_0025:
 IL_0026:
 	{
 		V_1 = (bool)G_B3_0;
-		String_t* L_5;
-		L_5 = VirtualFuncInvoker0< String_t* >::Invoke(198, __this);
-		bool L_6;
-		L_6 = String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478(L_5, NULL);
-		V_2 = L_6;
-		bool L_7 = V_0;
-		V_3 = (bool)((((int32_t)L_7) == ((int32_t)0))? 1 : 0);
-		bool L_8 = V_3;
-		if (!L_8)
+		bool L_5 = V_0;
+		if (!L_5)
 		{
-			goto IL_0040;
+			goto IL_0030;
 		}
 	}
 	{
-		V_4 = (bool)0;
-		goto IL_0051;
+		bool L_6 = V_1;
+		G_B6_0 = ((((int32_t)L_6) == ((int32_t)0))? 1 : 0);
+		goto IL_0031;
 	}
 
-IL_0040:
+IL_0030:
 	{
-		bool L_9 = V_1;
-		V_5 = L_9;
-		bool L_10 = V_5;
-		if (!L_10)
+		G_B6_0 = 0;
+	}
+
+IL_0031:
+	{
+		V_2 = (bool)G_B6_0;
+		goto IL_0034;
+	}
+
+IL_0034:
+	{
+		bool L_7 = V_2;
+		return L_7;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_get_showPlaceholderText_mD1C64E77AFB8E6B0F50EE1BCF9DD3D0E38683561 (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) 
+{
+	bool V_0 = false;
+	bool V_1 = false;
+	bool V_2 = false;
+	{
+		bool L_0;
+		L_0 = TextElement_get_needsPlaceholderIfTextIsEmpty_mBE6E2525477AD7212D6D55C1A537DB4067F55ECC(__this, NULL);
+		V_1 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_1;
+		if (!L_1)
 		{
-			goto IL_004c;
+			goto IL_0012;
 		}
 	}
 	{
-		V_4 = (bool)0;
-		goto IL_0051;
+		V_2 = (bool)0;
+		goto IL_0022;
 	}
 
-IL_004c:
+IL_0012:
 	{
-		bool L_11 = V_2;
-		V_4 = L_11;
-		goto IL_0051;
+		String_t* L_2;
+		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(198, __this);
+		bool L_3;
+		L_3 = String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478(L_2, NULL);
+		V_0 = L_3;
+		bool L_4 = V_0;
+		V_2 = L_4;
+		goto IL_0022;
 	}
 
-IL_0051:
+IL_0022:
 	{
-		bool L_12 = V_4;
-		return L_12;
+		bool L_5 = V_2;
+		return L_5;
 	}
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TextElement_UnityEngine_UIElements_ITextEdition_get_autoCorrection_m75ED024D3ABCB2E18F024AEE6CAE707F71FEB487 (TextElement_tD56C5044CCC5552285DC8A9950CC60448C80FEE0* __this, const RuntimeMethod* method) 
