@@ -1,44 +1,34 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   CompositeNavigationProp,
   useNavigation,
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useMemo, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import {
   Image,
-  ScrollView,
   StyleSheet,
   TouchableOpacity,
-  View,
-  Alert,
-  TouchableWithoutFeedback,
-  Keyboard,
-  ActivityIndicator,
+  View
 } from "react-native";
 import UvButton from "../../components/common/uvButton";
 import UvFormTextInput from "../../components/common/uvFormTextInput";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
+import UvSocialLogins from "../../components/common/uvSocialLogins";
 import UvTypography from "../../components/common/uvTypography";
+import {
+  useLoginMutation
+} from "../../services/authRequest/authApi";
+import {
+  setAuthProvider
+} from "../../store/slices/profileSlice";
+import { useAppDispatch } from "../../store/store";
 import Colors from "../../theme/color";
 import {
   AuthStackParamList,
   RootStackParamList,
 } from "../../types/navigationTypes";
-import GoogleIcon from "../../assets/svg/google.svg";
-import FacebookIcon from "../../assets/svg/facebook.svg";
-import {
-  useLoginMutation,
-  useSocialLoginMutation,
-} from "../../services/authRequest/authApi";
-import { useForm, Controller } from "react-hook-form";
-import { signInWithGoogle } from "../../config/googleSignIn";
-import { useAppDispatch } from "../../store/store";
-import {
-  setAuthProvider,
-  setProfile,
-} from "../../store/slices/profileSlice";
-import { UserProfile } from "../../services/profile/profileApi";
 
 export enum LoginProvider {
   google = "google-oauth2",
@@ -53,15 +43,7 @@ const LoginScreen = () => {
 
   const navigation = useNavigation<LoginNavigationProp>();
   const [login, { isLoading }] = useLoginMutation();
-  const [isGoogleSignInInProgress, setGoogleSignInInProgress] =
-    useState(false);
-  const [socialLogin, { isLoading: isSocialLoginLoading }] =
-    useSocialLoginMutation();
   const dispatch = useAppDispatch();
-  const isGoogleBusy = useMemo(
-    () => isGoogleSignInInProgress || isSocialLoginLoading,
-    [isGoogleSignInInProgress, isSocialLoginLoading]
-  );
   const [globalErrorMessage, setGlobalErrorMessage] = useState<string | null>(null);
 
   type LoginFormData = {
@@ -121,87 +103,6 @@ const LoginScreen = () => {
       // );
     }
   };
-
-  const handleGoogleLogin = async () => {
-    if (isGoogleBusy) {
-      return;
-    }
-
-    try {
-      setGoogleSignInInProgress(true);
-      const userInfo = await signInWithGoogle();
-      if (!userInfo) {
-        return;
-      }
-
-      const wrappedData: any = (userInfo as any)?.data ?? userInfo;
-      const user = wrappedData?.user ?? (userInfo as any)?.user ?? null;
-      const idToken =
-        wrappedData?.idToken ??
-        wrappedData?.id_token ??
-        (userInfo as any)?.idToken ??
-        null;
-
-      if (!idToken) {
-        Alert.alert(
-          "Google Login Failed",
-          "Unable to retrieve a valid ID token from Google."
-        );
-        return;
-      }
-      const nowIso = new Date().toISOString();
-
-      const response = await socialLogin({
-        provider: LoginProvider.google,
-        id_token: idToken,
-      }).unwrap();
-
-      console.log("response", JSON.stringify(response, null, 2));
-      await AsyncStorage.setItem("UserToken", response.token);
-      await AsyncStorage.setItem("UserRefreshToken", response.refresh);
-      await AsyncStorage.removeItem("UserAccessToken");
-
-      const resolvedProfile: UserProfile = {
-        id: response.id ?? 0,
-        username:
-          response.username ||
-          response.email ||
-          user?.email ||
-          `user-${response.id ?? Date.now()}`,
-        email: response.email || user?.email || "",
-        first_name: response.first_name || user?.givenName || null,
-        profile_picture: user?.photo ?? null,
-        profile_picture_url: user?.photo ?? null,
-        created_at: nowIso,
-        updated_at: nowIso,
-      };
-
-      dispatch(setProfile(resolvedProfile));
-
-      dispatch(setAuthProvider("google"));
-
-      (navigation as any).reset({
-        index: 0,
-        routes: [
-          {
-            name: "MainTabs",
-            params: { screen: "HomeScreen" },
-          },
-        ],
-      });
-    } catch (err: any) {
-      console.log("Google login error:", err);
-      const message =
-        err?.data?.detail ||
-        err?.data?.message ||
-        err?.message ||
-        "Please try again";
-      Alert.alert("Google Login Failed", message);
-    } finally {
-      setGoogleSignInInProgress(false);
-    }
-  };
-
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true} isLoading={isLoading}>
@@ -332,27 +233,7 @@ const LoginScreen = () => {
                   <View style={styles.divider} />
                 </View>
 
-                <View style={styles.socialRow}>
-                  <TouchableOpacity
-                    onPress={handleGoogleLogin}
-                    style={[
-                      styles.socialCircle,
-                      isGoogleBusy && styles.socialCircleDisabled,
-                    ]}
-                    disabled={isGoogleBusy}
-                    accessibilityRole="button"
-                    accessibilityLabel="Continue with Google"
-                  >
-                    {isGoogleBusy ? (
-                      <ActivityIndicator size="small" color={Colors.white} />
-                    ) : (
-                      <GoogleIcon width={24} height={24} color="#0F5270" />
-                    )}
-                  </TouchableOpacity>
-                  <View style={styles.socialCircle}>
-                    <FacebookIcon width={24} height={24} color="#0F5270" />
-                  </View>
-                </View>
+                <UvSocialLogins />
               </View>
 
             <View style={styles.footerRow}>

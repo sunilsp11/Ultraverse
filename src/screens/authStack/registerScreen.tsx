@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Linking,
+  ActivityIndicator,
 } from "react-native";
 import { Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
@@ -20,6 +21,7 @@ import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import GoogleIcon from "../../assets/svg/google.svg";
 import FacebookIcon from "../../assets/svg/facebook.svg";
 import { useRegisterMutation } from "../../services/authRequest/authApi";
+import UvSocialLogins from "../../components/common/uvSocialLogins";
 
 type RegisterFormData = {
   name: string;
@@ -82,6 +84,7 @@ const RegisterScreen = () => {
       );
     }
   };
+  
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true} isLoading={isLoading}>
@@ -283,14 +286,7 @@ const RegisterScreen = () => {
                   <View style={styles.divider} />
                 </View>
 
-                <View style={styles.socialRow}>
-                  <View style={styles.socialCircle}>
-                    <GoogleIcon width={24} height={24} color="#0F5270" />
-                  </View>
-                  <View style={styles.socialCircle}>
-                    <FacebookIcon width={24} height={24} color="#0F5270" />
-                  </View>
-                </View>
+                <UvSocialLogins />
               </View>
             </ScrollView>
             <View style={styles.termsContainer}>
@@ -359,13 +355,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 1,
     backgroundColor: "#91B4C3",
-  },
-  socialRow: {
-    marginTop: 18,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 22,
   },
   socialCircle: {
     width: 44,
