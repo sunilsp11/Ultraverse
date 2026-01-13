@@ -152,14 +152,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     paddingHorizontal: 16,
+    alignItems: 'center',
   },
   ctaInnerSecondary: {
     backgroundColor: 'transparent',
     borderColor: Colors.white,
+    alignItems: 'center',
   },
   ctaInnerDisabled: {
     backgroundColor: Colors.base[500],
     borderColor: Colors.base[500],
+    alignItems: 'center',
   },
   iconContainerRight: {
     marginLeft: 8,
