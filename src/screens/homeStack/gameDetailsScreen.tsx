@@ -849,7 +849,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import {
   ActivityIndicator,
-  Alert,
   Animated,
   Dimensions,
   Image,
@@ -863,13 +862,14 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import BackArrowIcon from '../../assets/svg/backArrow.svg'
 import UvButton from '../../components/common/uvButton'
+import UvCachedVideoPlayer from '../../components/common/uvCachedVideoPlayer'
 import UvSpacer from '../../components/common/uvSpacer'
 import UvTypography from '../../components/common/uvTypography'
-import UvVideoPlayer from '../../components/common/uvVideoPlayer'
+import { useGetUserGameFeedbackQuery } from '../../services/feedback/gameFeedbackApi'
 import { useGetGameByIdQuery } from '../../services/games/gamesApi'
 import Colors from '../../theme/color'
 import { RootStackParamList } from '../../types/navigationTypes'
-import { useGetUserGameFeedbackQuery } from '../../services/feedback/gameFeedbackApi'
+import UvImageGalleryModal, { GalleryImageItem } from '../../components/common/uvImageGalleryModal'
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window')
 
@@ -882,7 +882,8 @@ const GAMEPLAY_CARD_HEIGHT = GAMEPLAY_CARD_WIDTH * 0.6
 const GameDetailsScreen = () => {
 
   const [isWarningModalVisible, setWarningModalVisible] = useState(false)
-
+  const [isImageModalVisible, setImageModalVisible] = useState(false)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<GameDetailsScreenRouteProp>()
   const { gameTitle, gameImage, genre, description, gameInfo, gameId } = route.params
@@ -1004,6 +1005,42 @@ const GameDetailsScreen = () => {
     fetchedGame?.media,
   ])
 
+    const galleryImages = useMemo<GalleryImageItem[]>(() => {
+    const gallery: GalleryImageItem[] = []
+    const seenSources = new Set<string>()
+
+    const registerImage = (id: string, source: ImageSourcePropType, title?: string | null, sourceKey?: string) => {
+      const key = sourceKey ?? (typeof source === 'object' && 'uri' in (source as Record<string, unknown>) ? (source as { uri?: string }).uri : undefined) ?? id
+
+      if (key && seenSources.has(key)) {
+        return
+      }
+
+      if (key) {
+        seenSources.add(key)
+      }
+
+      gallery.push({ id, source, title })
+    }
+
+    if (thumbnailImage) {
+      registerImage('hero', thumbnailImage, gameTitle)
+    }
+
+    fetchedGame?.media?.forEach((media, index) => {
+      if (media?.type === 'image' && media?.url) {
+        registerImage(
+          String(media?.id ?? `media-image-${index}`),
+          { uri: media.url } as ImageSourcePropType,
+          media.title,
+          media.url,
+        )
+      }
+    })
+
+    return gallery
+  }, [thumbnailImage, fetchedGame?.media, gameTitle])
+
   const handleShowWarningModal = useCallback(() => {
     setWarningModalVisible(true)
   }, [])
@@ -1016,6 +1053,16 @@ const GameDetailsScreen = () => {
   const handleWarningDismiss = useCallback(() => {
     setWarningModalVisible(false)
   }, [])
+
+  const handleImageModalClose = useCallback(() => {
+    setImageModalVisible(false)
+  }, [setImageModalVisible])
+
+
+  const handleImageModalOpen = useCallback((index: number) => {
+    setImageModalVisible(true)
+    setSelectedImageIndex(index)
+  }, [setImageModalVisible, setSelectedImageIndex])  
 
   return (
     <View style={[styles.container, { backgroundColor: Colors.base[950] }]}>
@@ -1045,9 +1092,10 @@ const GameDetailsScreen = () => {
         contentContainerStyle={{ paddingBottom: 50 }}
       >
         {primaryVideo?.url && thumbnailImage && (
-          <UvVideoPlayer
-            videoUrl={primaryVideo.url}
+          <UvCachedVideoPlayer
+            url={primaryVideo.url}
             thumbnailImage={thumbnailImage}
+            fileName={'gameTrailer.mp4'}
             width={screenWidth}
             height={220}
           />
@@ -1112,7 +1160,7 @@ const GameDetailsScreen = () => {
               snapToAlignment="start"
             >
               {gameplayMedia.map((media, index) => (
-                <TouchableOpacity key={index} style={styles.gameplayCard}>
+                <TouchableOpacity key={index} style={styles.gameplayCard} onPress={() => handleImageModalOpen(index)}>
                   <Image source={media.url ? { uri: media.url } : require('../../assets/images/Image-not-found.png')} style={styles.gameplayImage} />
                 </TouchableOpacity>
               ))}
@@ -1206,6 +1254,13 @@ const GameDetailsScreen = () => {
           </View>
         </View>
       </Modal>
+     <UvImageGalleryModal
+        visible={isImageModalVisible}
+        images={galleryImages}
+        initialIndex={selectedImageIndex}
+        onClose={handleImageModalClose}
+        onIndexChange={setSelectedImageIndex}
+      />
     </View>
   )
 }

@@ -19,3 +19,6 @@ project(':unityLibrary').projectDir=new File('../unity/builds/android/unityLibra
 
 include ':unityLibrary:xrmanifest.androidlib'
 project(':unityLibrary:xrmanifest.androidlib').projectDir = new File('../unity/builds/android/unityLibrary/xrmanifest.androidlib')
+
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(settingsDir, '../node_modules/react-native-fs/android')

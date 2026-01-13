@@ -4,6 +4,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useRef } from "react";
 import Sound from "react-native-sound";
+import { AudioProvider } from "../contexts/audioContext";
 import ForgotPasswordScreen from "../screens/authStack/forgotPasswordScreen";
 import LoginScreen from "../screens/authStack/loginScreen";
 import RegisterScreen from "../screens/authStack/registerScreen";
@@ -35,6 +36,7 @@ import {
 } from "../types/navigationTypes";
 import CustomTabBar from "../components/navigation/customTabBar";
 import WalletIcon from "../assets/svg/walletIcon.svg";
+import { AppState, AppStateStatus } from "react-native";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -140,6 +142,37 @@ const AppNavigator = () => {
   const backgroundSoundRef = useRef<Sound | null>(null);
   const hasStartedSoundRef = useRef(false);
   const previousRouteRef = useRef<string | undefined>(undefined);
+  const appStateRef = useRef<AppStateStatus>(AppState.currentState);
+
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (
+        appStateRef.current.match(/active|foreground/) &&
+        nextAppState === 'background'
+      ) {
+        // App has gone to the background - stop music
+        console.log('App went to background - stopping music');
+        stopBackgroundMusic();
+      } else if (
+        appStateRef.current === 'background' &&
+        nextAppState === 'active'
+      ) {
+        // App has come to the foreground - you can optionally restart music here
+        // Uncomment the lines below if you want music to resume when app comes back
+        console.log('App came to foreground - restarting music');
+        setTimeout(() => {
+          startBackgroundMusic();
+        }, 500);
+      }
+      appStateRef.current = nextAppState;
+    };
+
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
   const startBackgroundMusic = () => {
     const bgSound = new Sound('ultraverse_bg_sound.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -226,28 +259,34 @@ const AppNavigator = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer onStateChange={handleNavigationStateChange}>
-        <RootStack.Navigator
-          initialRouteName="SplashScreen"
-          screenOptions={{ headerShown: false }}
-        >
-          <RootStack.Screen name="SplashScreen" component={SplashScreen} />
-          <RootStack.Screen
-            name="OnboardingScreen"
-            component={OnboardingScreen}
-          />
-          <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
-          <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
-          <RootStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
-          <RootStack.Screen name="GameFeedbackScreen" component={GameFeedbackScreen} />
-          <RootStack.Screen name="GameFeedbackThankYouScreen" component={GameFeedbackThankYouScreen} />
-          <RootStack.Screen name="PlatformFeedbackScreen" component={PlatformFeedbackScreen} />
-          <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
-          <RootStack.Screen name="SearchScreen" component={SearchScreen} />
-          <RootStack.Screen name="ProfileScreen" component={ProfileScreen} />
-          <RootStack.Screen name="UnityPlayScreen" component={UnityPlayScreen} />
-        </RootStack.Navigator>
-      </NavigationContainer>
+      <AudioProvider
+        backgroundSoundRef={backgroundSoundRef}
+        startBackgroundMusic={startBackgroundMusic}
+        stopBackgroundMusic={stopBackgroundMusic}
+      >
+        <NavigationContainer onStateChange={handleNavigationStateChange}>
+          <RootStack.Navigator
+            initialRouteName="SplashScreen"
+            screenOptions={{ headerShown: false }}
+          >
+            <RootStack.Screen name="SplashScreen" component={SplashScreen} />
+            <RootStack.Screen
+              name="OnboardingScreen"
+              component={OnboardingScreen}
+            />
+            <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
+            <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
+            <RootStack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
+            <RootStack.Screen name="GameFeedbackScreen" component={GameFeedbackScreen} />
+            <RootStack.Screen name="GameFeedbackThankYouScreen" component={GameFeedbackThankYouScreen} />
+            <RootStack.Screen name="PlatformFeedbackScreen" component={PlatformFeedbackScreen} />
+            <RootStack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+            <RootStack.Screen name="SearchScreen" component={SearchScreen} />
+            <RootStack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <RootStack.Screen name="UnityPlayScreen" component={UnityPlayScreen} />
+          </RootStack.Navigator>
+        </NavigationContainer>
+      </AudioProvider>
     </SafeAreaProvider>
   );
 };
