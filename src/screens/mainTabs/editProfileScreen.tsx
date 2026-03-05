@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   Platform,
   Image,
+  PermissionsAndroid,
 } from "react-native";
 import UvScreenWrapper from "../../components/common/uvScreenWrapper";
 import UvTypography from "../../components/common/uvTypography";
@@ -157,7 +158,29 @@ const EditProfileScreen = () => {
     [uploadProfilePicture]
   );
 
-  const handleOpenCamera = useCallback(() => {
+  const handleOpenCamera = useCallback(async () => {
+    if (Platform.OS === "android") {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: "Camera Permission",
+            message: "App needs access to your camera to take profile pictures.",
+            buttonNeutral: "Ask Me Later",
+            buttonNegative: "Cancel",
+            buttonPositive: "OK",
+          }
+        );
+        if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+          Alert.alert("Permission denied", "Camera permission is required to take a photo.");
+          return;
+        }
+      } catch (err) {
+        console.warn(err);
+        return;
+      }
+    }
+
     const options: CameraOptions = {
       mediaType: "photo",
       includeBase64: false,
@@ -301,7 +324,7 @@ const EditProfileScreen = () => {
           Alert.alert(
             "Password update failed",
             error?.data?.message ||
-              "Please verify your current password and try again."
+            "Please verify your current password and try again."
           );
         }
 
@@ -390,8 +413,8 @@ const EditProfileScreen = () => {
           profileUpdated && passwordUpdated
             ? "Your profile name and password have been updated."
             : profileUpdated
-            ? "Your profile name has been updated."
-            : "Your password has been updated.";
+              ? "Your profile name has been updated."
+              : "Your password has been updated.";
 
         Alert.alert("Success", successMessage);
       }
@@ -414,9 +437,10 @@ const EditProfileScreen = () => {
   return (
     <UvScreenWrapper>
       <View style={styles.container}>
-        <UvHeader 
-          title="EDIT PROFILE" 
+        <UvHeader
+          title="EDIT PROFILE"
           titleVariant="h4"
+          backArrowColor={Colors.primary[950]}
           containerStyle={styles.headerContainer}
         />
 
@@ -452,7 +476,7 @@ const EditProfileScreen = () => {
             CHANGE PASSWORD
           </UvTypography>
           <View style={{ height: 12 }} />
-          <View style={{paddingBottom: 32}}>
+          <View style={{ paddingBottom: 32 }}>
             <Controller
               control={control}
               name="oldPassword"
@@ -607,7 +631,7 @@ const EditProfileScreen = () => {
       >
         <TouchableWithoutFeedback onPress={closePicker}>
           <View style={styles.modalBackdrop}>
-            <TouchableWithoutFeedback onPress={() => {}}>
+            <TouchableWithoutFeedback onPress={() => { }}>
               <View style={styles.modalSheet}>
                 <View style={styles.modalHandle} />
                 <UvTypography variant="h6" align="center" style={styles.modalTitle}>

@@ -14,6 +14,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { UserProfile } from "../../services/profile/profileApi";
 import { useSocialLoginMutation } from "../../services/authRequest/authApi";
 import { signInWithGoogle } from "../../config/googleSignIn";
+import { statusCodes } from "@react-native-google-signin/google-signin";
 import { LoginProvider } from "../../screens/authStack/loginScreen";
 import { useAppDispatch } from "../../store/store";
 import { CompositeNavigationProp, useNavigation } from "@react-navigation/native";
@@ -22,8 +23,8 @@ import { AuthStackParamList, RootStackParamList } from "../../types/navigationTy
 import { setAuthProvider, setProfile } from "../../store/slices/profileSlice";
 
 type LoginNavigationProp = CompositeNavigationProp<
-NativeStackNavigationProp<AuthStackParamList, "LoginScreen">,
-NativeStackNavigationProp<RootStackParamList>
+  NativeStackNavigationProp<AuthStackParamList, "LoginScreen">,
+  NativeStackNavigationProp<RootStackParamList>
 >;
 
 const UvSocialLogins = () => {
@@ -58,6 +59,9 @@ const UvSocialLogins = () => {
         null;
 
       if (!idToken) {
+        if (!user) {
+          return;
+        }
         Alert.alert(
           "Google Login Failed",
           "Unable to retrieve a valid ID token from Google."
@@ -106,6 +110,9 @@ const UvSocialLogins = () => {
       });
     } catch (err: any) {
       console.log("Google login error:", err);
+      if (err?.code === statusCodes.SIGN_IN_CANCELLED) {
+        return;
+      }
       const message =
         err?.data?.detail ||
         err?.data?.message ||

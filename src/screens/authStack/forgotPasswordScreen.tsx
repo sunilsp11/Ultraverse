@@ -24,7 +24,7 @@ const ForgotPasswordScreen = () => {
 
   type ForgotFormData = { email: string };
   const { control, handleSubmit, formState: { errors } } = useForm<ForgotFormData>({
-    defaultValues: { email: "sunilp.brainerhub@gmail.com" },
+    defaultValues: { email: "" },
     mode: "onBlur",
   });
 

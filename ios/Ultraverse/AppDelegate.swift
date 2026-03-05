@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 import UnityFramework
 import React
 import React_RCTAppDelegate
@@ -36,6 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    initUnity(launchOptions: launchOptions)
 
     return true
+  }
+
+  func applicationDidEnterBackground(_ application: UIApplication) {
+    try? AVAudioSession.sharedInstance().setActive(false)
+  }
+
+  func applicationWillEnterForeground(_ application: UIApplication) {
+    try? AVAudioSession.sharedInstance().setActive(true)
   }
   
   @objc func initUnity(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {

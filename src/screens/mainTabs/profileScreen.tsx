@@ -30,6 +30,7 @@ import {
   useUpdateLocationMutation,
 } from "../../services/profile/profileApi";
 import { clearProfile } from "../../store/slices/profileSlice";
+import Colors from "../../theme/color";
 
 const defaultAvatar = require("../../assets/images/Fortnite.png");
 
@@ -107,11 +108,11 @@ const ProfileScreen = () => {
     }
 
     setIsUpdatingLocation(true);
-    
+
     try {
       if (value) {
         const hasPermission = await requestLocationPermission();
-        
+
         if (!hasPermission) {
           setIsUpdatingLocation(false);
           Alert.alert(
@@ -128,21 +129,21 @@ const ProfileScreen = () => {
 
         try {
           const location = await getCurrentLocation();
-       
-         const response = await updateLocation({
+
+          const response = await updateLocation({
             latitude: formatCoordinate(location.latitude),
             longitude: formatCoordinate(location.longitude),
             address: location.address || "string",
             location_permission_enabled: true,
           }).unwrap();
-          
+
           setLocationEnabled(true);
           setShowLocationModal(true);
           setIsUpdatingLocation(false);
         } catch (error: any) {
-       
+
           setIsUpdatingLocation(false);
-          
+
           const { title, message } = getErrorMessage(error);
 
           Alert.alert(
@@ -167,37 +168,37 @@ const ProfileScreen = () => {
           setIsUpdatingLocation(false);
         } catch (error: any) {
           setIsUpdatingLocation(false);
-          
+
           const errorMessage =
             error?.data?.message ||
             error?.data?.detail ||
             "Failed to update location. Please try again.";
-          
+
           Alert.alert("Error", errorMessage, [
             {
               text: "OK",
             },
           ]);
-          
+
           setLocationEnabled(true);
           return;
         }
       }
     } catch (error: any) {
       setIsUpdatingLocation(false);
-      
+
       const errorMessage =
         error?.data?.message ||
         error?.data?.detail ||
         "Failed to update location. Please try again.";
-      
+
       Alert.alert("Error", errorMessage, [
         {
           text: "OK",
         },
       ]);
-      
-        if (value) {
+
+      if (value) {
         setLocationEnabled(false);
       } else {
         setLocationEnabled(true);
@@ -242,6 +243,7 @@ const ProfileScreen = () => {
       <UvHeader
         title="PROFILE"
         titleVariant="h4"
+        backArrowColor={Colors.primary[950]}
         containerStyle={styles.headerContainer}
       />
 

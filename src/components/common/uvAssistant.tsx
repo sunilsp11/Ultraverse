@@ -46,7 +46,7 @@ const UvAssistant: React.FC<UvAssistantProps> = ({ onPress }) => {
     }
     onPress?.();
   };
-  
+
   const scale = slideAnim.interpolate({
     inputRange: [0, 1],
     outputRange: [0, 1],
@@ -70,10 +70,10 @@ const UvAssistant: React.FC<UvAssistantProps> = ({ onPress }) => {
   return (
     <View style={styles.container}>
       {isVisible && (
-        <Animated.View 
+        <Animated.View
           style={[
-            styles.viewContainer, 
-            { 
+            styles.viewContainer,
+            {
               transform: [
                 { translateX },
                 { translateY },
@@ -91,8 +91,8 @@ const UvAssistant: React.FC<UvAssistantProps> = ({ onPress }) => {
             repeat={false}
             muted={false}
             paused={!isVisible}
-            playInBackground={true}
-            playWhenInactive={true}
+            playInBackground={false}
+            playWhenInactive={false}
             ignoreSilentSwitch="ignore"
             disableFocus={true}
             onEnd={closeContainer}

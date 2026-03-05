@@ -75,7 +75,7 @@ const LoginScreen = () => {
       const token = response?.tokens?.access;
       const refreshToken = response?.tokens?.refresh;
       console.log("refreshToken", refreshToken);
-      
+
       if (token) {
         await AsyncStorage.setItem("UserToken", token);
         await AsyncStorage.setItem("UserRefreshToken", refreshToken);
@@ -96,7 +96,15 @@ const LoginScreen = () => {
       }
     } catch (error: any) {
       console.log("error", JSON.stringify(error, null, 2));
-      setGlobalErrorMessage(error?.data?.message || "Please check your credentials and try again");
+      if (error?.status === "FETCH_ERROR") {
+        setGlobalErrorMessage(
+          "No internet connection. Please check your network and try again."
+        );
+      } else {
+        setGlobalErrorMessage(
+          error?.data?.message || "Please check your credentials and try again"
+        );
+      }
       // Alert.alert(
       //   "Login failed",
       //   error?.data?.message || "Please check your credentials and try again"
@@ -106,150 +114,151 @@ const LoginScreen = () => {
 
   return (
     <UvScreenWrapper inverted={true} conatinerStyle={styles.container} isScrollable={true} isLoading={isLoading}>
-        <View style={{ paddingHorizontal: 24, flex: 1 }}>
-          <View style={styles.header}>
-            <Image
-              source={require("../../assets/images/top_header_logo.png")}
-              style={styles.topLogo}
-              resizeMode="contain"
+      <View style={{ paddingHorizontal: 24, flex: 1 }}>
+        <View style={styles.header}>
+          <Image
+            source={require("../../assets/images/top_header_logo.png")}
+            style={styles.topLogo}
+            resizeMode="contain"
+          />
+          <UvTypography variant="h3" align="center">
+            LOGIN
+          </UvTypography>
+          <View style={{ height: 8 }} />
+          <UvTypography variant="p" color="#D7E7EE" align="center">
+            Enter your email below to login to your account.
+          </UvTypography>
+        </View>
+
+        <View style={styles.form}>
+          <View style={styles.formContent}>
+            <UvTypography
+              variant="h6"
+              color={Colors.white}
+              style={{ marginBottom: 8 }}
+            >
+              EMAIL
+            </UvTypography>
+            <Controller
+              control={control}
+              name="email"
+              rules={{
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Enter a valid email address",
+                },
+                validate: (v) =>
+                  (!!v && v.trim().length > 0) || "Email is required",
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  <UvFormTextInput
+                    placeholder="Please enter your email address"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    variant="body"
+                  />
+                  {errors.email && (
+                    <UvTypography
+                      variant="bodyXs"
+                      color={Colors.danger[400]}
+                    >
+                      {errors.email.message}
+                    </UvTypography>
+                  )}
+                </>
+              )}
             />
-            <UvTypography variant="h3" align="center">
-              LOGIN
+
+            <View style={{ height: 16 }} />
+
+            <UvTypography
+              variant="h6"
+              color={Colors.white}
+              style={{ marginBottom: 8 }}
+            >
+              PASSWORD
             </UvTypography>
-            <View style={{ height: 8 }} />
-            <UvTypography variant="p" color="#D7E7EE" align="center">
-              Enter your email below to login to your account.
-            </UvTypography>
+            <Controller
+              control={control}
+              name="password"
+              rules={{
+                required: "Password is required",
+                validate: (v) =>
+                  (!!v && v.trim().length > 0) || "Password is required",
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  <UvFormTextInput
+                    placeholder="Please enter your password"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    showPasswordToggle={true}
+                    autoCapitalize="none"
+                    variant="body"
+                  />
+                  {errors.password && (
+                    <UvTypography
+                      variant="bodyXs"
+                      color={Colors.danger[400]}
+                    >
+                      {errors.password.message}
+                    </UvTypography>
+                  )}
+                </>
+              )}
+            />
+
+            {globalErrorMessage && (
+              <UvTypography variant="bodyXs" color={Colors.danger[400]}>
+                {globalErrorMessage}
+              </UvTypography>
+            )}
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ForgotPasswordScreen")}
+              style={styles.forgotBtn}
+            >
+              <UvTypography variant="p" color="#D7E7EE">
+                Forgot Password?
+              </UvTypography>
+            </TouchableOpacity>
+
+            <View style={{ height: 16 }} />
+
+            <UvButton onPress={handleSubmit(onSubmit)} title="Login" />
+
+            <View style={styles.orRow}>
+              <View style={styles.divider} />
+              <UvTypography variant="bodyXs" color="#CFE2EA">
+                or continue with
+              </UvTypography>
+              <View style={styles.divider} />
+            </View>
+
+            <UvSocialLogins />
           </View>
 
-          <View style={styles.form}>
-              <View style={styles.formContent}>
-                <UvTypography
-                  variant="h6"
-                  color={Colors.white}
-                  style={{ marginBottom: 8 }}
-                >
-                  EMAIL
-                </UvTypography>
-                <Controller
-                  control={control}
-                  name="email"
-                  rules={{
-                    required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "Enter a valid email address",
-                    },
-                    validate: (v) =>
-                      (!!v && v.trim().length > 0) || "Email is required",
-                  }}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <>
-                      <UvFormTextInput
-                        placeholder="Please enter your email address"
-                        value={value}
-                        onChangeText={onChange}
-                        onBlur={onBlur}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                        variant="body"
-                      />
-                      {errors.email && (
-                        <UvTypography
-                          variant="bodyXs"
-                          color={Colors.danger[400]}
-                        >
-                          {errors.email.message}
-                        </UvTypography>
-                      )}
-                    </>
-                  )}
-                />
-
-                <View style={{ height: 16 }} />
-
-                <UvTypography
-                  variant="h6"
-                  color={Colors.white}
-                  style={{ marginBottom: 8 }}
-                >
-                  PASSWORD
-                </UvTypography>
-                <Controller
-                  control={control}
-                  name="password"
-                  rules={{
-                    required: "Password is required",
-                    validate: (v) =>
-                      (!!v && v.trim().length > 0) || "Password is required",
-                  }}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <>
-                      <UvFormTextInput
-                        placeholder="Please enter your password"
-                        value={value}
-                        onChangeText={onChange}
-                        onBlur={onBlur}
-                        showPasswordToggle={true}
-                        autoCapitalize="none"
-                        variant="body"
-                      />
-                      {errors.password && (
-                        <UvTypography
-                          variant="bodyXs"
-                          color={Colors.danger[400]}
-                        >
-                          {errors.password.message}
-                        </UvTypography>
-                      )}
-                    </>
-                  )}
-                />
-
-                {globalErrorMessage && (
-                  <UvTypography variant="bodyXs" color={Colors.danger[400]}>
-                    {globalErrorMessage}
-                  </UvTypography>
-                )}
-
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("ForgotPasswordScreen")}
-                  style={styles.forgotBtn}
-                >
-                  <UvTypography variant="p" color="#D7E7EE">
-                    Forgot Password?
-                  </UvTypography>
-                </TouchableOpacity>
-
-                <View style={{ height: 16 }} />
-
-                <UvButton onPress={handleSubmit(onSubmit)} title="Login" />
-
-                <View style={styles.orRow}>
-                  <View style={styles.divider} />
-                  <UvTypography variant="bodyXs" color="#CFE2EA">
-                    or continue with
-                  </UvTypography>
-                  <View style={styles.divider} />
-                </View>
-
-                <UvSocialLogins />
-              </View>
-
-            <View style={styles.footerRow}>
-              <UvTypography variant="body" color="#CFE2EA">
-                Don't have an account?
+          <View style={styles.footerRow}>
+            <UvTypography variant="body" color="#CFE2EA">
+              Don't have an account?
+            </UvTypography>
+            <View style={{ width: 5 }} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RegisterScreen")}
+            >
+              <UvTypography variant="p" color={Colors.white}>
+                Register Here
               </UvTypography>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("RegisterScreen")}
-              >
-                <UvTypography variant="p" color={Colors.white}>
-                  Register Here
-                </UvTypography>
-              </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
+      </View>
     </UvScreenWrapper>
   );
 };

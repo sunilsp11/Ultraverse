@@ -1,0 +1,50 @@
+diff --git a/node_modules/react-native-sound/android/src/main/java/com/zmxv/RNSound/Sound.kt b/node_modules/react-native-sound/android/src/main/java/com/zmxv/RNSound/Sound.kt
+index 749ea14..6058dd5 100644
+--- a/node_modules/react-native-sound/android/src/main/java/com/zmxv/RNSound/Sound.kt
++++ b/node_modules/react-native-sound/android/src/main/java/com/zmxv/RNSound/Sound.kt
+@@ -21,6 +21,45 @@ import java.io.IOException
+ open class Sound internal constructor(context:ReactApplicationContext):AudioManager.OnAudioFocusChangeListener  {
+   private var playerPool: MutableMap<Double, MediaPlayer> = mutableMapOf()
+   private val reactContext: ReactApplicationContext = context
++
++  init {
++    reactContext.addLifecycleEventListener(object : com.facebook.react.bridge.LifecycleEventListener {
++      override fun onHostResume() {}
++      override fun onHostPause() {
++        stopAll()
++      }
++      override fun onHostDestroy() {
++        stopAll()
++      }
++    })
++  }
++
++  private fun stopAll() {
++    synchronized(playerPool) {
++      val keys = playerPool.keys.toList()
++      for (key in keys) {
++        try {
++          val player = playerPool[key]
++          if (player != null) {
++            if (player.isPlaying) {
++              player.pause()
++              player.seekTo(0)
++            }
++            player.reset()
++            player.release()
++          }
++        } catch (e: Exception) {
++          Log.e("RNSound", "Error stopping player: ${e.message}")
++        }
++        playerPool.remove(key)
++      }
++      if (!mixWithOthers && focusedPlayerKey != null) {
++        val audioManager = reactContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
++        audioManager.abandonAudioFocus(this)
++        focusedPlayerKey = null
++      }
++    }
++  }
+   var category: String? = null
+   private var mixWithOthers: Boolean = true
+   private var focusedPlayerKey: Double? = null

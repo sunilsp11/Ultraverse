@@ -7,6 +7,8 @@ import {
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
+  AppState,
+  AppStateStatus,
   Image,
   StatusBar,
   StyleSheet,
@@ -34,6 +36,8 @@ const SplashScreen = () => {
   const [hasSession, setHasSession] = useState<boolean>(false);
   const [appStateLoaded, setAppStateLoaded] = useState<boolean>(false);
   const hasNavigatedRef = useRef(false);
+  const splashSoundRef = useRef<Sound | null>(null);
+  const appStateRef = useRef<AppStateStatus>(AppState.currentState);
 
   const navigateToNextScreen = useCallback(() => {
     if (hasNavigatedRef.current || !appStateLoaded) return;
@@ -126,26 +130,56 @@ const SplashScreen = () => {
       }),
     ]).start();
 
-    return () => {
-      
-    };
+    return () => {};
   }, []);
 
-  const splashScreenSound = new Sound("splash_screen_bg_sound.mp3", Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-      console.log("Failed to load the sound", error);
-      return;
-    }
-
-    splashScreenSound.setVolume(0.05);
-    splashScreenSound.play((success) => {
-      if (success) {
-        navigateToNextScreen();
-      } else {
+  // When returning from background during splash, navigate forward (sound was stopped so callback never fired)
+  useEffect(() => {
+    const handleAppStateChange = (nextState: AppStateStatus) => {
+      const wasInBackground = appStateRef.current === "background" || appStateRef.current === "inactive";
+      appStateRef.current = nextState;
+      if (nextState === "active" && wasInBackground && !hasNavigatedRef.current && appStateLoaded) {
         navigateToNextScreen();
       }
+    };
+    const sub = AppState.addEventListener("change", handleAppStateChange);
+    return () => sub.remove();
+  }, [appStateLoaded, navigateToNextScreen]);
+
+  // Splash sound: play on load, stop when app goes to background or on unmount
+  useEffect(() => {
+    const sound = new Sound("splash_screen_bg_sound.mp3", Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log("Failed to load the sound", error);
+        return;
+      }
+      if (!splashSoundRef.current) return;
+      sound.setVolume(0.05);
+      sound.play((success) => {
+        if (!splashSoundRef.current) return;
+        if (success) {
+          navigateToNextScreen();
+        } else {
+          navigateToNextScreen();
+        }
+      });
     });
-  });
+    splashSoundRef.current = sound;
+
+    const stopAndReleaseSound = () => {
+      if (splashSoundRef.current) {
+        try {
+          splashSoundRef.current.stop();
+          splashSoundRef.current.release();
+        } catch (_) {}
+        splashSoundRef.current = null;
+      }
+    };
+
+    return () => {
+      stopAndReleaseSound();
+    };
+  }, [navigateToNextScreen]);
 
   const backgroundColor = bgFadeAnim.interpolate({
     inputRange: [0, 1],
